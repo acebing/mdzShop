@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+        <li class="layui-nav-item"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+            <dd><a href="javascript:;">合作伙伴</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>文章分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">通用信息</li>
+        <li>文章内容</li>
+        <li>关联商品</li>
+      </ul>
+      <div class="layui-tab-content">
+       <div class="layui-tab-item layui-show">
+        <div class="explanation mdz-m-b20" id="explanation">
+          <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+          </div>
+          <ul>
+            <li>请注意选择文章分类；请严谨描述文章内容。</li>
+            <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+          </ul>
+        </div>
+        <div class="flexilist">
+          <div class="mian-info">
+            <form action="">
+              <div class="switch_info" style="display: block;">
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>&nbsp;文章标题：</div>
+                  <div class="label_value">
+                    <input type="text" name="title" class="text" value="" maxlength="40" autocomplete="off" id="title">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                <!--  -->
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>&nbsp;文章分类：</div>
+                  <div class="label_value">
+                    <div id="parent_cat" class="imitate_select select_w320">
+                      <div class="cite">请选择...</div>
+                      <ul style="display: none;">
+                       <li><a href="javascript:;" cat_type="2" data-value="1" class="ftx-01">购物指南</a></li><li><a href="javascript:;" cat_type="3" data-value="2" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;交易条款1</a></li><li><a href="javascript:;" cat_type="4" data-value="3" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;购物流程说明</a></li><li><a href="javascript:;" cat_type="5" data-value="1007" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交易条款</a></li><li><a href="javascript:;" cat_type="5" data-value="1011" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;售后服务</a></li><li><a href="javascript:;" cat_type="5" data-value="1009" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付问题</a></li><li><a href="javascript:;" cat_type="5" data-value="1005" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物流程</a></li><li><a href="javascript:;" cat_type="5" data-value="1008" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配送方式</a></li><li><a href="javascript:;" cat_type="5" data-value="1010" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发票问题</a></li><li><a href="javascript:;" cat_type="1" data-value="1000" class="ftx-01">微分销</a></li><li><a href="javascript:;" cat_type="1" data-value="14" class="ftx-01">商家入驻流程说明</a></li>                                      </ul>
+                       <input name="article_cat" type="hidden" value="" id="parent_cat_val">
+                     </div>
+                     <div class="form_prompt"></div>
+                   </div>
+                 </div>
+                 <div class="item">
+                  <div class="label">文章重要性：</div>
+                  <div class="label_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="article_type" id="sex_0" value="0" checked="">
+                        <label for="sex_0" class="ui-radio-label">普通</label>
+                      </div>
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="article_type" id="sex_1" value="1">
+                        <label for="sex_1" class="ui-radio-label">置顶</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">是否显示：</div>
+                  <div class="label_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="is_open" id="sex_3" value="1" checked="">
+                        <label for="sex_3" class="ui-radio-label">显示</label>
+                      </div>
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="is_open" id="sex_4" value="0">
+                        <label for="sex_4" class="ui-radio-label">不显示</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--  -->
+                <div class="item">
+                  <div class="label">文章作者：</div>
+                  <div class="label_value"><input type="text" name="author" class="text" autocomplete="off" value=""></div>
+                </div>
+                <div class="item">
+                  <div class="label">作者email：</div>
+                  <div class="label_value"><input type="text" name="author_email" class="text" autocomplete="off" value=""></div>
+                </div>
+                <div class="item">
+                  <div class="label">关键字：</div>
+                  <div class="label_value"><input type="text" name="keywords" class="text" autocomplete="off" value=""></div>
+                </div>
+                <div class="item">
+                  <div class="label">网页描述：</div>
+                  <div class="label_value">
+                    <textarea name="description" class="textarea"></textarea>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">排序：</div>
+                  <div class="label_value"><input type="text" name="sort_order" class="text text_2" autocomplete="off" id="sort_order" value="50"></div>
+                </div>
+                <div class="item">
+                  <div class="label">外部链接：</div>
+                  <div class="label_value"><input type="text" name="link_url" class="text" autocomplete="off" id="link_url" value="http://"></div>
+                </div>
+                <div class="item">
+                  <div class="label">上传文件：</div>
+                  <div class="label_value">
+                    <div class="type-file-box">
+                      <input type="button" name="button" id="button" class="type-file-button" value="">
+                      <input type="file" class="type-file-file" id="file" name="file" data-state="imgfile" size="30" hidefocus="true" value="">
+                    </div>
+                    <div class="notic">图片尺寸280*160</div>
+                  </div>  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="layui-tab-item">
+        <div class="flexilist">
+          <div class="mian-info">
+            <form action="">
+              <div class="explanation mdz-m-b20" id="explanation">
+                <div class="ex_tit">
+                  <i class="sc_icon"></i>
+                  <h4>操作提示</h4>
+                  <span id="explanationZoom" title="收起提示"></span>
+                </div>
+                <ul>
+                  <li>请注意选择文章分类；请严谨描述文章内容。</li>
+                  <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+                </ul>
+              </div>
+              <form action="">
+               后端数据加载
+             </form>
+           </div>
+         </div>
+       </div>
+       <div class="layui-tab-item"> <div class="flexilist">
+        <div class="mian-info">
+          <form action="">
+            <div class="explanation mdz-m-b20" id="explanation">
+              <div class="ex_tit">
+                <i class="sc_icon"></i>
+                <h4>操作提示</h4>
+                <span id="explanationZoom" title="收起提示"></span>
+              </div>
+              <ul>
+                <li>请注意选择文章分类；请严谨描述文章内容。</li>
+                <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+              </ul>
+            </div>
+            <form action="">
+              <div class="switch_info" style="display: block;">
+                <div class="step" ectype="filter">
+                  <div class="step_content">
+                    <div class="goods_search_div">
+                      <div class="search_select">
+                        <div class="categorySelect">
+                          <div class="selection">
+                            <input type="text" name="category_name" id="category_name" class="text w250 valid" value="请选择分类" autocomplete="off" readonly="" data-filter="cat_name">
+                            <input type="hidden" name="category_id" id="category_id" value="0" data-filter="cat_id">
+                          </div>
+                          <div class="select-container" style="display:none;">
+                            <div class="select-top">
+                              <a href="javascript:;" class="categoryTop" data-cid="0" data-cname="" data-diff="0" data-show="0" data-seller="0" data-table="category">重选</a>
+                              &gt; <span>请选择分类</span>
+                            </div>
+                            <div class="select-list">
+                              <ul>
+                                <li data-cid="1" data-cname="未启用分类/图书、音像、电子书" data-diff="0" data-url="https://www.maidezhao.com/category.php?id=1" data-show="0" data-seller="0" data-table="category"><em>Ⅰ</em>未启用分类/图书、音像、电子书   </li>
+                                <li data-cid="867" data-cname="品味七乡" data-diff="0" data-url="https://www.maidezhao.com/category.php?id=867" data-show="0" data-seller="0" data-table="category">
+                                  <em>Ⅰ</em></li>
+                              </ul>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        <div class="search_select">
+                          <div class="brandSelect">
+                            <div class="selection">
+                              <input type="text" name="brand_name" id="brand_name" class="text w120 valid" value="请选择品牌" autocomplete="off" readonly="" data-filter="brand_name">
+                              <input type="hidden" name="brand_id" id="brand_id" value="0" data-filter="brand_id">
+                            </div>
+                            <div class="brand-select-container" style="display:none;">
+                              <div class="brand-top">
+                                <div class="letter">
+                                  <ul>
+                                    <li><a href="javascript:void(0);" data-letter="">全部品牌</a></li>
+                                    <li><a href="javascript:void(0);" data-letter="A">A</a></li>
+                                    <li><a href="javascript:void(0);" data-letter="QT">其他</a></li>
+                                  </ul>
+                                </div>
+                                <div class="b_search">
+                                  <input name="search_brand_keyword" id="search_brand_keyword" type="text" class="b_text" placeholder="品牌名称关键字查找" autocomplete="off">
+                                  <a href="javascript:void(0);" class="btn-mini"><i class="icon icon-search"></i></a>
+                                </div>
+                              </div>
+                              <div class="brand-list">
+                                <ul>
+                                  <li data-id="0" data-name="请选择品牌" class="blue">取消选择</li>
+                                  <li data-id="214" data-name="vivo"><em>V</em>vivo</li>
+                                </ul>
+                              </div>
+                              <div class="brand-not" style="display:none;">没有符合"<strong>其他</strong>"条件的品牌</div>                                                </div>
+                            </div>
+                          </div>
+                          <input type="hidden" name="ru_id" value="">
+                          <input type="text" name="keyword" class="text w150" placeholder="请输入关键字" autocomplete="off" data-filter="keyword">
+                          <a href="javascript:void(0);" class="btn btn30" onclick="searchGoods()"><i class="icon icon-search"></i>搜索</a>
+                        </div>
+                        <div class="move_div">
+                          <div class="move_left">
+                            <h4>可选商品</h4>
+                            <div class="move_info">
+                              <div class="move_list" id="source_select">
+                                <ul>
+                                </ul> 
+                              </div>
+                            </div>
+                            <div class="move_handle">
+                              <a href="javascript:void(0);" class="btn btn25 moveAll" ectype="moveAll">全选</a>
+                              <a href="javascript:void(0);" ectype="sub" data-operation="add_link_artic_goods" class="btn btn25 red_btn">确定</a>
+                            </div>
+                          </div>
+                          <div class="move_middle">
+                            <div class="move_point" onclick="addGoods()"></div>
+                          </div>
+                          <div class="move_right">
+                            <h4>已选商品</h4>
+                            <div class="move_info">
+                              <div class="move_list" id="target_select">
+                                <ul>
+                                </ul>                     
+                              </div>
+                            </div>
+                            <div class="move_handle">
+                              <a href="javascript:void(0);" class="btn btn25 moveAll" ectype="moveAll">全选</a>
+                              <a href="javascript:void(0);" ectype="sub" data-operation="drop_link_artic_goods" class="btn btn25 btn_red">移除</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
+      <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+    </div>
+  </div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="./js/jquery.tableCheckbox.js"></script>
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+  layui.use(['element', 'form','table', 'layer','upload'],function(){
+    var element = layui.element;
+    var form = layui.form;
+    var table = layui.table;
+    var layer = layui.layer;
+    var upload = layui.upload;
+    $('.btn_trash').on('click', function() {
+     layer.msg('删除成功');
+   });
+    table.render({
+      elem: '#demo'
+      ,height:800
+      ,skin:'line'
+      ,url:'./test.json'
+      ,toolbar: '#toolbarDemo'
+      ,title: '用户数据表'
+      ,cols: [[
+      {type: 'checkbox', width:'3%'}
+      ,{field:'id', title:'编号', width:'15%', unresize: true, sort: true}
+      ,{field:'article_title', title:'文章标题', width:'10%', edit: 'text'}
+      ,{field:'article_class', title:'文章分类 ', width:'15%'}
+      ,{field:'article_importante', title:'文章重要性', width:'8%',}
+      ,{field:'sort', title:'排序', width:'8%',edit: 'text',toolbar: '#sort'}
+      ,{field:'sign', title:'是否显示',width:'8%',toolbar: '#is_show'}
+      ,{field:'add_time', title:'添加日期 ', width:'15%', sort: true}
+      ,{field:'operation', title:'操作', width:'20%',toolbar: '#barDemo'}
+      
+      ]]
+      ,page: true
+    });
+
+    头工具栏事件
+    table.on('toolbar(test)', function(obj){
+      var checkStatus = table.checkStatus(obj.config.id);
+      switch(obj.event){
+        case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+        break;
+        case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+        break;
+        case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+        break;
+      };
+    });
+
+    监听行工具事件
+    table.on('tool(test)', function(obj){
+      var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        obj.del();
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      layer.prompt({
+        formType: 2
+        ,value: data.email
+      }, function(value, index){
+        obj.update({
+          email: value
+        });
+        layer.close(index);
+      });
+    }
+  });
+  });
+</script>
+</html>

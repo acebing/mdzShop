@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+        <li class="layui-nav-item"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+            <dd><a href="javascript:;">合作伙伴</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">会员管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">会员列表</a></dd>
+            <dd><a href="javascript:;">充值和提现</a></dd>
+            <dd><a href="javascript:;">资金管理</a></dd>
+            <dd><a href="javascript:;">收货地址</a></dd>
+            <dd><a href="javascript:;">增票资质</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">平台设置</a>
+      <a href="">会员管理</a>
+      <a><cite>会员列表</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="layui-tab">
+        <ul class="layui-tab-title">
+          <li class="layui-this">基本信息</li>
+          <li>收货地址</li>
+          <li>查看订单</li>
+          <li>账目明细</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item">
+            <div class="explanation" id="explanation">
+              <div class="ex_tit">
+                <i class="sc_icon"></i>
+                <h4>操作提示</h4>
+                <span id="explanationZoom" title="收起提示"></span>
+              </div>
+              <ul>
+                <li>编辑会员账号信息请根据提示慎重操作，避免出现不必要的问题。</li>
+                <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+              </ul>
+            </div>
+            <div class="flexilist">
+              <div class="mian-info">
+                <div class="switch_info user_basic" style="display:block;">
+                  <form method="post" action="users.php" name="theForm" id="user_update" novalidate="novalidate">
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span>&nbsp;会员名称：</div>
+                      <div class="label_value font14">wxb076e15524754</div>
+                    </div>
+                    <div class="item">
+                      <div class="label">可用资金：</div>
+                      <div class="label_value">
+                        <div class="b-price blue font14 mr20"><em>¥</em>0.00</div>
+                        <div class="label_label">等级积分：</div>
+                        <div class="b-price blue font14 mr20 pl10">25</div>
+                        <div class="notic">等级积分是一种累计的积分，系统根据该积分来判定用户的会员等级。</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label">冻结资金：</div>
+                      <div class="label_value">
+                        <div class="b-price blue font14 mr20"><em>¥</em>0.00</div>
+                        <div class="label_label">消费积分：</div>
+                        <div class="b-price blue font14 mr20 pl10">25</div>
+                        <div class="notic">消费积分是一种站内货币，允许用户在购物时支付一定比例的积分。</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label">邮件地址：</div>
+                      <div class="label_value">
+                        <input type="text" name="email" class="text" autocomplete="off" value="wxb076e15524754@qq.com" id="email">
+                        <input type="hidden" name="old_email" value="wxb076e15524754@qq.com">
+                        <div class="form_prompt"></div>
+                        <div class="notic">请输入常用的邮箱，将用来找回密码、接受订单通知等。</div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label">新密码：</div>
+                      <div class="label_value"><input type="text" name="password" class="text" autocomplete="off" id="password"></div>
+                    </div>
+                    <div class="item">
+                      <div class="label">确认密码：</div>
+                      <div class="label_value">
+                        <input type="text" name="confirm_password" class="text" autocomplete="off" id="confirm_password">
+                        <div class="form_prompt"></div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label">会员等级：</div>
+                      <div class="label_value">
+                        <div id="user_grade" class="imitate_select select_w320">
+                          <div class="cite">非特殊等级</div>
+                          <ul style="display: none;">
+                           <li><a href="javascript:;" data-value="0" class="ftx-01">非特殊等级</a></li>
+                           <li><a href="javascript:;" data-value="11" class="ftx-01">微信</a></li>
+                           <li><a href="javascript:;" data-value="12" class="ftx-01">QQ</a></li>
+                           <li><a href="javascript:;" data-value="3" class="ftx-01">代销用户</a></li>
+                         </ul>
+                         <input name="user_rank" type="hidden" value="0" id="user_grade_val">
+                       </div>
+                       <input type="hidden" name="old_user_rank" value="0">
+                     </div>
+                   </div>
+                   <div class="item">
+                    <div class="label">性别：</div>
+                    <div class="label_value">
+                      <div class="checkbox_items">
+                        <div class="checkbox_item">
+                          <input type="radio" class="ui-radio" name="sex" id="sex_0" value="0">
+                          <label for="sex_0" class="ui-radio-label">保密</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="radio" class="ui-radio" name="sex" id="sex_1" value="1" checked="">
+                          <label for="sex_1" class="ui-radio-label">男</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="radio" class="ui-radio" name="sex" id="sex_2" value="2">
+                          <label for="sex_2" class="ui-radio-label">女</label>
+                        </div>
+                      </div>
+                      <input type="hidden" name="old_sex" value="1">
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="label">出生日期：</div>
+                    <div class="label_value">
+                      <div class="date-item year">
+                        <div id="user_year" class="imitate_select select_w120">
+                          <div class="cite">1000</div>
+                          <input name="birthdayYear" type="hidden" value="1000" id="year_val">
+                        </div>
+                      </div>
+                      <div class="date-item month">
+                        <div id="user_month" class="imitate_select select_w85">
+                          <div class="cite">1</div>                      
+                          <input name="birthdayMonth" type="hidden" value="1" id="month_val">
+                        </div>
+                      </div>
+                      <div class="date-item day">
+                        <div id="user_day" class="imitate_select select_w85">
+                          <div class="cite">1</div>
+                          <input name="birthdayDay" type="hidden" value="1" id="day_val">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="old_birthday" value="1000-01-01">
+                  <div class="item">
+                    <div class="label">信用额度：</div>
+                    <div class="label_value">
+                      <input type="text" name="credit_line" id="credit_line" value="0.00" class="text" autocomplete="off">
+                      <input type="hidden" name="old_credit_line" value="0.00">
+                    </div>
+                  </div> 
+                  <div class="item">
+                    <div class="label">手机：</div>
+                    <div class="label_value">
+                      <input type="text" name="extend_field5" class="text" value="13887692676" autocomplete="off">
+                      <input type="hidden" name="old_extend_field5" value="13887692676">
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="label">&nbsp;</div>
+                    <div class="label_value info_btn">
+                      <a href="javascript:;" class="button" id="submitBtn"> 确定 </a>
+                      <input type="hidden" name="act" value="update">
+                      <input type="hidden" name="id" value="709">
+                      <input type="hidden" name="username" value="wxb076e15524754">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explanation" id="explanation">
+            <div class="ex_tit">
+              <i class="sc_icon"></i>
+              <h4>操作提示</h4>
+              <span id="explanationZoom" title="收起提示"></span>
+            </div>
+            <ul>
+              <li>编辑会员账号信息请根据提示慎重操作，避免出现不必要的问题。</li>
+              <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+            </ul>
+          </div>
+          <div class="flexilist">
+            <div class="mian-info">
+              <div class="switch_info user_address">
+                <div class="common-content">
+                  <div class="list-div" id="listDiv">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <thead>
+                        <tr>
+                          <th width="8%"><div class="tDiv">收货人</div></th>
+                          <th width="23%"><div class="tDiv">地址</div></th>
+                          <th width="10%"><div class="tDiv">手机</div></th>
+                          <th width="10%"><div class="tDiv">邮件地址</div></th>
+                          <th width="10%"><div class="tDiv">电话</div></th>
+                          <th width="8%"><div class="tDiv">邮政编码</div></th>
+                          <th width="8%"><div class="tDiv">地址别名</div></th>
+                          <th width="10%"><div class="tDiv">最佳送货时间</div></th>
+                          <th width="10%" class="handle">操作</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="">
+                          <td><div class="tDiv">林业小区48号</div></td>
+                          <td><div class="tDiv">[中国&nbsp;&nbsp;文山&nbsp;砚山县] 云南省文山壮族苗族自治州砚山县林业小区48号</div></td>
+                          <td><div class="tDiv">13887692676</div></td>
+                          <td><div class="tDiv"></div></td>
+                          <td><div class="tDiv"></div></td>
+                          <td><div class="tDiv"></div></td>
+                          <td><div class="tDiv"></div></td>
+                          <td><div class="tDiv"></div></td>
+                          <td class="handle">
+                            <div class="tDiv a2">
+                              <a href="user_address_log.php?act=edit&amp;address_id=146&amp;user_id=709" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                              <a href="javascript:confirm_redirect('', 'user_address_log.php?act=remove&amp;id=146')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 查看订单 -->
+        <div class="layui-tab-item">
+          <div class="explanation" id="explanation">
+            <div class="ex_tit">
+              <i class="sc_icon"></i>
+              <h4>操作提示</h4>
+              <span id="explanationZoom" title="收起提示"></span>
+            </div>
+            <ul>
+              <li>商城所有的订单列表，包括平台自营和入驻商家的订单。</li>
+              <li>点击订单号即可进入详情页面对订单进行操作。</li>
+              <li>Tab切换不同状态下的订单，便于分类订单。</li>
+            </ul>
+          </div>
+          <div class="flexilist mt30">
+            <div class="layui-tab">
+              <div class="common-head order-coomon-head">
+                <ul class="layui-tab-title order_state_tab">
+                  <li class="layui-this">全部订单</li>
+                  <li>待确认</li>
+                  <li>待付款</li>
+                  <li>待发货</li>
+                  <li>待收货</li>
+                  <li>已完成</li>
+                  <li>付款中</li>
+                  <li>取消</li>
+                  <li>无效</li>
+                  <li>退款</li>
+                </ul>
+                <div class="refresh">
+                  <div class="refresh_tit" title="刷新数据" onclick="javascript:history.go(0)">
+                    <i class="icon icon-refresh"></i>
+                  </div>
+                  <div class="refresh_span">刷新 - 共1条记录</div>
+                </div>
+                <div class="search">
+                  <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+                    <div class="input">
+                      <input type="text" name="keywords" value="" class="text nofocus w180" placeholder="订单编号/商品编号/商品关键字" autocomplete="off">
+                      <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+                    </div>
+                  </form>
+                </div>
+                <div class="common-head-right">
+                  <div class="fbutton"><a href="order.php?act=order_query&amp;seller_list=0"><div title="订单查询"><span><i class="icon icon-search"></i>订单查询</span></div></a></div>
+                  <div class="fbutton"><div class="merge" title="合并订单"><span><i class="icon icon-copy"></i>合并订单</span></div></div>
+                  <div class="fbutton"><a href="javascript:download_orderlist();"><div class="csv" title="导出订单"><span><i class="icon icon-download-alt"></i>导出订单</span></div></a></div>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                  <div class="common-content">
+                    <form method="post" action="order.php?act=operate" name="listForm" onsubmit="return check()">
+                      <div class="list-div list-tb-div">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <thead>
+                            <tr>
+                              <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                              <th width="25%"><div class="tDiv">订单号</div></th>
+                              <th width="6%"><div class="tDiv">价格</div></th>
+                              <th width="3%"><div class="tDiv">数量</div></th>
+                              <th width="7%"><div class="tDiv">售后</div></th>
+                              <th width="6%"><div class="tDiv">商家名称</div></th>
+                              <th width="7%"><div class="tDiv">用户名</div></th>
+                              <th width="16%"><div class="tDiv">收货人</div></th>
+                              <th width="12%"><div class="tDiv">金额标签</div></th>
+                              <th width="6%"><div class="tDiv">订单状态</div></th>
+                              <th width="7%"><div class="tDiv">操作</div></th>
+                            </tr>
+                          </thead>
+                        </table>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <colgroup>
+                            <col width="28%">
+                            <col width="6%">
+                            <col width="3%">
+                            <col width="7%">
+                            <col width="6%">
+                            <col width="7%">
+                            <col width="16%">
+                            <col width="12%">
+                            <col width="6%">
+                            <col width="7%">
+                          </colgroup>
+                          <tbody>
+                            <tr class="tr-order-sn">
+                              <td colspan="10">
+                                <div class="tDiv ml10">
+                                  <span class="sign">
+                                    <input type="checkbox" name="checkboxes[]" value="2019031121149729593" class="checkbox" id="checkbox_1675"><label for="checkbox_1675" class="checkbox_stars"></label>
+                                  </span>
+                                  <span class="words">订单号：2019031121149729593</span>
+                                  <span class="words">下单时间：2019-03-11 21:05:48</span>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr class="">
+                              <td class="td-product">
+                                <div class="tDiv relative tpinfo last">
+                                  <div class="img"><img width="80" src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/0_thumb_G_1513098960939.jpg" alt="" onmouseover="toolTip('<img src=>')" onmouseout="toolTip()"></div>
+                                  <div class="product-info">
+                                    <div class="name mb5">
+                                      <a href="../goods.php?id=2189" target="_blank">
+                                      【平远镇】土老面酱770g                                                                                                                                                                  </a>
+
+                                    </div>
+                                    <div>商品编号：MDZ002189<a href="../trade_snapshot.php?act=trade&amp;tradeId=235&amp;snapshot=true" target="_blank" class="ml5"><span class="org">[交易快照]</span></a></div>
+                                    <div class="order_icon_items">
+                                      <div class="order_icon order_icon_pt" title="普通订单">普通订单</div>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="td-price" style="vertical-align: top;">
+                                <div class="tDiv tpinfo last">24.00</div>
+                              </td>
+                              <td class="td-number">
+                                <div class="tDiv tpinfo last">1</div>
+                              </td>
+                              <td>      
+                                <div class="tDiv tpinfo last">
+                                  <div>正品保证<br>包退服务<br>闪速配送</div>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="tDiv" style="height: 100px;">
+                                  <font>砚山买得着商城</font>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="tDiv" style="height: 100px;">
+                                  <a href="users.php?act=edit&amp;id=709">wxb076e15524754</a>
+                                </div>
+                              </td>
+                              <td><div class="tDiv" style="height: 100px;text-align: left;">林业小区48号<br> TEL: 13887692676<br>云南  文山  砚山县   云南省文山壮族苗族自治州砚山县林业小区48号</div></td>
+                              <td>
+                                <div class="tDiv" style="height: 100px;">
+                                  <span class="order-price"><em>¥</em>29.00</span>
+                                  <div class="price-shipping">(邮政快递包裹：<em>¥</em>5.00)</div>
+                                  <div class="price-shipping">
+                                    <p>支付方式：支付宝</p>
+                                    <p>来源：微商城</p>
+                                  </div>        
+                                </div>    
+                              </td>
+                              <td>
+                                <div class="tDiv" style="height: 100px;">
+                                  <div>已分单<br>已付款<br>已发货</div>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="tDiv" style="height: 100px;">
+                                  <div class="btn-wrap">
+                                    <p><a href="order.php?act=info&amp;order_id=1675" class="btn-tb btn-tb-blue">查看</a></p>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+
+                        <table cellpadding="0" cellspacing="0" border="0">
+                          <tfoot>
+                            <tr>
+                              <td colspan="10">
+                                <div class="tDiv">
+                                  <div class="tfoot_btninfo">
+                                    <input type="submit" value="确认" name="confirm" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                    <input type="submit" value="无效" name="invalid" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                    <input type="submit" value="取消" name="cancel" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                    <input type="submit" value="移除" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                    <input type="submit" value="打印订单" name="print" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_blank'">
+                                    <input type="button" value="打印快递单" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" print-data="print_shipping">
+                                    <input name="batch" type="hidden" value="1">
+                                    <input name="order_id" type="hidden" value="">
+                                  </div>
+                                  <div class="list-page">
+                                    <div id="turn-page">
+                                      <span class="page page_1">总计 <em id="totalRecords">1</em>个记录</span>
+                                      <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                                      <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                                      <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                                      <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                                      <span id="page-link">
+                                        <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                                        <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                                        <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                                          <option value="1">1</option>        </select>
+                                          <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                                          <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tfoot>
+                          </table>     
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="layui-tab-item">
+                    <div class="common-content">
+                      <form method="post" action="order.php?act=operate" name="listForm" onsubmit="return check()">
+                        <div class="list-div list-tb-div">
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <thead>
+                              <tr>
+                                <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                                <th width="25%"><div class="tDiv">订单号</div></th>
+                                <th width="6%"><div class="tDiv">价格</div></th>
+                                <th width="3%"><div class="tDiv">数量</div></th>
+                                <th width="7%"><div class="tDiv">售后</div></th>
+                                <th width="6%"><div class="tDiv">商家名称</div></th>
+                                <th width="7%"><div class="tDiv">用户名</div></th>
+                                <th width="16%"><div class="tDiv">收货人</div></th>
+                                <th width="12%"><div class="tDiv">金额标签</div></th>
+                                <th width="6%"><div class="tDiv">订单状态</div></th>
+                                <th width="7%"><div class="tDiv">操作</div></th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tbody>
+                              <tr class=""><td class="no-records" colspan="12">没有找到任何记录</td></tr>
+                            </tbody>
+                          </table>
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tfoot>
+                              <tr>
+                                <td colspan="10">
+                                  <div class="tDiv">
+                                    <div class="tfoot_btninfo">
+                                      <input type="submit" value="确认" name="confirm" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                      <input type="submit" value="无效" name="invalid" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                      <input type="submit" value="取消" name="cancel" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                      <input type="submit" value="移除" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_self'">
+                                      <input type="submit" value="打印订单" name="print" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" onclick="this.form.target = '_blank'">
+                                      <input type="button" value="打印快递单" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled" print-data="print_shipping">
+                                      <input name="batch" type="hidden" value="1">
+                                      <input name="order_id" type="hidden" value="">
+                                    </div>
+                                    <div class="list-page">
+                                      <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                                      <div id="turn-page">
+                                        <span class="page page_1">总计 <em id="totalRecords">0</em>个记录</span>
+                                        <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                                        <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                                        <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                                        <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                                        <span id="page-link">
+                                          <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                                          <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                                          <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                                            <option value="1">1</option>        </select>
+                                            <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                                            <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                                          </span>
+                                        </div>
+
+
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tfoot>
+                            </table>     
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="layui-tab-item">2</div>
+                    <div class="layui-tab-item">3</div>
+                    <div class="layui-tab-item">4</div>
+                    <div class="layui-tab-item">5</div>
+                    <div class="layui-tab-item">6</div>
+                    <div class="layui-tab-item">7</div>
+                    <div class="layui-tab-item">8</div>
+                    <div class="layui-tab-item">9</div>
+                  </div>
+                </div>
+              </div>
+              <div class="gj_search">
+                <div class="search-gao-list" id="searchBarOpen" style="right: 0;"><i class="icon icon-zoom-in"></i>高级搜索</div>
+                <div class="search-gao-bar" style="right: -240px;">
+                  <div class="handle-btn" id="searchBarClose"><i class="icon icon-zoom-out"></i>收起边栏</div>
+                  <div class="title"><h3>高级搜索</h3></div>
+                  <form action="javascript:searchOrder()" name="searchHighForm">
+                    <div class="searchContent">
+                      <div class="layout-box">
+                        <dl>
+                          <dt>订单号</dt>
+                          <dd><input type="text" value="" name="order_sn" id="order_sn" class="s-input-txt" autocomplete="off"></dd>
+                        </dl>
+                        <dl>
+                          <dt>收货人</dt>
+                          <dd><input type="text" value="" name="consignee" id="consignee" class="s-input-txt" autocomplete="off"></dd>
+                        </dl>
+                        <dl>
+                          <dt>订单状态</dt>
+                          <dd>
+                            <div id="status" class="imitate_select select_w145">
+                              <div class="cite">请选择...</div>
+                              <ul style="display: none;">
+                               <li><a href="javascript:;" data-value="-1">请选择...</a></li>
+                               <li><a href="javascript:;" data-value="0">待确认</a></li>
+                               <li><a href="javascript:;" data-value="100">待付款</a></li>
+                               <li><a href="javascript:;" data-value="101">待发货</a></li>
+                               <li><a href="javascript:;" data-value="102">已完成</a></li>
+                               <li><a href="javascript:;" data-value="1">付款中</a></li>
+                               <li><a href="javascript:;" data-value="2">取消</a></li>
+                               <li><a href="javascript:;" data-value="3">无效</a></li>
+                               <li><a href="javascript:;" data-value="4">退货</a></li>
+                               <li><a href="javascript:;" data-value="6">待收货</a></li>
+                             </ul>
+                             <input name="status" type="hidden" value="-1" id="status_val">
+                           </div>
+                         </dd>
+                       </dl>
+                       <dl>
+                        <dt>订单分类</dt>
+                        <dd>
+                          <div id="order_cat" class="imitate_select select_w145">
+                            <div class="cite">请选择...</div>
+                            <ul style="display: none;">
+                             <li><a href="javascript:;" data-value="">请选择...</a></li>
+                             <li><a href="javascript:;" data-value="stages">白条订单</a></li>
+                             <li><a href="javascript:;" data-value="zc">众筹订单</a></li>
+                             <li><a href="javascript:;" data-value="store">门店订单</a></li>
+                             <li><a href="javascript:;" data-value="other">促销订单</a></li>
+                             <li><a href="javascript:;" data-value="dbdd">夺宝订单</a></li>
+                             <li><a href="javascript:;" data-value="msdd">秒杀订单</a></li>
+                             <li><a href="javascript:;" data-value="tgdd">团购订单</a></li>
+                             <li><a href="javascript:;" data-value="pmdd">拍卖订单</a></li>
+                             <li><a href="javascript:;" data-value="jfdd">积分订单</a></li>
+                             <li><a href="javascript:;" data-value="ysdd">预售订单</a></li>
+                           </ul>
+                           <input name="order_cat" type="hidden" value="" id="order_cat_val">
+                         </div>
+                       </dd>
+                     </dl>
+                     <dl>
+                      <dt>订单来源</dt>
+                      <dd>
+                        <div id="order_referer" class="imitate_select select_w145">
+                          <div class="cite">请选择...</div>
+                          <ul style="display: none;">
+                           <li><a href="javascript:;" data-value="">请选择...</a></li>
+                           <li><a href="javascript:;" data-value="pc">PC</a></li>
+                           <li><a href="javascript:;" data-value="touch">WAP</a></li>
+                           <li><a href="javascript:;" data-value="mobile">APP</a></li>
+                           <li><a href="javascript:;" data-value="ecjia-cashdesk">收银台</a></li>
+                         </ul>
+                         <input name="order_referer" type="hidden" value="" id="order_referer_val">
+                       </div>
+                     </dd>
+                   </dl>                        
+                   <dl id="merchant_id_dl" style="display:none">
+                    <dd>
+                      <div id="merchant_id" class="imitate_select select_w145">
+                        <div class="cite">请选择...</div>
+                        <ul style="display: none;">
+                         <li><a href="javascript:;" data-value="122">买得着</a></li>
+                       </ul>
+                       <input name="merchant_id" type="hidden" value="" id="merchant_id_val">
+                     </div>
+                   </dd>
+                 </dl>
+                 <dl id="store_keyword_dl" style="display:none;">
+                  <input name="store_keyword" type="text" class="text text_2 mr10">
+                </dl>
+                <dl id="store_type_dl" style="display:none">
+                  <dd>
+                    <div id="store_type" class="imitate_select select_w145">
+                      <div class="cite">店铺类型</div>
+                      <ul style="display: none;">
+                       <li><a href="javascript:;" data-value="旗舰店">旗舰店</a></li>
+                       <li><a href="javascript:;" data-value="专卖店">专卖店</a></li>
+                       <li><a href="javascript:;" data-value="专营店">专营店</a></li>
+                       <li><a href="javascript:;" data-value="旗舰店">旗舰店</a></li>
+                     </ul>
+                     <input name="store_type" type="hidden" value="0" id="store_type_val">
+                   </div>
+                 </dd>
+               </dl>
+             </div>
+           </div>
+           <div class="bot_btn">
+            <input type="submit" class="btn red_btn" name="tj_search" value="提交查询"><input type="reset" class="btn btn_reset" name="reset" value="重置">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="layui-tab-item  layui-show">
+    <div class="explanation" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="mian-info">
+        <div class="switch_info user_account_details">
+          <div class="account-left" style="height: 322px;">
+            <p><strong>当前会员：</strong><strong class="red">wxb076e15524754</strong></p>
+            <p><strong>可用资金帐户</strong><strong class="red"><em>¥</em>0.00</strong></p>
+            <p><strong>冻结资金帐户</strong><strong class="red"><em>¥</em>0.00</strong></p>
+            <p><strong>等级积分帐户：</strong><strong class="red">25</strong></p>
+            <p><strong>消费积分帐户：</strong><strong class="red">25</strong></p>
+            <a href="account_log.php?act=add&amp;user_id=709" class="btn btn35 red_btn_2">调节会员帐户</a>
+          </div>
+          <div class="account-right">
+            <div class="common-head">
+              <div class="refresh ml20">
+                <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+                <div class="refresh_span">刷新 - 共2条数据</div>
+              </div>
+              <form action="account_log.php" id="account_logForm">
+                <div class="search">
+                  <div id="account_log_select" class="imitate_select select_w140">
+                    <div class="cite">所有帐户</div>
+                    <ul>
+                     <li><a href="javascript:;" data-value="">所有帐户</a></li>
+                     <li><a href="javascript:;" data-value="user_money">可用资金帐户</a></li>
+                     <li><a href="javascript:;" data-value="frozen_money">冻结资金帐户</a></li>
+                     <li><a href="javascript:;" data-value="rank_points">等级积分帐户</a></li>
+                     <li><a href="javascript:;" data-value="pay_points">消费积分帐户</a></li>
+                   </ul>
+                   <input name="account_type" type="hidden" value="" id="account_log_val">
+                 </div>
+               </div>
+               <input type="hidden" name="act" value="list">
+               <input type="hidden" name="user_id" value="709">
+             </form>
+           </div>
+           <div class="common-content">
+            <div class="list-div" id="listDiv">
+             <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="12%"><div class="tDiv pl30">帐户变动时间</div></th>
+                  <th width="40%"><div class="tDiv">帐户变动原因</div></th>
+                  <th width="12%"><div class="tDiv">可用资金帐户</div></th>
+                  <th width="12%"><div class="tDiv">冻结资金帐户</div></th>
+                  <th width="12%"><div class="tDiv">等级积分帐户</div></th>
+                  <th width="12%"><div class="tDiv">消费积分帐户</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td><div class="tDiv pl30">2019-03-12 09:47:47</div></td>
+                  <td><div class="tDiv">订单 2019031121149729593 赠送的积分</div></td>
+                  <td>
+                    <div class="tDiv">
+                    0.00                                                                                                                    </div>
+                  </td>
+                  <td>
+                    <div class="tDiv">
+                    0.00                                                                                                                    </div>
+                  </td>
+                  <td>
+                   <div class="tDiv">
+                     <span style="color:#0000FF">+24</span>
+                   </div>
+                 </td>
+                 <td>
+                  <div class="tDiv">
+                    <span style="color:#0000FF">+24</span>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+              <tr class="">
+                <td><div class="tDiv pl30">2019-03-11 21:03:05</div></td>
+                <td><div class="tDiv">注册送积分</div></td>
+                <td>
+                  <div class="tDiv">
+                  0.00                                                                                                                    </div>
+                </td>
+                <td>
+                  <div class="tDiv">
+                  0.00                                                                                                                    </div>
+                </td>
+                <td>
+                 <div class="tDiv">
+                   <span style="color:#0000FF">+1</span>
+                 </div>
+               </td>
+               <td>
+                <div class="tDiv">
+                  <span style="color:#0000FF">+1</span>
+                </div>
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="12">
+                <div class="list-page">
+                  <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                  <div id="turn-page">
+                    <span class="page page_1">总计 <em id="totalRecords">2</em>个记录</span>
+                    <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                    <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                    <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                    <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                    <span id="page-link">
+                      <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                      <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                      <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                        <option value="1">1</option>        </select>
+                        <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                        <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                      </span>
+                    </div>
+
+
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="layui-footer">
+  <!-- 底部固定区域 -->
+  <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+</div>
+</div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+  layui.use([ 'element','form','table', 'layer','upload','laypage',],function(){
+    var element = layui.element;
+    var form = layui.form;
+    var table = layui.table;
+    var layer = layui.layer;
+    var upload = layui.upload;
+    var laypage = layui.laypage;
+
+    $('.btn_trash').on('click', function() {
+     layer.msg('删除成功');
+   });
+
+//  laypage.render({
+//     elem: 'turn-page'
+//     ,count: 100
+//     ,layout: ['prev', 'page', 'next', 'limit',  'skip']
+//     ,jump: function(obj){
+//       console.log(obj)
+//     }
+// });
+
+});
+  function friend_link_logo_show(argument) {
+   var imgbox =$('.imgbox .icon-picture'),
+   zindex =100;
+   imgbox.on('mouseover', function(event) {
+    $(this).next().css({
+      'display': 'block',
+      'z-index': zindex+1
+    });
+  });
+   imgbox.on('mouseout', function(event) {
+     $(this).next().css({
+      'display': 'none',
+      'z-index': zindex-1
+    });
+   });
+ }
+ friend_link_logo_show();
+
+</script>
+</html>

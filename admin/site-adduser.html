@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+      <li class="layui-nav-item"><a href="">商城管理</a></li>
+      <li class="layui-nav-item"><a href="">财务管理</a></li>
+      <li class="layui-nav-item"><a href="">微商城</a></li>
+      <li class="layui-nav-item"><a href="">小程序</a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          沈总
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+            <dd><a href="javascript:;">合作伙伴</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">会员管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">会员列表</a></dd>
+            <dd><a href="javascript:;">充值和提现</a></dd>
+            <dd><a href="javascript:;">资金管理</a></dd>
+            <dd><a href="javascript:;">收货地址</a></dd>
+            <dd><a href="javascript:;">增票资质</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">平台设置</a>
+      <a href="">会员管理</a>
+      <a><cite>会员列表</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>该页面展示所有实名认证的会员信息。</li>
+          <li>可进行审核实名信息，请谨慎编辑会员的实名信息。</li>
+          <li>可以输入会员名称关键字进行搜索，侧边栏可进行高级搜索。</li>
+        </ul>
+      </div>
+      <div class="mian-info">
+        <form method="post" action="users.php" name="theForm" id="user_form" novalidate="novalidate">
+            <div class="switch_info">
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;会员名称：</div>
+                    <div class="label_value">
+                        <input type="text" id="username" name="username" class="text" value="" autocomplete="off" required lay-verify="required">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;邮件地址：</div>
+                    <div class="label_value">
+                        <input type="text" name="email" class="text error" value="" id="email" autocomplete="off" aria-required="true" aria-invalid="true">
+                        <div class="form_prompt"><label id="email-error" class="error" for="email"><i class="icon icon-exclamation-sign"></i>没有输入邮件地址或者输入了一个无效的邮件地址。</label></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;登录密码：</div>
+                    <div class="label_value">
+                        <input type="password" style="display:none">
+                        <input type="password" name="password" class="text valid" value="" id="password" aria-required="true" aria-invalid="false">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;确认密码：</div>
+                    <div class="label_value">
+                        <input type="password" style="display:none">
+                        <input type="password" name="confirm_password" class="text" value="" id="confirm_password">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">会员等级：</div>
+                    <div class="label_value">
+                        <div id="user_grade" class="imitate_select select_w320">
+                          <div class="cite">非特殊等级</div>
+                          <ul class="ps-container" style="display: none;">
+                             <li><a href="javascript:;" data-value="0" class="ftx-01">非特殊等级</a></li>
+                              <li><a href="javascript:;" data-value="11" class="ftx-01">微信</a></li>
+                              <li><a href="javascript:;" data-value="12" class="ftx-01">QQ</a></li>
+                              <li><a href="javascript:;" data-value="3" class="ftx-01">代销用户</a></li>
+                           <div class="ps-scrollbar-x-rail" style="width: 319px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 112px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></ul>
+                          <input name="user_rank" type="hidden" value="admin" id="user_grade_val">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">性别：</div>
+                    <div class="label_value">
+                        <div class="checkbox_items">
+                            <div class="checkbox_item">
+                                <input type="radio" class="ui-radio" name="sex" id="sex_0" value="0" checked="">
+                                <label for="sex_0" class="ui-radio-label">保密</label>
+                            </div>
+                            <div class="checkbox_item">
+                                <input type="radio" class="ui-radio" name="sex" id="sex_1" value="1" checked="">
+                                <label for="sex_1" class="ui-radio-label">男</label>
+                            </div>
+                            <div class="checkbox_item">
+                                <input type="radio" class="ui-radio" name="sex" id="sex_2" value="2" checked="">
+                                <label for="sex_2" class="ui-radio-label">女</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">出生日期：</div>
+                    <div class="label_value">
+                        <div class="date-item year">
+                            <div id="user_year" class="imitate_select select_w120">
+                              <div class="cite">1958</div>
+                              <ul class="ps-container ps-active-y" style="display: none;">
+                                  <li><a href="javascript:;" data-value="1956" class="ftx-01">1956</a></li>
+                                  <li><a href="javascript:;" data-value="1957" class="ftx-01">1957</a></li>
+                               <div class="ps-scrollbar-x-rail" style="width: 120px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 280px; display: inherit; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 43px;"></div></div></ul>
+                              <input name="birthdayYear" type="hidden" value="1958" id="year_val">
+                            </div>
+                        </div>
+                        <div class="date-item month">
+                            <div id="user_month" class="imitate_select select_w75">
+                              <div class="cite">请选择</div>
+                              <ul style="display: none;">
+                                <li><a href="javascript:;" data-value="1" class="ftx-01">1</a></li>
+                                <li><a href="javascript:;" data-value="2" class="ftx-01">2</a></li>
+                             </ul>
+                              <input name="birthdayMonth" type="hidden" value="" id="month_val">
+                            </div>
+                        </div>
+                        <div class="date-item day">
+                            <div id="user_day" class="imitate_select select_w75">
+                              <div class="cite">请选择</div>
+                              <ul style="display: none;">
+                                <li><a href="javascript:;" data-value="1" class="ftx-01">1</a></li>
+                                <li><a href="javascript:;" data-value="2" class="ftx-01">2</a></li>
+                             </ul>
+                              <input name="birthdayDay" type="hidden" value="" id="day_val">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="item">
+                    <div class="label">信用额度：</div>
+                    <div class="label_value"><input type="text" name="credit_line" id="credit_line" class="text" autocomplete="off"></div>
+                </div>
+                
+                                                <!--  -->
+                <div class="item">
+                    <div class="label">手机：</div>
+                    <div class="label_value"><input type="text" name="extend_field5" class="text" value="" autocomplete="off"></div>
+                </div>
+                <!---->
+                                                
+                <div class="item">
+                    <div class="label">&nbsp;</div>
+                    <div class="label_value info_btn">
+                        <a href="javascript:;" class="button" id="submitBtn"> 确定 </a>
+                        <input type="hidden" name="act" value="insert">
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
+  </div>
+</div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+layui.use([ 'element','form','table', 'layer','upload','laypage',],function(){
+  var element = layui.element;
+  var form = layui.form;
+  var table = layui.table;
+  var layer = layui.layer;
+  var upload = layui.upload;
+  var laypage = layui.laypage;
+
+$('.btn_trash').on('click', function() {
+ layer.msg('删除成功');
+});
+
+//  laypage.render({
+//     elem: 'turn-page'
+//     ,count: 100
+//     ,layout: ['prev', 'page', 'next', 'limit',  'skip']
+//     ,jump: function(obj){
+//       console.log(obj)
+//     }
+// });
+
+});
+function friend_link_logo_show(argument) {
+ var imgbox =$('.imgbox .icon-picture'),
+    zindex =100;
+    imgbox.on('mouseover', function(event) {
+      $(this).next().css({
+        'display': 'block',
+        'z-index': zindex+1
+      });
+    });
+     imgbox.on('mouseout', function(event) {
+     $(this).next().css({
+        'display': 'none',
+        'z-index': zindex-1
+      });
+    });
+}
+friend_link_logo_show();
+
+</script>
+</html>

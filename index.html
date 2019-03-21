@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>砚山买得着商城</title>
+	<link rel="shortcut icon" href="https://www.maidezhao.com/favicon.ico">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_920115_dps7si7sekl.css">
+	<!-- <link rel="stylesheet" href="./css/iconfont.css"> -->
+	<link rel="stylesheet" href="./css/public.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./plugins/flybar/css/base.css">
+	<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</head>
+<body class="home">
+	<div class="w1200">
+		<!-- 商城header -->
+		<div class="header clearfix">
+			<div class="top">
+				<div class="logo fl">
+					<div class="logoImg">
+						<a href="">
+							<img src="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/logo.gif" alt="买得着商城">
+						</a>
+					</div>
+				</div>
+				<div class="header_con">
+					<!-- top -->
+					<div class="site-nav">
+						<div class="fl ml10">
+							<div class="city-choice">
+								<div class="mdz-choie mdz-cm">
+									<i class=" fa fa-map-marker iconfont"></i>
+									<span class="ui-areamini-text">砚山</span>
+								</div>
+								<div class="txt-info">
+									<a href="" class="link-login red">请登录</a>
+									<a href="" class="link-regist">免费注册</a>
+								</div>
+							</div>
+						</div>
+						<ul class="quick-menu fr">
+							<li>
+								<div class="dt">
+									<a href="">我的订单</a>
+								</div>
+							</li>
+							<li class="spacer"></li>
+							<li>
+								<div class="dt">
+									<a href="">的的浏览</a>
+								</div>
+							</li>
+							<li class="spacer"></li>
+							<li>
+								<div class="dt">
+									<a href="">我的收藏</a>
+								</div>
+							</li>
+							<li class="spacer"></li>
+							<li>
+								<div class="dt">
+									<a href="">客服服务</a>
+								</div>
+							</li>
+							<li class="spacer"></li>
+							<li class="li_dorpdown" id="dorpdown">
+								<div class="dt dsc-cm">
+									网站导航
+									<i class="fa fa-angle-down"></i>
+								</div>
+								<div class="dd dorpdown-layer" id="layer">
+									<dl class="fore1">
+										<dt>特色主题</dt>
+										<dd>
+											<div class="item">
+												<a href="">品味七乡</a>
+											</div>
+											<div class="item">
+												<a href="">手机电脑</a>
+											</div>
+											<div class="item">
+												<a href="">家电家具</a>
+											</div>
+										</dd>
+									</dl>
+									<dl class="fore2">
+										<dt>促销活动</dt>
+										<dd>
+											<div class="item">
+												<a href="">限时秒杀</a>
+											</div>
+											<div class="item">
+												<a href="">拼团</a>
+											</div>
+											<div class="item">
+												<a href="">品牌特卖</a>
+											</div>
+										</dd>
+									</dl>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- search -->
+					<div class="mdz-search">
+						<div class="form">
+							<form class="search-form">
+								<input type="text" class="search-text" value="土鸡" id="earch_input">
+								<button type="submit" class="button button-goods">搜索</button>
+							</form>
+							<ul class="keyword">
+                                <li><a href="" target="_blank">鸡蛋</a></li>
+                                <li><a href="" target="_blank">三七</a></li>
+                                <li><a href="" target="_blank">花茶</a></li>
+                                <li><a href="" target="_blank">手机</a></li>
+                            </ul>
+                            <div class="suggestions_box none" id="suggestions_box">
+                            	<div class="suggestions_list">
+	                            	<ul>
+	                            		<li>
+	                            			<div class="left-span">
+	                            				<font style="font-weight:normal;color:#ec5151;">手机</font>
+	                            			</div>
+	                            			<div class="suggest_span">约57个商品</div>
+	                            		</li>
+	                            		<li>
+	                            			在<a href="" style="color:#ec5151;">手机电脑>手机通讯</a>目录下搜索
+	                            		</li>
+	                            		<li style="height:1px; overflow:hidden; border-bottom:1px #eee solid; margin-top:-1px;"></li>
+	                            		<li>
+	                            			<div class="left-span">
+	                            				 Apple iPhone X (A1865) 256GB 深空灰色 移动联通电信4G
+	                            				 <font style="font-weight:normal;color:#ec5151;">手机</font>
+	                            			</div>
+	                            			<div class="suggest_span">约1个商品</div>
+	                            		</li>
+	                            	</ul>
+	                            </div>
+                            </div>
+						</div>
+					</div>
+					<!-- shopCart -->
+					<div class="shopCart" id="shopCart">
+						<div class="shopCart-con dsc-cm">
+							<a href="flow.php">
+								<i class="iconfont icon-carts"></i>
+								<span>我的购物车</span>
+								<em class="count cart_num">0</em>
+							</a>
+						</div>
+						<div class="dorpdown-layer" id="shopDorpdown">
+					        <div class="prompt" id="prompt">
+					        	<div class="nogoods">
+					        		<b></b><span>购物车中还没有商品，赶紧选购吧！</span>
+					        	</div>
+					        </div>
+					        <div class="settleup-content" id="settleup">
+					        	<div class="mc">
+					        		<ul>
+					        			<li>
+					        				<div class="p-img">
+					        					<a href="">
+					        						<img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201810/thumb_img/0_thumb_G_1540853135388.jpg" width="50" height="50">
+					        					</a>
+					        				</div>
+					        				<div class="p-name">
+					        					<a href="">品味砚山</a>
+					        				</div>
+				        					<div class="p-number">
+    					                        <span class="num" id="goods_number_575">1</span>
+    					                        <div class="count">
+    					                            <a href="javascript:void(0);" id="min_number" class="count-add">
+    					                            	<i class="iconfont icon-up"></i>
+    					                            </a>
+    					                            <a href="javascript:void(0);" class="count-remove">
+    					                            	<i class="iconfont icon-down"></i>
+    					                            </a>
+    					                        </div>
+    					                    </div>
+    					                    <div class="p-oper">
+	                                            <div class="price" data-p="268"><em>¥</em>268.00</div>
+	                                            <a href="javascript:void(0);"class="remove">删除</a>
+    					                    </div>
+					        			</li>
+					        		</ul>
+					        	</div>
+					        	<div class="mb" id="mb">
+			        	            <input name="cart_value" id="cart_value" value="575,627" type="hidden">
+			        	            <div class="p-total">共2件商品&nbsp;&nbsp;共计：<span>2217.00</span></div>
+			        	            <a href="flow.php" class="btn-cart">去购物车</a>
+					        	</div>
+					        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 模块导航 -->
+		<div class="nav">
+			<div class="categorys">
+				<div class="categorys-type">
+					<a href="">全部商品分类</a>
+				</div>
+				<!-- 商品分类 -->
+				<div class="categorys-tab-content" id="categorys">
+					<div class="categorys-items">
+						<ul class="categorys-item">
+							<li class="item item-content" data-id='a'>
+								<i class="iconfont icon-package"></i>
+								<div class="categorys-title">
+									<strong>
+										<a href="">品味七乡</a>
+									</strong>
+									<span class="">
+										<a href="">食品生鲜</a>
+										<a href="">扶贫馆</a>
+									</span>
+								</div>
+							</li>
+							<li class="item item-content" data-id='b'>
+								<i class="iconfont icon-package"></i>
+								<div class="categorys-title">
+									<strong>
+										<a href="">品味七乡</a>
+									</strong>
+									<span class="">
+										<a href="">食品生鲜</a>
+										<a href="">扶贫馆</a>
+									</span>
+								</div>
+							</li>
+							<li class="item item-content" data-id='b'>
+								<i class="iconfont icon-package"></i>
+								<div class="categorys-title">
+									<strong>
+										<a href="">品味七乡</a>
+									</strong>
+									<span class="">
+										<a href="">食品生鲜</a>
+										<a href="">扶贫馆</a>
+									</span>
+								</div>
+							</li>
+						</ul>
+						<div class="categorys-items-layer none" id="sub">
+							<div class="cate-layer-con clearfix none" id="a">
+								<div class="cate-layer-left">
+									<div class="cate_detail">
+										<dl>
+											<dt>
+												<a href="">扶贫馆</a>
+											</dt>
+											<dd>
+												<a href="">维摩乡</a>
+												<a href="">稼依镇</a>
+												<a href="">平远镇</a>
+												<a href="">江那镇</a>
+												<a href="">盘龙乡</a>
+												<a href="">蚌峨乡</a>
+												<a href="">八嘎乡</a>
+												<a href="">干河乡</a>
+												<a href="">者腊乡</a>
+												<a href="">阿猛镇</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>
+												<a href="">扶贫馆</a>
+											</dt>
+											<dd>
+												<a href="">维摩乡</a>
+												<a href="">稼依镇</a>
+												<a href="">平远镇</a>
+												<a href="">江那镇</a>
+												<a href="">盘龙乡</a>
+												<a href="">蚌峨乡</a>
+												<a href="">八嘎乡</a>
+												<a href="">干河乡</a>
+												<a href="">者腊乡</a>
+												<a href="">阿猛镇</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>
+												<a href="">扶贫馆</a>
+											</dt>
+											<dd>
+												<a href="">维摩乡</a>
+												<a href="">稼依镇</a>
+												<a href="">平远镇</a>
+												<a href="">江那镇</a>
+												<a href="">盘龙乡</a>
+												<a href="">蚌峨乡</a>
+												<a href="">八嘎乡</a>
+												<a href="">干河乡</a>
+												<a href="">者腊乡</a>
+												<a href="">阿猛镇</a>
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+							<div class="cate-layer-con clearfix none" id="b">
+								<div class="cate-layer-left">
+									<div class="cate_detail">
+										<dl>
+											<dt>
+												<a href="">扶贫馆1</a>
+											</dt>
+											<dd>
+												<a href="">维摩乡2</a>
+												<a href="">稼依镇3</a>
+												<a href="">平远镇</a>
+												<a href="">江那镇</a>
+												<a href="">盘龙乡</a>
+												<a href="">蚌峨乡</a>
+												<a href="">八嘎乡</a>
+												<a href="">干河乡</a>
+												<a href="">者腊乡</a>
+												<a href="">阿猛镇</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>
+												<a href="">扶贫馆</a>
+											</dt>
+											<dd>
+												<a href="">维摩乡</a>
+												<a href="">稼依镇</a>
+												<a href="">平远镇</a>
+												<a href="">江那镇</a>
+												<a href="">盘龙乡</a>
+												<a href="">蚌峨乡</a>
+												<a href="">八嘎乡</a>
+												<a href="">干河乡</a>
+												<a href="">者腊乡</a>
+												<a href="">阿猛镇</a>
+											</dd>
+										</dl>
+										<dl>
+											<dt>
+												<a href="">扶贫馆</a>
+											</dt>
+											<dd>
+												<a href="">维摩乡</a>
+												<a href="">稼依镇</a>
+												<a href="">平远镇</a>
+												<a href="">江那镇</a>
+												<a href="">盘龙乡</a>
+												<a href="">蚌峨乡</a>
+												<a href="">八嘎乡</a>
+												<a href="">干河乡</a>
+												<a href="">者腊乡</a>
+												<a href="">阿猛镇</a>
+											</dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+							
+					</div>
+				</div>
+			</div>
+			<div class="nav-main">
+				<ul class="navitems">
+					<li>
+						<a href="" class="curr">首页</a>
+					</li>
+					<li>
+						<a href="">买得着超市</a>
+					</li>
+					<li>
+						<a href="">省鲜生</a>
+					</li>
+					<li>
+						<a href="">砚山好货</a>
+					</li>
+				</ul>
+				<div class="fuping fr">
+					<a href="">
+						<img src="https://image1.suning.cn/uimg/cms/img/154138224612143883.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- 轮播图、商城公告 -->
+		<div class="banner-wrapper clearfix">
+			<!-- 轮播图 -->
+			<div id="container">
+			    <div id="list" style="left: -758px;">
+			        <img src="./images/home/5.jpg" alt="1" style="height: 500px; width: 758px;"/>
+			        <img src="./images/home/1.jpg" alt="1" style="height: 500px; width: 758px;"/>
+			        <img src="./images/home/2.jpg" alt="2" style="height: 500px;  width: 758px;"/>
+			        <img src="./images/home/3.jpg" alt="3" style="height: 500px; width: 758px;"/>
+			        <img src="./images/home/4.jpg" alt="4" style="height: 500px; width: 758px;"/>
+			        <img src="./images/home/5.jpg" alt="5"style="height: 500px; width: 758px;"/>
+			        <img src="./images/home/1.jpg" alt="5"style="height: 500px; width: 758px;"/>
+			    </div>
+			    <div id="buttons">
+			        <span index="1" class="on"></span>
+			        <span index="2"></span>
+			        <span index="3"></span>
+			        <span index="4"></span>
+			        <span index="5"></span>
+			    </div>
+			    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+			    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+			</div>
+			<!-- 商城公告 -->
+			<div class="vip-outcon">
+				<div class="vip-con">
+					<div class="userVip-info">
+						<div class="avatar">
+							<a href="">
+								<img src="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/avatar.png" alt="">
+							</a>
+						</div>
+						<div class="login-info">
+							<span>Hi，欢迎来到买得着商城!</span>
+							<a href="">请登录</a>
+							<a href="">注册</a>
+						</div>
+					</div>
+					<div class="vip-item vip_article_cat">
+						<div class="tit">
+							<a href="" class="tab_head_item on">公告</a>
+							<a href="" class="tab_head_item">购物指南</a>
+						</div>
+						<div class="con">
+							<ul>
+								<li><a href="">如何申请售后</a></li>
+								<li><a href="">售后政策</a></li>
+								<li><a href="">发票制度说明</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="vip-item">
+						<div class="tit">快捷入口</div>
+						<div class="kj_con">
+							<div class="item item_1">
+								<a href="">
+									<i class="img-browse"></i>
+									<span>我的浏览</span>
+								</a>
+							</div>
+							<div class="item item_2">
+								<a href="">
+									<i class="img-zan"></i>
+									<span>我的收藏</span>
+								</a>
+							</div>
+							<div class="item item_3">
+								<a href="">
+									<i class="img-order"></i>
+									<span>我的订单</span>
+								</a>
+							</div>
+							<div class="item item_4">
+								<a href="">
+									<i class="img-password"></i>
+									<span>账号安全</span>
+								</a>
+							</div>
+							<div class="item item_5">
+								<a href="">
+									<i class="img-share"></i>
+									<span>我的分享</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="h_content">
+			<!-- 主题活动 -->
+			<div class="index-adv item" id="item1">
+				<ul>
+					<li class="adv-top">
+						<a href="">
+							<img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/21/original_img/1539739705967326499.png" alt="">
+						</a>
+					</li>
+					<li class="adv-bot" id="adv-bot">
+						<a href=""><img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/1/original_img/1533171608494572734.png" alt=""></a>
+						<a href=""><img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/1/original_img/1533169150711425141.png" alt=""></a>
+						<a href=""><img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/1/original_img/1533170173684567606.png" alt=""></a>
+						<a href=""><img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/1/original_img/1533171031690236040.png" alt=""></a>
+						<a href=""><img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/1/original_img/1533172330714993837.png" alt=""></a>
+					</li>
+				</ul>
+			</div>
+			<!-- 限时秒杀 -->
+			<div class="seckill-channel item" id="item2">
+				<div class="box-hd clearfix">
+					<h3>好货大聚惠</h3>
+					<p class="tit">双十一第一波，每天5场限时秒杀</p>
+					<div class="seckill-more">
+						<a href="">更多秒杀好货 <i class="iconfont icon-right"></i></a>
+					</div>
+				</div>
+				<div class="box-bd clearfix" id="box-bd">
+					<div class="tempWrap" style="height: 295px;">
+						<ul>
+							<li class="opacity_img">
+								<div class="p-img">
+									<a href="">
+										<img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/1372_thumb_G_1507971969987.jpg" alt="">
+									</a>
+								</div>
+								<div class="p-name">
+									<a href="">海尔平板电视LE43AL88E51阿里智能WiFi联网高清电视43英寸</a>
+								</div>
+								<div class="p-price">
+									<span class="shop-price">
+										<em>¥</em>2799.00
+									</span>
+									<span class="original-price">
+									   <em>¥</em>5996.00
+								    </span>
+								</div>
+							</li>
+							<li class="opacity_img">
+								<div class="p-img">
+									<a href="">
+										<img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/1372_thumb_G_1507971969987.jpg" alt="">
+									</a>
+								</div>
+								<div class="p-name">
+									<a href="">海尔平板电视LE43AL88E51阿里智能WiFi联网高清电视43英寸</a>
+								</div>
+								<div class="p-price">
+									<span class="shop-price">
+										<em>¥</em>2799.00
+									</span>
+									<span class="original-price">
+									   <em>¥</em>5996.00
+								    </span>
+								</div>
+							</li>
+							<li class="opacity_img">
+								<div class="p-img">
+									<a href="">
+										<img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/1372_thumb_G_1507971969987.jpg" alt="">
+									</a>
+								</div>
+								<div class="p-name">
+									<a href="">海尔平板电视LE43AL88E51阿里智能WiFi联网高清电视43英寸</a>
+								</div>
+								<div class="p-price">
+									<span class="shop-price">
+										<em>¥</em>2799.00
+									</span>
+									<span class="original-price">
+									   <em>¥</em>5996.00
+								    </span>
+								</div>
+							</li>
+							<li class="opacity_img">
+								<div class="p-img">
+									<a href="">
+										<img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/1372_thumb_G_1507971969987.jpg" alt="">
+									</a>
+								</div>
+								<div class="p-name">
+									<a href="">海尔平板电视LE43AL88E51阿里智能WiFi联网高清电视43英寸</a>
+								</div>
+								<div class="p-price">
+									<span class="shop-price">
+										<em>¥</em>2799.00
+									</span>
+									<span class="original-price">
+									   <em>¥</em>5996.00
+								    </span>
+								</div>
+							</li>
+							<li class="opacity_img">
+								<div class="p-img">
+									<a href="">
+										<img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/1372_thumb_G_1507971969987.jpg" alt="">
+									</a>
+								</div>
+								<div class="p-name">
+									<a href="">海尔平板电视LE43AL88E51阿里智能WiFi联网高清电视43英寸</a>
+								</div>
+								<div class="p-price">
+									<span class="shop-price">
+										<em>¥</em>2799.00
+									</span>
+									<span class="original-price">
+									   <em>¥</em>5996.00
+								    </span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<a href="javascript:void(0);" class="prev k_arrow"><i class="iconfont icon-left"></i></a>
+					<a href="javascript:void(0);" class="next k_arrow"><i class="iconfont icon-right"></i></a>
+				</div>
+			</div>
+			<!-- 品牌活动 -->
+			<div class="brand-channel item clearfix" id="item3">
+				<div class="brand-adv-warp clearfix">
+					<div class="brand-adv-item brand-adv-item-1">
+						<div class="brand-item-head">
+							<span class="cn">品牌闪购</span>
+							<span class="en">BRAND SALE</span>
+							<a href="" class="more">更多<i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="brand-item-img">
+							<a href="">
+								<img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/9/original_img/1533328997952458420.jpg" alt="">
+							</a>
+						</div>
+					</div>
+					<div class="brand-adv-item brand-adv-item-2">
+						<div class="brand-item-head">
+							<span class="cn">品牌闪购</span>
+							<span class="en">BRAND SALE</span>
+							<a href="" class="more">更多<i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="brand-item-img">
+							<a href="">
+								<img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/9/original_img/1533330848788878063.jpg" alt="">
+							</a>
+						</div>
+					</div>
+					<div class="brand-adv-item brand-adv-item-3">
+						<div class="brand-item-head">
+							<span class="cn">品牌闪购</span>
+							<span class="en">BRAND SALE</span>
+							<a href="" class="more">更多<i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="brand-item-img">
+							<a href="">
+								<img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/39/original_img/1540863522161358007.jpg" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="brand-list">
+					<ul>
+			    	        <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=107" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1490072993409028193.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="107" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=107" target="_blank"><span>关注人数 <em id="collect_count_107">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=108" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1490073009638652059.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="108" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=108" target="_blank"><span>关注人数 <em id="collect_count_108">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=112" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1490073055877435308.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="112" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=112" target="_blank"><span>关注人数 <em id="collect_count_112">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=114" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506191359961152422.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="114" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=114" target="_blank"><span>关注人数 <em id="collect_count_114">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=125" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506191564899598211.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="125" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=125" target="_blank"><span>关注人数 <em id="collect_count_125">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=126" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506191520256236376.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="126" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=126" target="_blank"><span>关注人数 <em id="collect_count_126">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=137" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506191871138650003.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="137" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=137" target="_blank"><span>关注人数 <em id="collect_count_137">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=144" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1490073648356663196.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="144" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=144" target="_blank"><span>关注人数 <em id="collect_count_144">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=160" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506192439352140218.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="160" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=160" target="_blank"><span>关注人数 <em id="collect_count_160">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=163" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1490073359611343586.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="163" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=163" target="_blank"><span>关注人数 <em id="collect_count_163">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=180" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1490073240845049320.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="180" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=180" target="_blank"><span>关注人数 <em id="collect_count_180">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=203" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506189326439015759.png"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="203" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=203" target="_blank"><span>关注人数 <em id="collect_count_203">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=212" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506189142293682308.png"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="212" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=212" target="_blank"><span>关注人数 <em id="collect_count_212">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=214" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506189181493080736.png"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="214" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=214" target="_blank"><span>关注人数 <em id="collect_count_214">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=215" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506237596245479819.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="215" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=215" target="_blank"><span>关注人数 <em id="collect_count_215">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=217" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506290675531870381.png"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="217" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=217" target="_blank"><span>关注人数 <em id="collect_count_217">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=218" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1506290804494971403.png"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="218" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=218" target="_blank"><span>关注人数 <em id="collect_count_218">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=266" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1507663650147756688.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="266" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=266" target="_blank"><span>关注人数 <em id="collect_count_266">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=267" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1507664262379863825.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="267" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=267" target="_blank"><span>关注人数 <em id="collect_count_267">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			                <li>
+			            <div class="brand-img"><a href="https://www.maidezhao.com/brandn.php?id=271" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/brandlogo/1508044276892764381.jpg"></a></div>
+			            <div class="brand-mash">
+			                <div data-bid="271" ectype="coll_brand"><i class="iconfont icon-zan-alt"></i></div>
+			                <div class="coupon"><a href="https://www.maidezhao.com/brandn.php?id=271" target="_blank"><span>关注人数 <em id="collect_count_271">0</em></span><div class="click-enter">点击进入</div></a></div>
+			            </div>
+			        </li>
+			            </ul>
+			            <a href="javascript:void(0);" ectype="changeBrand" class="refresh-btn"><i class="iconfont icon-rotate-alt"></i><span>换一批</span></a>
+				</div>
+			</div>
+			<!-- 分类活动一 -->
+			<div class="second-wrapper item clearfix" id="item4">
+				<!-- 发现好货 -->
+				<div class="module hh-module">
+					<div class="sepmodule_warp">
+						<div class="title">
+							<h5>发现好货</h5>
+							<a href="" class="more" target="_blank"><span>更多好货</span><i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="second-content">
+							<ul>
+							                        <li class="first">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2571.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536107145379649308.jpg"></a></div>
+							            <div class="p-name">来思尔早餐牛奶家庭装</div>
+							            <div class="p-desc"> 常温纯牛奶</div>
+							            <a href="https://www.maidezhao.com/goods-2571.html" class="sew_btn" target="_blank">点击查看</a>
+							        </li>
+							                                <li class="sew-item">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2599.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536107903354365971.jpg"></a></div>
+							            <div class="p-info">
+							                <div class="p-name">砚山砚七三七</div>
+							                <div class="p-desc">100%原产地高皂苷含量三七超细粉180克</div>
+							            </div>
+							        </li>
+							                                <li class="sew-item">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-939.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536108033290360643.jpg"></a></div>
+							            <div class="p-info">
+							                <div class="p-name">珍珠小米辣</div>
+							                <div class="p-desc">地道好味道</div>
+							            </div>
+							        </li>
+							                                <li class="sew-item">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-1151.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536108255358015345.jpg"></a></div>
+							            <div class="p-info">
+							                <div class="p-name">坤七三七超细粉</div>
+							                <div class="p-desc">20g*20袋/盒</div>
+							            </div>
+							        </li>
+							                                <li class="sew-item">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2559.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536108327552139362.jpg"></a></div>
+							            <div class="p-info">
+							                <div class="p-name">来思尔 LESSON 大理牧场原味裸酸奶</div>
+							                <div class="p-desc">乳酸菌风味酸乳</div>
+							            </div>
+							        </li>
+							                                <li class="sew-item">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2531.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536108432207717810.jpg"></a></div>
+							            <div class="p-info">
+							                <div class="p-name">OPPO A3全面屏拍照手机</div>
+							                <div class="p-desc">超越边界，超过精彩</div>
+							            </div>
+							        </li>
+							                                <li class="sew-item">
+							            <div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2544.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/35/original_img/1536108545667468495.jpg"></a></div>
+							            <div class="p-info">
+							                <div class="p-name">欧亚（Europe-Asia） 大理牧场鲜花酸奶</div>
+							                <div class="p-desc">高原生态云南特产清真低温酸奶</div>
+							            </div>
+							        </li>
+							                    </ul>
+						</div>
+					</div>
+				</div>
+				<!-- 推荐农产品 -->
+				<div class="module tj-module">
+					<div class="sepmodule_warp">
+						<div class="title">
+							<h5>特色农产品</h5>
+							<a href="" class="more" target="_blank"><span>更多特色推荐</span><i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="second-content">
+						        <div class="tj-item tj-item-1">
+						        <p class="tit"><a href="https://www.maidezhao.com/goods-2340.html" target="_blank"><i class="tj-icon">三七苦荞茶</i>源自砚山阿舍</a></p>
+						        <ul class="clearfix">
+						            <li><div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2340.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/36/original_img/1536110127726810812.jpg"></a></div></li>
+						        </ul>
+						    </div>
+						        <div class="tj-item tj-item-2">
+						        <p class="tit"><a href="https://www.maidezhao.com/goods-2593.html" target="_blank"><i class="tj-icon">砚七三七粉</i>100%原产地高皂苷</a></p>
+						        <ul class="clearfix">
+						            <li><div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods-2593.html" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/36/original_img/1536110138573344492.jpg"></a></div></li>
+						        </ul>
+						    </div>
+						        <div class="tj-item tj-item-3">
+						        <p class="tit"><a href="https://www.maidezhao.com/goods.php?id=2659" target="_blank"><i class="tj-icon">玫瑰花米线</i>砚山特产</a></p>
+						        <ul class="clearfix">
+						            <li><div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods.php?id=2659" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/39/original_img/1540161435879635243.jpg"></a></div></li>
+						        </ul>
+						    </div>
+						        <div class="tj-item tj-item-4">
+						        <p class="tit"><a href="https://www.maidezhao.com/goods.php?id=2718" target="_blank"><i class="tj-icon">墨红玫瑰</i>喝出好心情</a></p>
+						        <ul class="clearfix">
+						            <li><div class="p-img p-img-scale"><a href="https://www.maidezhao.com/goods.php?id=2718" target="_blank"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/39/original_img/1540161439447142883.jpg"></a></div></li>
+						        </ul>
+						    </div>
+						    </div>
+					</div>
+				</div>
+			</div>
+			<!-- 分类活动二 -->
+			<div class="second-wrapper secondwh-wrapper item clearfix" id="item5">
+				<!-- 特卖 -->
+				<div class="module tm-module">
+					<div class="sepmodule_warp">
+						<div class="title">
+							<h5>特卖</h5>
+							<a href="" class="more" target="_blank"><span>更多特卖</span><i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="second-content">
+							<ul>
+							                <li class="first">
+							            <a href="https://www.maidezhao.com/goods-1463.html" target="_blank">
+							                <div class="p-name">联想一体机电脑</div>
+							                <div class="p-desc">满3999减299  满2999减199</div>
+							                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/37/original_img/1536113595029885974.jpg" alt=""></div>
+							            </a>
+							        </li>
+							                <li>
+							            <a href="https://www.maidezhao.com/goods-1206.html" target="_blank">
+							                <div class="p-name">飞科电动剃须刀FS379 </div>
+							                <div class="p-desc">满200减70</div>
+							                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/37/original_img/1536113432747695564.jpg" alt=""></div>
+							            </a>
+							        </li>
+							                <li>
+							            <a href="https://www.maidezhao.com/goods-1674.html" target="_blank">
+							                <div class="p-name">美的电磁炉火锅家用电池炉薄款</div>
+							                <div class="p-desc">满399减99</div>
+							                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/37/original_img/1536113313420613508.jpg" alt=""></div>
+							            </a>
+							        </li>
+							                <li>
+							            <a href="https://www.maidezhao.com/goods-1661.html" target="_blank">
+							                <div class="p-name">老中医洗面膜</div>
+							                <div class="p-desc">满300减60</div>
+							                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/37/original_img/1536113122548289585.jpg" alt=""></div>
+							            </a>
+							        </li>
+							                <li>
+							            <a href="https://www.maidezhao.com/goods-1952.html" target="_blank">
+							                <div class="p-name">纽贝滋金装婴幼儿配方</div>
+							                <div class="p-desc">满500减100</div>
+							                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/37/original_img/1536112995728493143.jpg" alt=""></div>
+							            </a>
+							        </li>
+							            </ul>
+						</div>
+					</div>
+				</div>
+				<!-- 新品 -->
+				<div class="module xp-module">
+					<div class="sepmodule_warp">
+						<div class="title">
+							<h5>新品</h5>
+							<a href="" class="more" target="_blank"><span>更多新品</span><i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="second-content">
+						        <ul>
+						                <li>
+						            <a href="https://www.maidezhao.com/goods-2657.html" target="_blank">
+						                <div class="p-name">七色花米饭</div>
+						                <div class="p-desc">纯天然色素，优质糯米</div>
+						                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/38/original_img/1536114166600030949.jpg" alt=""></div>
+						            </a>
+						        </li>
+						                <li>
+						            <a href="https://www.maidezhao.com/goods-2523.html" target="_blank">
+						                <div class="p-name">vivo X21i 全面屏</div>
+						                <div class="p-desc">双摄美颜拍照手机</div>
+						                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/38/original_img/1536114298297251777.jpg" alt=""></div>
+						            </a>
+						        </li>
+						                <li>
+						            <a href="https://www.maidezhao.com/goods-2525.html" target="_blank">
+						                <div class="p-name">OPPO Find X曲面全景屏</div>
+						                <div class="p-desc">波尔多红，曲面全景屏</div>
+						                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/38/original_img/1536114376923378674.jpg" alt=""></div>
+						            </a>
+						        </li>
+						                <li>
+						            <a href="https://www.maidezhao.com/goods-2639.html" target="_blank">
+						                <div class="p-name"> 阿巴町儿童智能手表</div>
+						                <div class="p-desc">IPX7防水</div>
+						                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/38/original_img/1536114561261773308.jpg" alt=""></div>
+						            </a>
+						        </li>
+						                <li>
+						            <a href="https://www.maidezhao.com/goods-2629.html" target="_blank">
+						                <div class="p-name">快易典KIMI I8S儿童平板电脑</div>
+						                <div class="p-desc">小学同步点读家教机</div>
+						                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/38/original_img/1536114648394831461.jpg" alt=""></div>
+						            </a>
+						        </li>
+						                <li>
+						            <a href="https://www.maidezhao.com/goods-2656.html" target="_blank">
+						                <div class="p-name">粉瑟 气垫cc霜</div>
+						                <div class="p-desc">遮瑕保湿不脱妆</div>
+						                <div class="p-img p-img-scale"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/gallery_album/38/original_img/1536114797206281533.jpg" alt=""></div>
+						            </a>
+						        </li>
+						            </ul>
+						    </div>
+					</div>
+				</div>
+				<!-- 排行榜 -->
+				<div class="module phb-module">
+					<div class="sepmodule_warp">
+						<div class="title">
+							<h5>排行榜</h5>
+							<a href="" class="more" target="_blank"><span>精品风向标</span><i class="iconfont icon-right"></i></a>
+						</div>
+						<div class="second-content">
+						        <div class="com-list">
+
+						<div class="com-ul">
+						            <div class="com-li">
+						        <a href="https://www.maidezhao.com/goods.php?id=2620" target="_blank">
+						            <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201808/thumb_img/0_thumb_P_1535418221744.jpg"></div>
+						            <div class="p-name">小米（MI） 小米8SE 手机 深灰 全网通6G+128G</div>
+						            <div class="p-price">
+						                                                <em>¥</em>2178.00                                            </div>
+						            <i class="ph-icon ph-icon1">1</i>
+						        </a>
+						    </div>
+						                <div class="com-li">
+						        <a href="https://www.maidezhao.com/goods.php?id=2569" target="_blank">
+						            <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201808/thumb_img/0_thumb_P_1534893122647.jpg"></div>
+						            <div class="p-name">来思尔（LESSON） 云南特产来思尔180g*12杯大理风情清真原味老酸奶包邮 原味</div>
+						            <div class="p-price">
+						                                                <em>¥</em>60.00                                            </div>
+						            <i class="ph-icon ph-icon2">2</i>
+						        </a>
+						    </div>
+						                <div class="com-li">
+						        <a href="https://www.maidezhao.com/goods.php?id=2562" target="_blank">
+						            <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201808/thumb_img/0_thumb_P_1534891481824.jpg"></div>
+						            <div class="p-name">来思尔（LESSON） 大理来思尔冰淇淋香草/青柠海盐小酸奶180g*12瓶益生菌风味酸乳</div>
+						            <div class="p-price">
+						                                                <em>¥</em>49.00                                            </div>
+						            <i class="ph-icon ph-icon3">3</i>
+						        </a>
+						    </div>
+						                                </div>
+						<div class="com-ul">
+						                                        <div class="com-li">
+						        <a href="https://www.maidezhao.com/goods.php?id=2541" target="_blank">
+						            <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201808/thumb_img/0_thumb_P_1534886349141.jpg"></div>
+						            <div class="p-name">欧亚（Europe-Asia） 大理牧场蓝莓酸奶 高原生态云南特产清真低温酸奶 243g*12瓶</div>
+						            <div class="p-price">
+						                                                <em>¥</em>66.00                                            </div>
+						            <i class="ph-icon ph-icon4">4</i>
+						        </a>
+						    </div>
+						                <div class="com-li">
+						        <a href="https://www.maidezhao.com/goods.php?id=2535" target="_blank">
+						            <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201808/thumb_img/0_thumb_P_1534817835429.jpg"></div>
+						            <div class="p-name">欧亚(Europe-Asia)高原全脂纯牛奶清250g*24盒 绿色食品认证</div>
+						            <div class="p-price">
+						                                                <em>¥</em>69.00                                            </div>
+						            <i class="ph-icon ph-icon5">5</i>
+						        </a>
+						    </div>
+						                <div class="com-li">
+						        <a href="https://www.maidezhao.com/goods.php?id=2261" target="_blank">
+						            <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/2261_thumb_G_1513895299696.jpg"></div>
+						            <div class="p-name">/Samsung/三星 Galaxy C9 Pro SM-C9000全网通手机</div>
+						            <div class="p-price">
+						                                                <em>¥</em>2458.00                                            </div>
+						            <i class="ph-icon ph-icon6">6</i>
+						        </a>
+						    </div>
+						            </div>
+
+						</div>
+						    </div>
+					</div>
+				</div>
+			</div>
+			<!-- 猜您喜欢 -->
+			<div class="lift-channel item clearfix" id="item6">
+				<div class="goodstitle">
+					<div class="ftit">
+						<h3>猜您喜欢</h3>
+					</div>
+				</div>
+				<ul>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=932" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/932_thumb_G_1507592053757.jpg"></div>
+				        <div class="p-name" title="【平远镇】土老面酱 310g">【平远镇】土老面酱 310g</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>12.00                            </div>
+				            <div class="original-price"><em>¥</em>14.39</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2707" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201809/thumb_img/0_thumb_G_1537942591338.jpg"></div>
+				        <div class="p-name" title="三七花细米线380克袋装">三七花细米线380克袋装</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>18.60                            </div>
+				            <div class="original-price"><em>¥</em>22.32</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=939" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/939_thumb_G_1507593061502.jpg"></div>
+				        <div class="p-name" title="【江那镇】珍珠小米辣   砚山境内最迟次日送达">【江那镇】珍珠小米辣   砚山境内最迟次日送达</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>24.00                            </div>
+				            <div class="original-price"><em>¥</em>28.79</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2722" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201810/thumb_img/0_thumb_P_1539490225660.jpg"></div>
+				        <div class="p-name" title="【江那镇】三七头40头500g包邮">【江那镇】三七头40头500g包邮</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>225.00                            </div>
+				            <div class="original-price"><em>¥</em>270.00</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2704" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201809/thumb_img/2704_thumb_G_1536711089877.jpg"></div>
+				        <div class="p-name" title="【砚山县八嘎乡】 散养土鸡蛋 30枚 鲜鸡蛋 山鸡蛋 柴鸡蛋 草鸡蛋">【砚山县八嘎乡】 散养土鸡蛋 30枚 鲜鸡蛋 山鸡蛋 柴鸡蛋 草鸡蛋</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>75.00                            </div>
+				            <div class="original-price"><em>¥</em>90.00</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2703" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201809/thumb_img/2703_thumb_G_1536699106031.jpg"></div>
+				        <div class="p-name" title="【维摩乡田坝心村】散养1年土鸡">【维摩乡田坝心村】散养1年土鸡</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>128.00                            </div>
+				            <div class="original-price"><em>¥</em>153.60</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2660" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201809/thumb_img/0_thumb_G_1536122248822.jpg"></div>
+				        <div class="p-name" title="阿舍彝族弦子">阿舍彝族弦子</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>489.00                            </div>
+				            <div class="original-price"><em>¥</em>586.80</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2594" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201810/thumb_img/2594_thumb_G_1540151549576.jpg"></div>
+				        <div class="p-name" title="【文山三七】砚七100%原产地高皂苷含量三七超细粉三七粉100克">【文山三七】砚七100%原产地高皂苷含量三七超细粉三七粉100克</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>79.00                            </div>
+				            <div class="original-price"><em>¥</em>94.80</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2519" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201808/thumb_img/0_thumb_P_1534617603118.jpg"></div>
+				        <div class="p-name" title="泥巴土坛酒 茅台镇酒厂直销53度酱香型白酒 洞藏老酒 纯粮食高粱酒 泥巴土坛酒">泥巴土坛酒 茅台镇酒厂直销53度酱香型白酒 洞藏老酒 纯粮食高粱酒 泥巴土坛酒</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>188.00                            </div>
+				            <div class="original-price"><em>¥</em>225.60</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2340" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201801/thumb_img/0_thumb_P_1516910917836.jpg"></div>
+				        <div class="p-name" title="三七苦荞茶">三七苦荞茶</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>60.00                            </div>
+				            <div class="original-price"><em>¥</em>72.00</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2211" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/0_thumb_G_1513406313154.jpg"></div>
+				        <div class="p-name" title="【江那镇】王国五彩礼盒米线380g*5味">【江那镇】王国五彩礼盒米线380g*5味</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>65.00                            </div>
+				            <div class="original-price"><em>¥</em>78.00</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2207" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/2207_thumb_G_1513399541718.jpg"></div>
+				        <div class="p-name" title="【江那镇】王国风味米线（500g加碱）">【江那镇】王国风味米线（500g加碱）</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>10.80                            </div>
+				            <div class="original-price"><em>¥</em>12.96</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2190" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/0_thumb_G_1513099673547.jpg"></div>
+				        <div class="p-name" title="农家传统手工  豆豉140g/罐">农家传统手工  豆豉140g/罐</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>12.00                            </div>
+				            <div class="original-price"><em>¥</em>14.39</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2189" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/0_thumb_G_1513098960939.jpg"></div>
+				        <div class="p-name" title="【平远镇】土老面酱770g">【平远镇】土老面酱770g</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>24.00                            </div>
+				            <div class="original-price"><em>¥</em>28.79</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2187" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/0_thumb_G_1513098405119.jpg"></div>
+				        <div class="p-name" title="普拉酒">普拉酒</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>200.00                            </div>
+				            <div class="original-price"><em>¥</em>200.00</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=2153" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201712/thumb_img/0_thumb_G_1513032345097.jpg"></div>
+				        <div class="p-name" title="【江那镇】王国风味米线1000g">【江那镇】王国风味米线1000g</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>18.80                            </div>
+				            <div class="original-price"><em>¥</em>22.56</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=1499" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/0_thumb_G_1508892493110.jpg"></div>
+				        <div class="p-name" title="【者腊乡】农家特色野猪">【者腊乡】农家特色野猪</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>7900.00                            </div>
+				            <div class="original-price"><em>¥</em>7900.00</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=1176" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/0_thumb_G_1507590942954.jpg"></div>
+				        <div class="p-name" title="【江那镇】听湖香稻源生态大米10Kg  品质保证  砚山境内最迟次日送达">【江那镇】听湖香稻源生态大米10Kg  品质保证  砚山境内最迟次日送达</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>128.00                            </div>
+				            <div class="original-price"><em>¥</em>153.60</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=1149" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/0_thumb_G_1507436860504.jpg"></div>
+				        <div class="p-name" title="坤七山楂超细粉80g/瓶  全国包邮">坤七山楂超细粉80g/瓶  全国包邮</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>32.90                            </div>
+				            <div class="original-price"><em>¥</em>39.48</div>
+				        </div>
+				    </a>
+				</li>
+				<li class="opacity_img">
+				    <a href="https://www.maidezhao.com/goods.php?id=937" target="_blank">
+				        <div class="p-img"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201710/thumb_img/937_thumb_G_1507592896463.jpg"></div>
+				        <div class="p-name" title="【维摩乡】土蜂蜜   农家直供  品质保障  砚山境内最迟次日送达  全国包邮">【维摩乡】土蜂蜜   农家直供  品质保障  砚山境内最迟次日送达  全国包邮</div>
+				        <div class="p-price">
+				            <div class="shop-price">
+				                                <em>¥</em>98.00                            </div>
+				            <div class="original-price"><em>¥</em>98.00</div>
+				        </div>
+				    </a>
+				</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-new">
+			<div class="footer-new-top clearfix">
+				<div class="w1200">
+					<div class="service-list">
+		                <div class="service-item">
+		                    <i class="f-icon f-icon-qi"></i>
+		                    <span>砚山货源</span>
+		                </div>
+		                <div class="service-item">
+		                    <i class="f-icon f-icon-zheng"></i>
+		                    <span>正品保障</span>
+		                </div>
+		                <div class="service-item">
+		                    <i class="f-icon f-icon-hao"></i>
+		                    <span>七天包退</span>
+		                </div>
+		                <div class="service-item">
+		                    <i class="f-icon f-icon-shan"></i>
+		                    <span>闪电发货</span>
+		                </div>
+		                <div class="service-item">
+		                    <i class="f-icon f-icon-quan"></i>
+		                    <span>售后无忧</span>
+		                </div>
+		            </div>
+		            <div class="contact">
+	                    <div class="contact-item contact-item-first"><i class="f-icon f-icon-tel"></i><span>0876-3844408</span></div>
+	                    <div class="contact-item">
+	                        <a href="" class="btn-ctn" target="_blank">
+	                        	<i class="f-icon f-icon-kefu"></i><span>咨询客服</span>
+	                        </a>
+		                </div>
+	                </div>
+				</div>
+			</div>
+			<div class="footer-bg">
+				<div class="footer-new-con">
+					<div class="fnc-warp">
+						<div class="help-list">
+							<div class="help-item">
+							    <h3>交易条款</h3>
+							    <ul>
+			                        <li>
+			                        	<a href="" title="特别说明" target="_blank">特别说明</a>
+			                        </li>
+			                        <li>
+			                         	<a href="" title="买得着承诺" target="_blank">买得着承诺</a>
+			                        </li>
+			                        <li>
+			                        	<a href="" title="交易条款" target="_blank">交易条款</a>
+			                        </li>
+		                        </ul>         
+							</div>
+							<div class="help-item">
+							    <h3>交易条款</h3>
+							    <ul>
+			                        <li>
+			                        	<a href="" title="特别说明" target="_blank">特别说明</a>
+			                        </li>
+			                        <li>
+			                         	<a href="" title="买得着承诺" target="_blank">买得着承诺</a>
+			                        </li>
+			                        <li>
+			                        	<a href="" title="交易条款" target="_blank">交易条款</a>
+			                        </li>
+		                        </ul>         
+							</div>
+							<div class="help-item">
+							    <h3>交易条款</h3>
+							    <ul>
+			                        <li>
+			                        	<a href="" title="特别说明" target="_blank">特别说明</a>
+			                        </li>
+			                        <li>
+			                         	<a href="" title="买得着承诺" target="_blank">买得着承诺</a>
+			                        </li>
+			                        <li>
+			                        	<a href="" title="交易条款" target="_blank">交易条款</a>
+			                        </li>
+		                        </ul>         
+							</div>
+							<div class="help-item">
+							    <h3>交易条款</h3>
+							    <ul>
+			                        <li>
+			                        	<a href="" title="特别说明" target="_blank">特别说明</a>
+			                        </li>
+			                        <li>
+			                         	<a href="" title="买得着承诺" target="_blank">买得着承诺</a>
+			                        </li>
+			                        <li>
+			                        	<a href="" title="交易条款" target="_blank">交易条款</a>
+			                        </li>
+		                        </ul>         
+							</div>
+							<div class="help-item">
+							    <h3>交易条款</h3>
+							    <ul>
+			                        <li>
+			                        	<a href="" title="特别说明" target="_blank">特别说明</a>
+			                        </li>
+			                        <li>
+			                         	<a href="" title="买得着承诺" target="_blank">买得着承诺</a>
+			                        </li>
+			                        <li>
+			                        	<a href="" title="交易条款" target="_blank">交易条款</a>
+			                        </li>
+		                        </ul>         
+							</div>
+						</div>
+						<div class="qr-code">
+							<div class="qr-item">
+								<div class="code_img">
+									<img src="https://www.maidezhao.com/images/common/ectouch_qrcode.png">
+								</div>
+								<div class="code_txt">微商城</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="footer-new-bot">
+					<div class="w1200">
+						<p class="copyright_links">
+	                        <a href="https://www.maidezhao.com/index.php">首页</a>
+			                 
+			                <span class="spacer"></span>
+			                 
+	                        <a href="https://www.maidezhao.com/article.php?id=2">隐私保护</a>
+			                 
+			                <span class="spacer"></span>
+			                 
+	                        <a href="https://www.maidezhao.com/article.php?id=4">联系我们</a>
+			                 
+			                <span class="spacer"></span>
+			                 
+	                        <a href="https://www.maidezhao.com/article.php?id=1">免责条款</a>
+			                 
+			                <span class="spacer"></span>
+			                 
+	                        <a href="https://www.maidezhao.com/article.php?id=5">公司简介</a>
+			                 
+			                <span class="spacer"></span>
+			                 
+	                        <a href="https://www.maidezhao.com/merchants.php" target="_blank">商家入驻</a>
+			                 
+			                <span class="spacer"></span>
+			                 
+	                        <a href="https://www.maidezhao.com/message.php">意见反馈</a>         
+						</p>
+						<p class="copyright_links">
+		                    <a href="http://www.huadezhao.com" target="_blank" title="砚山自造广告"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/data/afficheimg/1533144499780195168.jpg" alt="砚山自造广告" border="0"></a>
+		                    <a href="http://si.trustutn.org/info?sn=932181009037067732556&amp;certType=1" target="_blank" title="认证联盟"><img src="http://v.trustutn.org/images/cert/bottom_small_img.png" alt="认证联盟" border="0"></a>
+	                    </p>
+	                    <p><span>©&nbsp;2015-2018&nbsp;&nbsp;&nbsp;</span><span>ICP备案证书号:</span><a href="http://www.miibeian.gov.cn/" target="_blank">号:滇ICP备15006346号-1</a>
+	                    </p>
+	                   <p class="copyright_auth">
+	                   	<a href="">
+	                   		<img src="http://mdz.oss-cn-beijing.aliyuncs.com/data/afficheimg/1515180734543393449.gif" alt="">
+	                   	</a>
+	                   </p>
+					</div>
+				</div>
+			</div>
+			<div class="page-footer"></div>
+	</div>
+	<!-- 左侧边栏 -->
+	<div class="lift lift-mode-two none" id="menu">
+            <div class="lift-list" >
+            	<a href="#item1" class="lift-item lift-item-current">
+            		<span>开业专区</span>
+            		<i class="lift-arrow"></i>
+            	</a>
+            	<a href="#item2" class="lift-item">
+            		<span>秒杀活动</span>
+            	<i class="lift-arrow"></i>
+            	</a>
+          
+        
+            	<a href="#item3" class="lift-item">
+            		<span>砚山品牌</span>
+            		<i class="lift-arrow"></i>
+            	</a>
+         
+            
+            	<a href="#item4" class="lift-item">
+            		<span>发现好货</span>
+            		<i class="lift-arrow"></i>
+            	</a>
+           
+           
+            	<a href="#item5" class="lift-item">
+            		<span>砚山特卖</span>
+            	<i class="lift-arrow"></i>
+            	</a>
+            
+            
+            	<a href="#item6" class="lift-item">
+            		<span>猜你喜欢</span>
+            	<i class="lift-arrow"></i>
+            	</a>
+           		<a href="" class="lift-item lift-item-top">
+           		TOP<i class="iconfont icon-top-alt"></i>
+	           	</a>
+        </div>
+        </div>
+	<!-- 右侧边栏 -->
+	<div class="mui-mbar-tabs">
+	<div class="quick_link_mian">
+		<div class="quick_links_panel" style="width: 40px;">
+			<div id="quick_links" class="quick_links">
+				<li>
+					<a href="#" class="my_qlinks">
+						<span style="display: block;"><i class="iconfont iconfont1 icon-yonghu"></i></span>
+						
+					</a>
+					<div class="ibar_login_box status_login">
+						<div class="avatar_box">
+							<p class="avatar_imgbox"><img src="images/no-img_mid_.jpg" /></p>
+							<ul class="user_info">
+								<li>用户名：sl19931003</li>
+								<li>级&nbsp;别：普通会员</li>
+							</ul>
+						</div>
+						<div class="login_btnbox">
+							<a href="#" class="login_order">我的订单</a>
+							<a href="#" class="login_favorite">我的收藏</a>
+						</div>
+					</div>
+				</li>
+				<li id="shopCart">
+					<a href="#" class="message_list" ><i class="iconfont iconfont1 icon-tuanduicankaoxian-"></i><div class="span">购物车</div><span class="cart_num">0</span></a>
+				</li>
+				<li>
+					<a href="#" class="history_list"><i class="iconfont iconfont1 icon-zijinguanli"></i></a>
+					<div class="mp_tooltip" style=" visibility:hidden;">我的资产<i class="iconfont icon-sanjiaoright"></i></div>
+				</li>
+				<li>
+					<a href="#" class="mpbtn_histroy"><i class="iconfont iconfont1 icon-zuji"></i></a>
+					<div class="mp_tooltip">我的足迹<i class="iconfont icon-sanjiaoright"></i></div>
+				</li>
+				<li>
+					<a href="#" class="mpbtn_wdsc"><i class="iconfont iconfont1 icon-shoucang"></i></a>
+					<div class="mp_tooltip">我的收藏<i class="iconfont icon-sanjiaoright"></i></div>
+				</li>
+				<li>
+					<a href="#" class="mpbtn_recharge"><i class="iconfont iconfont1 icon-Opinion" style="font-size: 20px;"></i></a>
+					<div class="mp_tooltip">意见反馈<i class="iconfont icon-sanjiaoright"></i></div>
+				</li>
+			</div>
+			<div class="quick_toggle">
+				<li>
+					<a href="#"><i class="iconfont iconfont1 icon-kefu"></i></a>
+					<div class="mp_tooltip">客服中心<i class="iconfont icon-sanjiaoright"></i></div>
+				</li>
+				<li>
+					<a href="#none"><i class="iconfont iconfont1 icon-erweima"></i></a>
+					<div class="mp_qrcode" style="display:none;"><img src="images/weixin_code_145.png" width="148" height="175" /><i class="icon_arrow_white"></i></div>
+				</li>
+				<li><a href="#top" class="return_top"><i class="iconfont iconfont1 icon-top"></i></a></li>
+			</div>
+		</div>
+		<div id="quick_links_pop" class="quick_links_pop hide"></div>
+	</div>
+</div>
+</body>
+<!--[if lte IE 8]>
+<script src="./plugins/jsjs/ieBetter.js"></script>
+<![endif]-->
+<script type="text/javascript" src="./plugins/flybar/js/common.js"></script>
+<!-- <script type="text/javascript" src="./plugins/flybar/js/quick_links.js"></script> -->
+<script type="text/javascript" src="./plugins/flybar/js/parabola.js"></script>
+<script type="text/javascript">
+	$(".quick_links_panel li").mouseenter(function(){
+		$(this).children(".mp_tooltip").animate({left:-92,queue:true});
+		$(this).children(".mp_tooltip").css("visibility","visible");
+		$(this).children(".ibar_login_box").css("display","block");
+	});
+	$(".quick_links_panel li").mouseleave(function(){
+		$(this).children(".mp_tooltip").css("visibility","hidden");
+		$(this).children(".mp_tooltip").animate({left:-121,queue:true});
+		$(this).children(".ibar_login_box").css("display","none");
+	});
+	$(".quick_toggle li").mouseover(function(){
+		$(this).children(".mp_qrcode").show();
+	});
+	$(".quick_toggle li").mouseleave(function(){
+		$(this).children(".mp_qrcode").hide();
+	});
+
+// 元素以及其他一些变量
+var eleFlyElement = document.querySelector("#flyItem"), eleShopCart = document.querySelector("#shopCart");
+var numberItem = 0;
+// 抛物线运动
+var myParabola = funParabola(eleFlyElement, eleShopCart, {
+	speed: 400, //抛物线速度
+	curvature: 0.0008, //控制抛物线弧度
+	complete: function() {
+		eleFlyElement.style.visibility = "hidden";
+		eleShopCart.querySelector("span").innerHTML = ++numberItem;
+	}
+});
+// 绑定点击事件
+if (eleFlyElement && eleShopCart) {
+	
+	[].slice.call(document.getElementsByClassName("btnCart")).forEach(function(button) {
+		button.addEventListener("click", function(event) {
+			// 滚动大小
+			var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+			    scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+			eleFlyElement.style.left = event.clientX + scrollLeft + "px";
+			eleFlyElement.style.top = event.clientY + scrollTop + "px";
+			eleFlyElement.style.visibility = "visible";
+			
+			// 需要重定位
+			myParabola.position().move();			
+		});
+	});
+}
+</script>
+</html>

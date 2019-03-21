@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+        <li class="layui-nav-item"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+            <dd><a href="javascript:;">合作伙伴</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>文章分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示所有分类下的文章。</li>
+        <li>可通过搜索文章标题进行搜索，侧边栏可进行高级搜索。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="articlecat.php?act=add"><div class="fbutton"><div class="add" title="添加文章分类"><span><i class="icon icon-plus"></i>添加文章分类</span></div></div></a>
+        </div>
+        <div class="refresh">
+          <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+          <div class="refresh_span">刷新 - 共3条记录</div>
+        </div>
+      </div>
+      <div class="common-content">
+        <div class="list-div" id="listDiv">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th width="10%"></th>
+                <th width="5%"><div class="tDiv">编号</div></th>
+                <th width="15%"><div class="tDiv">文章分类名称</div></th>
+                <th width="10%"><div class="tDiv">分类类型</div></th>
+                <th width="28%"><div class="tDiv">描述</div></th>
+                <th width="10%"><div class="tDiv">排序</div></th>
+                <th width="10%"><div class="tDiv">显示在导航栏</div></th>
+                <th width="12%" class="handle">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="">
+                <td>
+                  <div class="tDiv first_setup">
+                    <div class="setup_span">
+                      <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                      <ul>
+                        <li><a href="articlecat.php?act=add&amp;cat_id=1">新增下一级</a></li>
+                        <li><a href="articlecat.php?act=list&amp;cat_id=1">查看下一级</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+                <td><div class="tDiv">1</div></td>
+                <td><div class="tDiv"><a href="article.php?act=list&amp;cat_id=1" class="ftx-05"><strong>购物指南</strong></a></div></td>
+                <td><div class="tDiv">系统分类2</div></td>
+                <td><div class="tDiv">购物指南</div></td>
+                <td><div class="tDiv"><input name="sort_order" class="text w40" value="1" onkeyup="listTable.editInput(this, 'edit_sort_order',1 )" type="text"></div></td>
+                <td>
+                  <div class="tDiv">
+                    <div class="switch " title="否" onclick="listTable.switchBt(this, 'toggle_show_in_nav', 1)">
+                      <div class="circle"></div>
+                    </div>
+                    <input type="hidden" value="0" name="">
+                  </div>
+                </td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="articlecat.php?act=edit&amp;id=1" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="">
+                <td>
+                  <div class="tDiv first_setup">
+                    <div class="setup_span">
+                      <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                      <ul>
+                        <li><a href="articlecat.php?act=add&amp;cat_id=14">新增下一级</a></li>
+                        <li><a href="articlecat.php?act=list&amp;cat_id=14">查看下一级</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+                <td><div class="tDiv">14</div></td>
+                <td><div class="tDiv"><a href="article.php?act=list&amp;cat_id=14" class="ftx-05"><strong>商家入驻流程说明</strong></a></div></td>
+                <td><div class="tDiv">普通分类1</div></td>
+                <td><div class="tDiv">商家入驻说明专用</div></td>
+                <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_sort_order',14 )" type="text"></div></td>
+                <td>
+                  <div class="tDiv">
+                    <div class="switch " title="否" onclick="listTable.switchBt(this, 'toggle_show_in_nav', 14)">
+                      <div class="circle"></div>
+                    </div>
+                    <input type="hidden" value="0" name="">
+                  </div>
+                </td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="articlecat.php?act=edit&amp;id=14" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(14, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="">
+                <td>
+                  <div class="tDiv first_setup">
+                    <div class="setup_span">
+                      <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                      <ul>
+                        <li><a href="articlecat.php?act=add&amp;cat_id=1000">新增下一级</a></li>
+                        <li><a href="articlecat.php?act=list&amp;cat_id=1000">查看下一级</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+                <td><div class="tDiv">1000</div></td>
+                <td><div class="tDiv"><a href="article.php?act=list&amp;cat_id=1000" class="ftx-05"><strong>微分销</strong></a></div></td>
+                <td><div class="tDiv">普通分类1</div></td>
+                <td><div class="tDiv"></div></td>
+                <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_sort_order',1000 )" type="text"></div></td>
+                <td>
+                  <div class="tDiv">
+                    <div class="switch active" title="" onclick="listTable.switchBt(this, 'toggle_show_in_nav', 1000)">
+                      <div class="circle"></div>
+                    </div>
+                    <input type="hidden" value="0" name="">
+                  </div>
+                </td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="articlecat.php?act=edit&amp;id=1000" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(1000, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="12">
+                  <div class="list-page">
+                    <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                    <div id="turn-page">
+                      <span class="page page_1">总计 <em id="totalRecords">3</em>个记录</span>
+                      <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                      <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                      <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                      <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                      <span id="page-link">
+                        <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                        <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                        <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                          <option value="1">1</option>        </select>
+                          <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                          <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                        </span>
+                      </div>
+
+
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+  </div>
+</div>
+</body>
+<script src="./layui/layui.js"></script>
+<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+  layui.use(['element', 'form','table', 'layer','upload'],function(){
+    var element = layui.element;
+    var form = layui.form;
+    var table = layui.table;
+    var layer = layui.layer;
+    var upload = layui.upload;
+    $('.btn_trash').on('click', function() {
+     layer.msg('删除成功');
+   });
+
+  });
+  function setup(argument) {
+   var first_setup =$('.first_setup .setup_span'),
+   zindex =100;
+   first_setup.on('mouseover', function(event) {
+    $(this).children('ul').show();
+  });
+   first_setup.on('mouseout', function(event) {
+     $(this).children('ul').hide();
+   });
+ }
+ setup();
+</script>
+</html>

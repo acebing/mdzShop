@@ -1,0 +1,529 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+    font:12px/150% Arial,Verdana,"\5b8b\4f53" ;
+    color: #666;
+}
+a{
+	color: #666;
+    text-decoration: none;
+}
+.w{
+	width: 990px;
+	margin: 0 auto;
+}
+.rel{
+    position: relative;
+}
+/*登陆页开始*/
+
+/*头部*/
+#logo {
+    position: relative;
+    width: 300px;
+    margin: 10px 0;
+    height: 60px;
+    float: left;
+}
+#logo b {
+    display: block;
+    width: 110px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: url(../images/login/l-icon.png) no-repeat;
+}
+.q-link {
+    position: relative;
+    color: #999;
+    float: right;
+    top: 52px;
+}
+.q-link:hover{
+    text-decoration: underline;
+    color: #e4393c;
+}
+.q-link b {
+    display: inline-block;
+    width: 18px;
+    height: 14px;
+    margin: 0 5px;
+    background: url(../images/login/q-icon.png) no-repeat;
+    overflow: hidden;
+    vertical-align: middle;
+}
+/*中心内容*/
+#content {
+    clear: both;
+}
+#content .tips-wrapper {
+    background: #fff8f0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+#content .tips-wrapper .cont-wrapper {
+    display: inline-block;
+    width: 90%;
+}
+#content .tips-wrapper .icon-tips {
+    background: url(../images/login/icon-tips.png);
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+#content .tips-wrapper .tips-inner p {
+    vertical-align: middle;
+    color: #999;
+    font-size: 12px;
+    display: inline-block;
+}
+#content .tips-wrapper .tips-inner .black {
+    color: #333;
+}
+#content .tips-wrapper .tips-inner .black:hover {
+   text-decoration: underline;
+}
+/*表单开始*/
+.login-wrap{
+    width: 100%;
+    height: 475px;
+    background: #0ead9b;
+}
+.login-form{
+    float: right;
+    width: 346px;
+    background: #fff;
+    position: absolute;
+    top:10px;
+    right: 0;
+}
+/*登录标题*/
+.login-form .login-tit{
+    height: 54px;
+    line-height: 54px;
+    font-family: "microsoft yahei";
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #f4f4f4;
+}
+.login-form .login-tit h3{
+    font-size: 18px;
+    color: #8c8c8c;
+    padding: 0 15px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    background-color: #fff;
+}
+/*登录错误信息提示*/
+.login-form .msg-wrap {
+    min-height: 23px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: auto!important;
+}
+.login-form .msg-error {
+    position: relative;
+    background: #ffebeb;
+    color: #e4393c;
+    border: 1px solid #faccc6;
+    padding: 3px 10px 3px 40px;
+    line-height: 15px;
+    height: auto;
+}
+.login-form .msg-error b {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    display: block;
+    margin-top: -8px;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    background: url(../images/login/pwd-icons-new.png) -104px -49px no-repeat;
+}
+/*用户输入框*/
+.login-form .login-box {
+    width: 306px;
+    padding: 0 20px 20px 20px;
+}
+.form .item-fore1, .form .item-fore2 {
+    border: 1px solid #bdbdbd;
+    height: 38px;
+    width: 304px;
+}
+.form .item {
+    position: relative;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+.form .item-fore1 {
+    z-index: 6;
+}
+.form .item-fore2 {
+    height: 38px;
+}
+.form .item .name-label {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    border-right: 1px solid #bdbdbd;
+    background: url(//misc.360buyimg.com/user/passport/1.0.0/widget/login-form-2016-1124/i/pwd-icons-new.png) no-repeat;
+    background-position: 0px 0;
+}
+.form .item .pwd-label {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    border-right: 1px solid #bdbdbd;
+    background: url(//misc.360buyimg.com/user/passport/1.0.0/widget/login-form-2016-1124/i/pwd-icons-new.png) no-repeat;
+    background-position: -48px 0;
+}
+.form .itxt {
+    line-height: 18px;
+    height: 18px;
+    border: 0;
+    padding: 10px 0 10px 50px;
+    width: 254px;
+    float: none;
+    overflow: hidden;
+    font-size: 14px;
+}
+.form .item-error {
+    border: 1px solid #e4393c;
+}
+.form .item-fore1 .clear-btn, .form .item-fore2 .clear-btn {
+    position: absolute;
+    z-index: 20;
+    right: 6px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/login/pwd-icons-new.png) -25px -143px no-repeat;
+    cursor: pointer;
+    display: ;
+}
+.form .item-fore1 .capslock, .form .item-fore2 .capslock {
+    position: absolute;
+    z-index: 4;
+    width: 106px;
+    top: 28px;
+    left: 50px;
+    padding-left: 26px;
+    height: 26px;
+    line-height: 28px;
+    overflow: hidden;
+    background: url(//misc.360buyimg.com/user/passport/1.0.0/css/i/capslock.png) no-repeat;
+}
+.form .item-fore1 .capslock b, .form .item-fore2 .capslock b {
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    width: 10px;
+    height: 14px;
+    overflow: hidden;
+    background: url(//misc.360buyimg.com/user/passport/1.0.0/widget/login-form-2016-1124/i/pwd-icons-new.png) -104px -133px no-repeat;
+}
+/*忘记密码*/
+.login-form .safe span {
+    margin-right: 15px;
+}
+.safe {
+    position: relative;
+    color: #666;
+}
+.safe .forget-pw-safe {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+}
+.safe .forget-pw-safe a:hover{
+    color: #e4393c;
+    text-decoration: underline;
+}
+/*登录*/
+.form .item-fore5 {
+    margin-bottom: 10px;
+}
+.login-form .login-btn {
+    border: 1px solid #cb2a2d;
+    margin: 0 auto;
+    height: 32px;
+    width: 99%;
+    position: relative;
+}
+.login-form .login-btn .btn-img {
+    border: 1px solid #e85356;
+    display: block;
+    width: 302px;
+    background: #e4393c;
+    height: 31px;
+    line-height: 31px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Microsoft YaHei';
+}
+.btn-img {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: center;
+    cursor: pointer;
+}
+/*第三方登录*/
+.coagent {
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 50px;
+    border-top: 1px solid #f4f4f4;
+    height: auto;
+    background-color: #fcfcfc;
+}
+.coagent li {
+    float: left;
+    list-style: none;
+}
+.coagent li a.pdl {
+    display: inline-block;
+    position: relative;
+    padding-left: 24px;
+}
+.coagent li a.pdl b.QQ-icon {
+    background-position: 0 0;
+}
+.coagent li a.pdl b.weixin-icon {
+    background-position: -20px 0;
+}
+.coagent li.extra-r {
+    float: right;
+}
+.coagent li a.pdl b {
+    width: 19px;
+    height: 18px;
+    display: block;
+    background: url(//misc.360buyimg.com/user/passport/1.0.0/widget/login-form-2016-1124/i/QQ-weixin.png) no-repeat;
+    margin: 0 auto;
+    position: absolute;
+    float: left;
+    left: 0;
+    top: 16px;
+}
+.coagent li .line {
+    color: #ccc;
+    padding: 0 10px;
+}
+.coagent .regist-link {
+    color: #b61d1d;
+    font-size: 14px;
+}
+.coagent .regist-link a {
+    color: #b61d1d;
+}
+.coagent .regist-link b {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    background: url(//misc.360buyimg.com/user/passport/1.0.0/widget/login-form-2016-1124/i/pwd-icons-new.png) -104px -75px no-repeat;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+/*登录页结束*/
+
+/*注册页开始*/
+.reg-w {
+    width: 1210px;
+    margin: 0 auto;
+}
+.fl{
+    float: left;
+}
+.body{
+    font-family: "Microsoft YaHei","Hiragino Sans GB";
+    font-size: 14px;
+}
+
+/*头部开始*/
+.header {
+    height: 110px;
+    background: url(//misc.360buyimg.com/user/reg/1.0.0/css/i/headbg.jpg) repeat-x left bottom;
+}
+.header .logo {
+    width: 160px;
+    height: 50px;
+    float: left;
+    margin-top: 24px;
+    background: url(../images/login/loginlogo.gif) no-repeat;
+}
+.header .logo-title {
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 20px;
+    margin-top: 34px;
+}
+.header .have-account {
+    font-size: 16px;
+    float: right;
+    margin-top: 55px;
+    color: #999;
+}
+.header .have-account a {
+    color: #333;
+}
+.header .have-account a:hover{
+    text-decoration: underline;
+}
+/*主体内容*/
+.main {
+    margin: 50px auto 60px;
+    width: 830px;
+    height:605px;
+}
+.reg-form {
+    width: 400px;
+}
+.clear{
+    clear: both;
+}
+/*输入框*/
+.form-item-account {
+    z-index: 13;
+}
+.form-item {
+    position: relative;
+    border: solid 1px #ddd;
+    width: 398px;
+    height: 52px;
+    z-index: 0;
+}
+.form-item label {
+    float: left;
+    width: 90px;
+    height: 52px;
+    line-height: 52px;
+    padding-left: 20px;
+}
+.form-item txt {
+    margin-top: 2px!important;
+}
+.form-item .field {
+    border: 0 none;
+    font-size: 14px;
+    width: 190px;
+    height: 19px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-top: 16px;
+}
+.form-item .i-status {
+    position: absolute;
+    display: none;
+    width: 16px;
+    height: 16px;
+    top: 20px;
+    right: 20px;
+}
+.input-tip {
+    color: #c5c5c5;
+    height: 27px;
+    font-size: 12px;
+    padding-top: 5px;
+}
+/*获取验证码*/
+.btn-phonecode {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 110px;
+    height: 46px;
+    border: none;
+    background: #f2f2f2;
+    color: #333;
+    padding: 0;
+    cursor: pointer;
+}
+/*注册*/
+.btn-register {
+    width: 100%;
+    height: 54px;
+    color: #fff;
+    background: #e22;
+    border: 0;
+    font-size: 16px;
+    font-family: "Microsoft YaHei","Hiragino Sans GB";
+    cursor: pointer;
+}
+/*企业用户*/
+.reg-other {
+    float: left;
+    margin-left: 104px;
+    height: 605px;
+    padding-left: 90px;
+    border-left: solid 1px #e6e6e6;
+}
+.reg-other .company-reg {
+    width: 160px;
+    height: 60px;
+    border-bottom: solid 1px #ddd;
+    margin-left: 30px;
+}
+.reg-other .company-reg a {
+    display: block;
+    width: 160px;
+    height: 30px;
+}
+.reg-other .company-reg a:hover {
+    
+    font-weight: bold;
+    text-decoration: underline;
+}
+.reg-other .company-reg a i {
+    display: inline-block;
+    width: 30px;
+    height: 29px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+.i-company {
+    background: url(//misc.360buyimg.com/user/reg/1.0.0/css/i/icon.png) no-repeat;
+    background-position: 0 -50px;
+}
+/*注册页结束*/
+
+/*登录页、注册页脚*/
+#footer {
+    padding: 30px 0;
+    text-align: center;
+}
+#footer .links a{
+    margin: 0 10px;
+}
+#footer .links a:hover{
+    color: #e4393c;
+    text-decoration: underline;
+}
+#footer .copyright{
+    margin: 10px 10px;
+}
+.reg-footer{
+    border-top: solid 1px #e6e6e6;
+}

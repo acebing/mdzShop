@@ -1,0 +1,56 @@
+/*header左侧导航栏公用样式*/
+.layui-layout-admin .layui-header{
+	background-image: -webkit-gradient(linear,left top,right top,from(#1278f6),to(#00b4aa));
+	background-image: -webkit-linear-gradient(left,#1278f6,#00b4aa);
+	background-image: -moz-linear-gradient(left,#1278f6,#00b4aa);
+	background-image: linear-gradient(to right,#1278f6,#00b4aa);
+}
+.layui-bg-black {
+    /*background-color: #1278f6!important;*/
+    background-image: -webkit-gradient(linear,left top,right top,from(#5696f8),to(#4e6ef5))!important ;
+	background-image: -webkit-linear-gradient(top,#5696f8,#4e6ef5)!important;
+	background-image: -moz-linear-gradient(top,#5696f8,#4e6ef5)!important;
+	background-image: linear-gradient(to top,#5696f8,#4e6ef5)!important;
+}
+.layui-nav{
+	background-color: #4465e8;
+}
+.layui-nav-tree .layui-nav-item a:hover {
+    background-color: #63b2fc;
+}
+.layui-layout-admin .layui-header{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	margin-bottom: 60px;
+}
+.layui-layout-admin .layui-logo {
+    left: 18px;
+    top: -4px;
+}
+.layui-layout-admin .index-logo {
+    left: 22px;
+    top: -4px;
+}
+.layui-layout-left{
+	left: 229px;
+	font-weight: bold;
+}
+/*index*/
+.inde-body{
+	margin-top: 60px;
+	padding: 20px 20px 100px 20px;
+}
+/*公用footer*/
+.layui-footer .layui-main .heart{
+	margin: 0 10px;
+	color: #ec5151;
+}
+.order_state_tab {
+    border-bottom: 0;
+    
+}
+/*时间选择器样式*/
+.layui-laydate-footer span:hover {
+    color: #4e6ef5 !important;
+}
