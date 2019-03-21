@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/order-new.css">
   <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/admin.js"></script>
 </head>
 <body>
   <div class="layui-layout layui-layout-admin">
@@ -121,12 +127,12 @@
     </div>
     <div class="flexilist">
       <div class="mian-info">
-        <form action="">
+        <form action="" id="article_form">
           <div class="switch_info shopConfig_switch">
             <div class="item shop_name" data-val="101">
               <div class="label">平台名称：</div>
               <div class="label_value">
-                <input type="text" name="value[101]" class="text shop_name" value="买得着商城" autocomplete="off">
+                <input type="text" name="value[101]" class="text shop_name" value="买得着商城" autocomplete="off" id="title">
                 <div class="form_prompt"></div>
               </div>
 
@@ -209,124 +215,115 @@
                         <div class="form_prompt"></div>
                         <div class="notic">QQ客服名称和号码请用“|”隔开（如：客服1|123456），如果您有多个客服的QQ号码，请换行。</div>    </div>
                       </div>
-                        <div class="item service_email" data-val="114">
-                          <div class="label">客服邮件地址：</div>
+                      <div class="item service_email" data-val="114">
+                        <div class="label">客服邮件地址：</div>
+                        <div class="label_value">
+                          <input type="text" name="value[114]" class="text service_email" value="shenlong@maidezhao.com" autocomplete="off">
+                          <div class="form_prompt"></div>
+                          <div class="notic">平台客服邮箱地址，接收发送的信息</div>    </div>
+
+                        </div>
+                        <div class="item service_phone" data-val="115">
+                          <div class="label">客服电话：</div>
                           <div class="label_value">
-                            <input type="text" name="value[114]" class="text service_email" value="shenlong@maidezhao.com" autocomplete="off">
+                            <input type="text" name="value[115]" class="text service_phone" value="0876-3844408" autocomplete="off">
                             <div class="form_prompt"></div>
-                            <div class="notic">平台客服邮箱地址，接收发送的信息</div>    </div>
+                            <div class="notic">平台客服电话，联系平台电话，例：入驻页面导航显示的电话</div>    </div>
 
                           </div>
-                          <div class="item service_phone" data-val="115">
-                            <div class="label">客服电话：</div>
+                          <div class="item shop_closed" data-val="116">
+                            <div class="label">暂时关闭网站：</div>
                             <div class="label_value">
-                              <input type="text" name="value[115]" class="text service_phone" value="0876-3844408" autocomplete="off">
+                              <div class="checkbox_items">
+                                <div class="checkbox_item">
+                                  <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_0" value="0" checked="true">
+                                  <label for="value_116_0" class="ui-radio-label">否</label>
+                                </div>
+                                <div class="checkbox_item">
+                                  <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_1" value="1">
+                                  <label for="value_116_1" class="ui-radio-label">是</label>
+                                </div>
+                              </div>
                               <div class="form_prompt"></div>
-                              <div class="notic">平台客服电话，联系平台电话，例：入驻页面导航显示的电话</div>    </div>
-
+                              <div class="notic">平台需升级或者其他原因临时关闭网站</div>    </div>
                             </div>
-                            <div class="item shop_closed" data-val="116">
-                              <div class="label">暂时关闭网站：</div>
+                            <div class="item close_comment" data-val="117">
+                              <div class="label">关闭网店的原因：</div>
                               <div class="label_value">
-                                <div class="checkbox_items">
-                                  <div class="checkbox_item">
-                                    <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_0" value="0" checked="true">
-                                    <label for="value_116_0" class="ui-radio-label">否</label>
-                                  </div>
-                                  <div class="checkbox_item">
-                                    <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_1" value="1">
-                                    <label for="value_116_1" class="ui-radio-label">是</label>
-                                  </div>
-                                </div>
+                                <textarea class="textarea" name="value[117]" id="role_describe"></textarea>
                                 <div class="form_prompt"></div>
-                                <div class="notic">平台需升级或者其他原因临时关闭网站</div>    </div>
+                                <div class="notic">平台临时关闭网站说明原因</div>    </div>
                               </div>
-                              <div class="item close_comment" data-val="117">
-                                <div class="label">关闭网店的原因：</div>
+                              <div class="item shop_logo" data-val="118">
+                                <div class="label">平台 Logo：</div>
                                 <div class="label_value">
-                                  <textarea class="textarea" name="value[117]" id="role_describe"></textarea>
+                                  <div class="type-file-box">
+                                    <input type="button" name="button" id="button" class="type-file-button" value="">
+                                    <input type="file" class="type-file-file" name="shop_logo" size="30" data-state="imgfile" hidefocus="true" value="">
+                                    <span class="show">
+                                      <a href="../themes/ecmoban_dsc2017/images/logo.gif" target="_blank" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="../themes/ecmoban_dsc2017/images/logo.gif" ectype="tooltip" title="tooltip"></i></a>
+                                    </span>
+                                    <input type="text" name="textfile" class="type-file-text" id="textfield" readonly="">
+                                  </div>
+                                  <a href="shop_config.php?act=del&amp;code=shop_logo" class="btn red_btn h30 mr10 fl" style="line-height:30px;">删除</a>
                                   <div class="form_prompt"></div>
-                                  <div class="notic">平台临时关闭网站说明原因</div>    </div>
+                                  <div class="notic">上传图片格式必须是gif,jpg,jpeg,png;图片大小在200kb之内，建议尺寸：159*100</div>    </div>
                                 </div>
-                                <div class="item shop_logo" data-val="118">
-                                  <div class="label">平台 Logo：</div>
+                                <div class="item user_notice" data-val="120">
+                                  <div class="label">用户中心公告：</div>
                                   <div class="label_value">
-                                    <div class="type-file-box">
-                                      <input type="button" name="button" id="button" class="type-file-button" value="">
-                                      <input type="file" class="type-file-file" name="shop_logo" size="30" data-state="imgfile" hidefocus="true" value="">
-                                      <span class="show">
-                                        <a href="../themes/ecmoban_dsc2017/images/logo.gif" target="_blank" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="../themes/ecmoban_dsc2017/images/logo.gif" ectype="tooltip" title="tooltip"></i></a>
-                                      </span>
-                                      <input type="text" name="textfile" class="type-file-text" id="textfield" readonly="">
-                                    </div>
-                                    <a href="shop_config.php?act=del&amp;code=shop_logo" class="btn red_btn h30 mr10 fl" style="line-height:30px;">删除</a>
+                                    <textarea class="textarea" name="value[120]" id="role_describe">平台公告</textarea>
                                     <div class="form_prompt"></div>
-                                    <div class="notic">上传图片格式必须是gif,jpg,jpeg,png;图片大小在200kb之内，建议尺寸：159*100</div>    </div>
+                                    <div class="notic">该信息将在用户中心欢迎页面显示</div>    </div>
                                   </div>
-                                  <div class="item user_notice" data-val="120">
-                                    <div class="label">用户中心公告：</div>
+                                  <div class="item shop_notice" data-val="121">
+                                    <div class="label">平台公告：</div>
                                     <div class="label_value">
-                                      <textarea class="textarea" name="value[120]" id="role_describe">平台公告</textarea>
+                                      <textarea class="textarea" name="value[121]" id="role_describe">说的是尽可能发动机发的看风景的看法呢</textarea>
                                       <div class="form_prompt"></div>
-                                      <div class="notic">该信息将在用户中心欢迎页面显示</div>    </div>
+                                      <div class="notic">以上内容将显示在首页平台公告中,注意控制公告内容长度不要超过公告显示区域大小。</div>    </div>
                                     </div>
-                                    <div class="item shop_notice" data-val="121">
-                                      <div class="label">平台公告：</div>
+                                    <div class="item shop_reg_closed" data-val="122">
+                                      <div class="label">是否关闭注册：</div>
                                       <div class="label_value">
-                                        <textarea class="textarea" name="value[121]" id="role_describe">说的是尽可能发动机发的看风景的看法呢</textarea>
+                                        <div class="checkbox_items">
+                                          <div class="checkbox_item">
+                                            <input type="radio" name="value[122]" class="ui-radio evnet_shop_reg_closed" id="value_122_0" value="1">
+                                            <label for="value_122_0" class="ui-radio-label">是</label>
+                                          </div>
+                                          <div class="checkbox_item">
+                                            <input type="radio" name="value[122]" class="ui-radio evnet_shop_reg_closed" id="value_122_1" value="0" checked="true">
+                                            <label for="value_122_1" class="ui-radio-label">否</label>
+                                          </div>
+                                        </div>
                                         <div class="form_prompt"></div>
-                                        <div class="notic">以上内容将显示在首页平台公告中,注意控制公告内容长度不要超过公告显示区域大小。</div>    </div>
+                                        <div class="notic">平台是否关闭前台会员注册</div>    </div>
                                       </div>
-                                      <div class="item shop_reg_closed" data-val="122">
-                                        <div class="label">是否关闭注册：</div>
+                                      <div class="item sign" data-val="924">
+                                        <div class="label">发货日期起可退换货时间：</div>
                                         <div class="label_value">
-                                          <div class="checkbox_items">
-                                            <div class="checkbox_item">
-                                              <input type="radio" name="value[122]" class="ui-radio evnet_shop_reg_closed" id="value_122_0" value="1">
-                                              <label for="value_122_0" class="ui-radio-label">是</label>
-                                            </div>
-                                            <div class="checkbox_item">
-                                              <input type="radio" name="value[122]" class="ui-radio evnet_shop_reg_closed" id="value_122_1" value="0" checked="true">
-                                              <label for="value_122_1" class="ui-radio-label">否</label>
-                                            </div>
-                                          </div>
+                                          <input type="text" name="value[924]" class="text sign" value="7" autocomplete="off">
                                           <div class="form_prompt"></div>
-                                          <div class="notic">平台是否关闭前台会员注册</div>    </div>
-                                        </div>
-                                        <div class="item sign" data-val="924">
-                                          <div class="label">发货日期起可退换货时间：</div>
-                                          <div class="label_value">
-                                            <input type="text" name="value[924]" class="text sign" value="7" autocomplete="off">
-                                            <div class="form_prompt"></div>
-                                            <div class="notic">以天数为单位</div>    </div>
+                                          <div class="notic">以天数为单位</div>    </div>
 
-                                          </div>
-                                          <div class="item">
-                                            <div class="label">&nbsp;</div>
-                                            <div class="label_value info_btn">
-                                              <input type="submit" value=" 确定 " ectype="btnSubmit" class="button">  
-                                            </div>
+                                        </div>
+                                        <div class="item">
+                                          <div class="label">&nbsp;</div>
+                                          <div class="label_value info_btn">
+                                            <input type="submit" value=" 确定 " ectype="btnSubmit" class="button">  
                                           </div>
                                         </div>
-                                      </form>
-                                    </div>
+                                      </div>
+                                    </form>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="layui-footer">
-                                <!-- 底部固定区域 -->
-                                <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
                               </div>
                             </div>
-                          </body>
-                          <script src="./layui/layui.js"></script>
-                          <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-                          <script>
-                            layui.use('element', function(){
-  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-});
-                            layui.use('form', function(){
-                              var form = layui.form;
-                            });
-                          </script>
-                          </html>
+                            <div class="layui-footer">
+                              <!-- 底部固定区域 -->
+                              <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
+                            </div>
+                          </div>
+                        </body>
+
+                        </html>

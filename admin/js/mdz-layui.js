@@ -1,10 +1,11 @@
-layui.use(['jquery','element', 'form','table', 'layer','upload'],function(){
+layui.use(['jquery','element', 'form','table', 'layer','upload','laydate'],function(){
     var $ = layui.$;
     var element = layui.element;
     var form = layui.form;
     var table = layui.table;
     var layer = layui.layer;
     var upload = layui.upload;
+    var laydate = layui.laydate;
     // 删除提示
     $('.btn_trash').on('click', function() {
         layer.confirm('真的要删除吗？', {title:'警告'}, function(index){
