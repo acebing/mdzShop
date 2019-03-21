@@ -8,7 +8,8 @@ require.config({
 　　　"jquery": "./jquery.js",
 　　　　　　"underscore": "./layui/layui.js",
 　　　　　　"perfect-scrollbar": "./perfect-scrollbar.min.js"
-　　　"jquery": "./jquery.js",
+　　　
+"jquery": "./jquery.js",
 　　　　　　"underscore": "./layui/layui.js",
 　　　　　　"perfect-scrollbar": "./perfect-scrollbar.min.js"
 
