@@ -1,510 +1,364 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>layui</title>
-  <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="./layui/css/layui.css">
-    <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
-    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
-     <link rel="stylesheet" href="./css/purebox.css">
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/order-new.css">
-    <link rel="stylesheet" href="./css/mdz.css">
-    <!-- js部分 -->
-    <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
-    <script src="./js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="./layui/layui.js"></script>
-    <script src="./js/mdz-layui.js"></script>
-    <script src="./js/jquery.validation.min.js"></script>
-    <script src="./js/perfect-scrollbar.min.js"></script>
-    <script src="./js/region.js"></script>
-    <script src="./js/admin.js"></script> 
+<meta charset="utf-8">
+<title>layui</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="./layui/css/layui.css">
+<link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+<link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="./css/purebox.css">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/order-new.css">
+<link rel="stylesheet" href="./css/mdz.css">
+<!-- js部分 -->
+<script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+<script src="./js/jquery-ui/jquery-ui.min.js"></script>
+<script src="./layui/layui.js"></script>
+<script src="./js/mdz-layui.js"></script>
+<script src="./js/jquery.validation.min.js"></script>
+<script src="./js/perfect-scrollbar.min.js"></script>
+<script src="./js/region.js"></script>
+<script src="./js/admin.js"></script>
 </head>
 <body>
-  <div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
-      <!-- 头部区域（可配合layui已有的水平导航） -->
-      <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
-        <li class="layui-nav-item"><a href="">商城管理</a></li>
-        <li class="layui-nav-item"><a href="">财务管理</a></li>
-        <li class="layui-nav-item"><a href="">微商城</a></li>
-        <li class="layui-nav-item"><a href="">小程序</a></li>
-      </ul>
-      <ul class="layui-nav layui-layout-right">
-        <li class="layui-nav-item">
-          <a href="javascript:;">
-            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-            沈总
-          </a>
-          <dl class="layui-nav-child">
-            <dd><a href="">基本资料</a></dd>
-            <dd><a href="">安全设置</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-         <a href="">
-          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
-        </a>
-      </li>
-      <li class="layui-nav-item">
-      	<a href="">
-      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
-      	</a>
-      </li>
-      <li class="layui-nav-item">
-      	<a href="">
-      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
-      	</a>
-      </li>
-      <li class="layui-nav-item">
-      	<a href="">
-      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
-      	</a>
-      </li>
-      <li class="layui-nav-item">
-      	<a href="">
-      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
-      	</a>
-      </li>
-    </ul>
-  </div>
-  <div class="layui-side layui-bg-black">
-    <div class="layui-side-scroll">
-      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">平台设置</a>
-          <dl class="layui-nav-child">
-            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
-            <dd><a href="javascript:;">支付方式</a></dd>
-            <dd><a href="javascript:;">地区&配送</a></dd>
-            <dd><a href="javascript:;">打印设置</a></dd>
-            <dd><a href="javascript:;">友情链接</a></dd>
-            <dd><a href="javascript:;">合作伙伴</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">文章管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">文章分类</a></dd>
-            <dd><a href="javascript:;">文章列表</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">邮件</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">邮件配置</a></dd>
-          </dl>
-        </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">权限管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">邮件配置</a></dd>
-          </dl>
-        </li>
-      </ul>
+<div class="layui-layout layui-layout-admin">
+<div class="layui-header">
+<div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+<!-- 头部区域（可配合layui已有的水平导航） -->
+<ul class="layui-nav layui-layout-left">
+<li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+<li class="layui-nav-item"><a href="">商城管理</a></li>
+<li class="layui-nav-item"><a href="">财务管理</a></li>
+<li class="layui-nav-item"><a href="">微商城</a></li>
+<li class="layui-nav-item"><a href="">小程序</a></li>
+</ul>
+<ul class="layui-nav layui-layout-right">
+<li class="layui-nav-item">
+  <a href="javascript:;">
+    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+    沈总
+  </a>
+  <dl class="layui-nav-child">
+    <dd><a href="">基本资料</a></dd>
+    <dd><a href="">安全设置</a></dd>
+  </dl>
+</li>
+<li class="layui-nav-item">
+  <a href="">
+    <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+  </a>
+</li>
+<li class="layui-nav-item">
+  <a href="">
+    <i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+  </a>
+</li>
+<li class="layui-nav-item">
+  <a href="">
+    <i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+  </a>
+</li>
+<li class="layui-nav-item">
+  <a href="">
+    <i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+  </a>
+</li>
+<li class="layui-nav-item">
+  <a href="">
+    <i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+  </a>
+</li>
+</ul>
+</div>
+<div class="layui-side layui-bg-black">
+<div class="layui-side-scroll">
+<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+  <li class="layui-nav-item layui-nav-itemed">
+    <a class="" href="javascript:;">平台设置</a>
+    <dl class="layui-nav-child">
+      <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+      <dd><a href="javascript:;">支付方式</a></dd>
+      <dd><a href="javascript:;">地区&配送</a></dd>
+      <dd><a href="javascript:;">打印设置</a></dd>
+      <dd><a href="javascript:;">友情链接</a></dd>
+      <dd><a href="javascript:;">合作伙伴</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">文章管理</a>
+    <dl class="layui-nav-child">
+      <dd><a href="javascript:;">文章分类</a></dd>
+      <dd><a href="javascript:;">文章列表</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">邮件</a>
+    <dl class="layui-nav-child">
+      <dd><a href="javascript:;">邮件配置</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">权限管理</a>
+    <dl class="layui-nav-child">
+      <dd><a href="javascript:;">邮件配置</a></dd>
+    </dl>
+  </li>
+</ul>
+</div>
+</div>
+<div class="layui-body" style="padding: 20px;">
+<span class="layui-breadcrumb">
+<a href="">平台设置</a>
+<a><cite>配送方式&地区</cite></a>
+</span>
+<div class="layui-tab-content">
+<div class="layui-tab layui-tab-card">
+  <ul class="layui-tab-title">
+    <li class="layui-this">配送方式</li>
+    <li>地区列表</li>
+    <li>自提时间段</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit">
+          <i class="sc_icon"></i>
+          <h4>操作提示</h4>
+          <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>该页面展示了平台所有配送方式的信息列表。</li>
+          <li>安装配送方式后需设置区域方可使用。</li>
+          <li>支持快递鸟打印的快递，部分还需要申请帐号才能正常使用，请按照如下提示进行设置
+            <p><strong class="red">无需申请帐号：</strong>EMS、邮政快递包裹、顺丰、宅急送</p>
+            <p><strong class="red">线上（快递鸟后台）申请账号：</strong>韵达、圆通</p>
+            <p><strong class="red">线下（网点）申请账号：</strong>百世汇通、全峰、申通、天天、中通</p></li>
+          </ul>
+        </div>
+        <div class="flexilist">
+          <div class="common-content">
+            <div class="list-div">
+              <table class="table_layout">
+                <thead>
+                  <tr>
+                    <th width="12%"><div class="tDiv">配送方式名称</div></th>
+                    <th width="30%"><div class="tDiv">网址 (仅供参考)</div></th>
+                    <th width="7%"><div class="tDiv">货到付款</div></th>
+                    <th width="7%"><div class="tDiv">快递鸟打印</div></th>
+                    <th width="7%"><div class="tDiv">默认方式</div></th>
+                    <th width="8%"><div class="tDiv">排序</div></th>
+                    <th width="22%" class="handle">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td>
+                      <div class="tDiv">中通速递</div>
+                    </td>
+                    <td>
+                      <div class="tDiv">
+                        <span><a href="http://www.zto.cn" target="_blank">http://www.zto.cn</a></span>
+                      </div>
+                    </td>
+                    <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
+                    <td><div class="tDiv"><img src="images/yes.png" alt="是" title="是"></div></td>
+                    <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
+                    <td><div class="tDiv">0</div></td>
+                    <td class="handle handle_tr tr">
+                      <div class="tDiv">
+                        <a href="javascript:void(0);" class="btn_inst" ectype="account_setting" data-id="25" data-code="ems"><i class="icon icon-cog"></i>快递鸟帐号设置</a>
+                        <a href="shipping_area.php?act=list&amp;shipping=17" class="btn_region"><i class="sc_icon icon-map-marker"></i>设置区域</a>
+                        <a href="shipping.php?act=edit_print_template&amp;shipping=17" class="btn_edit"><i class="icon icon-cog"></i>设置运费</a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td>
+                      <div class="tDiv">圆通速递</div>
+                    </td>
+                    <td>
+                      <div class="tDiv">
+                        <span><a href="http://www.zto.cn" target="_blank">http://www.zto.cn</a></span>
+                      </div>
+                    </td>
+                    <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
+                    <td><div class="tDiv"><img src="images/yes.png" alt="是" title="是"></div></td>
+                    <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
+                    <td><div class="tDiv">0</div></td>
+                    <td class="handle handle_tr tr">
+                      <div class="tDiv">
+                        <a href="javascript:void(0);" class="btn_inst" id='btn_inst' ectype="account_setting" data-id="25" data-code="ems"><i class="icon icon-cog" id="btn_inst"></i>快递鸟帐号设置</a>
+                        <a href="shipping_area.php?act=list&amp;shipping=17" class="btn_region"><i class="sc_icon icon-map-marker"></i>设置区域</a>
+                        <a href="shipping.php?act=edit_print_template&amp;shipping=17" class="btn_edit"><i class="icon icon-cog"></i>设置运费</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-tab-item">
+        <div class="explanation" id="explanation">
+          <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+          </div>
+          <ul>
+            <li>在新增一级地区点击管理进入下一级地区，可进行删除和编辑。</li>
+            <li>地区用于商城定位，请根据商城实际情况谨慎设置。</li>
+            <li>生成地区首字母是方便根据地区首字母搜索相对应的地区。</li>
+            <li>地区层级关系必须为中国→省/直辖市→市→县，地区暂只支持到四级地区其后不显示，暂不支持国外。</li>
+          </ul>
+        </div>
+        <div class="flexilist">
+          <div class="common-head">
+            <div class="fl mt2">
+              <a href="area_manage.php?act=create_region_initial"><div class="fbutton"><div class="add_region" title="生成地区首字母"><span><i class="icon icon-plus"></i>生成地区首字母</span></div></div></a>
+              <a href="javascript:void(0);" class="restore_btn"><div class="fbutton"><div class="cog" title="恢复默认设置"><span><i class="icon icon-cog"></i>恢复默认设置</span></div></div></a>
+            </div>
+            <div class="add_area fr">
+              <form method="post" action="area_manage.php" name="theForm">
+                <input type="hidden" name="region_type" value="0">
+                <input type="hidden" name="parent_id" value="0">
+                <input type="text" name="region_name" class="text" placeholder="请输入地区名称" autocomplete="off">
+                <a href="javascript:void(0);" onclick="return add_area();" class="btn btn30 red_btn">新增地区</a>
+              </form>
+            </div>
+          </div>
+          <div class="common-content">
+            <div class="list-div" id="listDiv">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th width="8%"><div class="tDiv">编号</div></th>
+                    <th width="27%"><div class="tDiv">地区名称</div></th>
+                    <th width="25%"><div class="tDiv">所在层级</div></th>
+                    <th width="20%"><div class="tDiv">所属地区</div></th>
+                    <th width="20%" class="handle">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td><div class="tDiv">1</div></td>
+                    <td>
+                      <div class="tDiv">
+                        <input type="text" name="measure_unit" class="text w80" value="中国" onkeyup="listTable.editInput(this, 'edit_area_name', 1)">
+                      </div>
+                    </td>
+                    <td><div class="tDiv">一级地区</div></td>
+                    <td><div class="tDiv">-</div></td>
+                    <td class="handle">
+                      <div class="tDiv a1">
+                        <a href="area_manage.php?act=list&amp;type=&amp;pid=1" title="管理" class="btn_see"><i class="sc_icon sc_icon_see"></i>管理</a>
+                        <a href="javascript:listTable.remove(1, '如果订单或用户默认配送方式中使用以下地区，这些地区信息将显示为空。您确认要删除这条记录吗?', 'drop_area')" title="删除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layui-tab-item">
+        <div class="explanation" id="explanation">
+          <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+          </div>
+          <ul>
+            <li>自提点时间段列表。</li>
+            <li>在前台结算页面上门自取时间选择中会使用到。</li>
+          </ul>
+        </div>
+        <div class="flexilist">
+          <!--商品列表-->
+          <div class="common-head">
+            <div class="fl">
+              <a href="shipping.php?act=date_add"><div class="fbutton"><div class="add" title="添加自提时间段"><span><i class="icon icon-plus"></i>添加自提时间段</span></div></div></a>
+            </div>
+          </div>
+          <div class="common-content">
+            <div class="list-div" id="listDiv">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th width="10%"><div class="tDiv">编号</div></th>
+                    <th width="40%"><div class="tDiv">时段</div></th>
+                    <th width="30%"><div class="tDiv">可选开始日期</div></th>
+                    <th width="20%" class="handle">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td><div class="tDiv">2</div></td>
+                    <td><div class="tDiv">9:00-20:00</div></td>
+                    <td><div class="tDiv">0</div></td>
+                    <td class="handle">
+                      <div class="tDiv a2">
+                        <a href="shipping.php?act=date_edit&amp;sid=2" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                        <a href="shipping.php?act=date_remove&amp;sid=2" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--商品列表end-->
+        </div>
+      </div>
+
+      <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
+      </div>
     </div>
-  </div>
-  <div class="layui-body" style="padding: 20px;">
-  	<span class="layui-breadcrumb">
-     <a href="">平台设置</a>
-     <a><cite>配送方式&地区</cite></a>
-   </span>
-   <div class="layui-tab-content">
-    <div class="layui-tab layui-tab-card">
-      <ul class="layui-tab-title">
-        <li class="layui-this">配送方式</li>
-        <li>地区列表</li>
-        <li>自提时间段</li>
-      </ul>
-      <div class="layui-tab-content">
-        <div class="layui-tab-item layui-show">
-          <div class="explanation" id="explanation">
-            <div class="ex_tit">
-              <i class="sc_icon"></i>
-              <h4>操作提示</h4>
-              <span id="explanationZoom" title="收起提示"></span>
-            </div>
-            <ul>
-              <li>该页面展示了平台所有配送方式的信息列表。</li>
-              <li>安装配送方式后需设置区域方可使用。</li>
-              <li>支持快递鸟打印的快递，部分还需要申请帐号才能正常使用，请按照如下提示进行设置
-                <p><strong class="red">无需申请帐号：</strong>EMS、邮政快递包裹、顺丰、宅急送</p>
-                <p><strong class="red">线上（快递鸟后台）申请账号：</strong>韵达、圆通</p>
-                <p><strong class="red">线下（网点）申请账号：</strong>百世汇通、全峰、申通、天天、中通</p></li>
-              </ul>
-            </div>
-            <div class="flexilist">
-              <div class="common-content">
-                <div class="list-div">
-                  <table class="table_layout">
-                    <thead>
-                      <tr>
-                        <th width="12%"><div class="tDiv">配送方式名称</div></th>
-                        <th width="30%"><div class="tDiv">网址 (仅供参考)</div></th>
-                        <th width="7%"><div class="tDiv">货到付款</div></th>
-                        <th width="7%"><div class="tDiv">快递鸟打印</div></th>
-                        <th width="7%"><div class="tDiv">默认方式</div></th>
-                        <th width="8%"><div class="tDiv">排序</div></th>
-                        <th width="22%" class="handle">操作</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="">
-                        <td>
-                          <div class="tDiv">中通速递</div>
-                        </td>
-                        <td>
-                          <div class="tDiv">
-                            <span><a href="http://www.zto.cn" target="_blank">http://www.zto.cn</a></span>
-                          </div>
-                        </td>
-                        <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
-                        <td><div class="tDiv"><img src="images/yes.png" alt="是" title="是"></div></td>
-                        <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
-                        <td><div class="tDiv">0</div></td>
-                        <td class="handle handle_tr tr">
-                          <div class="tDiv">
-                            <a href="javascript:void(0);" class="btn_inst" ectype="account_setting" data-id="25" data-code="ems"><i class="icon icon-cog"></i>快递鸟帐号设置</a>
-                            <a href="shipping_area.php?act=list&amp;shipping=17" class="btn_region"><i class="sc_icon icon-map-marker"></i>设置区域</a> 
-                            <a href="shipping.php?act=edit_print_template&amp;shipping=17" class="btn_edit"><i class="icon icon-cog"></i>设置运费</a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr class="">
-                        <td>
-                          <div class="tDiv">圆通速递</div>
-                        </td>
-                        <td>
-                          <div class="tDiv">
-                            <span><a href="http://www.zto.cn" target="_blank">http://www.zto.cn</a></span>
-                          </div>
-                        </td>
-                        <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
-                        <td><div class="tDiv"><img src="images/yes.png" alt="是" title="是"></div></td>
-                        <td><div class="tDiv"><img src="images/no.png" alt="否" title="否"></div></td>
-                        <td><div class="tDiv">0</div></td>
-                        <td class="handle handle_tr tr">
-                          <div class="tDiv">
-                            <a href="javascript:void(0);" class="btn_inst" id='btn_inst' ectype="account_setting" data-id="25" data-code="ems"><i class="icon icon-cog" id="btn_inst"></i>快递鸟帐号设置</a>
-                            <a href="shipping_area.php?act=list&amp;shipping=17" class="btn_region"><i class="sc_icon icon-map-marker"></i>设置区域</a> 
-                            <a href="shipping.php?act=edit_print_template&amp;shipping=17" class="btn_edit"><i class="icon icon-cog"></i>设置运费</a>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="layui-tab-item">
-            <div class="explanation" id="explanation">
-              <div class="ex_tit">
-                <i class="sc_icon"></i>
-                <h4>操作提示</h4>
-                <span id="explanationZoom" title="收起提示"></span>
-              </div>
-              <ul>
-                <li>在新增一级地区点击管理进入下一级地区，可进行删除和编辑。</li>
-                <li>地区用于商城定位，请根据商城实际情况谨慎设置。</li>
-                <li>生成地区首字母是方便根据地区首字母搜索相对应的地区。</li>
-                <li>地区层级关系必须为中国→省/直辖市→市→县，地区暂只支持到四级地区其后不显示，暂不支持国外。</li>
-              </ul>
-            </div>
-            <div class="flexilist">
-              <div class="common-head">
-                <div class="fl mt2">
-                  <a href="area_manage.php?act=create_region_initial"><div class="fbutton"><div class="add_region" title="生成地区首字母"><span><i class="icon icon-plus"></i>生成地区首字母</span></div></div></a>
-                  <a href="javascript:void(0);" class="restore_btn"><div class="fbutton"><div class="cog" title="恢复默认设置"><span><i class="icon icon-cog"></i>恢复默认设置</span></div></div></a>
-                </div>
-                <div class="add_area fr">
-                  <form method="post" action="area_manage.php" name="theForm">
-                   <input type="hidden" name="region_type" value="0">
-                   <input type="hidden" name="parent_id" value="0">
-                   <input type="text" name="region_name" class="text" placeholder="请输入地区名称" autocomplete="off">
-                   <a href="javascript:void(0);" onclick="return add_area();" class="btn btn30 red_btn">新增地区</a>
-                 </form>
-               </div>
-             </div>
-             <div class="common-content">
-              <div class="list-div" id="listDiv">
-                <table cellpadding="0" cellspacing="0" border="0">
-                  <thead>
-                    <tr>
-                      <th width="8%"><div class="tDiv">编号</div></th>
-                      <th width="27%"><div class="tDiv">地区名称</div></th>
-                      <th width="25%"><div class="tDiv">所在层级</div></th>
-                      <th width="20%"><div class="tDiv">所属地区</div></th>
-                      <th width="20%" class="handle">操作</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="">
-                      <td><div class="tDiv">1</div></td>
-                      <td>
-                        <div class="tDiv">
-                          <input type="text" name="measure_unit" class="text w80" value="中国" onkeyup="listTable.editInput(this, 'edit_area_name', 1)">
-                        </div>
-                      </td>
-                      <td><div class="tDiv">一级地区</div></td>
-                      <td><div class="tDiv">-</div></td>
-                      <td class="handle">
-                        <div class="tDiv a1">
-                          <a href="area_manage.php?act=list&amp;type=&amp;pid=1" title="管理" class="btn_see"><i class="sc_icon sc_icon_see"></i>管理</a>
-                          <a href="javascript:listTable.remove(1, '如果订单或用户默认配送方式中使用以下地区，这些地区信息将显示为空。您确认要删除这条记录吗?', 'drop_area')" title="删除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="layui-tab-item">
-          <div class="explanation" id="explanation">
-            <div class="ex_tit">
-              <i class="sc_icon"></i>
-              <h4>操作提示</h4>
-              <span id="explanationZoom" title="收起提示"></span>
-            </div>
-            <ul>
-              <li>自提点时间段列表。</li>
-              <li>在前台结算页面上门自取时间选择中会使用到。</li>
-            </ul>
-          </div>
-          <div class="flexilist">
-            <!--商品列表-->
-            <div class="common-head">
-              <div class="fl">
-                <a href="shipping.php?act=date_add"><div class="fbutton"><div class="add" title="添加自提时间段"><span><i class="icon icon-plus"></i>添加自提时间段</span></div></div></a>
-              </div>  
-            </div>
-            <div class="common-content">
-              <div class="list-div" id="listDiv">
-                <table cellpadding="0" cellspacing="0" border="0">
-                  <thead>
-                    <tr>
-                      <th width="10%"><div class="tDiv">编号</div></th>
-                      <th width="40%"><div class="tDiv">时段</div></th>
-                      <th width="30%"><div class="tDiv">可选开始日期</div></th>
-                      <th width="20%" class="handle">操作</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="">
-                      <td><div class="tDiv">2</div></td>
-                      <td><div class="tDiv">9:00-20:00</div></td>
-                      <td><div class="tDiv">0</div></td>
-                      <td class="handle">
-                        <div class="tDiv a2">
-                          <a href="shipping.php?act=date_edit&amp;sid=2" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
-                          <a href="shipping.php?act=date_remove&amp;sid=2" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
-                        </div>
-                      </td>                           
-                    </tr>
-                  </tbody>            
-                </table>
-              </div>
-            </div>
-            <!--商品列表end-->
-          </div>
-        </div>
 
-        <div class="layui-footer">
-          <!-- 底部固定区域 -->
-          <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
-        </div>
-      </div>
-      
-    </body>
-    <div class="transport_shipping_tpl" id="shipping_tpl" style="display: none;">
-        <form action="goods_transport.php?act=add_shipping_tpl" method="post" name="shipping_tplForm" enctype="multipart/form-data">
-          <input type="hidden" name="tid" id="tab_tid" value="10">
-          <input type="hidden" name="shipping_id" id="tab_shipping_id" value="24">
-          <input type="hidden" name="id" value="0">
+  </body>
 
-          <div class="item">
-            <div class="label">快递方式：</div>
-            <div class="label_value">
-              <div class="checkbox_items">
-                <div class="checkbox_item">
-                邮政快递包裹            </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="label">区域名称：</div>
-            <div class="label_value">
-              <div class="checkbox_items">
-                <div class="checkbox_item">
-                  <input type="text" name="tpl_name" value="" class="text" autocomplete="off">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="label">费用计算方式：</div>
-            <div class="label_value">
-              <div class="checkbox_items">
-                <div class="checkbox_item">
-                  <input type="radio" class="ui-radio" id="fee_compute_mode_1" checked="true" onclick="compute_mode('post_express','weight')" name="fee_compute_mode" value="by_weight">
-                  <label for="fee_compute_mode_1" class="ui-radio-label">按重量计算</label>
-                </div>
-                <div class="checkbox_item">
-                  <input type="radio" class="ui-radio" id="fee_compute_mode_0" onclick="compute_mode('post_express','number')" name="fee_compute_mode" value="by_number">
-                  <label for="fee_compute_mode_0" class="ui-radio-label">按商品件数计算</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-          <div class="item" id="item_fee" style="display:none">
-            <div class="label"><span class="require-field">*</span>&nbsp;单件商品费用：</div>
-            <div class="label_value">
-              <input type="text" name="item_fee" value="5" class="text" autocomplete="off">
-              <div class="form_prompt"></div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
-          <div class="item" id="base_fee">
-            <div class="label"><span class="require-field">*</span>&nbsp;1000克以内费用：</div>
-            <div class="label_value">
-              <input type="text" name="base_fee" value="5" class="text" autocomplete="off">
-              <div class="form_prompt"></div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
-          <div class="item" id="step_fee">
-            <div class="label"><span class="require-field">*</span>&nbsp;5000克以内续重每500克费用：</div>
-            <div class="label_value">
-              <input type="text" name="step_fee" value="2" class="text" autocomplete="off">
-              <div class="form_prompt"></div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
-          <div class="item" id="step_fee1">
-            <div class="label"><span class="require-field">*</span>&nbsp;5001克以上续重500克费用：</div>
-            <div class="label_value">
-              <input type="text" name="step_fee1" value="1" class="text" autocomplete="off">
-              <div class="form_prompt"></div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
-          <div class="item" id="free_money">
-            <div class="label"><span class="require-field">*</span>&nbsp;免费额度：</div>
-            <div class="label_value">
-              <input type="text" name="free_money" value="0" class="text" autocomplete="off">
-              <div class="form_prompt"></div>
-            </div>
-          </div>
-          <!---->
-          <!---->
-          <!---->
-          <div class="item mb0">
-            <div class="label"><span class="require-field">*</span>到达目的地：</div>
-            <div class="label_value">
-              <div class="level_linkage">
-                <div class="fl">
-                  <div class="ui-dropdown smartdropdown alien" style="z-index: 100;">
-                    <input type="hidden" value="0" name="province" id="selProvinces">
-                    <div class="txt">省/直辖市</div>
-                    <i class="down u-dropdown-icon"></i>
-                    <div class="options clearfix" style="max-height:300px;">
-                      <span class="liv" data-text="全国" data-type="0" data-value="-1">全国</span>
-                      <span class="liv" data-text="北京" data-type="2" data-value="2">北京</span>
-                      
-                    </div>
-                  </div>
-                  <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
-                    <input type="hidden" value="0" name="city" id="selCities">
-                    <div class="txt">市</div>
-                    <i class="down u-dropdown-icon"></i>
-                    <div class="options clearfix" style="max-height:300px;"></div>
-                  </div>
-                  <div id="dlRegion" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
-                    <input type="hidden" value="0" name="district" id="selDistricts">
-                    <div class="txt">区/县</div>
-                    <i class="down u-dropdown-icon"></i>
-                    <div class="options clearfix" style="max-height:300px;"></div>
-                  </div>
-                  <div id="dlStreet" class="ui-dropdown smartdropdown alien" style="z-index: 97;">
-                    <input type="hidden" value="0" name="street" id="selStreet">
-                    <div class="txt">街道</div>
-                    <i class="down u-dropdown-icon"></i>
-                    <div class="options clearfix" style="max-height:300px;"></div>
-                  </div>
-                </div>
-                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>            <div class="checkbox-item">
-                  <input type="checkbox" name="deleteArea" id="deleteArea" class="ui-checkbox" checked="">
-                  <label class="ui-label" for="deleteArea">去除已选地区</label>
-                </div>
-                <div class="notic bf100 mt5">不选择地区（点添加地区）时会添加“全国地区”</div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="label">&nbsp;</div>
-            <div class="label_value">
-              <!---->
-              <div class="checkbox_items" id="regionCell">
-              </div>
-              <!---->
-            </div>
-          </div>
-        </form>
-      </div>
-      <div id="test">dfdgfgfg</div>
-<!-- <script type="text/javascript" src="./js/jquery.purebox.js"></script> -->
-<script type="text/javascript">
-  // $(function () {
-  //   var con = '';
-  //   console.log(con);
-  //   $('.btn_inst').click(function() {
-      
-  //     $.pb({
-  //       id:'btn_inst',
-  //      title:"选择快递",
-  //      width:900,
-  //      content:con.show(),
-  //      ok_title:"确定",
-  //      cl_title:"取消",
-  //      drag:false,
-  //      foot:true,
-  //      cl_cBtn:true,
-       
-  //    });
-  //   });
+    <script type="text/javascript" src="./js/jquery.purebox.js"></script>
+    <script type="text/javascript">
+    $(function () {
+    //   var con = $('#shipping_tpl');
+      $('.btn_inst').click(function() {
+          $.get('./tpl.html', function(data) {
+            $.pb({
+              id:'btn_inst',
+              title:"选择快递",
+              width:900,
+              content:data,
+              ok_title:"确定",
+              cl_title:"取消",
+              drag:false,
+              foot:true,
+              cl_cBtn:true,
+            });
+        });
+
+        // con.hide();
+      });
+    });
+
+    // $('#btn_inst').on('click',  function(event) {
+    //   $.get('./index1.html', function(data) {
+    //   layer.open({
+    //   type:1,
+    //   area: '900px',
+    //   content: data
+    //   });
+    // });
+    //   });
   // });
-$('#btn_inst').on('click',  function(event) {
- layer.open({
-  type:1, 
-  area: '900px',
-  content: $('#test') 
-}); 
-});
-  
-</script>
-</html>
+    </script>
+    </html>
