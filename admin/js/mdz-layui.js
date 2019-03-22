@@ -1,3 +1,4 @@
+
 layui.use(['jquery','element', 'form','table', 'layer','upload','laydate'],function(){
     var $ = layui.$;
     var element = layui.element;
@@ -12,6 +13,10 @@ layui.use(['jquery','element', 'form','table', 'layer','upload','laydate'],funct
             layer.msg('删除成功！');
             layer.close(index);
         });
+    });
+    layer.config({
+      extend: 'myskin/style.css', //加载新皮肤
+      skin: 'layer-ext-myskin' //一旦设定，所有弹层风格都采用此主题。
     });
     var nowData = new Date();
     laydate.render({

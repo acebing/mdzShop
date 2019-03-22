@@ -7,11 +7,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="./layui/css/layui.css">
-  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
-  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-  <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/order-new.css">
-  <link rel="stylesheet" href="./css/mdz.css">
+    <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+     <link rel="stylesheet" href="./css/purebox.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/order-new.css">
+    <link rel="stylesheet" href="./css/mdz.css">
+    <!-- js部分 -->
+    <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+    <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./layui/layui.js"></script>
+    <script src="./js/mdz-layui.js"></script>
+    <script src="./js/jquery.validation.min.js"></script>
+    <script src="./js/perfect-scrollbar.min.js"></script>
+    <script src="./js/region.js"></script>
+    <script src="./js/admin.js"></script> 
 </head>
 <body>
   <div class="layui-layout layui-layout-admin">
@@ -181,7 +193,7 @@
                         <td><div class="tDiv">0</div></td>
                         <td class="handle handle_tr tr">
                           <div class="tDiv">
-                            <a href="javascript:void(0);" class="btn_inst" ectype="account_setting" data-id="25" data-code="ems"><i class="icon icon-cog"></i>快递鸟帐号设置</a>
+                            <a href="javascript:void(0);" class="btn_inst" id='btn_inst' ectype="account_setting" data-id="25" data-code="ems"><i class="icon icon-cog" id="btn_inst"></i>快递鸟帐号设置</a>
                             <a href="shipping_area.php?act=list&amp;shipping=17" class="btn_region"><i class="sc_icon icon-map-marker"></i>设置区域</a> 
                             <a href="shipping.php?act=edit_print_template&amp;shipping=17" class="btn_edit"><i class="icon icon-cog"></i>设置运费</a>
                           </div>
@@ -312,56 +324,187 @@
           <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
         </div>
       </div>
+      
     </body>
-    <script src="./layui/layui.js"></script>
-    <script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-    <script>
+    <div class="transport_shipping_tpl" id="shipping_tpl" style="display: none;">
+        <form action="goods_transport.php?act=add_shipping_tpl" method="post" name="shipping_tplForm" enctype="multipart/form-data">
+          <input type="hidden" name="tid" id="tab_tid" value="10">
+          <input type="hidden" name="shipping_id" id="tab_shipping_id" value="24">
+          <input type="hidden" name="id" value="0">
 
-      layui.use(['element', 'form','table', 'layer'],function(){
-        var element = layui.element;
-        var form = layui.form;
-        var table = layui.table;
-        var layer = layui.layer;
-  // 快递设置弹出层
-  $('.test2').on('click', function() {
-    var centent = $("#mdz-layercentent");
-    layer.open({
-      title:["账号设置",'font-size: 14px;color: #2c2c2c;font-weight: bold;'],
-      type: 1,
-      area:"475px",
-      content: centent,
-      btn: ['确定', '取消'],
-      btnAlign: 'c'
-    });
-  });
-  $('#addtime').on('click', function() {
-    var centent = $("#mdz-layeraddtime");
-    layer.open({
-      title:["添加自提时间段",'font-size: 14px;color: #2c2c2c;font-weight: bold;'],
-      type: 1,
-      area:"440px",
-      content: centent,
-      btn: ['确定', '重置'],
-      btnAlign: 'c'
-    });
-  });
-  $('#edittime').on('click', function() {
-    var centent = $("#mdz-layeredittime");
-    layer.open({
-      title:["编辑自提时间段",'font-size: 14px;color: #2c2c2c;font-weight: bold;'],
-      type: 1,
-      area:"440px",
-      content: centent,
-      btn: ['确定', '重置'],
-      btnAlign: 'c'
-    });
-  });
-  $('#delettime').on('click', function() {
-   layer.msg('删除成功');
- });
-
+          <div class="item">
+            <div class="label">快递方式：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                邮政快递包裹            </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">区域名称：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="text" name="tpl_name" value="" class="text" autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">费用计算方式：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_1" checked="true" onclick="compute_mode('post_express','weight')" name="fee_compute_mode" value="by_weight">
+                  <label for="fee_compute_mode_1" class="ui-radio-label">按重量计算</label>
+                </div>
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_0" onclick="compute_mode('post_express','number')" name="fee_compute_mode" value="by_number">
+                  <label for="fee_compute_mode_0" class="ui-radio-label">按商品件数计算</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="item_fee" style="display:none">
+            <div class="label"><span class="require-field">*</span>&nbsp;单件商品费用：</div>
+            <div class="label_value">
+              <input type="text" name="item_fee" value="5" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="base_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;1000克以内费用：</div>
+            <div class="label_value">
+              <input type="text" name="base_fee" value="5" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="step_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;5000克以内续重每500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee" value="2" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="step_fee1">
+            <div class="label"><span class="require-field">*</span>&nbsp;5001克以上续重500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee1" value="1" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="free_money">
+            <div class="label"><span class="require-field">*</span>&nbsp;免费额度：</div>
+            <div class="label_value">
+              <input type="text" name="free_money" value="0" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class="item mb0">
+            <div class="label"><span class="require-field">*</span>到达目的地：</div>
+            <div class="label_value">
+              <div class="level_linkage">
+                <div class="fl">
+                  <div class="ui-dropdown smartdropdown alien" style="z-index: 100;">
+                    <input type="hidden" value="0" name="province" id="selProvinces">
+                    <div class="txt">省/直辖市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;">
+                      <span class="liv" data-text="全国" data-type="0" data-value="-1">全国</span>
+                      <span class="liv" data-text="北京" data-type="2" data-value="2">北京</span>
+                      
+                    </div>
+                  </div>
+                  <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
+                    <input type="hidden" value="0" name="city" id="selCities">
+                    <div class="txt">市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlRegion" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
+                    <input type="hidden" value="0" name="district" id="selDistricts">
+                    <div class="txt">区/县</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlStreet" class="ui-dropdown smartdropdown alien" style="z-index: 97;">
+                    <input type="hidden" value="0" name="street" id="selStreet">
+                    <div class="txt">街道</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                </div>
+                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>            <div class="checkbox-item">
+                  <input type="checkbox" name="deleteArea" id="deleteArea" class="ui-checkbox" checked="">
+                  <label class="ui-label" for="deleteArea">去除已选地区</label>
+                </div>
+                <div class="notic bf100 mt5">不选择地区（点添加地区）时会添加“全国地区”</div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">&nbsp;</div>
+            <div class="label_value">
+              <!---->
+              <div class="checkbox_items" id="regionCell">
+              </div>
+              <!---->
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="test">dfdgfgfg</div>
+<!-- <script type="text/javascript" src="./js/jquery.purebox.js"></script> -->
+<script type="text/javascript">
+  // $(function () {
+  //   var con = '';
+  //   console.log(con);
+  //   $('.btn_inst').click(function() {
+      
+  //     $.pb({
+  //       id:'btn_inst',
+  //      title:"选择快递",
+  //      width:900,
+  //      content:con.show(),
+  //      ok_title:"确定",
+  //      cl_title:"取消",
+  //      drag:false,
+  //      foot:true,
+  //      cl_cBtn:true,
+       
+  //    });
+  //   });
+  // });
+$('#btn_inst').on('click',  function(event) {
+ layer.open({
+  type:1, 
+  area: '900px',
+  content: $('#test') 
+}); 
 });
-
+  
 </script>
 </html>

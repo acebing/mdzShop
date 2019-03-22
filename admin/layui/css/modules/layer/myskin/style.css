@@ -1,0 +1,8 @@
+body .layer-ext-myskin .layui-layer-title{
+	position: relative;
+    padding: 0 25px;
+    height: 40px;
+    line-height: 40px;
+    background: #ecf8ff;
+    border-radius: 5px 5px 0 0;
+}

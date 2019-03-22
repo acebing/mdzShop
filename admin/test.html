@@ -6,82 +6,168 @@
 	<link rel="stylesheet" href="./layui/css/layui.css">
 </head>
 <body>
-	<form class="layui-form" action="">
-  <div class="layui-form-item">
-    <label class="layui-form-label">输入框</label>
-    <div class="layui-input-block">
-      <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">密码框</label>
-    <div class="layui-input-inline">
-      <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-    </div>
-    <div class="layui-form-mid layui-word-aux">辅助文字</div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">选择框</label>
-    <div class="layui-input-block">
-      <select name="city" lay-verify="required">
-        <option value=""></option>
-        <option value="0">北京</option>
-        <option value="1">上海</option>
-        <option value="2">广州</option>
-        <option value="3">深圳</option>
-        <option value="4">杭州</option>
-      </select>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">复选框</label>
-    <div class="layui-input-block">
-      <input type="checkbox" name="like[write]" title="写作">
-      <input type="checkbox" name="like[read]" title="阅读" checked>
-      <input type="checkbox" name="like[dai]" title="发呆">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">开关</label>
-    <div class="layui-input-block">
-      <input type="checkbox" name="switch" lay-skin="switch">
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">单选框</label>
-    <div class="layui-input-block">
-      <input type="radio" name="sex" value="男" title="男">
-      <input type="radio" name="sex" value="女" title="女" checked>
-    </div>
-  </div>
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">文本域</label>
-    <div class="layui-input-block">
-      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-    </div>
-  </div>
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-      <button class="layui-btn layui-btn-normal" id="test">编辑</button>
-    </div>
-  </div>
-</form>
+	<div class="layui-btn" id="btn">测试</div>
+   <div class="transport_shipping_tpl" id="shipping_tpl" style="display: none;">
+        <form action="goods_transport.php?act=add_shipping_tpl" method="post" name="shipping_tplForm" enctype="multipart/form-data">
+          <input type="hidden" name="tid" id="tab_tid" value="10">
+          <input type="hidden" name="shipping_id" id="tab_shipping_id" value="24">
+          <input type="hidden" name="id" value="0">
+
+          <div class="item">
+            <div class="label">快递方式：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                邮政快递包裹            </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">区域名称：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="text" name="tpl_name" value="" class="text" autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">费用计算方式：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_1" checked="true" onclick="compute_mode('post_express','weight')" name="fee_compute_mode" value="by_weight">
+                  <label for="fee_compute_mode_1" class="ui-radio-label">按重量计算</label>
+                </div>
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_0" onclick="compute_mode('post_express','number')" name="fee_compute_mode" value="by_number">
+                  <label for="fee_compute_mode_0" class="ui-radio-label">按商品件数计算</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="item_fee" style="display:none">
+            <div class="label"><span class="require-field">*</span>&nbsp;单件商品费用：</div>
+            <div class="label_value">
+              <input type="text" name="item_fee" value="5" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="base_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;1000克以内费用：</div>
+            <div class="label_value">
+              <input type="text" name="base_fee" value="5" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="step_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;5000克以内续重每500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee" value="2" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="step_fee1">
+            <div class="label"><span class="require-field">*</span>&nbsp;5001克以上续重500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee1" value="1" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="free_money">
+            <div class="label"><span class="require-field">*</span>&nbsp;免费额度：</div>
+            <div class="label_value">
+              <input type="text" name="free_money" value="0" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class="item mb0">
+            <div class="label"><span class="require-field">*</span>到达目的地：</div>
+            <div class="label_value">
+              <div class="level_linkage">
+                <div class="fl">
+                  <div class="ui-dropdown smartdropdown alien" style="z-index: 100;">
+                    <input type="hidden" value="0" name="province" id="selProvinces">
+                    <div class="txt">省/直辖市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;">
+                      <span class="liv" data-text="全国" data-type="0" data-value="-1">全国</span>
+                      <span class="liv" data-text="北京" data-type="2" data-value="2">北京</span>
+                      
+                    </div>
+                  </div>
+                  <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
+                    <input type="hidden" value="0" name="city" id="selCities">
+                    <div class="txt">市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlRegion" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
+                    <input type="hidden" value="0" name="district" id="selDistricts">
+                    <div class="txt">区/县</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlStreet" class="ui-dropdown smartdropdown alien" style="z-index: 97;">
+                    <input type="hidden" value="0" name="street" id="selStreet">
+                    <div class="txt">街道</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                </div>
+                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>            <div class="checkbox-item">
+                  <input type="checkbox" name="deleteArea" id="deleteArea" class="ui-checkbox" checked="">
+                  <label class="ui-label" for="deleteArea">去除已选地区</label>
+                </div>
+                <div class="notic bf100 mt5">不选择地区（点添加地区）时会添加“全国地区”</div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">&nbsp;</div>
+            <div class="label_value">
+              <!---->
+              <div class="checkbox_items" id="regionCell">
+              </div>
+              <!---->
+            </div>
+          </div>
+        </form>
+      </div>
 </body>
+ <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
 <script src="./layui/layui.js"></script>
-<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-<script>
-layui.use(['element','form','jquery','layer'], function(){
-  var element = layui.element; 
-  var form = layui.form;
-  var layer =layui.layer;
-  
- $('#test').on('click', function() {
-    layer.tips('Hi，我是tips', '#test');
-   /* Act on the event */
- });
-  
+<script src="./js/mdz-layui.js"></script>
+<script type="text/javascript">
+  $('#btn').on('click',  function(event) {
+ layer.open({
+  type:1, 
+  area: '900px',
+  content: $('#shipping_tpl') 
+}); 
 });
 </script>
 </html>

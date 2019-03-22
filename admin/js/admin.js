@@ -34,37 +34,6 @@ $(function(){
 	},function(){
 		$(this).removeClass("hover");
 	});
-	// 表单验证
-	$("#submitBtn").click(function(){
-		if($("#articlecat_form").valid()){
-			$("#articlecat_form").submit();
-		}
-	});
-	$('#articlecat_form').validate({
-		errorPlacement:function(error, element){
-			var error_div = element.parents('div.label_value').find('div.form_prompt');
-			element.parents('div.label_value').find(".notic").hide();
-			error_div.append(error);
-		},
-		rules : {
-			name : {
-				required : true
-			},
-			sort_order : {
-				required : true
-			}
-			
-		},
-		messages : {
-			name : {
-				required : '<i class="icon icon-exclamation-sign"></i>'+"分类名称必填"
-			},
-			sort_order : {
-				required : '<i class="icon icon-exclamation-sign"></i>'+"分类名称"
-			}
-		}
-	});
-
 // 点击获取文章分类内容及分类ID
 $('.imitate_select').on('click', function(event) {
 	var sel_this = $(this)
