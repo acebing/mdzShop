@@ -22,6 +22,8 @@
   <script src="./js/mdz-layui.js"></script>
   <script src="./js/jquery.validation.min.js"></script>
   <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/jquery.purebox.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/region.js"></script>
   <script src="./js/admin.js"></script>
@@ -220,7 +222,7 @@
               <div class="flexilist">
                 <div class="common-head">
                   <div class="fl">
-                    <a href="goods_transport.php?act=add"><div class="fbutton"><div class="add" title="添加模板"><span><i class="icon icon-plus"></i>添加配送区域</span></div></div></a>
+                    <a href="#"><div class="fbutton"><div class="add" title="添加配送区域"><span><i class="icon icon-plus"></i>添加配送区域</span></div></div></a>
                   </div>        
                   <div class="refresh ml0">
                     <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
@@ -327,8 +329,6 @@
                     <li>地区层级关系必须为中国→省/直辖市→市→县，地区暂只支持到四级地区其后不显示，暂不支持国外。</li>
                   </ul>
                 </div>
-               
-
               </div>
               <div class="layui-tab-item">
                 <div class="explanation" id="explanation">
@@ -388,38 +388,29 @@
 
           </body>
 
-          <script type="text/javascript" src="./js/jquery.purebox.js"></script>
-          <script type="text/javascript">
-            $(function () {
-    //   var con = $('#shipping_tpl');
-    $('.btn_inst').click(function() {
-      $.get('./KDNtpl.html', function(data) {
-        $.pb({
-          id:'btn_inst',
-          title:"快递鸟面单账号设置",
-          width:600,
-          content:data,
-          ok_title:"确定",
-          cl_title:"取消",
-          drag:false,
-          foot:true,
-          cl_cBtn:true,
+ 
+  <script type="text/javascript">
+    $(function () {
+      $.levelLink();
+     pb_layer('btn_inst','./KDNtpl.html','快递鸟帐号设置',600);
+     pb_layer('add','./tpl.html','配送区域及运费设置',900);
+     function pb_layer(ele,tpl,tit ,width) {
+       $('.'+ele).click(function() {
+        $.get(tpl, function(data) {
+          $.pb({
+            id:ele,
+            title:tit,
+            width:width,
+            content:data,
+            ok_title:"确定",
+            cl_title:"取消",
+            drag:false,
+            foot:true,
+            cl_cBtn:true,
+          });
         });
       });
-
-        // con.hide();
-      });
-  });
-
-    // $('#btn_inst').on('click',  function(event) {
-    //   $.get('./index1.html', function(data) {
-    //   layer.open({
-    //   type:1,
-    //   area: '900px',
-    //   content: data
-    //   });
-    // });
-    //   });
-  // });
-</script>
+     }
+ });
+ </script>
 </html>
