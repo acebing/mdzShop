@@ -24,9 +24,8 @@
   <script src="./js/perfect-scrollbar.min.js"></script>
   <script src="./js/jquery.purebox.js"></script>
   <script src="./js/lib_ecmobanFunc.js"></script>
-  <script src="./js/listtable.js"></script>
-  <script src="./js/region.js"></script>
   <script src="./js/common.js"></script>
+  <script src="./js/region.js"></script>
   <script src="./js/admin.js"></script>
 </head>
 <body>
@@ -79,7 +78,6 @@
       </li>
     </ul>
   </div>
-  
   <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
@@ -117,11 +115,10 @@
       </ul>
     </div>
   </div>
-  
   <div class="layui-body" style="padding: 20px;">
   	<span class="layui-breadcrumb">
      <a href="">平台设置</a>
-     <a><cite>文章自动发布</cite></a>
+     <a><cite>添加短信模板</cite></a>
    </span>
    <div class="layui-tab-content">
     <div class="explanation mdz-m-b20" id="explanation">
@@ -131,117 +128,99 @@
         <span id="explanationZoom" title="收起提示"></span>
       </div>
       <ul>
+        <li>该页面展示OSS配置的列表信息。</li>
+        <li>可以直接在列表页面进行编辑和删除。</li>
+        <li>OSS可用于图片、音视频、日志等海量文件的存储。</li>
       </ul>
     </div>
     <div class="flexilist">
       <div class="common-head">
-        <div class="refresh ml0">
-          <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
-          <div class="refresh_span">刷新 - 共21条记录</div>
+        <div class="fl">
+          <a href="oss_configure.php?act=add"><div class="fbutton"><div class="add" title="添加Bucket"><span><i class="icon icon-plus"></i>添加Bucket</span></div></div></a>
         </div>
-        <div class="search">
-          <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
-            <div class="input">
-              <input type="text" name="goods_name" class="text nofocus" placeholder="文章名称" autocomplete="off">
-              <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
-            </div>
-          </form>
+        <div class="refresh">
+          <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+          <div class="refresh_span">刷新 - 共1条记录</div>
         </div>
       </div>
       <div class="common-content">
-        <form method="post" action="" id="listForm" enctype="multipart/form-data">
+        <form method="POST" action="" name="listForm" onsubmit="return confirm('确定删除该Bucket吗?');">
           <div class="list-div" id="listDiv">
             <table cellpadding="0" cellspacing="0" border="0">
               <thead>
                 <tr>
                   <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
-                  <th width="47%"><div class="tDiv">文章名称</div></th>
-
-                  <th width="10%"><div class="tDiv">文章分类</div></th>
-                  <th width="10%"><div class="tDiv">发布时间</div></th>
-                  <th width="10%"><div class="tDiv">取消时间</div></th>
-                  <th width="15%" class="handle">操作</th>
+                  <th width="5%"><div class="tDiv">编号</div></th>
+                  <th width="8%"><div class="tDiv">Bucket名称</div></th>
+                  <th width="10%"><div class="tDiv">Bucket地域</div></th>
+                  <th width="17%"><div class="tDiv">域名绑定</div></th>
+                  <th width="20%"><div class="tDiv">外网域名</div></th>
+                  <th width="20%"><div class="tDiv">内网域名</div></th>
+                  <th width="7%"><div class="tDiv">是否使用</div></th>
+                  <th width="10%" class="handle">操作</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="">
-                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="81" class="checkbox" id="checkbox_81"><label for="checkbox_81" class="checkbox_stars"></label></div></td>
-                  <td><div class="tDiv">如何申请售后</div></td>
-
-                  <td><div class="tDiv">售后服务</div></td>
-                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
-                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
+                  <td class="sign"><div class="tDiv"><input type="checkbox" value="1" name="checkboxes[]" class="checkbox" id="checkbox_1"><label for="checkbox_1" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">1</div></td>
+                  <td><div class="tDiv">mdz</div></td>
+                  <td><div class="tDiv">中国（北京）</div></td>
+                  <td><div class="tDiv">是<br><font class="red">（域名：https://mdz.oss-cn-beijing.aliyuncs.com/）</font></div></td>
+                  <td><div class="tDiv">https://mdz.oss-cn-beijing.aliyuncs.com</div></td>
+                  <td><div class="tDiv">https://mdz.oss-cn-beijing-internal.aliyuncs.com</div></td>
+                  <td><div class="tDiv"><img src="images/yes.png"></div></td>                               
                   <td class="handle">
-                    <div class="tDiv">
-                      <span id="del81" class="font12">
-                        -
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="">
-                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="80" class="checkbox" id="checkbox_80"><label for="checkbox_80" class="checkbox_stars"></label></div></td>
-                  <td><div class="tDiv">售后政策</div></td>
-
-                  <td><div class="tDiv">售后服务</div></td>
-                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
-                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
-                  <td class="handle">
-                    <div class="tDiv">
-                      <span id="del80" class="font12">
-                        -
-                      </span>
+                    <div class="tDiv a2">
+                      <a href="oss_configure.php?act=edit&amp;id=1" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>   
+                      <a href="javascript:confirm_redirect('您确定要删除该bucket吗？', 'oss_configure.php?act=remove&amp;id=1')" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                     
                     </div>
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <table cellpadding="0" cellspacing="0" border="0" id="page-table">
               <tfoot>
                 <tr>
-                  <td colspan="12">
+                  <td colspan="10">
                     <div class="tDiv">
-                      <input type="hidden" name="act" value="">
-                      <div class="text_time" id="text_time_start">
-                        <input type="text" name="date" value="0000-00-00" id="start_time_id" class="text" readonly="" autocomplete="off">
-                      </div>
                       <div class="tfoot_btninfo">
-                        <input type="button" value="批量发布" ectype="btnSubmit" class="btn btn_disabled" onclick="return validate('batch_start')" disabled="disabled">
-                        <input type="button" value="批量取消发布" ectype="btnSubmit" class="btn btn_disabled" onclick="return validate('batch_end')" disabled="disabled">
+                        <input type="hidden" name="act" value="batch_remove">
+                        <input type="submit" value="删除Bucket" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled">
                       </div>
                       <div class="list-page">
-                        <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+                       <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
 
-                        <div id="turn-page">
-                          <span class="page page_1">总计 <em id="totalRecords">21</em>个记录</span>
-                          <span class="page page_2">分为<em id="totalPages">2</em>页</span>
-                          <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
-                          <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
-                          <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
-                          <span id="page-link">
-                            <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
-                            <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
-                            <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
-                              <option value="1">1</option><option value="2">2</option>        </select>
-                              <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
-                              <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
-                            </span>
-                          </div>
+                       <div id="turn-page">
+                        <span class="page page_1">总计 <em id="totalRecords">1</em>个记录</span>
+                        <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                        <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                        <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                        <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                        <span id="page-link">
+                          <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                          <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                          <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                            <option value="1">1</option>        </select>
+                            <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                            <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                          </span>
                         </div>
+
+
                       </div>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-          </form>
-        </div>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="layui-footer">
-      <!-- 底部固定区域 -->
-      <div  class="layui-main" style="text-align: center;"> 买得着不忘初心</div>
-    </div>
   </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+  </div>
+</div>
 </body>
 </html>

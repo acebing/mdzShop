@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/jquery.purebox.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/admin.js"></script>
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+        <li class="layui-nav-item"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+            <dd><a href="javascript:;">合作伙伴</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>第三方登录</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="layui-tab">
+      <ul class="layui-tab-title">
+        <li class="layui-this">QQ登录</li>
+        <li>微信登录</li>
+      </ul>
+      <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+          <div class="explanation mdz-m-b20" id="explanation">
+            <div class="ex_tit">
+              <i class="sc_icon"></i>
+              <h4>操作提示</h4>
+              <span id="explanationZoom" title="收起提示"></span>
+            </div>
+            <ul>
+              <li>填写在第三方申请的信息参数。</li>
+              <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+            </ul>
+          </div>
+          <div class="flexilist">
+            <div class="common-content">
+              <div class="mian-info">
+                <form action="website.php" method="post" id="website_form">
+                  <div class="switch_info">
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span><span class="txt">APP ID</span>：</div>
+                      <div class="label_value">
+                        <input name="jntoo[APP_KEY]" ectype="jntoo" type="text" value="101491913" size="45" class="text">
+                        <div class="notic" id="app_key_0">在 QQ http://connect.qq.com/ 此处申请的 APP ID</div>
+                        <div class="form_prompt"></div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span><span class="txt">KEY</span>：</div>
+                      <div class="label_value">
+                        <input name="jntoo[APP_SECRET]" ectype="jntoo" type="text" value="dc8f8712a26135e3fa4ead0b13ac5f81" size="45" class="text">
+                        <div class="notic" id="app_key_1">在QQ中申请的 KEY</div>
+                        <div class="form_prompt"></div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span><span class="txt">用户等级名称</span>：</div>
+                      <div class="label_value">
+                        <input name="rank_name" type="text" ectype="jntoo" value="QQ" size="30" class="text">
+                        <div class="form_prompt"></div>
+                        <div class="notic" id="user_rank">所属的用户组名称, 如果是 QQ\支付宝 插件,如 QQ\支付宝用户</div>
+                        <input type="hidden" name="olb_rank_name" value="QQ">
+                        <input type="hidden" name="rank_id" value="12">
+                      </div>
+                    </div>                
+                    <div class="item">
+                      <div class="label">申请地址：</div>
+                      <div class="label_value">
+                        <a href="http://connect.qq.com/" target="_blank" class="blue">立即申请</a>   
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label">&nbsp;</div>
+                      <div class="label_value info_btn">
+                        <input type="hidden" name="type" value="qq">
+                        <input type="hidden" name="act" value="update_website">
+                        <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                        <input type="button" onclick="window.history.go(-1)" value="取消" class="button button_reset">
+                      </div>
+                    </div>                
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="layui-tab-item">
+          <div class="explanation mdz-m-b20" id="explanation">
+            <div class="ex_tit">
+              <i class="sc_icon"></i>
+              <h4>操作提示</h4>
+              <span id="explanationZoom" title="收起提示"></span>
+            </div>
+            <ul>
+              <li>填写在第三方申请的信息参数。</li>
+              <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+            </ul>
+          </div>
+          <div class="flexilist">
+            <div class="common-content">
+              <div class="mian-info">
+                <form action="website.php" method="post" id="website_form">
+                  <div class="switch_info">
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span><span class="txt">AppID</span>：</div>
+                      <div class="label_value">
+                        <input name="jntoo[APP_KEY]" ectype="jntoo" type="text" value="wx46e7ba7e4bc3573e" size="45" class="text">
+                        <div class="notic" id="app_key_0">在微信开发者平台申请的AppID</div>
+                        <div class="form_prompt"></div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span><span class="txt">AppSecret</span>：</div>
+                      <div class="label_value">
+                        <input name="jntoo[APP_SECRET]" ectype="jntoo" type="text" value="548fee2387a6b5b17e18e7dc58b399cd" size="45" class="text">
+                        <div class="notic" id="app_key_1">在微信开发者平台申请的AppSecret</div>
+                        <div class="form_prompt"></div>
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label"><span class="require-field">*</span><span class="txt">用户等级名称</span>：</div>
+                      <div class="label_value">
+                        <input name="rank_name" type="text" ectype="jntoo" value="微信" size="30" class="text">
+                        <div class="form_prompt"></div>
+                        <div class="notic" id="user_rank">所属的用户组名称, 如果是 QQ\支付宝 插件,如 QQ\支付宝用户</div>
+                        <input type="hidden" name="olb_rank_name" value="微信">
+                        <input type="hidden" name="rank_id" value="11">
+                      </div>
+                    </div>                
+                    <div class="item">
+                      <div class="label">申请地址：</div>
+                      <div class="label_value">
+                        <a href="http://open.weixin.qq.com" target="_blank" class="blue">立即申请</a>   
+                      </div>
+                    </div>
+                    <div class="item">
+                      <div class="label">&nbsp;</div>
+                      <div class="label_value info_btn">
+                        <input type="hidden" name="type" value="wechat">
+                        <input type="hidden" name="act" value="update_website">
+                        <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                        <input type="button" onclick="window.history.go(-1)" value="取消" class="button button_reset">
+                      </div>
+                    </div>                
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+  </div>
+</div>
+</body>
+</html>

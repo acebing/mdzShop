@@ -738,6 +738,7 @@ $(function(){
       dialog_shipping = function(val, id){
         $.jqueryAjax('goods_transport.php', 'act=get_shipping_tem&shipping_id='+val + "&id=" + id + "&tid=" + tid, function(data){
           var content = data.content;
+          console.log(content);
           pb({
             id:"area_dialog",
             title:"编辑运费模板",

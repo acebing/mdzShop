@@ -7,19 +7,153 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
   <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/order-new.css">
   <link rel="stylesheet" href="./css/mdz.css">
   <!-- js部分 -->
-  <script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
+  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
   <script src="./layui/layui.js"></script>
   <script src="./js/mdz-layui.js"></script>
   <script src="./js/jquery.validation.min.js"></script>
   <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/jquery.purebox.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/listtable.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/common.js"></script>
   <script src="./js/admin.js"></script>
+  <script type="text/javascript">
+       
+    
+        //会员基本信息 div仿select 
+        $.divselect("#parent_cat","#parent_cat_val",function(obj){
+      var select = obj.parents("#parent_cat");
+      var val = obj.attr("cat_type");
+      catChanged(val);
+        });
+    
+        $(function(){
+      $("#submitBtn").click(function(){
+        if($("#article_form").valid()){
+          $("#article_form").submit();
+        }
+      });
+    
+      $('#articlecat_form').validate({
+        errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+                ignore:'.ignore',
+        rules : {
+          title : {
+            required : true
+          },
+                    article_cat :{
+                        required : true
+                    }
+        },
+        messages : {
+          title : {
+            required : '<i class="icon icon-exclamation-sign"></i>'
+          },
+                    article_cat : {
+                        required : '<i class="icon icon-exclamation-sign"></i>'
+                    }
+        }
+      });
+        });
+    
+        /**
+        * 选取上级分类时判断选定的分类是不是底层分类
+        */
+        function catChanged(cat_type)
+        {
+              var text = "请选择...";
+          
+      if (cat_type == '')
+      {
+        cat_type = 1;
+      }
+      if (cat_type == 2 || cat_type == 4)
+      {
+        alert(not_allow_add);
+        $("#parent_cat_val").val(0);
+        $("#parent_cat .cite").html(text);
+        return false;
+      }
+      return true;
+        }
+    
+        function searchGoods(){
+      var filters   = new Object;
+      filters.cat_id = $("input[name='category_id']").val();
+      filters.brand_id = $("input[name='brand_id']").val();
+      filters.keyword = Utils.trim($("input[name='keyword']").val());
+            $("#source_select").find("ul").html('<i class="icon-spinner icon-spin"></i>');
+      
+            setTimeout(function(){
+                $.jqueryAjax("bonus.php?is_ajax=1&act=get_goods_list","JSON="+$.toJSON(filters), searchGoodsResponse, 'GET', 'JSON');
+            },300);
+        }
+    
+        function searchGoodsResponse(result){
+            $("#source_select").find("li").remove();
+            $("#source_select").find("ul").html('');
+            var step = $("#source_select").parents(".step[ectype=filter]:first");
+            var goods = result.content;
+            if (goods)
+            {
+                    for (i = 0; i < goods.length; i++)
+                    {
+                            $("#source_select").children("ul").append("<li data-value='"+goods[i].value+"'><i class='sc_icon sc_icon_ok'></i><a href='javascript:;' data-value='"+goods[i].value+"' class='ftx-01'>"+goods[i].text+"</a><input type='hidden' name='user_search[]' value='"+goods[i].value+"'></li>")
+                    }
+            }
+            step.find(".move_list").perfectScrollbar();
+                        
+        }
+    
+        function addGoods()
+        {
+            var step = $("#source_select").parents(".step[ectype=filter]:first");
+      $("#source_select").find("li").each(function(){
+        if($(this).attr("class") == 'current'){
+          var user = $(this).text();
+          var user_id = $(this).find("input").val();
+          var exists = false;
+          $("#target_select").find("li").each(function(){
+            if($(this).find("input").val() == user_id){
+              exists = true;
+              return false;
+            }
+          })
+          if(exists == false){
+            $("#target_select").children("ul").append("<li><i class='sc_icon sc_icon_no'></i><a href='javascript:void(0);'>"+user+"</a><input type='hidden' name='target_select[]' value='"+user_id+"'></li>")      
+          }
+        }
+      });       
+      step.find(".move_left .move_list, .move_all .move_list").perfectScrollbar();
+        }
+    
+        function delGoods()
+        {
+      <!-- var filters  = new Array(); -->
+      $("#target_select").find("li").each(function(){
+        if($(this).attr("class") == 'current'){
+          <!-- filters.push($(this).find("a").data("value")); -->
+          $(this).remove();
+        }
+      });
+        }
+    
+  </script>
 </head>
 <body>
   <div class="layui-layout layui-layout-admin">
@@ -331,6 +465,8 @@
                             <div class="move_info">
                               <div class="move_list" id="source_select">
                                 <ul>
+                                  <li data-value="2526" class=""><i class="sc_icon sc_icon_ok"></i><a href="javascript:;" data-value="2526" class="ftx-01">OPPO R15 全面屏双摄拍照手机 4G+128G 星空紫 全网通 移动联通电信4G 双卡双待手机</a><input type="hidden" name="user_search[]" value="2526"></li>
+                                  <li data-value="2527" class="current"><i class="sc_icon sc_icon_ok"></i><a href="javascript:;" data-value="2527" class="ftx-01">OPPO R15 梦镜版 全面屏双摄拍照手机 6G+128G 梦镜红 全网通 移动联通电信4G 双卡双待手机</a><input type="hidden" name="user_search[]" value="2527"></li>
                                 </ul> 
                               </div>
                             </div>
@@ -347,6 +483,8 @@
                             <div class="move_info">
                               <div class="move_list" id="target_select">
                                 <ul>
+                                  <li data-value="2527" data-text="OPPO R15 梦镜版 全面屏双摄拍照手机 6G+128G 梦镜红 全网通 移动联通电信4G 双卡双待手机" class="current"><i class="sc_icon sc_icon_no"></i><a href="javascript:void(0);">OPPO R15 梦镜版 全面屏双摄拍照手机 6G+128G 梦镜红 全网通 移动联通电信4G 双卡双待手机</a></li>
+                                  <li data-value="2529" data-text="OPPO A5 全面屏拍照手机 4GB+64GB 幻镜粉 全网通 移动联通电信4G 双卡双待手机" class=""><i class="sc_icon sc_icon_no"></i><a href="javascript:void(0);">OPPO A5 全面屏拍照手机 4GB+64GB 幻镜粉 全网通 移动联通电信4G 双卡双待手机</a></li>
                                 </ul>                     
                               </div>
                             </div>

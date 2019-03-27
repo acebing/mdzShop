@@ -7,12 +7,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="./layui/css/layui.css">
-  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
   <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/order-new.css">
   <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/listtable.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/admin.js"></script>
 </head>
 <body>
   <div class="layui-layout layui-layout-admin">
@@ -127,7 +141,7 @@
           <li>账目明细</li>
         </ul>
         <div class="layui-tab-content">
-          <div class="layui-tab-item">
+          <div class="layui-tab-item layui-show">
             <div class="explanation" id="explanation">
               <div class="ex_tit">
                 <i class="sc_icon"></i>
@@ -227,18 +241,42 @@
                       <div class="date-item year">
                         <div id="user_year" class="imitate_select select_w120">
                           <div class="cite">1000</div>
+                          <ul class="ps-container ps-active-y" style="display: none;">       
+                            <li><a href="javascript:;" data-value="2014" class="ftx-01">2014</a></li>
+                            <li><a href="javascript:;" data-value="2015" class="ftx-01">2015</a></li>
+                            <li><a href="javascript:;" data-value="2016" class="ftx-01">2016</a></li>
+                            <li><a href="javascript:;" data-value="2017" class="ftx-01">2017</a></li>
+                            <li><a href="javascript:;" data-value="2018" class="ftx-01">2018</a></li>
+                            <li><a href="javascript:;" data-value="2019" class="ftx-01">2019</a></li>
+                          </ul>
                           <input name="birthdayYear" type="hidden" value="1000" id="year_val">
                         </div>
                       </div>
                       <div class="date-item month">
                         <div id="user_month" class="imitate_select select_w85">
-                          <div class="cite">1</div>                      
+                          <div class="cite">1</div>  
+                          <ul class="ps-container ps-active-y" style="display: none;">       
+                            <li><a href="javascript:;" data-value="2014" class="ftx-01">1</a></li>
+                            <li><a href="javascript:;" data-value="2015" class="ftx-01">2</a></li>
+                            <li><a href="javascript:;" data-value="2016" class="ftx-01">3</a></li>
+                            <li><a href="javascript:;" data-value="2017" class="ftx-01">4</a></li>
+                            <li><a href="javascript:;" data-value="2018" class="ftx-01">5</a></li>
+                            <li><a href="javascript:;" data-value="2019" class="ftx-01">6</a></li>
+                          </ul>                    
                           <input name="birthdayMonth" type="hidden" value="1" id="month_val">
                         </div>
                       </div>
                       <div class="date-item day">
                         <div id="user_day" class="imitate_select select_w85">
                           <div class="cite">1</div>
+                          <ul class="ps-container ps-active-y" style="display: none;">       
+                            <li><a href="javascript:;" data-value="2014" class="ftx-01">1</a></li>
+                            <li><a href="javascript:;" data-value="2015" class="ftx-01">2</a></li>
+                            <li><a href="javascript:;" data-value="2016" class="ftx-01">3</a></li>
+                            <li><a href="javascript:;" data-value="2017" class="ftx-01">4</a></li>
+                            <li><a href="javascript:;" data-value="2018" class="ftx-01">5</a></li>
+                            <li><a href="javascript:;" data-value="2019" class="ftx-01">6</a></li>
+                          </ul> 
                           <input name="birthdayDay" type="hidden" value="1" id="day_val">
                         </div>
                       </div>
@@ -727,7 +765,7 @@
       </div>
     </div>
   </div>
-  <div class="layui-tab-item  layui-show">
+  <div class="layui-tab-item">
     <div class="explanation" id="explanation">
       <div class="ex_tit">
         <i class="sc_icon"></i>
@@ -879,50 +917,4 @@
 </div>
 </div>
 </body>
-<script src="./layui/layui.js"></script>
-<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-
-  layui.use([ 'element','form','table', 'layer','upload','laypage',],function(){
-    var element = layui.element;
-    var form = layui.form;
-    var table = layui.table;
-    var layer = layui.layer;
-    var upload = layui.upload;
-    var laypage = layui.laypage;
-
-    $('.btn_trash').on('click', function() {
-     layer.msg('删除成功');
-   });
-
-//  laypage.render({
-//     elem: 'turn-page'
-//     ,count: 100
-//     ,layout: ['prev', 'page', 'next', 'limit',  'skip']
-//     ,jump: function(obj){
-//       console.log(obj)
-//     }
-// });
-
-});
-  function friend_link_logo_show(argument) {
-   var imgbox =$('.imgbox .icon-picture'),
-   zindex =100;
-   imgbox.on('mouseover', function(event) {
-    $(this).next().css({
-      'display': 'block',
-      'z-index': zindex+1
-    });
-  });
-   imgbox.on('mouseout', function(event) {
-     $(this).next().css({
-      'display': 'none',
-      'z-index': zindex-1
-    });
-   });
- }
- friend_link_logo_show();
-
-</script>
 </html>

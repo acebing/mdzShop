@@ -16,7 +16,7 @@ jQuery.levelLink = function (){
 			$this.find('.ui-dropdown').each(function(v,k){
 				var sel_this = $(this);
 				var val = sel_this.find('input[type=hidden]').val();
-				$.jqueryAjax('region.php', 'type='+(v+1)+'&parent='+val, function(data){
+				$.jqueryAjax('https://www.maidezhao.com/admin/region.php', 'type='+(v+1)+'&parent='+val, function(data){
 					sel_this.next().find(opt).html(data.content);
 					if(data.region_name != ''){
 						sel_this.find('.txt').html(data.region_name);
@@ -80,7 +80,7 @@ jQuery.levelLink = function (){
 			});
 		}
 		
-		$.jqueryAjax('region.php', 'type='+type+'&parent='+value, function(data){
+		$.jqueryAjax('https://www.maidezhao.com/admin/region.php', 'type='+type+'&parent='+value, function(data){
 			if(data.content){
 				t.parents(dropdown).next().find(opt).html(data.content);
 				t.parents(dropdown).next().addClass("visible");

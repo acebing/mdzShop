@@ -7,11 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
   <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/order-new.css">
   <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/jquery.purebox.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/admin.js"></script>
+   <script src="./js/listtable.js"></script>
+  <script type="text/javascript">
+   
+  </script>
 </head>
 <body>
   <div class="layui-layout layui-layout-admin">
@@ -273,39 +292,21 @@
         </div>
       </div>
     </div>
+    <div id="purebox" class="laui-btn">sddsf</div>
   </div>
+
   <div class="layui-footer">
     <!-- 底部固定区域 -->
     <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
   </div>
 </div>
 </body>
-<script src="./layui/layui.js"></script>
-<script src="http://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>
-
-  layui.use(['element', 'form','table', 'layer','upload'],function(){
-    var element = layui.element;
-    var form = layui.form;
-    var table = layui.table;
-    var layer = layui.layer;
-    var upload = layui.upload;
-    $('.btn_trash').on('click', function() {
-     layer.msg('删除成功');
-   });
-
-  });
-  function setup(argument) {
-   var first_setup =$('.first_setup .setup_span'),
-   zindex =100;
-   first_setup.on('mouseover', function(event) {
-    $(this).children('ul').show();
-  });
-   first_setup.on('mouseout', function(event) {
-     $(this).children('ul').hide();
-   });
- }
- setup();
+<script src="./js/jquery.purebox.js"></script>
+<script type="text/javascript">
+  $('#purebox').pb({
+  id : 'purebox',
+  title : '标题',
+  content : '好雨知时节， 当春乃发生。随风潜入夜， 润物细无声。'
+});
 </script>
 </html>
