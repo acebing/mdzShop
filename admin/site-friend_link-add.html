@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+   <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+   <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+   <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+   <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+   <link rel="stylesheet" href="./css/main.css">
+   <link rel="stylesheet" href="./css/order-new.css">
+   <link rel="stylesheet" href="./css/mdz.css">
+   <!-- js部分 -->
+   <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+   <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+   <script src="./layui/layui.js"></script>
+   <script src="./js/mdz-layui.js"></script>
+   <script src="./js/jquery.validation.min.js"></script>
+   <script src="./js/perfect-scrollbar.min.js"></script>
+   <script src="./js/region.js"></script>
+   <script src="./js/admin.js"></script>
+   <script type="text/javascript">
+     $(function () {
+       // 表单验证
+       $("#submitBtn").click(function(){
+        if($("#articlecat_form").valid()){
+          $("#articlecat_form").submit();
+        }
+      });
+       $('#link_form').validate({
+        errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+        rules : {
+          link_name : {
+            required : true
+          },
+          link_url : {
+            required : true
+          }
+
+        },
+        messages : {
+          link_name : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+"链接名称不能为空"
+          },
+          link_url : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+"链接地址不能为空"
+          }
+        }
+      });
+     });
+   </script>
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+        <li class="layui-nav-item"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">第三方登录</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">微信登录</a></dd>
+            <dd><a href="javascript:;">QQ登录</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">微信公众号</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">微信小程序</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">阿里大于短信</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">阿里OSS</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">管理员列表</a></dd>
+            <dd><a href="javascript:;">下级管理员列表</a></dd>
+            <dd><a href="javascript:;">管理员日志</a></dd>
+            <dd><a href="javascript:;">角色管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a href="">友情链接</a>
+     <a><cite>添加友情链接</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示所有友情链接信息列表。</li>
+        <li>可点击链接进入相应网页，也可进行编辑或删除友情链接。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="mian-info">
+        <form action="friend_link.php" method="post" name="theForm" enctype="multipart/form-data" id="link_form" novalidate="novalidate">
+          <div class="switch_info user_basic">
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>链接名称：</div>
+              <div class="label_value">
+                <input type="text" name="link_name" value="" class="text" autocomplete="off">
+                <div class="notic m20">当你添加文字链接时, 链接LOGO为你的链接名称.</div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>链接地址：</div>
+              <div class="label_value">
+                <input type="text" name="link_url" value="" class="text" autocomplete="off">
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">显示顺序：</div>
+              <div class="label_value">
+                <input type="text" name="show_order" value="50" class="text" autocomplete="off">
+              </div>
+            </div>
+            
+            <div class="item shop_logo">
+              <div class="label">链接LOGO：</div>
+              <div class="label_value">
+                <div class="type-file-box">
+                  <input type="button" name="button" id="button" class="type-file-button" value="">
+                  <input type="file" class="type-file-file" id="legal_person_fileImg" name="link_img" data-state="imgfile" size="30" hidefocus="true" value="">
+                  <input type="text" name="textfile" class="type-file-text" id="textfield" readonly="">
+                </div>
+                <div class="notic m20">友情链接的图片尺寸110*30</div>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="label">或LOGO地址：</div>
+              <div class="label_value">
+                <input type="text" name="url_logo" class="text" autocomplete="off" value="">
+                <div class="notic m20">在指定远程LOGO图片时, LOGO图片的URL网址必须为http:// 或 https://开头的正确URL格式!</div>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn">
+                <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                <input type="hidden" name="act" value="insert">
+                <input type="hidden" name="id" value="">
+                <input type="hidden" name="type" value="">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="layui-footer">
+  <!-- 底部固定区域 -->
+  <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
+</div>
+</div>
+</body>
+</html>

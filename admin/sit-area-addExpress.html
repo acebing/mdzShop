@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+   <script src="./js/jquery.purebox.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/admin.js"></script>
+  <script type="text/javascript">
+   //表单验证
+$(function(){
+  $("#submitBtn").click(function(){
+    if($("#user_form").valid()){
+      $("#user_form").submit();
+    }
+  });
+
+  $('#user_form').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules : {
+      username : {
+        required : true,
+        rangelength:[3,10]
+      },
+      email : {
+        required : true,
+        email : true
+      },
+      password : {
+        required : true,
+        minlength:6
+      },
+      confirm_password : {
+        required : true,
+        equalTo:"#password"
+      }
+
+    },
+    messages : {
+      username : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'会员名称不能为空',
+        rangelength:'<i class="icon icon-exclamation-sign"></i>'+'会员名称最少3个字符，最长10个字符'
+      },
+      email : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'邮箱地址不能为空',
+        email : '<i class="icon icon-exclamation-sign"></i>'+'邮箱格式不正确，格式：xxxxxx@xxx.com'
+      },
+      password : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'密码不能为空',
+        minlength : '<i class="icon icon-exclamation-sign"></i>'+'密码至少为6位'
+      },
+      confirm_password : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'确认密码不能为空',
+        equalTo:'<i class="icon icon-exclamation-sign"></i>'+'确认密码与上面输入的密码不相同'
+      }
+    }
+  });
+});
+    </script>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item layui-this"><a href="">平台设置</a></li>
+      <li class="layui-nav-item"><a href="">商城管理</a></li>
+      <li class="layui-nav-item"><a href="">财务管理</a></li>
+      <li class="layui-nav-item"><a href="">微商城</a></li>
+      <li class="layui-nav-item"><a href="">小程序</a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          沈总
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台设置</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">基本设置</a></dd>
+            <dd><a href="javascript:;">支付方式</a></dd>
+            <dd><a href="javascript:;">地区&配送</a></dd>
+            <dd><a href="javascript:;">打印设置</a></dd>
+            <dd><a href="javascript:;">友情链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">第三方登录</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">微信登录</a></dd>
+            <dd><a href="javascript:;">QQ登录</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">微信公众号</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">微信小程序</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">阿里大于短信</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">阿里OSS</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">账号设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">权限管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">管理员列表</a></dd>
+            <dd><a href="javascript:;">下级管理员列表</a></dd>
+            <dd><a href="javascript:;">管理员日志</a></dd>
+            <dd><a href="javascript:;">角色管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">邮件</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">邮件配置</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">平台设置</a>
+      <a href="">会员管理</a>
+      <a><cite>会员列表</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>该页面展示所有实名认证的会员信息。</li>
+          <li>可进行审核实名信息，请谨慎编辑会员的实名信息。</li>
+          <li>可以输入会员名称关键字进行搜索，侧边栏可进行高级搜索。</li>
+        </ul>
+      </div>
+      <div class="mian-info">
+          <div class="transport_shipping_tpl" >
+      <form action="" method="post" name="shipping_tplForm" enctype="multipart/form-data">
+        <input type="hidden" name="tid" id="tab_tid" value="10">
+        <input type="hidden" name="shipping_id" id="tab_shipping_id" value="24">
+        <input type="hidden" name="id" value="0">
+
+        <div class="item">
+          <div class="label">快递方式：</div>
+          <div class="label_value">
+            <div class="checkbox_items">
+              <div class="checkbox_item">
+                邮政快递包裹            </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">区域名称：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="text" name="tpl_name" value="" class="text" autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">费用计算方式：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_1" checked="true" onclick="compute_mode('post_express','weight')" name="fee_compute_mode" value="by_weight">
+                  <label for="fee_compute_mode_1" class="ui-radio-label">按重量计算</label>
+                </div>
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_0" onclick="compute_mode('post_express','number')" name="fee_compute_mode" value="by_number">
+                  <label for="fee_compute_mode_0" class="ui-radio-label">按商品件数计算</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="item_fee" style="display:none">
+            <div class="label"><span class="require-field">*</span>&nbsp;单件商品费用：</div>
+            <div class="label_value">
+              <input type="text" name="item_fee" value="5" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="base_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;1000克以内费用：</div>
+            <div class="label_value">
+              <input type="text" name="base_fee" value="5" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="step_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;5000克以内续重每500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee" value="2" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="step_fee1">
+            <div class="label"><span class="require-field">*</span>&nbsp;5001克以上续重500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee1" value="1" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <!---->
+          <div class="item" id="free_money">
+            <div class="label"><span class="require-field">*</span>&nbsp;免费额度：</div>
+            <div class="label_value">
+              <input type="text" name="free_money" value="0" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <!---->
+          <!---->
+          <!---->
+          <div class="item mb0">
+            <div class="label"><span class="require-field">*</span>到达目的地：</div>
+            <div class="label_value">
+              <div class="level_linkage">
+                <div class="fl">
+                  <div class="ui-dropdown smartdropdown alien" style="z-index: 100;">
+                    <input type="hidden" value="0" name="province" id="selProvinces">
+                    <div class="txt">省/直辖市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;">
+                      <span class="liv" data-text="全国" data-type="0" data-value="-1">全国</span>
+                      <span class="liv" data-text="北京" data-type="2" data-value="2">北京</span>
+
+                    </div>
+                  </div>
+                  <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
+                    <input type="hidden" value="0" name="city" id="selCities">
+                    <div class="txt">市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlRegion" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
+                    <input type="hidden" value="0" name="district" id="selDistricts">
+                    <div class="txt">区/县</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlStreet" class="ui-dropdown smartdropdown alien" style="z-index: 97;">
+                    <input type="hidden" value="0" name="street" id="selStreet">
+                    <div class="txt">街道</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                </div>
+                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>            <div class="checkbox-item">
+                  <input type="checkbox" name="deleteArea" id="deleteArea" class="ui-checkbox" checked="">
+                  <label class="ui-label" for="deleteArea">去除已选地区</label>
+                </div>
+                <div class="notic bf100 mt5">不选择地区（点添加地区）时会添加“全国地区”</div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">&nbsp;</div>
+            <div class="label_value">
+              <!---->
+              <div class="checkbox_items" id="regionCell">
+              </div>
+              <!---->
+            </div>
+          </div>
+           <div class="item">
+        <div class="label">&nbsp;</div>
+        <div class="label_value info_btn">
+          <input type="hidden" name="tid" value="0">
+          <input type="hidden" name="act" value="insert">
+          <input name="submit" type="submit" value=" 确定 " class="button fl mr10" id="submitBtn">
+        </div>
+      </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <div  class="layui-main" style="text-align: center;"> 买得着商城<i class="heart">❤</i>不忘初心</div>
+  </div>
+</div>
+</body>
+<script src="./js/region.js"></script>
+<script type="text/javascript">
+  $.levelLink();//地区三级联动
+  /*添加管辖地区*/
+  $("a[ectype='addPrivilege']").on("click",function(){
+    var selProvince = $('#selProvinces');
+    var selCity     = $('#selCities');
+    var selDistrict = $('#selDistricts');
+    var regionCell  = $('#regionCell');
+    var regionId = 0;
+    var regionName = '';
+
+    var tid = $("#tab_tid").val();
+    var shipping_id = $("#tab_shipping_id").val();
+
+    if (selDistrict.val() > 0)
+    {
+      regionId = selDistrict.val();
+      regionName = selDistrict.next(".txt").text();
+    }else{
+      if(selCity.val() > 0){
+        regionId = selCity.val();
+        regionName = selCity.next(".txt").text();
+      }else{
+        if(selProvince.val() > 0){
+          regionId = selProvince.val();
+          regionName = selProvince.next(".txt").text();
+        }else{
+          the_national(tid, shipping_id)
+          return false;
+        }
+      }
+    }
+
+    //检查该地区是否已经存在
+    exists = false;
+    $('input:checkbox[type="checkbox"]').each(function()
+    {
+      if($(this).attr("name") == 'regions[]'){
+        if($(this).val()  == regionId){
+          exists = true;
+          return false;
+        }
+      }
+    });
+
+    //检查该地区是否已经存在运费模板 start
+    var area_erorr = 0;
+    regionId = Number(regionId);
+    if(regionId > 0){
+      $.ajax({
+        type:"get",
+        url:"goods_transport.php?act=select_area",
+        data:'tid=' + tid + "&shipping_id=" + shipping_id + "&region_id=" + regionId,
+        dataType: 'json',
+        async : false, //设置为同步操作就可以给全局变量赋值成功
+        success:function(result){
+          area_erorr = result.error;
+        }
+      });
+    }
+
+    if(area_erorr == 1){
+      exists = true;
+    }
+    //检查该地区是否已经存在运费模板 end
+
+    //创建checkbox
+    if (exists == false)
+    {
+      regionCell.append('<div class="checkbox_item"><input type="checkbox" value="'+regionId+'" name="regions[]" class="ui-checkbox" id="region_'+regionId+'" checked="true" /><label for="region_'+regionId+'" class="ui-label">'+regionName+'</label></div>');
+    }else{
+      alert(jl_this_area_existed);
+    }
+  });
+
+  $("input[name='deleteArea']").click(function(){
+    if($(this).prop("checked") == true){
+      $("#regionCell").find("input[type='checkbox']").prop("checked",true);
+    }else{
+      $("#regionCell").find("input[type='checkbox']").prop("checked",false);
+    }
+  });
+
+  //配送费用计算方式
+  function compute_mode(shipping_code,mode)
+  {
+    var base_fee  = $("#base_fee");
+    var step_fee  = $("#step_fee");
+    var item_fee  = $("#item_fee");
+    if(shipping_code == 'post_mail' || shipping_code == 'post_express')
+    {
+     var step_fee1  = $("#step_fee1");
+    }
+
+    if(mode == 'number')
+    {
+      item_fee.css('display','');
+      base_fee.css('display','none');
+      step_fee.css('display','none');
+      if(shipping_code == 'post_mail' || shipping_code == 'post_express')
+      {
+        step_fee1.css('display','none');
+      }
+    }
+    else
+    {
+      item_fee.css('display','none');
+      base_fee.css('display','');
+      step_fee.css('display','');
+      if(shipping_code == 'post_mail' || shipping_code == 'post_express')
+      {
+        step_fee1.css('display','');
+      }
+    }
+  }
+
+    $(function(){
+      var freight_type = Number("1");
+      var shipping_id = Number("0");
+      var tid = Number($("input[name='tid']").val());
+
+      //表单验证
+      $("#submitBtn").click(function(){
+        if($("#goods_transport_form").valid()){
+          $("#goods_transport_form").submit();
+        }
+      });
+
+      $('#goods_transport_form').validate({
+        errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+        rules:{
+          title :{
+            required : true
+          }
+        },
+        messages:{
+          title:{
+            required : '<i class="icon icon-exclamation-sign"></i>'
+          }
+        }
+      });
+    });
+
+    //运费模板
+    function freightTemplate(){
+      var doc = $(document),
+        tid = $("input[name='tid']").val();
+        id = 0;
+      /***************************模板类型 -> 快递模板*************************/
+      //选择配送方式
+      $.divselect("#shipping_id","#shipping_id_val",function(obj){
+        var val = obj.data("value"),
+          name  = obj.html();
+
+        dialog_shipping(val, id);
+      });
+
+      //编辑运费模板内的快递
+      doc.on("click","*[ectype='edit_shipping']",function(){
+        var val = $(this).parents('tr').data('shipping_id');
+        var id = $(this).data('id');
+        dialog_shipping(val, id);
+      });
+
+      //删除运费模板内的快递
+      doc.on("click","*[ectype='drop_shipping']",function(){
+        var t = $(this),
+          id = t.data('id');
+
+        if(confirm(confirm_delete_transport)){
+          $.jqueryAjax('goods_transport.php', 'act=drop_shipping&tid='+tid + "&id=" + id, function(data){
+            $("#transport_tpl").html(data.content);
+          });
+        }
+      });
+
+      //添加地区
+      doc.on("click","*[ectype='add_shipping_area']",function(){
+        var val = $(this).parents('tr').data('shipping_id');
+        dialog_shipping(val, id);
+      });
+
+      /***************************模板类型 -> 自定义 *************************/
+      //添加地区
+      doc.on("click","*[ectype='add_area']",function(){
+        $.jqueryAjax('goods_transport.php', 'act=add_area&tid='+tid, function(data){
+          $("*[ectype='transportArea']").html(data.content);
+        });
+      });
+
+      //编辑地区
+      doc.on("click","*[ectype='edit_area']",function(){
+        var id = $(this).parents('tr').find('input[name=id]').val();
+        $.jqueryAjax('goods_transport.php', 'act=edit_area&id='+id, function(data){
+          var content = data.content;
+          pb({
+            id:"area_dialog",
+            title:"选择地区",
+            width:900,
+            content:content,
+            ok_title:"确定",
+            cl_title:"取消",
+            drag:false,
+            foot:true,
+            cl_cBtn:true,
+            onOk:function(){save_area();}
+          });
+        })
+      });
+
+      //删除地区
+      doc.on("click","*[ectype='drop_area']",function(){
+        var id = $(this).parents('tr').find('input[name=id]').val();
+        $.jqueryAjax('goods_transport.php', 'act=drop_area&id='+id, function(data){
+          $("*[ectype='transportArea']").html(data.content);
+        });
+      });
+
+      //展开地区二级
+      doc.on("click",".area-province i", function(){
+        var area_city = $(this).siblings(".area-city");
+        if(area_city.hasClass("hide")){
+          $(this).parents(".area-province").find(".area-city").addClass("hide");
+          area_city.removeClass("hide");
+          $(this).removeClass("icon-angle-down").addClass("icon-angle-up");
+        }else{
+          area_city.addClass("hide");
+          $(this).removeClass("icon-angle-up").addClass("icon-angle-down");
+        }
+      });
+
+      //选中省份
+      doc.on("click","input[name=province]", function(){
+        if($(this).prop('checked')){
+          $(this).parents('li:first').find('ul.area-city input:enabled').prop('checked', true);
+        }else{
+          $(this).parents('li:first').find('ul.area-city input:enabled').prop('checked', false);
+        }
+        var child_num = $(this).parents('li:first').find('ul.area-city input:enabled:checked').length;
+        var child_obj = $(this).siblings(".ui-label").find('[data-role=child_num]');
+        change_child_num(child_obj, child_num);
+      });
+
+      //选中城市
+      doc.on("click","input[name=city]", function(){
+        var child_num = $(this).parents('ul.area-city').find('input:enabled:checked').length;
+        var child_obj = $(this).parents('.area-city').siblings(".ui-label").find('[data-role=child_num]');
+        change_child_num(child_obj, child_num);
+      });
+
+      //添加快递
+      doc.on("click","*[ectype='add_express']", function(){
+        var tid = $("input[name='tid']").val();
+        $.jqueryAjax('goods_transport.php', 'act=add_express&tid='+tid, function(data){
+          $("[ectype='transportExpress']").html(data.content);
+        })
+      });
+
+      //删除快递
+      doc.on("click","*[ectype='drop_express']", function(){
+        var id = $(this).parents('tr').find('input[name=id]').val();
+        $.jqueryAjax('goods_transport.php', 'act=drop_express&id='+id, function(data){
+          $("[ectype='transportExpress']").html(data.content);
+        })
+      });
+
+      //编辑快递
+      doc.on("click","*[ectype='edit_express']", function(){
+        var id = $(this).parents('tr').find('input[name=id]').val();
+        $.jqueryAjax('goods_transport.php', 'act=edit_express&id='+id, function(data){
+          var content = data.content;
+          pb({
+            id:"express_dialog",
+            title:"选择快递",
+            width:900,
+            content:content,
+            ok_title:"确定",
+            cl_title:"取消",
+            drag:false,
+            foot:true,
+            cl_cBtn:true,
+            onOk:function(){save_express();}
+          });
+        })
+      });
+
+      //全选地区
+      doc.on("click","input[name=all]",function(){
+        if($(this).prop('checked')){
+          $(this).parents('.area-province,.transport-express').find('input[type=checkbox]').prop('checked', true);
+        }else{
+          $(this).parents('.area-province,.transport-express').find('input[type=checkbox]').prop('checked', false);
+        }
+      });
+
+      //点击空白处
+      doc.click(function(e){
+        if(e.target.className != "area-city" && !$(e.target).parents("ul").is(".area-city") && e.target.className != "icon icon-angle-up"){
+          $(".area-city").addClass("hide");
+          $(".area-province").find("i").removeClass("icon-angle-up").addClass("icon-angle-down");
+        }
+      });
+
+      /*************************************方法**********************************/
+      //快递模板类型切换
+      check_type = function(type){
+        if(type == 0){
+          $("#Template_freight").hide();
+          $("#Fixed_freight").show();
+        }else{
+          $("#Template_freight").show();
+          $("#Fixed_freight").hide();
+        }
+      }
+
+      //统计数量
+      change_child_num = function(obj, num){
+        obj.html(obj.html().replace(/\d+/, num));
+        if(num > 0){
+          obj.removeClass('hide');
+          obj.parents('.ui-label').siblings('input[name=province]').prop('checked', true);
+        }else{
+          obj.addClass('hide');
+          obj.parents('.ui-label').siblings('input[name=province]').prop('checked', false);
+        }
+      }
+
+      //自定义编辑配送区域保存
+      save_area = function(){
+        var id = $('.area-province').data('id');
+        var province = new Array();
+        var city = new Array();
+        //省份
+        $('.area-province').find("input[name=province]:enabled:checked").each(function(){
+          province.push($(this).val());
+        })
+        //城市
+        $('.area-province').find("input[name=city]:enabled:checked").each(function(){
+          city.push($(this).val());
+        })
+        province = province.join(',');
+        city = city.join(',');
+        $.jqueryAjax('goods_transport.php', 'act=save_area&id='+id+'&top_area_id='+province+'&area_id='+city, function(data){
+          $("*[ectype='transportArea']").html(data.content);
+        });
+      }
+
+      //自定义模式编辑快递方式保存
+      save_express = function(){
+        var id = $('.transport-express').data('id');
+        var express = new Array();
+        $('.transport-express').find("input[name=shipping]:enabled:checked").each(function(){
+          express.push($(this).val());
+        })
+        express = express.join(',');
+        $.jqueryAjax('goods_transport.php', 'act=save_express&id='+id+'&shipping_id='+express, function(data){
+          $("[ectype='transportExpress']").html(data.content);
+        });
+      }
+
+      //快递模板 运费模板编辑
+      dialog_shipping = function(val, id){
+        $.jqueryAjax('goods_transport.php', 'act=get_shipping_tem&shipping_id='+val + "&id=" + id + "&tid=" + tid, function(data){
+          var content = data.content;
+          console.log(content);
+          pb({
+            id:"area_dialog",
+            title:"编辑运费模板",
+            width:900,
+            content:content,
+            ok_title:"确定",
+            cl_title:"取消",
+            drag:true,
+            foot:true,
+            cl_cBtn:true,
+            onOk:function(){
+              var actionUrl = "goods_transport.php?act=add_shipping_tpl";
+              $("form[name='shipping_tplForm']").ajaxSubmit({
+                type: "POST",
+                dataType: "JSON",
+                url: actionUrl,
+                data: {"action": "TemporaryImage"},
+                success: function (data) {
+                  $("#transport_tpl").html(data.content);
+                  $(".tpl_region").perfectScrollbar("destroy");
+                  $(".tpl_region").perfectScrollbar();
+                },
+                async: true
+              });
+            }
+          });
+        });
+      }
+
+      $(".tpl_region").perfectScrollbar("destroy");
+      $(".tpl_region").perfectScrollbar();
+    }
+    freightTemplate();
+
+
+</script>
+</html>
