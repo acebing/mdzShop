@@ -19,39 +19,6 @@
 <!-- <script src="./js/listtable.js"></script> -->
 <script type="text/javascript">
   var listTable = new Object;
-listTable.switchBt = function(obj, act, id)
-{
-  var obj = $(obj);
-  var val = (obj.attr('class').match(/active/i)) ? 0 : 1;
-  var res = Ajax.call(this.url, "act="+act+"&val=" + val + "&id=" +id, null, "POST", "JSON", false);
-  
-  /* 判断是否唯一 */
-  var type = obj.data("type");
-  
-  if (res.message)
-  {
-    pbDialog(res.message,"",0);
-  }
-
-  if (res.error == 0)
-  {
-    obj.src = (res.content > 0) ? 'images/yes.gif' : 'images/no.gif';
-  if (!res.message) {
-            if (obj.hasClass("active")) {
-                obj.removeClass("active");
-                obj.next("input[type='hidden']").val(0);
-                obj.attr("title", "否");
-            } else {
-                obj.addClass("active");
-                obj.next("input[type='hidden']").val(1);
-                obj.attr("title", "是");
-            }
-        }
-  }
-  if(type == "only"){
-   obj.parents("tr").siblings().find(".switch").removeClass("active").attr("title","否");
-   obj.parents("tr").siblings().find(".switch").next("input[type='hidden']").val(0);
-  }
-}
+  var XHR = new XML
 </script>
 </html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+  
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/listtable.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/admin.js"></script>
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="">平台设置</a></li>
+        <li class="layui-nav-item layui-this"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台商品管理</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">超市商品管理</a>
+          <dl class="layui-nav-child">
+            <dd ><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">省鲜生商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">订单列表</a></dd>
+            <dd><a href="javascript:;">添加订单</a></dd>
+            <dd><a href="javascript:;">发货单列表</a></dd>
+            <dd><a href="javascript:;">退货单列表</a></dd>
+            <dd><a href="javascript:;">退货原因列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+            <dd><a href="javascript:;">自动发布</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">会员管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">会员列表</a></dd>
+            <dd><a href="javascript:;">资金管理</a></dd>
+            <dd><a href="javascript:;">充值/提现</a></dd>
+            <dd><a href="javascript:;">收货地址</a></dd>
+            <dd><a href="javascript:;">发票</a></dd>
+            <dd><a href="javascript:;">投诉管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">活动促销</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">限时秒杀</a></dd>
+
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台商品管理</a>
+     <a><cite>添加商品</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        <li>请按提示栏信息进行商品添加。</li>
+      </ul>
+    </div>
+    <div class="stepflex">
+      <dl class="first cur">
+        <dt class="pointer">1</dt>
+        <dd class="s-text">选择商品分类</dd>
+      </dl>
+      <dl data-step="2">
+        <dt class="pointer">2</dt>
+        <dd class="s-text">填写商品信息</dd>
+      </dl>       
+      <dl data-step="3">
+        <dt class="pointer">3</dt>
+        <dd class="s-text">填写商品属性</dd>
+      </dl>
+      <dl class="last" data-step="4">
+        <dt class="pointer">4</dt>
+        <dd class="s-text">选择商品关联</dd>
+      </dl>
+    </div>
+    <form action="" id="goods_form" name="theForm" >
+      <input type="hidden" name="goods_id" id="goods_id" value="0">
+      <input name="numAdd_area" value="1" id="numAdd_area" type="hidden">
+      <input name="other_catids" value="" id="other_catids" type="hidden">
+      <input name="numAdd" value="1" id="numAdd" type="hidden">
+      <input name="ru_id" value="0" id="ru_id" type="hidden">
+      <input type="hidden" name="act" value="insert">
+      <div class="flexilist">
+        <!--第一步 选择商品分类-->
+        <div class="" ectype="step" data-step="1" style="display: none;" >
+          <div class="step_title"><i class="ui-step"></i><h3>选择商品分类</h3></div>
+          <div class="sort_info">
+            <div id="cate_add">
+              <div class="sort_list sort_list_one">
+                <div class="sort_list_warp">
+                  <div class="category_list ps-container ps-active-y">
+                    <ul ectype="category" data-cat_level="1">
+                      <li data-cat_name="" data-cat_id="0" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>请选择分类</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="12" data-cat_name="买得着超市" data-cat_level="1" class="current">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>买得着超市</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="858" data-cat_name="家电家具" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>家电家具</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="864" data-cat_name="未启用分类   腕表、珠宝配饰、眼镜" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>未启用分类   腕表、珠宝配饰、眼镜</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="860" data-cat_name="美妆护肤" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>美妆护肤</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="861" data-cat_name="农资农具" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>农资农具</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="865" data-cat_name="母婴用品" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>母婴用品</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="866" data-cat_name="运动健身" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>运动健身</a>
+                      </li>
+                      <li data-goodsid="0" data-cat_id="867" data-cat_name="品味七乡" data-cat_level="1">
+                        <a href="javascript:void(0);"><i class="sc_icon"></i>品味七乡</a>
+                      </li>
+                    </ul>
+                    </div>
+                    <div class="sort_point"></div>
+                  </div>
+                </div>
+                <div class="sort_list sort_list_one">
+                  <div class="sort_list_warp">
+                    <div class="category_list ps-container">
+                      <ul ectype="category" data-cat_level="2"><li data-cat_name="" data-cat_id="0" data-cat_level="2"><a href="javascript:void(0);"><i class="sc_icon"></i>请选择分类</a></li>
+                        <li data-goodsid="0" data-cat_id="615" data-cat_name="名茶酒类" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>名茶酒类</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="616" data-cat_name="食品饮料" data-cat_level="2" class="current">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>食品饮料</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="617" data-cat_name="医疗保健" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>医疗保健</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="620" data-cat_name="个人护理" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>个人护理</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="622" data-cat_name="粮油调味" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>粮油调味</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="623" data-cat_name="省鲜生" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>省鲜生</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="624" data-cat_name="居家用品" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>居家用品</a>
+                        </li>
+                        <li data-goodsid="0" data-cat_id="1559" data-cat_name="乳制品" data-cat_level="2">
+                          <a href="javascript:void(0);"><i class="sc_icon"></i>乳制品</a>
+                        </li>
+                      </ul>
+                    </div>
+                    </div>
+                    <div class="sort_point"></div>
+                  </div>
+                  <div class="sort_list">
+                    <div class="sort_list_warp">
+                      <div class="category_list ps-container">
+                        <ul ectype="category" data-cat_level="3"><li data-cat_name="" data-cat_id="0" data-cat_level="3"><a href="javascript:void(0);"><i class="sc_icon"></i>请选择分类</a></li>
+                          <li data-goodsid="0" data-cat_id="632" data-cat_name="饮料/矿泉水" data-cat_level="3">
+                            <a href="javascript:void(0);"><i class="sc_icon"></i>饮料/矿泉水</a>
+                          </li>
+                          <li data-goodsid="0" data-cat_id="633" data-cat_name="饼干蛋糕" data-cat_level="3" class="current">
+                            <a href="javascript:void(0);"><i class="sc_icon"></i>饼干蛋糕</a>
+                          </li>
+                          <li data-goodsid="0" data-cat_id="634" data-cat_name="糖果/巧克力" data-cat_level="3">
+                            <a href="javascript:void(0);"><i class="sc_icon"></i>糖果/巧克力</a>
+                          </li>
+                          <li data-goodsid="0" data-cat_id="635" data-cat_name="休闲零食" data-cat_level="3">
+                            <a href="javascript:void(0);"><i class="sc_icon"></i>休闲零食</a>
+                          </li>
+                          <li data-goodsid="0" data-cat_id="636" data-cat_name="冲调饮品" data-cat_level="3">
+                            <a href="javascript:void(0);"><i class="sc_icon"></i>冲调饮品</a>
+                          </li>
+                        </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <input type="hidden" name="cat_id" id="cat_id" value="633" ectype="cat_id">
+                  <div class="choiceClass" id="choiceClass">您当前选择的商品类别是：<strong class="red">买得着超市 &gt; 食品饮料 &gt; 饼干蛋糕</strong></div>
+                </div>
+                <div class="goods_btn">
+                  <a href="javascript:void(0);" class="btn btn35 btn_blue" data-step="1" data-type="step" ectype="stepSubmit">上一步，选择商品模式</a>
+                  <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="4" data-type="step" data-down="true" ectype="stepSubmit">下一步，填写通用信息</a>
+                </div>
+        </div>
+         <!--第二步 填写商品信息-->
+        <div class="step_three" ectype="step" data-step="2" >
+          <!-- 通用信息 -->
+          <div class="step">
+            <div class="step_title"><i class="ui-step"></i><h3>通用信息</h3></div>
+            <div class="step_content">
+              <div class="item item_wenzi">
+                <div class="step_label">商品分类：</div>
+                <div class="step_value"><span class="fl">买得着超市 &gt; 食品饮料 &gt; 饼干蛋糕</span><a href="javascript:;" class="edit_category" ectype="edit_category"><i class="icon icon-edit"></i></a><a href="javascript:void(0);" class="category_dialog">添加扩展分类</a>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">商品货号：</div>
+                <div class="step_value">
+                  <input type="text" name="goods_sn" class="text w150" autocomplete="off" onblur="checkGoodsSn(this.value,'0')" value="">
+                  <div class="form_prompt"></div>
+                  <div class="notic">如果您不输入商品货号，系统将自动生成一个唯一的货号。</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label"><em class="require-field">*</em>商品名称：</div>
+                <div class="step_value">
+                  <input type="text" name="goods_name" class="text" autocomplete="off" value="" ectype="require" style="color:;">
+                  <div id="font_color" class="font_color mr10">
+                    <input type="text" id="full" value="" style="display:none"><div class="sp-replacer sp-light"><div class="sp-preview"><div class="sp-preview-inner" style="background-color: rgb(0, 0, 0);"></div></div><div class="sp-dd">▼</div></div>
+                  </div>
+                  <input type="hidden" id="goods_name_color" name="goods_name_color" value="">
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">商品简单描述：</div>
+                <div class="step_value">
+                  <textarea class="textarea" name="goods_brief"></textarea>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label"><em class="require-field">*</em>本店售价：</div>
+                <div class="step_value"><input type="text" name="shop_price" onblur="priceSetted()" class="text w150" ectype="require" autocomplete="off" value="0"><a href="javascript:void(0);" class="mr10" onclick="marketPriceSetted()">按市场价</a>
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">市场价：</div>
+                <div class="step_value"><input type="text" name="market_price" class="text w150" autocomplete="off" value="0"><a href="javascript:void(0);" onclick="integral_market_price()">取整数</a></div>
+              </div>
+              <div class="item">
+                <div class="step_label">成本价：</div>
+                <div class="step_value"><input type="text" name="cost_price" class="text w150" autocomplete="off" value=""></div>
+              </div>
+              <div class="item" id="goods_number">
+                <div class="step_label"><em class="require-field">*</em>商品库存：</div>
+                <div class="step_value"><input type="text" name="goods_number" class="text w150" ectype="require" autocomplete="off" value="500"><div class="notic">库存在商品为虚货或商品存在货品时为不可编辑状态，库存数值取决于其虚货数量或货品数量。</div><div class="form_prompt"></div></div>
+              </div>
+              <div class="item">
+                <div class="step_label">库存预警值：</div>
+                <div class="step_value"><input type="text" name="warn_number" class="text w150" autocomplete="off" value="1"><div class="notic">设置最低库存预警值。当库存低于预警值时商家中心商品列表页库存列红字提醒，请填写0~255的数字，0为不预警。</div></div>
+              </div>
+              <div class="item">
+                <div class="step_label">商品品牌：</div>
+                <div class="step_value">
+                  <div class="selection">
+                    <input type="text" name="brand_name" id="brand_name" class="text w140 valid" data-filter="brand_name" ectype="require" autocomplete="off" value="请选择" readonly="">
+                    <a href="javascript:void(0);" class="btn btn30 blue_btn" ectype="ajaxBrand">添加</a>
+                    <input type="hidden" name="brand_id" id="brand_id" value="0" data-filter="brand_id">
+                    <div class="form_prompt"></div>
+                  </div>
+                  <div class="brand-select-container" style="display:none;">
+                    <div class="brand-top">
+                      <div class="letter">
+                        <ul>
+                          <li><a href="javascript:void(0);" data-letter="">全部品牌</a></li>
+                          <li><a href="javascript:void(0);" data-letter="A">A</a></li>
+                          <li><a href="javascript:void(0);" data-letter="QT">其他</a></li>
+                        </ul>
+                      </div>
+                      <div class="b_search">
+                        <input name="search_brand_keyword" id="search_brand_keyword" ectype="require" type="text" class="b_text" autocomplete="off" placeholder="1  ">
+                        <a href="javascript:void(0);" class="btn-mini"><i class="icon icon-search"></i></a>
+                      </div>
+                    </div>
+                    <div class="brand-list">
+                      <ul>
+                        <li data-id="0" data-name="请选择品牌" class="blue">取消选择</li>
+                        <li data-id="214" data-name="vivo"><em>V</em>vivo</li>
+                        <li data-id="244" data-name="雅士利"><em>Y</em>雅士利</li>
+                      </ul>
+                    </div>
+                    <div class="brand-not" style="display:none;">没有符合"<strong>其他</strong>"条件的品牌</div>
+                  </div>
+                </div>
+              </div>
+              <div class="item item_wenzi">
+                <div class="step_label"><em class="require-field">*</em>商品图片：</div>
+                <div class="step_value">
+                  <div id="goods_figure" class="update_images mr10" style="position: relative; z-index: 1;">
+                    <div class="img"><img src="images/update_images.jpg"></div>
+                  </div>
+                  <div class="form_prompt">
+                    <p>尺寸：800px * 800px</p>
+                    <p>大小：不限，根据实际自行确定大小</p>
+                    <p>格式：jpg，gif，png，jpeg</p>
+                  </div>
+                  <div class="notic ml70"></div>
+                  <input type="hidden" name="original_img" value="">
+                  <input type="hidden" name="goods_img" value="">
+                  <input type="hidden" name="goods_thumb" value="">
+                  </div>
+              </div>
+              <div class="item">
+                <div class="step_label">主图视频：</div>
+                <div class="step_value">
+                  <div id="goods_video" class="update_images mr10">
+                    <div class="img"><img src="images/update_video.jpg"></div>
+                  </div>
+                  <div class="goods_video_div mr10 hide">
+                    <video class="goods_video_js" id="goods_video_js" width="200" height="200" src="" controls="">
+                      <source src="" class="goods_video_js" type="video/mp4">
+                      </video>
+                      <div class="video_default"></div>
+                      <a href="javascript:void(0);" class="video_remove" ectype="video_remove"><i class="icon icon-remove"></i></a>
+                    </div>
+                    <div class="form_prompt"><p>像素：398px * 398px</p><p>大小：10MB，10秒以内的视频</p><p>格式：只支持MP4格式</p></div>
+                    <input type="hidden" name="goods_video" value="">
+                  </div>
+                </div>
+              <div class="item">
+                <div class="step_label">
+                  <div class="checkbox_items">
+                    图片外部链接：
+                    <div class="checkbox_item fr mr0">
+                      <input name="is_img_url" class="ui-checkbox" value="0" id="is_img_url" type="checkbox">
+                      <label class="ui-label" for="is_img_url">&nbsp;</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="step_value">
+                  <div class="checkbox_items">
+                    <input name="goods_img_url" class="text" id="goods_img_url" value="" placeholder="图片外部链接" onfocus="if (this.value == ''){this.value='';this.style.color='#666';}" disabled="" type="text">
+                    <div class="notic">外链地址必须带有http://格式</div>
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">商品运费：</div>
+                <div class="step_value">
+                  <div class="checkbox_items">                    
+                    <div class="checkbox_item">
+                      <input type="radio" name="freight" class="ui-radio" id="freight_1" value="1">
+                      <label for="freight_1" class="ui-radio-label">按固定运费</label> 
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" name="freight" class="ui-radio" id="freight_2" value="2" checked="checked">
+                      <label for="freight_2" class="ui-radio-label">按运费模板</label> 
+                    </div>
+                    <div class="form_prompt"></div>
+                  </div>
+                  <input id="shipping_fee" type="text" name="shipping_fee" class="text w150" autocomplete="off" value="" style="display:none;">
+                  <div id="tid">
+                    <div class="imitate_select select_w170" id="transport_div">
+                      <div class="cite">请选择</div>
+                      <ul style="display: none;">
+                        <li><a href="javascript:;" data-value="6" class="ftx-01">港澳台除外满48包邮</a></li>
+                        <li><a href="javascript:;" data-value="10" class="ftx-01">全国包邮</a></li>
+                      </ul>
+                      <input name="tid" type="hidden" value="">
+                    </div>  
+                    <a href="javascript:;" class="btn btn30 blue_btn fl mr5" ectype="ajaxTransport">添加</a>
+                    <a href="javascript:;" class="btn btn30 blue_btn fl" data-attr="edit" ectype="ajaxTransport">编辑</a>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">退货标识：</div>
+                <div class="step_value step_goods_service">
+                  <div class="checkbox_items" ectype="return_type">
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="return_type[]" class="ui-checkbox" id="return_type_0" value="0">
+                      <label class="ui-label" for="return_type_0">维修</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="return_type[]" class="ui-checkbox" id="return_type_1" value="1">
+                      <label class="ui-label" for="return_type_1">退货</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="return_type[]" class="ui-checkbox" id="return_type_2" value="2">
+                      <label class="ui-label" for="return_type_2">换货</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="return_type[]" class="ui-checkbox" id="return_type_3" value="3">
+                      <label class="ui-label" for="return_type_3">仅退款</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">商品服务：</div>
+                <div class="step_value step_goods_service">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="is_reality" class="ui-checkbox" value="1" id="is_reality">
+                      <label class="ui-label" for="is_reality">正品保证</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="is_return" class="ui-checkbox" value="1" id="is_return">
+                      <label class="ui-label" for="is_return">包退服务</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="is_fast" class="ui-checkbox" value="1" id="is_fast">
+                      <label class="ui-label" for="is_fast">闪速配送</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">会员价格：</div>
+                <div class="step_value">
+                  <table class="table_div">
+                    <tbody><tr>
+                      <th class="th">铜牌</th>
+                      <th class="th">微信</th>
+                      <th class="th">QQ</th>
+                      <th class="th">银牌</th>
+                      <th class="th">金牌</th>
+                      <th class="th">代销用户</th>
+                    </tr>
+                    <tr>
+                      <td class="td">
+                        <span id="nrank_6"></span>
+                        <input type="text" id="rank_6" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(6)" size="8">
+                        <input type="hidden" name="user_rank[]" value="6">                            
+                      </td>
+                      <td class="td">
+                        <span id="nrank_11"></span>
+                        <input type="text" id="rank_11" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(11)" size="8">
+                        <input type="hidden" name="user_rank[]" value="11">                           
+                      </td>
+                      <td class="td">
+                        <span id="nrank_12"></span>
+                        <input type="text" id="rank_12" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(12)" size="8">
+                        <input type="hidden" name="user_rank[]" value="12">                           
+                      </td>
+                      <td class="td">
+                        <span id="nrank_7"></span>
+                        <input type="text" id="rank_7" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(7)" size="8">
+                        <input type="hidden" name="user_rank[]" value="7">                            
+                      </td>
+                      <td class="td">
+                        <span id="nrank_8"></span>
+                        <input type="text" id="rank_8" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(8)" size="8">
+                        <input type="hidden" name="user_rank[]" value="8">                            
+                      </td>
+                      <td class="td">
+                        <span id="nrank_3"></span>
+                        <input type="text" id="rank_3" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(3)" size="8" style="width:40px;">
+                        <input type="hidden" name="user_rank[]" value="3">                            
+                      </td>
+                    </tr>
+                  </tbody></table>                                            <div class="notic">会员价格为-1时表示会员价格按会员等级折扣率计算。你也可以为每个等级指定一个固定价格</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 详细描述 -->
+          <div class="step">
+            <div class="step_title"><i class="ui-step"></i><h3>详细描述</h3></div>
+            <div class="step_content">
+              <div class="panel-main gallery_album" ectype="gallery_album_list" data-inid="gallery_album_dsc" data-act="gallery_album_list">
+                  <div class="panel panel-pc">
+                    <div id="FCKeditor">
+                      <input type="hidden" id="goods_desc" name="goods_desc" value="">
+                      <iframe id="goods_desc_frame" src="../plugins/ueditor/ecmobanEditor.php?item=goods_desc" width="100%" height="586" frameborder="0" scrolling="no">
+                      </iframe>
+                    </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+          <!-- 详细描述end-->
+          <!-- 特殊信息 -->
+          <div class="step">
+            <div class="step_title"><i class="ui-step"></i><h3>特殊信息</h3></div>
+            <div class="step_content">
+              <div class="goods_activity">
+                <div class="item">
+                  <div class="step_label">促销：</div>
+                  <div class="step_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="radio" name="is_promote" class="ui-radio is_promote" id="pro_no" value="0" checked="checked" onclick="handlePromote(this);" autocomplete="off">
+                        <label for="pro_no" class="ui-radio-label">否</label> 
+                      </div>
+                      <div class="checkbox_item mr15">
+                        <input type="radio" name="is_promote" class="ui-radio is_promote" id="pro_yes" value="1" onclick="handlePromote(this);" autocomplete="off">
+                        <label for="pro_yes" class="ui-radio-label">是</label> 
+                      </div>
+                      <div class="hidden_div" style="display: block;">
+                        <div id="text_time1" class="text_time">
+                          <input type="text" class="text mr0" name="promote_start_date" id="promote_start_date" value="2019-03-28 16:46:42" autocomplete="off" readonly="">
+                        </div>
+                        <span class="bolang">&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                        <div id="text_time2" class="text_time time_disabled">
+                          <input type="text" class="text" name="promote_end_date" id="promote_end_date" value="2019-04-28 16:46:42" autocomplete="off" readonly="">
+                        </div>
+                        <input type="text" class="text w70 ml10" id="promote_1" name="promote_price" value="0" placeholder="促销价格" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="step_label">限购：</div>
+                  <div class="step_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="radio" name="is_xiangou" class="ui-radio is_xiangou" id="pur_no" value="0" checked="checked" onclick="handle_for_purchasing(this);" autocomplete="off">
+                        <label for="pur_no" class="ui-radio-label">否</label> 
+                      </div>
+                      <div class="checkbox_item mr15">
+                        <input type="radio" name="is_xiangou" class="ui-radio is_xiangou" id="pur_yes" value="1" onclick="handle_for_purchasing(this);" autocomplete="off">
+                        <label for="pur_yes" class="ui-radio-label">是</label> 
+                      </div>
+                      <div class="hidden_div" style="display: block;">
+                        <div id="text_time3" class="text_time">
+                          <input type="text" class="text mr0" name="xiangou_start_date" id="xiangou_start_date" value="" autocomplete="off" readonly="">
+                        </div>
+                        <span class="bolang">&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                        <div id="text_time4" class="text_time time_disabled">
+                          <input type="text" class="text" name="xiangou_end_date" id="xiangou_end_date" value="" autocomplete="off" readonly="">
+                        </div>
+                        <input type="text" class="text w70 ml10" name="xiangou_num" id="xiangou_num" value="" placeholder="限购数量" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="goods_special">
+                <div class="item">
+                  <div class="step_label">阶梯价格：</div>
+                  <div class="step_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="radio" name="is_volume" class="ui-radio" id="ladder_no" value="0" checked="checked" autocomplete="off">
+                        <label for="ladder_no" class="ui-radio-label">无</label> 
+                      </div>
+                      <div class="checkbox_item">
+                        <input type="radio" name="is_volume" class="ui-radio" id="ladder_yes" value="1" autocomplete="off">
+                        <label for="ladder_yes" class="ui-radio-label">有</label> 
+                      </div>
+                    </div>
+                    <div class="special_div" ectype="volumeNumber" data-number="100" style="display: none;">
+                      <table class="table_div table_heng">
+                        <tbody><tr class="first_tr">
+                          <td class="first_td">数量</td>
+                          <td>
+                            <input type="text" name="volume_number[]" value="" class="text w50 td_num ignore">
+                            <input type="hidden" name="id[]" value="0" autocomplete="off">
+                          </td>
+                          <td class="last_td" rowspan="3"><a href="javascript:void(0);" class="addTd" onclick="add_clonetd(this);"></a></td>
+                        </tr>
+                        <tr class="first_tr">
+                          <td class="first_td">价格</td>
+                          <td><input type="text" name="volume_price[]" value="" class="text w50 ignore"></td>
+                        </tr>
+                        <tr>
+                          <td class="first_td">操作</td>
+                          <td><a href="javascript:;" class="btn btn25 blue_btn" data-id="0" ectype="remove_volume">删除</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">满减价格：</div>
+                <div class="step_value">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="radio" name="is_fullcut" class="ui-radio" id="fullcut_no" value="0" checked="checked" autocomplete="off">
+                      <label for="fullcut_no" class="ui-radio-label">无</label> 
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" name="is_fullcut" class="ui-radio" id="fullcut_yes" value="1" autocomplete="off">
+                      <label for="fullcut_yes" class="ui-radio-label">有</label> 
+                    </div>
+                  </div>
+                  <div class="special_div" ectype="volumeNumber" data-number="5" style="display: none;">
+                    <table class="table_div table_heng">
+                      <tbody><tr class="first_tr">
+                        <td class="first_td">满</td>
+
+                        <td class="last_td" rowspan="3"><a href="javascript:void(0);" class="addTd" onclick="add_clonetd(this,'mj');"></a></td>
+                      </tr>
+                      <tr class="first_tr">
+                        <td class="first_td">立减</td>
+
+                      </tr>
+                      <tr>
+                        <td class="first_td">操作</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          </div>
+          <!-- 特殊信息结束 -->
+          <div class="step" style="width: 1603px;">
+            <div class="step_title" style="border-bottom: 1px solid rgb(228, 234, 236);"><i class="ui-step"></i><h3>其他信息</h3><span class="stop" ectype="outerInfo" title="收起详情"></span>
+            </div>
+            <div class="step_content" style="">
+              <div class="item dl_give_integral">
+                <div class="step_label">赠送消费积分数：</div>
+                <div class="step_value" style="margin-bottom:0px;">
+                  <input type="text" name="give_integral" class="text" onblur="get_give_integral(this.value);" autocomplete="off" value="0">
+                </div>
+              </div>
+              <div class="item dl_give_integral">
+                <div class="step_label">&nbsp;&nbsp;</div>
+                <div class="step_value">购买该商品时赠送消费积分数,-1表示按商品价格赠送</div>
+              </div>
+              <div class="item dl_rank_integral">
+                <div class="step_label">赠送等级积分数：</div>
+                <div class="step_value" style="margin-bottom:0px;">
+                  <input type="text" name="rank_integral" class="text" autocomplete="off" onblur="get_rank_integral(this.value);" value="0">
+                </div>
+              </div>
+              <div class="item dl_rank_integral">
+                <div class="step_label">&nbsp;&nbsp;</div>
+                <div class="step_value">购买该商品时赠送等级积分数,-1表示按商品价格赠送</div>
+              </div>
+              <div class="item dl_pay_integral">
+                <div class="step_label">积分购买金额：</div>
+                <div class="step_value" style="margin-bottom:0px;">
+                  <input type="text" name="integral" class="text" autocomplete="off" onblur="parseint_integral(this.value);" value="0">
+                </div>
+              </div>
+              <div class="item dl_pay_integral">
+                <div class="step_label">&nbsp;&nbsp;</div>
+                <div class="step_value">
+                  (此处需填写金额)购买该商品时最多可以使用积分的金额
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">加入推荐：</div>
+                <div class="step_value step_goods_service">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="is_best" class="ui-checkbox" value="1" id="is_best">
+                      <label class="ui-label" for="is_best">精品</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="is_new" class="ui-checkbox" value="1" id="is_new">
+                      <label class="ui-label" for="is_new">新品</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="is_hot" class="ui-checkbox" value="1" id="is_hot">
+                      <label class="ui-label" for="is_hot">热销</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">上架：</div>
+                <div class="step_value step_goods_service">
+                  <div class="switch switch_2 active" title="是">
+                    <div class="circle"></div>
+                  </div>
+                  <input type="hidden" value="1" name="is_on_sale">
+                  <div class="notic" style="margin-left:10px;"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">能作为普通商品销售：</div>
+                <div class="step_value step_goods_service">
+                  <div class="switch switch_2 active" title="否">
+                    <div class="circle"></div>
+                  </div>
+                  <input type="hidden" value="1" name="is_alone_sale">
+                  <div class="notic" style="margin-left:288px;">默认为是，如果勾选否，则该商品不能直接购买，只能作为配件、赠品等商品购买。</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">是否为免运费商品：</div>
+                <div class="step_value step_goods_service">
+                  <div class="switch switch_2 " title="否">
+                    <div class="circle"></div>
+                  </div>
+                  <input type="hidden" value="0" name="is_shipping">
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">商品关键词：</div>
+                <div class="step_value"><input type="text" name="keywords" class="text" autocomplete="off" value="">
+                  <div class="notic">商品关键词请用空格分隔；有两个功能，一是可以作为站内关键词查询，在前台搜索框输入关键词后，能够搜索到该商品；二是作为搜索引擎收录使用。</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">评论标签：</div>
+                <div class="step_value">
+                  <textarea class="textarea" name="goods_product_tag"></textarea><div class="notic">请用','号分割；例：商品好看,很实用,材料很好...（注意逗号要使用英文逗号）<br>商品确认收货后，买家评论时可勾选的“买家印象”处内容</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">服务承诺标签：</div>
+                <div class="step_value">
+                  <textarea class="textarea" name="goods_tag"></textarea><div class="notic">请用','号分割（注：逗号要使用英文逗号）</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="step_label">商家备注：</div>
+                <div class="step_value">
+                  <textarea class="textarea" name="seller_note"></textarea><div class="notic">仅供商家自己看的信息</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="goods_footer">
+            <div class="goods_btn">
+              <a href="javascript:void(0);" class="btn btn35 btn_blue" data-step="3" data-type="step" ectype="stepSubmit">上一步，选择商品分类</a>
+              <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="5" data-type="step" data-down="true" ectype="stepSubmit">下一步，填写商品属性</a>
+              <a href="javascript:void(0);" class="btn btn35 blue_btn" data-down="true" data-type="submit" ectype="stepSubmit"><i class="sc_icon goods_complete_icon"></i>完成，发布商品</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+  </div>
+</div>
+</body>
+<script src="./js/jquery.purebox.js"></script>
+<script type="text/javascript">
+$(function () {
+ function scroll() {
+ $(window).scroll(function(){
+    var scrollTop = $(document).scrollTop();
+    var height = $(".layui-tab-content").height();
+    var bodyHeight = $(".layui-tab-content").height();
+    if(scrollTop>(height-bodyHeight)){
+        $(".goods_footer .goods_btn").removeClass("goods_btn_fixed");
+    }else{
+        $(".goods_footer .goods_btn").addClass("goods_btn_fixed");
+    }
+});
+}
+scroll();
+});
+
+  
+</script>
+
+</html>
