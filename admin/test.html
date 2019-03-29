@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
+  <div class="" style="height: 1200px;width: 600px;background: #ddd"></div>
 	<div class="tDiv">
                     <div class="switch " title="否" onclick="listTable.switchBt(this, 'toggle_show_in_nav', 14)">
                       <div class="circle"></div>
@@ -18,7 +19,20 @@
  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
 <!-- <script src="./js/listtable.js"></script> -->
 <script type="text/javascript">
-  var listTable = new Object;
-  var XHR = new XML
+ $(function () {
+  $(window).scroll(function(){
+    // var scrollTop = $(document).scrollTop();
+    // var height = $(document).height();
+    // console.log(scrollTop);
+    // var bodyHeight = $(".layui-tab-content").height();
+    // if(scrollTop>(height-bodyHeight)){
+    //     $(".goods_footer .goods_btn").removeClass("goods_btn_fixed");
+    // }else{
+    //     $(".goods_footer .goods_btn").addClass("goods_btn_fixed");
+    // }
+    alert('dfgfg');
+});
+  // scroll();
+});
 </script>
 </html>

@@ -7,6 +7,7 @@ button { color: #707070; font-size: 12px; font-family: "Microsoft Yahei", "Lucid
 body, ul, ol, li, dl, dt, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin: 0; padding: 0; }
 ul, ol, li { list-style-image: none; list-style-type: none; }
 h1, h2, h3, h4, h5, h6 { font-size: 12px; }
+h5{font-weight: bold;}
 a { color: #31b4e1; text-decoration: none; blr:expression(this.onFocus=this.blur()) }
 a:hover { color: #ec5051; text-decoration: none; }
 a img { border: none; }
@@ -1395,7 +1396,7 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 /*添加新商品end*/
 
 /*仓库模式*/
-.step_top_btn{ overflow:hidden; margin:20px 0;}
+.step_top_btn{ overflow:hidden; margin-bottom: 20px;}
 .step_top_btn .btn{ height:38px; line-height:38px; font-size:16px; border-radius:4px; margin-right:20px;}
 .step_top_btn .btn .sc_icon_warehouse{ width:19px; height:16px; background-position:-264px -425px; display:inline-block; vertical-align:middle; margin:-4px 5px 0 0;}
 .step_top_btn .red{font-size:14px;}
