@@ -167,19 +167,19 @@
       </ul>
     </div>
     <div class="stepflex">
-      <dl class="first cur"data-step="0">
+      <dl class="first cur"data-step="1">
         <dt class="pointer">1</dt>
         <dd class="s-text">选择商品分类</dd>
       </dl>
-      <dl data-step="1">
+      <dl data-step="2">
         <dt class="pointer">2</dt>
         <dd class="s-text">填写商品信息</dd>
       </dl>       
-      <dl data-step="2" >
+      <dl data-step="3" >
         <dt class="pointer">3</dt>
         <dd class="s-text">填写商品属性</dd>
       </dl>
-      <dl class="last" data-step="3">
+      <dl class="last" data-step="4">
         <dt class="pointer">4</dt>
         <dd class="s-text">选择商品关联</dd>
       </dl>
@@ -290,11 +290,11 @@
                 </div>
               </div>
             </div>
-            <input type="hidden" name="cat_id" id="cat_id" value="633" ectype="cat_id">
-            <div class="choiceClass" id="choiceClass">您当前选择的商品类别是：<strong class="red">买得着超市 &gt; 食品饮料 &gt; 饼干蛋糕</strong></div>
+            <input type="hidden" name="cat_id" id="cat_id" value="1" ectype="cat_id">
+            <div class="choiceClass" id="choiceClass">您当前选择的商品类别是：<strong class="red"></strong></div>
           </div>
           <div class="goods_btn">
-            <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="0" data-type="step" data-down="true" ectype="stepSubmit">下一步，填写通用信息</a>
+            <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="1" data-type="step" data-down="false" ectype="stepSubmit">下一步，填写通用信息</a>
           </div>
         </div>
         <!--第二步 填写商品信息-->
@@ -820,7 +820,7 @@
         <div class="goods_footer">
           <div class="goods_btn goods_btn_fixed">
             <a href="javascript:void(0);" class="btn btn35 btn_blue" data-step="0" data-type="step" ectype="stepSubmit">上一步，选择商品分类</a>
-            <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="2" data-type="step" data-down="true" ectype="stepSubmit">下一步，填写商品属性</a>
+            <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="2" data-type="step" data-down="false" ectype="stepSubmit">下一步，填写商品属性</a>
             <a href="javascript:void(0);" class="btn btn35 blue_btn" data-down="true" data-type="submit" ectype="stepSubmit"><i class="sc_icon goods_complete_icon"></i>完成，发布商品</a>
           </div>
         </div>
@@ -1231,7 +1231,7 @@
           <div class="goods_footer">
             <div class="goods_btn goods_btn_fixed">
               <a href="javascript:void(0);" class="btn btn35 btn_blue" data-step="1" data-type="step" ectype="stepSubmit">上一步，填写商品信息</a>
-              <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="3" data-type="step" data-down="true" ectype="stepSubmit">下一步，选择关联商品</a>
+              <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="3" data-type="step" data-down="false" ectype="stepSubmit">下一步，选择关联商品</a>
               <a href="javascript:void(0);" class="btn btn35 blue_btn" data-down="true" data-type="submit" ectype="stepSubmit"><i class="sc_icon goods_complete_icon"></i>完成，发布商品</a>
             </div>
           </div>
@@ -1413,17 +1413,218 @@
 <script src="./js/jquery.purebox.js"></script>
 <!-- <script src="./js/test.js"></script> -->
 <script type="text/javascript">
-  $(function () {
-   // tab切换
-  function goods_tab() {
-    $(document).on("click",".stepflex dl",function(){
-    var index = $(this).index();
-    $(this).addClass("cur").siblings();
-    $(".flexilist div[ectype='step']").eq(index).show().siblings(".flexilist div[ectype='step']").hide();
-  });
-  }
-  goods_tab();
-  });
- 
+  /**********************************{common} start*****************************/
+    
+    var goods_id = $("input[name='goods_id']").val();
+    var user_id = '0';
+    
+    $(function(){
+        var steflex = $(".stepflex");
+        var goodsInfo = $(".flexilist");
+        $(window).load(function(){
+            //默认进入加载步骤
+            auto_step();
+            
+            //设置分类导航
+            set_cat_nav();
+            
+            //促销
+            // handlePromote('input[name=is_promote]');
+            
+            //限购
+            // handle_for_purchasing('.is_xiangou');
+            
+            /**
+            *隐藏属性模块
+            */
+            // var goods_attr_list = $("#goods_attr_gallery").html();
+            // if(goods_attr_list == ''){
+            //     $("#goods_attr_gallery").hide();
+            // }
+            
+            //分销
+            // if(document.getElementById('dis_commission')){
+            //     handle_distribution('.is_dishandle');
+            // }
+            
+            //会员价格
+
+            // set_price_note('6');
+            // set_price_note('11');
+            // set_price_note('12');
+            // set_price_note('7');
+            // set_price_note('8');
+            // set_price_note('3');          
+        });
+        
+        //设置步骤
+        var auto_step = function(num){
+            if(goods_id > 0){           
+                var auto_step = 'auto_step_' + goods_id;
+                if(num){
+                    $.cookie(auto_step, num, {expires:1,path:'/'});
+                }else{
+                    //编辑商品默认到第三步
+                    //var num = $.cookie(auto_step)? $.cookie(auto_step):1;
+                    show_step('step', 1);
+                }
+            }else{
+                if(num == null){
+                    //添加商品默认到第一步
+                    show_step('step', 0);
+                }
+            }
+        }
+        
+        //页面跳转
+        var show_step = function(type,num,valid,obj){
+            //点击下一步骤验证
+            if(obj != null){
+                var obj = $(obj);
+                var step = obj.parents("div[ectype='step']").data("step");
+                console.log(step);
+                if(validfunc(step) == false && valid == true){
+                    return;
+                }
+            }
+
+            //当前步骤导航
+            steflex.find("dl:lt("+(num+1)+")").addClass("cur");
+            steflex.find("dl:gt("+num+")").removeClass("cur");
+
+            //当前步骤内容页显示
+            goodsInfo.find("*[ectype='step'][data-step="+num+"]").show().siblings().hide();
+            
+            if(type == "submit"){
+                $("#goods_form").submit();
+            }
+            
+            if(num == 0 || num == 1 || num ==2){
+                scroll();
+            }
+        }
+        
+        //添加或者编辑商品点击下一步事件
+        $("*[ectype='stepSubmit']").on("click",function(){
+            var _this = $(this);
+            var step = _this.data("step");
+            var type = _this.data("type");
+            var down = _this.data("down");
+            if(down == true){
+                show_step(type,step,true,_this);
+            }else{
+                show_step(type,step,false,_this);
+            }
+        });
+        
+        //步骤验证通过下一步
+        validfunc = function (num){
+            var model_inventory = $("form[name='theForm'] :input[name='model_inventory']").val();
+            var stepDiv = $("div[data-step='"+num+"']");
+            stepDiv.find("input[ectype='require']").removeClass("error");
+            stepDiv.find(".form_prompt .error").remove();
+            if(num == 0){
+                //验证是否选择了分类
+                if($("input[name='cat_id']").val() == 0){
+                    $("#choiceClass").find("strong").html("请选择分类");
+                    return false;
+                }
+            }else if(num == 1){
+                //验证商品基本信息必填信息
+                if($("input[name='goods_name']").val() == ""){
+                    error_div("input[name='goods_name']",'商品名称不能为空');
+                    return false;
+                }
+
+                if(!(/^[0-9]+.?[0-9]*$/.test($("input[name='shop_price']").val()))){
+                    error_div("input[name='shop_price']",'价格必须为数字');
+                    return false;
+                }
+                if(/[^0-9 \-]+/.test($("input[name='goods_number']").val())){
+                    error_div("input[name='goods_number']",'商品编号必须为整数');
+                    return false;
+                }
+                
+                if($("#is_img_url").val() == 0){
+                    if($(".update_images").find("img").attr("src") == "images/update_images.jpg"){
+                        
+                        error_div(".moxie-shim input","请上传商品默认图片");
+                        return false;
+                    }
+                }else{
+                    if($("#goods_img_url").val() == ''){
+                        error_div("input[name='goods_img_url']","请填写图片外部链接，http://格式");
+                        return false;
+                    }
+                }
+                
+                //运费验证
+                if($("input[name='freight']").length > 0){
+                    var is_freight = true;
+                    var error_prompt = "";
+                    
+                    if($("input[name='freight']").is(":checked")){
+                        var val = $("input[name='freight']:checked").val();
+                        if(val == 2){
+                            var tid = $("input[name='tid']").val();
+                            if(tid == "" || tid == 0){
+                                is_freight = false;
+                                error_prompt = 'volume_freight_not_null';
+                            }
+                        }else{
+                            is_freight = true;
+                        }
+                    }else{
+                        is_freight = false;
+                        error_prompt = 'volume_goods_freight_not_null';
+                    };
+
+                    if(is_freight == false){
+                        error_div("input[name='freight']",'error_prompt');
+                        return false;
+                    }
+                }
+                
+            }else{
+                return true;
+            }
+        }
+        
+        //验证调用的报错提示
+        error_div = function(obj,error,is_error){
+            var error_div = $(obj).parents('div.item').find('div.form_prompt');
+            $(obj).parents('div.item').find(".notic").hide();
+            
+            if(is_error != 1){
+                $(obj).addClass("error");
+            }
+            
+            $(obj).focus();
+            error_div.find("label").remove();
+            error_div.append("<label class='error'><i class='icon icon-exclamation-sign'></i>"+error+"</label>");
+        }
+        
+        //悬浮显示上下步骤按钮
+        scroll = function(){
+            $(window).scroll(function(){
+                var scrollTop = $(document).scrollTop();
+                var height = $(".warpper").height();
+                var bodyHeight = $(".iframe_body").height();
+                if(scrollTop>(height-bodyHeight)){
+                    $(".goods_footer .goods_btn").removeClass("goods_btn_fixed");
+                }else{
+                    $(".goods_footer .goods_btn").addClass("goods_btn_fixed");
+                }
+            });
+        }
+        
+        //返回修改分类
+        $("a[ectype='edit_category']").on("click",function(){
+            show_step('step', 0);
+        });
+        
+    });
+    /**********************************{common} end*****************************/
+    
 </script>
 </html>

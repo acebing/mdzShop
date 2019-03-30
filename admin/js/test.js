@@ -1,6 +1,39 @@
     
+    /**********************************{弹窗图片库 相册选择和相册图片排序 gallery_album} start*****************************/
+    $.divselect("#album_id","#album_id_val",function(obj){
+        var val = obj.attr("data-value");
+        changedpic(val,obj,1);
+    });
+    
+    $.divselect("#sort_name","#sort_name_val",function(obj){
+        var sort = obj.attr("data-value");
+        changedpic(0,obj,1,sort);
+    });
+    
+    $.divselect("#album_file","#album_file_val",function(obj){
+        var val = obj.attr("data-value"),
+            inid = obj.parents("[ectype='album-warp']").data("inid"),
+            is_vis = 0;
+            
+        if(inid == "gallery_album"){
+            is_vis = 2;
+        }else{
+            is_vis = 1;
+        }
+            
+        changedpic(val,obj,is_vis,"",inid);
+    });
+    
+    //属性分类筛选出属性类型
+    $.divselect("*[ectype='typeCatSelect']","*[ectype='typeCatVal']",function(obj){
+        var level = obj.data('level'),
+            val = obj.data("value");
+        
+        get_childcat(obj,2);
+    });
+    /**********************************{手机商品描述选相册 gallery_album} end*****************************/
 
-/**********************************{common} start*****************************/
+    /**********************************{common} start*****************************/
     
     var goods_id = $("input[name='goods_id']").val();
     var user_id = '0';
@@ -16,11 +49,16 @@
             //设置分类导航
             set_cat_nav();
             
+            reset_step_number($("input[name='goods_model']").val());
+            
             //促销
             handlePromote('input[name=is_promote]');
             
             //限购
             handle_for_purchasing('.is_xiangou');
+            
+            //分期
+            handle_for_stages('.is_handle_stages');
             
             /**
             *隐藏属性模块
@@ -36,13 +74,24 @@
             }
             
             //会员价格
-
-            set_price_note('6');
-            set_price_note('11');
-            set_price_note('12');
-            set_price_note('7');
-            set_price_note('8');
-            set_price_note('3');          
+            
+                                    set_price_note('6');
+                                    set_price_note('11');
+                                    set_price_note('12');
+                                    set_price_note('7');
+                                    set_price_note('8');
+                                    set_price_note('3');
+                            
+            
+            if(model_inventory != 0){
+                $("#goods_number").hide();
+            }
+            
+            $(".loadWarpper").hide();
+            $(".warpper").show();
+            
+            $(".step[ectype=filter]").find(".move_right .move_list").perfectScrollbar('destroy');
+            $(".step[ectype=filter]").find(".move_right .move_list").perfectScrollbar();
         });
         
         //设置步骤
@@ -87,9 +136,84 @@
                 $("#goods_form").submit();
             }
             
-            if(num == 1 || num == 2 || num ==3){
+            if(num == 4 || num == 5 || num == 6){
                 scroll();
             }
+        }
+        
+        //选择商品模式
+        $("*[data-step='1']").find(".mos .mos_item").on("click",function(){
+            var obj = $(this);
+            var model = obj.data("model");
+            var stepModel = obj.data("stepmodel");
+            
+            if(model > 0){
+                $(".dl_give_integral").hide();
+                $(".dl_rank_integral").hide();
+                $(".dl_pay_integral").hide();
+            }else{
+                $(".dl_give_integral").show();
+                $(".dl_rank_integral").show();
+                $(".dl_pay_integral").show();
+            }
+            
+            obj.addClass("active");
+            obj.siblings().removeClass("active");
+            
+            $("input[name='goods_model']").val(model);
+            $("input[name='model_price']").val(model);
+            $("input[name='model_inventory']").val(model);
+            $("input[name='model_attr']").val(model);
+        
+            //选择商品模式进去下一步骤
+            show_step('model',stepModel);
+            reset_step_number(model);
+            
+            set_attribute_table(goods_id); //重置表格
+            getAttrList(goods_id);
+        });
+        
+        /* 重置步骤数字 */
+        reset_step_number = function(model){
+            if(model == 0){
+                modelFormat(model);
+            }else{
+                modelFormat(model);
+                goods_model_list("#goods_model_list", goods_id, model, user_id); //加载商品模式列表
+            }
+        }
+        
+        //选择不同的商品模式展示不同的模式属性
+        modelFormat = function(model){
+            var dlModel = steflex.find("dl[ectype='model']");
+            if(model == 0){
+                dlModel.hide();
+                $("dd[ectype='model'],h3[ectype='model']").text("默认模式");
+                $("#attribute_model").hide(); //属性模式
+                
+                            }else if(model == 1){
+                dlModel.show();
+                $("dd[ectype='model'],h3[ectype='model']").text("仓库模式");
+                $("#attribute_model").show(); //属性模式
+                $("#attribute_region").hide();
+                
+                            }else if(model == 2){
+                dlModel.show();
+                $("dd[ectype='model'], h3[ectype='model']").text("地区模式");
+                $("#attribute_model").show(); //属性模式
+                $("#attribute_region").show();
+                
+                            }
+            
+            steflex.find("dl").each(function(index, element){
+                var step_text = $(this).data("step");
+                if(model == 0){
+                    step_text -= 1;
+                }
+                if(index>1){
+                    $(element).find("dt").text(step_text);
+                }
+            });
         }
         
         //添加或者编辑商品点击下一步事件
@@ -111,25 +235,25 @@
             var stepDiv = $("div[data-step='"+num+"']");
             stepDiv.find("input[ectype='require']").removeClass("error");
             stepDiv.find(".form_prompt .error").remove();
-            if(num == 1){
+            if(num == 3){
                 //验证是否选择了分类
                 if($("input[name='cat_id']").val() == 0){
                     $("#choiceClass").find("strong").html("请选择分类");
                     return false;
                 }
-            }else if(num == 2){
+            }else if(num == 4){
                 //验证商品基本信息必填信息
                 if($("input[name='goods_name']").val() == ""){
-                    error_div("input[name='goods_name']",'goods_name_not_null');
+                    error_div("input[name='goods_name']",goods_name_not_null);
                     return false;
                 }
 
                 if(!(/^[0-9]+.?[0-9]*$/.test($("input[name='shop_price']").val()))){
-                    error_div("input[name='shop_price']",'shop_price_not_number');
+                    error_div("input[name='shop_price']",shop_price_not_number);
                     return false;
                 }
                 if(/[^0-9 \-]+/.test($("input[name='goods_number']").val())){
-                    error_div("input[name='goods_number']",'goods_number_not_int');
+                    error_div("input[name='goods_number']",goods_number_not_int);
                     return false;
                 }
                 
@@ -146,6 +270,83 @@
                     }
                 }
                 
+                if(document.getElementById('dis_commission')){
+                    var dis_true = 0;
+                    var is_dis = 0;
+                    var dis = $("#dis_commission").val();
+                    
+                    $("input[name='is_distribution']").each(function(index, element) {
+                    
+                      if($(element).is(":checked") == true){
+                        if(dis == ''){
+                            is_dis = 1;
+                            
+                        }else if(dis < 0 || dis > 100){
+                            is_dis = 2;
+                        }
+                        
+                        dis_true = 1;
+                      }else{
+                        dis_true = 0;
+                      }
+                    });
+                    
+                    if(dis_true == 1){
+                        if(is_dis == 1){
+                            error_div("input[name='dis_commission']","值不能为空");
+                            return false;
+                        }else if(is_dis == 2){
+                            error_div("input[name='dis_commission']","值不能小于0或不能大于100");
+                            return false;
+                        }
+                    }
+                }
+                
+                if(document.getElementById('stages_rate')){
+                    var stages_true = 0;
+                    var stagesnum = 0;
+                    var is_stages = 0;
+                    var stages_rate = $("input[name='stages_rate']").val();
+                    
+                    $("input[name='is_stages']").each(function(index, element) {
+                        if($(element).is(":checked") == true){
+                            if(stages_rate == ''){
+                                is_stages = 1;
+                            
+                            }else if(stages_rate <= 0 || stages_rate > 100){
+                                is_stages = 2;
+                            }
+                        
+                            for(var i = 0; i <= 5; i++){
+                                if($("input[name='stages_num[" + i + "]']").is(":checked") == true){
+                                    stagesnum = 0;
+                                    break;
+                                }else{
+                                    stagesnum += 1;
+                                }
+                            }
+                            stages_true = 1;
+                        }else{
+                            stages_true = 0;
+                        }
+                    });
+                    
+                    if(stages_true == 1){
+                        if(stagesnum > 0){
+                            error_div("input[name='stages_rate']","请选择分期次数");
+                            return false;
+                        }else{
+                            if(is_stages == 1){
+                                error_div("input[name='stages_rate']","值不能为空");
+                                return false;
+                            }else if(is_stages == 2){
+                                error_div("input[name='stages_rate']","值不能小于0或不能大于100");
+                                return false;
+                            }
+                        }
+                    }   
+                }
+                
                 //运费验证
                 if($("input[name='freight']").length > 0){
                     var is_freight = true;
@@ -157,18 +358,18 @@
                             var tid = $("input[name='tid']").val();
                             if(tid == "" || tid == 0){
                                 is_freight = false;
-                                error_prompt = 'volume_freight_not_null';
+                                error_prompt = volume_freight_not_null;
                             }
                         }else{
                             is_freight = true;
                         }
                     }else{
                         is_freight = false;
-                        error_prompt = 'volume_goods_freight_not_null';
+                        error_prompt = volume_goods_freight_not_null;
                     };
 
                     if(is_freight == false){
-                        error_div("input[name='freight']",'error_prompt');
+                        error_div("input[name='freight']",error_prompt);
                         return false;
                     }
                 }
@@ -218,6 +419,310 @@
         $("a[ectype='edit_category']").on("click",function(){
             show_step('step', 3);
         });
+        
+        /**********************************{仓库和地区模式} start*****************************/
+        
+        /*************************************仓库部分************************************/
+        //添加仓库
+        $(document).on("click","a[ectype='addWarehouse']",function(){
+            var user_id = $(this).data('userid');
+            $.jqueryAjax('dialog.php', 'is_ajax=1&act=dialog_warehouse' + '&user_id=' + user_id + '&temp=addBatchWarehouse', function(data){
+                var content = data.content;
+                pb({
+                    id:"categroy_dialog",
+                    title:"添加仓库",
+                    width:788,
+                    content:content,
+                    ok_title:"确定",
+                    drag:false,
+                    foot:true,
+                    cl_cBtn:false,
+                    onOk:function(){addBatchWarehouse()}
+                });
+                
+                $(".addList").on("click",function(){
+                    var list = $(this).parents(".add_warehouse_list");
+                    var it = list.find(".warehouse_item:first").clone();
+                    it.append("<a href='javascript:void(0);' class='delete'></a>")
+                    if(list.find(".warehouse_item").length>4){
+                        $(".red_notic").remove();
+                        $(this).before("<div class='red_notic'>每次上传仓库不能超过5条</div>");
+                        setTimeout('$(".red_notic").remove()',1000);
+                    }else{
+                        $(this).before(it);
+                    }
+                });
+                
+                $(document).on("click",".delete",function(){
+                    $(this).parents(".warehouse_item").remove();
+                });             
+            });
+        });
+        
+        //添加仓库处理
+        function addBatchWarehouse(){
+            var obj = $("#categroy_dialog");
+            var ware_name = [];
+            var ware_number = [];
+            var ware_price = [];
+            var ware_promote_price = [];
+            var goods_id = 0;
+            obj.find("input[name='warehouse_name']").each(function(){
+                var val = $(this).val();
+                ware_name.push(val);
+            });
+            obj.find("input[name='warehouse_number']").each(function(){
+                var number = $(this).val();
+                ware_number.push(number);
+            });
+            obj.find("input[name='warehouse_price']").each(function(){
+                var price = $(this).val();
+                ware_price.push(price);
+            });
+            obj.find("input[name='warehouse_promote_price']").each(function(){
+                var promote_price = $(this).val();
+                ware_promote_price.push(promote_price);
+            });
+            Ajax.call('goods.php?is_ajax=1&act=addBatchWarehouse', 'ware_name=' + ware_name+"&ware_number="+ware_number+"&ware_price="+ware_price+"&ware_promote_price="+ware_promote_price+"&goods_id="+goods_id, addWarehouseResponse, 'POST', 'JSON');
+        }
+        
+        //添加仓库处理回调
+        function addWarehouseResponse(result){
+            if(result.error == 1){
+                alert(result.massege);
+            }else{
+                //加载商品模式列表
+                goods_model_list("#goods_model_list", goods_id, 1, user_id);
+            }
+        }
+        
+        //删除仓库
+        $(document).on("click","a[ectype='dropWarehouse']",function(){
+            
+            var w_id = $(this).data("wid");
+            
+            if (confirm('您确实要删除该仓库库存吗？')){
+                $.jqueryAjax('goods.php', 'act=drop_warehouse&w_id='+w_id, function(data){
+                    if(data.error == 0){
+                        goods_model_list("#goods_model_list", goods_id, 1, user_id);
+                    }
+                });
+            }
+        });
+        
+        /*************************************地区部分************************************/
+        //添加地区
+        $(document).on("click","a[ectype='addRegion']",function(){
+            var user_id = $(this).data('userid');
+            var goods_id = $(this).data('goodsid');
+            $.jqueryAjax('dialog.php', 'is_ajax=1&act=dialog_warehouse' + '&user_id=' + user_id + '&goods_id=' + goods_id + '&temp=addBatchRegion', function(data){
+                var content = data.content;
+                
+                                var width = 900;
+                                
+                pb({
+                    id:"categroy_dialog",
+                    title:"添加地区",
+                    width:width,
+                    content:content,
+                    ok_title:"确定",
+                    drag:false,
+                    foot:true,
+                    cl_cBtn:false,
+                    onOk:function(){addBatchRegion()}
+                });
+                
+                $(".addList").on("click",function(){                                    
+                    var list = $(this).parents(".add_warehouse_list");
+                    var it = list.find(".warehouse_item:first").clone();
+                    
+                    //补充
+                    var input = it;
+                    var num = $("input[name='numAdd_area']").val();
+                    if(num < 31){
+                        num++;
+                        input.attr('id','area_' + num);
+                        input.find('font').attr('id',"warehouse_area_list_" + num);
+                        input.find('div.warehouse_area_name').attr('data-key',num);
+                        input.find('div.warehouse_area_name').attr('id', 'warehouse_area_name_' + num);
+                        input.find("input[name='warehouse_area_name']").attr('id',"warehouse_area_name_val_" + num);
+                        input.find('select').attr('id',num);
+                        
+                                                
+                        $("input[name='numAdd_area']").val(num);
+                    }else{
+                        alert('最多可添加31个地区');
+                    }                   
+                    //补充
+                    
+                    it.append("<a href='javascript:void(0);' class='delete'></a>")
+                    if(list.find(".warehouse_item").length>4){
+                        $(".red_notic").remove();
+                        $(this).before("<div class='red_notic'>每次上传地区不能超过5条</div>");
+                        setTimeout('$(".red_notic").remove()',1000);
+                    }else{
+                        $(this).before(it);
+                    }
+                });
+                
+                $(document).on("click",".delete",function(){
+                    $(this).parents(".warehouse_item").remove();
+                });             
+            }); 
+        });
+        
+        $(document).on("click",".warehouse_area_name li",function(){
+            var goods_id =$(this).parents(".warehouse_area_name").data("goodsid");
+            var user_id =$(this).parents(".warehouse_area_name").data("userid");
+            var key =$(this).parents(".warehouse_area_name").data("key");
+            var value = $(this).find("a").data("value");
+
+            get_warehouse_area_name(value, key ,goods_id, user_id, 1);
+        });
+        
+        //批量添加地区
+        function addBatchRegion(){
+            var obj = $("#categroy_dialog");
+            var warehouse_area_name = [];
+            var region_number = [];
+            var region_price = [];
+            var region_promote_price = [];
+            var warehouse_area_list = [];
+            
+                        
+            var goods_id = 0;
+            obj.find("select").each(function(){
+                var val = $(this).val();
+                warehouse_area_name.push(val);
+            });
+            obj.find("input[name='area_name']").each(function(){
+                var area_list = $(this).val();
+                warehouse_area_list.push(area_list);
+            });
+            
+                        
+             obj.find("input[name='region_number']").each(function(){
+                var number = $(this).val();
+                region_number.push(number);
+            });
+            obj.find("input[name='region_price']").each(function(){
+                var price = $(this).val();
+                region_price.push(price);
+            });
+            obj.find("input[name='region_promote_price']").each(function(){
+                var promote_price = $(this).val();
+                region_promote_price.push(promote_price);
+            });
+            
+            var where = "";
+                        
+            Ajax.call('goods.php?is_ajax=1&act=addBatchRegion', 'warehouse_area_name=' + warehouse_area_name+"&region_number="+region_number+"&region_price="+region_price+"&region_promote_price="+region_promote_price+"&goods_id="+goods_id+"&warehouse_area_list="+warehouse_area_list + where, addRegionResponse, 'POST', 'JSON');
+        }
+        
+        //批量添加地区回调函数
+        function addRegionResponse(result){
+           if(result.error == 1){
+                alert(result.massege);
+            }else{
+                //加载商品模式列表
+                goods_model_list("#goods_model_list", goods_id, 2, user_id);
+            }
+        }       
+        
+        function get_warehouse_area_name(warehouse_id, key, goods_id, ru_id){
+            Ajax.call('goods.php?is_ajax=1&act=edit_warehouse_area_list', "id="+warehouse_id + "&key="+key + "&goods_id=" + goods_id + "&ru_id=" + ru_id, ResponseWarehouse_area, "GET", "JSON");
+        
+        }
+        
+        function ResponseWarehouse_area(result)
+        {
+            if (result.content.error == 0)
+            {
+                $('#warehouse_area_list_' + result.content.key).html(result.content.html);
+            }else{
+                $('#warehouse_area_list_' + result.content.key).find('select').remove();
+                alert('该仓库暂无地区');
+            }
+        }
+        
+        //删除地区
+        $(document).on("click","a[ectype='dropWarehouseArea']",function(){
+            
+            var a_id = $(this).data("aid");
+            
+            if (confirm('您确实要删除该仓库地区价格吗？')){
+                $.jqueryAjax('goods.php', 'act=drop_warehouse_area&a_id='+a_id, function(data){
+                    if(data.error == 0){
+                        goods_model_list("#goods_model_list", goods_id, 2, user_id);
+                    }
+                });
+            }
+        });
+        
+        
+        $(document).on("click",":input[ectype='cityRegion']",function(){
+            
+            var area_id = $(this).val();
+            
+            get_city_region(area_id);
+        });
+        
+        function get_city_region(area_id){
+            Ajax.call('goods.php?is_ajax=1&act=city_region', 'area_id=' + area_id, RegionCityResponse, 'GET', 'JSON');
+        }
+        
+        function RegionCityResponse(result){
+            $("#attribute_city_region .label").removeClass('hide');
+            $("#attribute_city_region .value").removeClass('hide');
+            
+            $("#attribute_city_region .label").addClass('show');
+            $("#attribute_city_region .value").addClass('show');
+            $("#region_city_list").html(result.content.html);
+        }
+        /**********************************{仓库和地区模式} end*****************************/
+        
+        /*************************************批量上传跳转连接 start************************************/
+        $(document).on("click","#produts_batch",function(){
+            var model = $(":input[name='goods_model']").val();
+            window.open("goods_produts_batch.php?act=add" + "&goods_id=" +goods_id+ "&model=" + model,"_blank");
+        });
+        
+        $(document).on("click","#produts_warehouse_batch",function(){
+            var model = $(":input[name='goods_model']").val();
+            var warehouse_id = 0;
+            
+            $("input[data-type='warehouse_id']").each(function(index, element) {
+                if($(element).is(":checked") == true){
+                    warehouse_id = $(this).val();
+                }
+            });
+            
+            window.open("goods_produts_warehouse_batch.php?act=add" + "&goods_id=" +goods_id+ "&model=" + model+ "&warehouse_id=" + warehouse_id,"_blank");
+        });
+        
+        $(document).on("click","#produts_area_batch",function(){
+            var model = $(":input[name='goods_model']").val();
+            var area_id = 0;
+            
+            $("input[data-type='region_id']").each(function(index, element) {
+                if($(element).is(":checked") == true){
+                    area_id = $(this).val();
+                }
+            });
+            
+            $("input[data-type='city_region_id']").each(function(index, element) {
+                if($(element).is(":checked") == true){
+                    city_id = $(this).val();
+                }
+            });
+            
+            window.open("goods_produts_area_batch.php?act=add" + "&goods_id=" +goods_id+ "&model=" + model+ "&area_id=" + area_id+ "&city_id=" + city_id,"_blank");
+        });
+        
+        $(document).on("click","#attr_refresh",function(){
+            getAttrList(goods_id);
+        });
+        /*************************************批量上传跳转连接 end************************************/
         
     });
     /**********************************{common} end*****************************/
@@ -381,6 +886,36 @@
     }
     
     /**
+    *分期
+    */
+    function handle_for_stages(obj){
+      $(obj).each(function(index, element) {
+          if($(element).is(":checked") == true){
+              if($(element).val() == 1){
+                  $(".hidden_stages").show();
+              }else{
+                  $(".hidden_stages").hide();
+              }
+          }
+      });
+    }
+    
+    /**
+    *分销
+    */
+    function handle_distribution(obj){
+      $(obj).each(function(index, element) {
+          if($(element).is(":checked") == true){
+              if($(element).val() == 1){
+                  $(".hidden_distribution").show();
+              }else{
+                  $(".hidden_distribution").hide();
+              }
+          }
+      });
+    }
+  
+    /**
     * 限购
     */
     function handle_for_purchasing(obj)
@@ -528,6 +1063,16 @@
     });
     /* 处理扩展分类 by wu end */
 
+    //分期判断
+    $(function(){
+        for(var i=0;i<6;i++){
+        var val=$('#stages').find('input').eq(i).val();
+        var stages=$('#stages').find('input').eq(i).attr('stages');
+        if(val==stages){
+            $('#stages').find('input').eq(i).attr('checked','checked');
+        }
+    }});
+    
     //商品基本信息 - 上传商品图片
     var goods_id = $("input[name='goods_id']").val();
     var uploader = new plupload.Uploader({//创建实例的构造方法
@@ -633,13 +1178,13 @@
         'triggerId':['xiangou_start_date'],
         'alignId':'text_time3',
         'format':'-',
-        'min':'2019-03-28 16:46:42'
+        'min':'2019-03-30 15:00:59'
     },opts4 = {
         'targetId':'xiangou_end_date',
         'triggerId':['xiangou_end_date'],
         'alignId':'text_time4',
         'format':'-',
-        'min':'2019-03-28 16:46:42'
+        'min':'2019-03-30 15:00:59'
     }
 
     xvDate(opts1);
@@ -812,7 +1357,20 @@
             $("input[name='goods_img_url']").val('');
         }
     });
-       
+    
+    //商品详情手机端/pc端切换
+    $(".ui-tabs-nav li").click(function(){
+        var index = $(this).index();
+        var ul = $(this).parents("ul");
+        $(this).addClass("current").siblings().removeClass("current");
+        ul.siblings(".panel-main").find(".panel").eq(index).show().siblings().hide();
+    });
+    
+    $(".pannel-content").hover(function(){
+        $(".pannel-content").perfectScrollbar("destroy");
+        $(".pannel-content").perfectScrollbar();
+    });
+        
     //商品运费 by wu
     $("input[name='freight']").click(function(){
         var value = $(this).val();
@@ -828,6 +1386,125 @@
         }
     });
     
+    //商品审核
+    $("input[name='review_status']").click(function(){
+        var value = $(this).val();
+        if(value == 2){
+            $('#review_content').show();        
+        }else{
+            $('#review_content').hide();
+        }
+    });
+    
+    //扫码入库 by wu start
+    var scan_status = false;
+    $("[data-role='scan_code']").click(function(){
+        $("input[name='bar_code']").focus();
+        $("input[name='bar_code']").val('');
+        scan_status = true;
+    })
+    $("input[name='bar_code']").change(function(){
+        if(scan_status){
+            var bar_code = $(this).val();
+            $.jqueryAjax('goods.php', 'act=scan_code&bar_code='+bar_code, function(data){
+                if(data['error'] == 1){
+                    alert(data['message']);
+                }else{
+                    $("[data-role='edit_scan_code']").show();
+                    var content = $("#scanCodeDialog").html();
+                    $("#scanCodeDialog .step_content").remove();
+                    
+                    pb({
+                        id:"scanCode",
+                        title:"扫码扩展信息",
+                        width:550,
+                        height:470,
+                        content:content,
+                        ok_title:"确定",
+                        drag:false,
+                        foot:true,
+                        cl_cBtn:false,
+                        onOk:function(){
+                            scanCodeDialog("#scanCode");
+                        },
+                        onClose:function(){
+                            scanCodeDialog("#scanCode");
+                        }
+                    });
+                    $(".pb-ct").perfectScrollbar("destroy");
+                    $(".pb-ct").perfectScrollbar();
+                    
+                    //基本信息
+                    $("input[name='goods_name']").val(data['goods_info']['goods_name']);
+                    $("input[name='shop_price']").val(data['goods_info']['shop_price']);
+                    $("input[name='goods_weight']").val(data['goods_info']['goods_weight']);
+                    $("input[name='keywords']").val(data['goods_info']['keywords']);
+                    //图片外链
+                    if(data['goods_info']['goods_img_url'] && !$("input[name='is_img_url']").prop('checked')){
+                        $("input[name='is_img_url']").trigger("click");
+                        $("input[name='goods_img_url']").val(data['goods_info']['goods_img_url']);
+                    }
+                    //商品描述
+                    if(data['goods_info']['goods_desc']){
+                        $("#FCKeditor").html(data['goods_info']['goods_desc']);
+                    }
+                    
+                    inputVal(data['goods_info']);
+                }
+            })
+        }
+    });
+    
+    $("[data-role='edit_scan_code']").on("click",function(){
+        var obj = $("#scanCodeDialog .step_content");
+        var cp = obj.clone();
+        $("#scanCodeDialog .step_content").remove();
+        pb({
+            id:"scanCode",
+            title:"扫码扩展信息",
+            width:550,
+            height:470,
+            content:cp,
+            ok_title:"确定",
+            drag:false,
+            foot:true,
+            cl_cBtn:false,
+            onOk:function(){
+                scanCodeDialog("#scanCode");
+            },
+            onClose:function(){
+                scanCodeDialog("#scanCode");
+            }
+        });
+        $(".pb-ct").perfectScrollbar("destroy");
+        $(".pb-ct").perfectScrollbar();
+    });
+    
+    function scanCodeDialog(obj){
+        var obj = $(obj).find(".step_content");
+        var cp = obj.clone();
+        $("#scanCodeDialog").append(cp);
+    }
+    
+    function inputVal(arr){
+        $("input[name='width']").val(arr['width']);
+        $("input[name='height']").val(arr['height']);
+        $("input[name='depth']").val(arr['depth']);
+        $("input[name='origincountry']").val(arr['origincountry']);
+        $("input[name='originplace']").val(arr['originplace']);
+        $("input[name='assemblycountry']").val(arr['assemblycountry']);
+        $("input[name='barcodetype']").val(arr['barcodetype']);
+        $("input[name='catena']").val(arr['catena']);
+        $("input[name='isbasicunit'][value='"+arr['isbasicunit']+"']").prop('checked', true);
+        $("input[name='packagetype']").val(arr['packagetype']);
+        $("input[name='grossweight']").val(arr['grossweight']);
+        $("input[name='netweight']").val(arr['netweight']);
+        $("input[name='netcontent']").val(arr['netcontent']);
+        $("input[name='licensenum']").val(arr['licensenum']);
+        $("input[name='healthpermitnum']").val(arr['healthpermitnum']);
+    }
+    //扫码入库 by wu end
+
     /**********************************{商品基本信息} end*****************************/
     
     /**********************************{商品属性信息} start*****************************/
@@ -895,6 +1572,96 @@
             dropImg(id);
         }
     });
+    
+    //属性仓库价格 start
+    $(document).on("click","input[name='warehouse_butt']",function(){
+        
+        var goods_id = $("#goods_id").val();
+        var goods_attr_id = $(this).data('goodsattrid');
+        var attr_value = $("#goodsAttrValue_" + goods_attr_id).val();
+        
+        if(attr_value == ''){
+            alert("请选择商品规格");
+            return false;
+        }
+        
+        $.jqueryAjax('dialog.php', 'act=add_warehouse_price' + '&goods_id=' + goods_id + '&goods_attr_id=' + goods_attr_id + '&goods_attr_name=' + attr_value, function(data){
+            var content = data.content;
+            pb({
+                id:"categroy_dialog",
+                title:"属性仓库价格",
+                width:664,
+                content:content,
+                ok_title:"确定",
+                cl_title:"取消",
+                drag:true,
+                foot:true,
+                cl_cBtn:true,
+                onOk:function(){
+                    insert_attr_warehouse_price();
+                }
+            });
+        });
+    });
+    
+    function insert_attr_warehouse_price(){
+        var actionUrl = "dialog.php?act=insert_warehouse_price";  
+        $("#warehouseForm").ajaxSubmit({
+                type: "POST",
+                dataType: "JSON",
+                url: actionUrl,
+                data: {"action": "TemporaryImage"},
+                success: function (data) {
+                },
+                async: true  
+         });
+    }
+    //属性仓库价格 end
+    
+    //属性地区价格 start
+    $(document).on("click","input[name='area_butt']",function(){
+        
+        var goods_id = $("#goods_id").val();
+        var goods_attr_id = $(this).data('goodsattrid');
+        var attr_value = $("#goodsAttrValue_" + goods_attr_id).val();
+        
+        if(attr_value == ''){
+            alert("请选择商品规格");
+            return false;
+        }
+        
+        $.jqueryAjax('dialog.php', 'act=add_area_price' + '&goods_id=' + goods_id + '&goods_attr_id=' + goods_attr_id + '&goods_attr_name=' + attr_value, function(data){
+            var content = data.content;
+            pb({
+                id:"categroy_dialog",
+                title:"属性地区价格",
+                width:864,
+                content:content,
+                ok_title:"确定",
+                cl_title:"取消",
+                drag:true,
+                foot:true,
+                cl_cBtn:true,
+                onOk:function(){
+                    insert_attr_area_price();
+                }
+            });
+        });
+    });
+    
+    function insert_attr_area_price(){
+        var actionUrl = "dialog.php?act=insert_area_price";  
+        $("#areaForm").ajaxSubmit({
+                type: "POST",
+                dataType: "JSON",
+                url: actionUrl,
+                data: {"action": "TemporaryImage"},
+                success: function (data) {
+                },
+                async: true  
+         });
+    }
+    //属性地区价格 end
     
     //删除商品勾选属性
     $(document).on("click","*[ectype='attrClose']",function(){
@@ -1221,6 +1988,57 @@
         });     
     });
     
+    //添加文章
+    $(document).on("click","[ectype='ajaxArticle']",function(){
+        $.jqueryAjax('dialog.php', 'act=ajaxArticle', function(data){
+            goods_visual_desc("添加新文章",1000,data.content,function(){
+                var form = $("#article_dialog").find("form[name='theForm']");
+                var title = form.find("input[name='title']");
+                var article_cat = form.find("input[name='article_cat']");
+                var fald = true;
+                
+                if(title.val() == ""){
+                    error_div("#article_dialog input[name='title']","文章标题不能为空");
+                    fald = false;
+                }else if(article_cat.val() == ""){
+                    error_div("#article_dialog input[name='article_cat']","请选择文章分类");
+                    fald = false;
+                }else{
+                    form.ajaxSubmit({
+                        type: "POST",
+                        dataType: "JSON",
+                        url: "dialog.php?act=article_insert",
+                        data: {"action": "TemporaryImage"},
+                        success: function (data) {
+                            alert(data.message);
+                        },
+                        async: true  
+                    });
+                    
+                    fald = true;
+                }
+                return fald;   
+            },'article_dialog');
+        });     
+    });
+    
+    //添加地区
+    $(document).on("click","[ectype='ajaxArea']",function(){
+        $.jqueryAjax('dialog.php', 'act=ajaxArea', function(data){
+            goods_visual_desc("添加区域",1000,data.content,function(){
+                var form = $("#area_dialog").find("form[name='theForm']");
+                form.ajaxSubmit({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: "dialog.php?act=article_insert",
+                    data: {"action": "TemporaryImage"},
+                    success: function (){},
+                    async: true  
+                });
+            },'area_dialog');
+        });
+    });
+    
     //添加品牌
     $(document).on("click","[ectype='ajaxBrand']",function(){
         $.jqueryAjax('dialog.php', 'act=ajaxBrand', function(data){
@@ -1288,3 +2106,4 @@
         });     
     });
     /* 异步添加各类信息 end */
+    
