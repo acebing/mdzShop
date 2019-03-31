@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
   <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
   <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./js/spectrum-master/spectrum.css">
   <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
   <link rel="stylesheet" href="./css/purebox.css">
   <link rel="stylesheet" href="./css/main.css">
@@ -22,8 +23,10 @@
   <script src="./js/mdz-layui.js"></script>
   <script src="./js/jquery.validation.min.js"></script>
   <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/jquery.cookie.js"></script>
+  <script src="./js/utils.js"></script>
   <script src="./js/lib_ecmobanFunc.js"></script>
-  <!-- <script src="./js/listtable.js"></script> -->
+  <script src="./js/listtable.js"></script>
   <script src="./js/region.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/admin.js"></script>
@@ -194,7 +197,8 @@
       <div class="flexilist">
         <!--第一步 选择商品分类-->
         <div class="step step_one" ectype="step" data-step="0">
-          <div class="step_title"><i class="ui-step"></i><h3>选择商品分类</h3></div>
+          <div class="step_title catetite"><i class="ui-step"></i><h3>选择商品分类</h3></div>
+          
           <div class="sort_info">
             <div id="cate_add">
               <div class="sort_list sort_list_one">
@@ -294,7 +298,7 @@
             <div class="choiceClass" id="choiceClass">您当前选择的商品类别是：<strong class="red"></strong></div>
           </div>
           <div class="goods_btn">
-            <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="1" data-type="step" data-down="false" ectype="stepSubmit">下一步，填写通用信息</a>
+            <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="1" data-type="step" data-down="true" ectype="stepSubmit">下一步，填写通用信息</a>
           </div>
         </div>
         <!--第二步 填写商品信息-->
@@ -321,7 +325,7 @@
                 <div class="step_value">
                   <input type="text" name="goods_name" class="text" autocomplete="off" value="" ectype="require" style="color:;">
                   <div id="font_color" class="font_color mr10">
-                    <input type="text" id="full" value="" style="display:none"><div class="sp-replacer sp-light"><div class="sp-preview"><div class="sp-preview-inner" style="background-color: rgb(0, 0, 0);"></div></div><div class="sp-dd">▼</div></div>
+                    <input type="text" id="full" value="" style="display:none">
                   </div>
                   <input type="hidden" id="goods_name_color" name="goods_name_color" value="">
                   <div class="form_prompt"></div>
@@ -335,7 +339,7 @@
               </div>
               <div class="item">
                 <div class="step_label"><em class="require-field">*</em>本店售价：</div>
-                <div class="step_value"><input type="text" name="shop_price" onblur="priceSetted()" class="text w150" ectype="require" autocomplete="off" value="0"><a href="javascript:void(0);" class="mr10" onclick="marketPriceSetted()">按市场价</a>
+                <div class="step_value"><input type="text" name="shop_price" onblur="priceSetted()" class="text w150" ectype="require" autocomplete="off" value=""><a href="javascript:void(0);" class="mr10" onclick="marketPriceSetted()">按市场价</a>
                   <div class="form_prompt"></div>
                 </div>
               </div>
@@ -518,28 +522,10 @@
                     <table class="table_div">
                       <tbody><tr>
                         <th class="th">铜牌</th>
-                        <th class="th">微信</th>
-                        <th class="th">QQ</th>
                         <th class="th">银牌</th>
                         <th class="th">金牌</th>
-                        <th class="th">代销用户</th>
                       </tr>
                       <tr>
-                        <td class="td">
-                          <span id="nrank_6"></span>
-                          <input type="text" id="rank_6" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(6)" size="8">
-                          <input type="hidden" name="user_rank[]" value="6">                            
-                        </td>
-                        <td class="td">
-                          <span id="nrank_11"></span>
-                          <input type="text" id="rank_11" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(11)" size="8">
-                          <input type="hidden" name="user_rank[]" value="11">                           
-                        </td>
-                        <td class="td">
-                          <span id="nrank_12"></span>
-                          <input type="text" id="rank_12" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(12)" size="8">
-                          <input type="hidden" name="user_rank[]" value="12">                           
-                        </td>
                         <td class="td">
                           <span id="nrank_7"></span>
                           <input type="text" id="rank_7" name="user_price[]" class="text w50" autocomplete="off" value="-1" onkeyup="if(parseInt(this.value)<-1){this.value='-1';};set_price_note(7)" size="8">
@@ -565,15 +551,10 @@
             <div class="step">
               <div class="step_title"><i class="ui-step"></i><h3>详细描述</h3></div>
               <div class="step_content">
-                <div class="panel-main gallery_album" ectype="gallery_album_list" data-inid="gallery_album_dsc" data-act="gallery_album_list">
-                  <div class="panel panel-pc">
-                    <div id="FCKeditor">
-                      <input type="hidden" id="goods_desc" name="goods_desc" value="">
-                      <iframe id="goods_desc_frame" src="../plugins/ueditor/ecmobanEditor.php?item=goods_desc" width="100%" height="586" frameborder="0" scrolling="no">
-                      </iframe>
-                    </div>
-                  </div>
-                </div>
+                <div id="FCKeditor">
+                  <p>详情啊</p>
+                 <input type="hidden" id="goods_desc" name="goods_desc" value="">
+               </div>
               </div>
             </div>
             <!-- 详细描述end-->
@@ -594,13 +575,13 @@
                           <input type="radio" name="is_promote" class="ui-radio is_promote" id="pro_yes" value="1" onclick="handlePromote(this);" autocomplete="off">
                           <label for="pro_yes" class="ui-radio-label">是</label> 
                         </div>
-                        <div class="hidden_div" style="display: block;">
+                        <div class="hidden_div" style="display: none;">
                           <div id="text_time1" class="text_time">
-                            <input type="text" class="text mr0" name="promote_start_date" id="promote_start_date" value="2019-03-28 16:46:42" autocomplete="off" readonly="">
+                            <input type="text" class="text mr0" name="promote_start_date" id="promote_start_date" value="" autocomplete="off" >
                           </div>
                           <span class="bolang">&nbsp;&nbsp;~&nbsp;&nbsp;</span>
                           <div id="text_time2" class="text_time time_disabled">
-                            <input type="text" class="text" name="promote_end_date" id="promote_end_date" value="2019-04-28 16:46:42" autocomplete="off" readonly="">
+                            <input type="text" class="text" name="promote_end_date" id="promote_end_date" value="" autocomplete="off" >
                           </div>
                           <input type="text" class="text w70 ml10" id="promote_1" name="promote_price" value="0" placeholder="促销价格" autocomplete="off">
                         </div>
@@ -619,7 +600,7 @@
                           <input type="radio" name="is_xiangou" class="ui-radio is_xiangou" id="pur_yes" value="1" onclick="handle_for_purchasing(this);" autocomplete="off">
                           <label for="pur_yes" class="ui-radio-label">是</label> 
                         </div>
-                        <div class="hidden_div" style="display: block;">
+                        <div class="hidden_div" style="display: none;">
                           <div id="text_time3" class="text_time">
                             <input type="text" class="text mr0" name="xiangou_start_date" id="xiangou_start_date" value="" autocomplete="off" readonly="">
                           </div>
@@ -826,7 +807,7 @@
         </div>
       </div>
       <!--第三步 填写商品属性-->
-      <div class="step step_three" ectype="step" data-step="2"style="display: none;">
+      <div class="step step_three" ectype="step" data-step="2">
         <div class="step">
           <div class="step_title">
             <i class="ui-step"></i>
@@ -856,60 +837,6 @@
                       <a href="javascript:void(0);" data-imgid="10021" class="delete_img"><i class="icon icon-trash"></i></a>
                     </div>
                     <div class="info"><input name="external_url" type="text" class="text w130 external_url_10021" ectype="external_url" value="" title="" data-imgid="10021" placeholder="图片外部链接地址" onfocus="if (this.value == '图片外部链接地址'){this.value='http://';this.style.color='#000';}"></div>
-                  </li>
-                  <li id="gallery_10022">
-                    <div class="img" onclick="img_default(10022)"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201903/thumb_img/0_thumb_P_1553453836741.jpg" width="160" height="160" id="external_img_url10022"></div>
-                    <div class="info">
-                      <span class="zt red"></span>
-                      <div class="sort">
-                        <span>排序：</span>
-                        <input type="text" value="2" name="old_img_desc[10022]" class="stext" autocomplete="off" onchange="listTable.editInput(this, 'edit_img_desc', 10022)">
-                        <input type="hidden" value="10022" name="img_id[]">
-                      </div>
-                      <a href="javascript:void(0);" data-imgid="10022" class="delete_img"><i class="icon icon-trash"></i></a>
-                    </div>
-                    <div class="info"><input name="external_url" type="text" class="text w130 external_url_10022" ectype="external_url" value="" title="" data-imgid="10022" placeholder="图片外部链接地址" onfocus="if (this.value == '图片外部链接地址'){this.value='http://';this.style.color='#000';}"></div>
-                  </li>
-                  <li id="gallery_10023">
-                    <div class="img" onclick="img_default(10023)"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201903/thumb_img/0_thumb_P_1553453837011.jpg" width="160" height="160" id="external_img_url10023"></div>
-                    <div class="info">
-                      <span class="zt red"></span>
-                      <div class="sort">
-                        <span>排序：</span>
-                        <input type="text" value="3" name="old_img_desc[10023]" class="stext" autocomplete="off" onchange="listTable.editInput(this, 'edit_img_desc', 10023)">
-                        <input type="hidden" value="10023" name="img_id[]">
-                      </div>
-                      <a href="javascript:void(0);" data-imgid="10023" class="delete_img"><i class="icon icon-trash"></i></a>
-                    </div>
-                    <div class="info"><input name="external_url" type="text" class="text w130 external_url_10023" ectype="external_url" value="" title="" data-imgid="10023" placeholder="图片外部链接地址" onfocus="if (this.value == '图片外部链接地址'){this.value='http://';this.style.color='#000';}"></div>
-                  </li>
-                  <li id="gallery_10024">
-                    <div class="img" onclick="img_default(10024)"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201903/thumb_img/0_thumb_P_1553453838271.jpg" width="160" height="160" id="external_img_url10024"></div>
-                    <div class="info">
-                      <span class="zt red"></span>
-                      <div class="sort">
-                        <span>排序：</span>
-                        <input type="text" value="4" name="old_img_desc[10024]" class="stext" autocomplete="off" onchange="listTable.editInput(this, 'edit_img_desc', 10024)">
-                        <input type="hidden" value="10024" name="img_id[]">
-                      </div>
-                      <a href="javascript:void(0);" data-imgid="10024" class="delete_img"><i class="icon icon-trash"></i></a>
-                    </div>
-                    <div class="info"><input name="external_url" type="text" class="text w130 external_url_10024" ectype="external_url" value="" title="" data-imgid="10024" placeholder="图片外部链接地址" onfocus="if (this.value == '图片外部链接地址'){this.value='http://';this.style.color='#000';}"></div>
-                  </li>
-                  <li id="gallery_10025">
-                    <div class="img" onclick="img_default(10025)"><img src="https://mdz.oss-cn-beijing.aliyuncs.com/images/201903/thumb_img/0_thumb_P_1553453838682.jpg" width="160" height="160" id="external_img_url10025"></div>
-                    <div class="info">
-                      <span class="zt red"></span>
-                      <div class="sort">
-                        <span>排序：</span>
-                        <input type="text" value="5" name="old_img_desc[10025]" class="stext" autocomplete="off" onchange="listTable.editInput(this, 'edit_img_desc', 10025)">
-                        <input type="hidden" value="10025" name="img_id[]">
-                      </div>
-                      <a href="javascript:void(0);" data-imgid="10025" class="delete_img"><i class="icon icon-trash"></i></a>
-                    </div>
-                    <div class="info">
-                      <input name="external_url" type="text" class="text w130 external_url_10025" ectype="external_url" value="" title="" data-imgid="10025" placeholder="图片外部链接地址" onfocus="if (this.value == '图片外部链接地址'){this.value='http://';this.style.color='#000';}">
-                    </div>
                   </li>
                 </ul>
               </div>
@@ -949,9 +876,10 @@
               <div class="step_item_left">
                 <h5>商品属性：</h5>
               </div>
-              <div class="step_item_right">
+              <div class="step_item_right" id="attr_name">
                 <div class="item_right_li goods_attr_type">
-                  <div class="label" title="商品名称">商品名称：</div>
+                  <input type="text" value="属性名称" name="" class="text label" autocomplete="off" onchange="listTable.editInput(this, 'edit_img_desc', 10021)">
+                  <i style="font-weight: bold;">：</i>
                   <div class="value">
                     <input type="text" name="attr_value_list[]" class="text" value="OPPOK1" autocomplete="off" onblur="insert_attr_input_val(this)">
                     <input type="hidden" name="attr_price_list[]" value="">
@@ -959,42 +887,8 @@
                     <input type="hidden" name="goods_attr_id_list[]" value="5076">
                   </div>
                 </div>
-                <div class="item_right_li goods_attr_type">
-                  <div class="label" title="商品编号">商品编号：</div>
-                  <div class="value">
-                    <input type="text" name="attr_value_list[]" class="text" value="100000651175" autocomplete="off" onblur="insert_attr_input_val(this)">
-                    <input type="hidden" name="attr_price_list[]" value="">
-                    <input type="hidden" name="attr_id_list[]" value="2">
-                    <input type="hidden" name="goods_attr_id_list[]" value="5077">
-                  </div>
-                </div>
-                <div class="item_right_li goods_attr_type">
-                  <div class="label" title="商品毛重">商品毛重：</div>
-                  <div class="value">
-                    <input type="text" name="attr_value_list[]" class="text" value="400.00g" autocomplete="off" onblur="insert_attr_input_val(this)">
-                    <input type="hidden" name="attr_price_list[]" value="">
-                    <input type="hidden" name="attr_id_list[]" value="3">
-                    <input type="hidden" name="goods_attr_id_list[]" value="5078">
-                  </div>
-                </div>
-                <div class="item_right_li goods_attr_type">
-                  <div class="label" title="商品产地">商品产地：</div>
-                  <div class="value">
-                    <input type="text" name="attr_value_list[]" class="text" value="中国大陆" autocomplete="off" onblur="insert_attr_input_val(this)">
-                    <input type="hidden" name="attr_price_list[]" value="">
-                    <input type="hidden" name="attr_id_list[]" value="4">
-                    <input type="hidden" name="goods_attr_id_list[]" value="5079">
-                  </div>
-                </div>
-                <div class="item_right_li goods_attr_type">
-                  <div class="label" title="系统">系统：</div>
-                  <div class="value">
-                    <input type="text" name="attr_value_list[]" class="text" value="安卓（Android）" autocomplete="off" onblur="insert_attr_input_val(this)">
-                    <input type="hidden" name="attr_price_list[]" value="">
-                    <input type="hidden" name="attr_id_list[]" value="5">
-                    <input type="hidden" name="goods_attr_id_list[]" value="5080">
-                  </div>
-                </div>
+                
+                <span class=" stop stop_jia" ectype="outerInfo" title="添加商品属性"></span>
               </div>
             </div>
             <!-- 商品规格 -->
@@ -1231,7 +1125,7 @@
           <div class="goods_footer">
             <div class="goods_btn goods_btn_fixed">
               <a href="javascript:void(0);" class="btn btn35 btn_blue" data-step="1" data-type="step" ectype="stepSubmit">上一步，填写商品信息</a>
-              <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="3" data-type="step" data-down="false" ectype="stepSubmit">下一步，选择关联商品</a>
+              <a href="javascript:void(0);" class="btn btn35 blue_btn" data-step="3" data-type="step" data-down="true" ectype="stepSubmit">下一步，选择关联商品</a>
               <a href="javascript:void(0);" class="btn btn35 blue_btn" data-down="true" data-type="submit" ectype="stepSubmit"><i class="sc_icon goods_complete_icon"></i>完成，发布商品</a>
             </div>
           </div>
@@ -1410,239 +1304,20 @@
     </div>
   </div>
 </body>
+<script src="./js/plupload.full.min.js"></script>
 <script src="./js/jquery.purebox.js"></script>
-<!-- <script src="./js/test.js"></script> -->
+<script src="./js/spectrum-master/spectrum.js"></script>
+<script src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="./js/goods-add.js"></script>
 <script type="text/javascript">
-  /**********************************{common} start*****************************/
-    
-    var goods_id = $("input[name='goods_id']").val();
-    var user_id = '0';
-    
-    $(function(){
-        var steflex = $(".stepflex");
-        var goodsInfo = $(".flexilist");
-        $(window).load(function(){
-            //默认进入加载步骤
-            auto_step();
-            
-            //设置分类导航
-            set_cat_nav();
-            
-            //促销
-            // handlePromote('input[name=is_promote]');
-            
-            //限购
-            // handle_for_purchasing('.is_xiangou');
-            
-            /**
-            *隐藏属性模块
-            */
-            // var goods_attr_list = $("#goods_attr_gallery").html();
-            // if(goods_attr_list == ''){
-            //     $("#goods_attr_gallery").hide();
-            // }
-            
-            //分销
-            // if(document.getElementById('dis_commission')){
-            //     handle_distribution('.is_dishandle');
-            // }
-            
-            //会员价格
+   var E = window.wangEditor
+        var editor = new E('#FCKeditor')
+        // 或者 var editor = new E( document.getElementById('editor') )
+         editor.customConfig.uploadImgShowBase64 = true
+        // editor.customConfig.uploadImgServer = '/upload'
+        editor.customConfig.showLinkImg = false
 
-            // set_price_note('6');
-            // set_price_note('11');
-            // set_price_note('12');
-            // set_price_note('7');
-            // set_price_note('8');
-            // set_price_note('3');          
-        });
-       
-  $(function () {
-  var steps = $(".stepflex dl");
-  steps .click(function () {
-    var stepIndex = $(this).index();
-    setStep(stepIndex);
-    $(".flexilist div[ectype='step']").eq(stepIndex).show().siblings(".flexilist div[ectype='step']").hide();
-  });
-
-  function setStep(stepIndex) {
-    $(steps).removeClass("cur");
-    for (var i = 0; i <= stepIndex; i++) {
-      var step = steps[i];
-      $(step).addClass("cur");
-    }
-  }
-  });
-
-
-        //设置步骤
-        var auto_step = function(num){
-            if(goods_id > 0){           
-                var auto_step = 'auto_step_' + goods_id;
-                if(num){
-                    $.cookie(auto_step, num, {expires:1,path:'/'});
-                }else{
-                    //编辑商品默认到第三步
-                    //var num = $.cookie(auto_step)? $.cookie(auto_step):1;
-                    show_step('step', 1);
-                }
-            }else{
-                if(num == null){
-                    //添加商品默认到第一步
-                    show_step('step', 0);
-                }
-            }
-        }
-        
-        //页面跳转
-        var show_step = function(type,num,valid,obj){
-            //点击下一步骤验证
-            if(obj != null){
-                var obj = $(obj);
-                var step = obj.parents("div[ectype='step']").data("step");
-                console.log(step);
-                if(validfunc(step) == false && valid == true){
-                    return;
-                }
-            }
-
-            //当前步骤导航
-            steflex.find("dl:lt("+(num+1)+")").addClass("cur");
-            steflex.find("dl:gt("+num+")").removeClass("cur");
-
-            //当前步骤内容页显示
-            goodsInfo.find("*[ectype='step'][data-step="+num+"]").show().siblings().hide();
-            
-            if(type == "submit"){
-                $("#goods_form").submit();
-            }
-            
-            if(num == 0 || num == 1 || num ==2){
-                scroll();
-            }
-        }
-        
-        //添加或者编辑商品点击下一步事件
-        $("*[ectype='stepSubmit']").on("click",function(){
-            var _this = $(this);
-            var step = _this.data("step");
-            var type = _this.data("type");
-            var down = _this.data("down");
-            if(down == true){
-                show_step(type,step,true,_this);
-            }else{
-                show_step(type,step,false,_this);
-            }
-        });
-        
-        //步骤验证通过下一步
-        validfunc = function (num){
-            var model_inventory = $("form[name='theForm'] :input[name='model_inventory']").val();
-            var stepDiv = $("div[data-step='"+num+"']");
-            stepDiv.find("input[ectype='require']").removeClass("error");
-            stepDiv.find(".form_prompt .error").remove();
-            if(num == 0){
-                //验证是否选择了分类
-                if($("input[name='cat_id']").val() == 0){
-                    $("#choiceClass").find("strong").html("请选择分类");
-                    return false;
-                }
-            }else if(num == 1){
-                //验证商品基本信息必填信息
-                if($("input[name='goods_name']").val() == ""){
-                    error_div("input[name='goods_name']",'商品名称不能为空');
-                    return false;
-                }
-
-                if(!(/^[0-9]+.?[0-9]*$/.test($("input[name='shop_price']").val()))){
-                    error_div("input[name='shop_price']",'价格必须为数字');
-                    return false;
-                }
-                if(/[^0-9 \-]+/.test($("input[name='goods_number']").val())){
-                    error_div("input[name='goods_number']",'商品编号必须为整数');
-                    return false;
-                }
-                
-                if($("#is_img_url").val() == 0){
-                    if($(".update_images").find("img").attr("src") == "images/update_images.jpg"){
-                        
-                        error_div(".moxie-shim input","请上传商品默认图片");
-                        return false;
-                    }
-                }else{
-                    if($("#goods_img_url").val() == ''){
-                        error_div("input[name='goods_img_url']","请填写图片外部链接，http://格式");
-                        return false;
-                    }
-                }
-                
-                //运费验证
-                if($("input[name='freight']").length > 0){
-                    var is_freight = true;
-                    var error_prompt = "";
-                    
-                    if($("input[name='freight']").is(":checked")){
-                        var val = $("input[name='freight']:checked").val();
-                        if(val == 2){
-                            var tid = $("input[name='tid']").val();
-                            if(tid == "" || tid == 0){
-                                is_freight = false;
-                                error_prompt = 'volume_freight_not_null';
-                            }
-                        }else{
-                            is_freight = true;
-                        }
-                    }else{
-                        is_freight = false;
-                        error_prompt = 'volume_goods_freight_not_null';
-                    };
-
-                    if(is_freight == false){
-                        error_div("input[name='freight']",'error_prompt');
-                        return false;
-                    }
-                }
-                
-            }else{
-                return true;
-            }
-        }
-        
-        //验证调用的报错提示
-        error_div = function(obj,error,is_error){
-            var error_div = $(obj).parents('div.item').find('div.form_prompt');
-            $(obj).parents('div.item').find(".notic").hide();
-            
-            if(is_error != 1){
-                $(obj).addClass("error");
-            }
-            
-            $(obj).focus();
-            error_div.find("label").remove();
-            error_div.append("<label class='error'><i class='icon icon-exclamation-sign'></i>"+error+"</label>");
-        }
-        
-        //悬浮显示上下步骤按钮
-        scroll = function(){
-            $(window).scroll(function(){
-                var scrollTop = $(document).scrollTop();
-                var height = $(".warpper").height();
-                var bodyHeight = $(".iframe_body").height();
-                if(scrollTop>(height-bodyHeight)){
-                    $(".goods_footer .goods_btn").removeClass("goods_btn_fixed");
-                }else{
-                    $(".goods_footer .goods_btn").addClass("goods_btn_fixed");
-                }
-            });
-        }
-        
-        //返回修改分类
-        $("a[ectype='edit_category']").on("click",function(){
-            show_step('step', 0);
-        });
-        
-    });
-    /**********************************{common} end*****************************/
-    
+        editor.create()
 </script>
+
 </html>

@@ -1178,8 +1178,8 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 .step .mos .active .sc_icon_hook{ display:block;}
 
 .step_one{ background:none; padding:0;}
-.step_one h3{ text-align:center; margin:40px 0 20px;}
-
+/*.step_one h3{ text-align:center; margin:40px 0 20px;}*/
+.step_one .catetite{margin-bottom: 20px;}
 .step_two{}
 .step_title{ border-bottom:1px solid #e4eaec; line-height:40px; position:relative;}
 .step_title .ui-step{ display:block; width:14px; height:14px; background:url(../images/ui-step.png) no-repeat; float:left; margin:13px 10px 0 3px;}
@@ -1395,13 +1395,6 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 .pannel-content .section:hover .tools{ display:block;}
 /*添加新商品end*/
 
-/*仓库模式*/
-.step_top_btn{ overflow:hidden; margin-bottom: 20px;}
-.step_top_btn .btn{ height:38px; line-height:38px; font-size:16px; border-radius:4px; margin-right:20px;}
-.step_top_btn .btn .sc_icon_warehouse{ width:19px; height:16px; background-position:-264px -425px; display:inline-block; vertical-align:middle; margin:-4px 5px 0 0;}
-.step_top_btn .red{font-size:14px;}
-/*仓库模式end*/
-
 /*商品属性和商品相册*/
 .step_item{ float:left; width:100%; padding:10px 0;}
 .step_item_bg{ background-color:#f3f9ff;}
@@ -1426,7 +1419,18 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 .step_item_right .goods_attr_type .label{ line-height:30px;}
 .step_item_right .goods_attr_type .xds_up,.step_item_right .goods_attr_type .xds_down{ margin-top:10px; cursor:pointer;}
 .step_item_right .goods_attr_type:first-child{ margin-bottom:10px;}
+/*商品属性重新*/
+#attr_name .stop_jia{
 
+    width: 24px;
+    height: 24px;
+    background-position: -45px -326px;
+    top: 16px;
+    right: 0;
+    position: static;
+    margin-top: 5px;
+    float: left;
+}
 .step_item_spec_row .step_item_right .item_right_li .value{ float:left; width:calc(100% - 82px);}
 
 .step_item .common-head { padding-top:10px; border-top:1px solid #dcdcdc; margin-top:10px;}
