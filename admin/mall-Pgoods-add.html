@@ -1456,7 +1456,25 @@
             // set_price_note('8');
             // set_price_note('3');          
         });
-        
+       
+  $(function () {
+  var steps = $(".stepflex dl");
+  steps .click(function () {
+    var stepIndex = $(this).index();
+    setStep(stepIndex);
+    $(".flexilist div[ectype='step']").eq(stepIndex).show().siblings(".flexilist div[ectype='step']").hide();
+  });
+
+  function setStep(stepIndex) {
+    $(steps).removeClass("cur");
+    for (var i = 0; i <= stepIndex; i++) {
+      var step = steps[i];
+      $(step).addClass("cur");
+    }
+  }
+  });
+
+
         //设置步骤
         var auto_step = function(num){
             if(goods_id > 0){           
