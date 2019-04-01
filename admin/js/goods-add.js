@@ -827,7 +827,7 @@
         
         var selGoodsType = document.forms['theForm'].elements['goods_type'];
         var selModelAttr = document.forms['theForm'].elements['model_attr'];
-        var modelAttr = selModelAttr.value;
+        // var modelAttr = selModelAttr.value;
         if (selGoodsType != undefined)
         {
             var goodsType = selGoodsType.value; 
@@ -894,11 +894,11 @@
                 var warehouse_id = $("#attribute_model").find("input[type=radio][data-type=warehouse_id]:checked").val();
                 var region_id = $("#attribute_model").find("input[type=radio][data-type=region_id]:checked").val();
                 var extension = '';
-                if(goods_model == 1){
-                        extension = "&region_id="+warehouse_id;
-                }else if(goods_model == 2){
-                        extension = "&region_id="+region_id;
-                }
+                // if(goods_model == 1){
+                //         extension = "&region_id="+warehouse_id;
+                // }else if(goods_model == 2){
+                //         extension = "&region_id="+region_id;
+                // }
                 
         if(_this.siblings("input[type='checkbox']").is(":checked") == true){
             _this.siblings("input[type='checkbox']").prop("checked",false);

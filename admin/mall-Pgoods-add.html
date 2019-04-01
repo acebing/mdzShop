@@ -877,76 +877,109 @@
                 <h5>商品属性：</h5>
               </div>
               <div class="step_item_right" id="attr_name">
-                <div class="item_right_li goods_attr_type">
-                  <input type="text" value="属性名称" name="" class="text label" autocomplete="off" onchange="listTable.editInput(this, 'edit_img_desc', 10021)">
-                  <i style="font-weight: bold;">：</i>
-                  <div class="value">
-                    <input type="text" name="attr_value_list[]" class="text" value="OPPOK1" autocomplete="off" onblur="insert_attr_input_val(this)">
-                    <input type="hidden" name="attr_price_list[]" value="">
-                    <input type="hidden" name="attr_id_list[]" value="1">
-                    <input type="hidden" name="goods_attr_id_list[]" value="5076">
-                  </div>
-                </div>
-                
-                <span class=" stop stop_jia" ectype="outerInfo" title="添加商品属性"></span>
+                <span class=" stop stop_jia" ectype="addInfo" title="添加商品属性" id="attr_addInfo"></span>
               </div>
             </div>
+            <script type="text/javascript">
+              /**********************************{商品属性信息} start*****************************/
+              // 动态创建属性HTML
+               var arrt_name = "<div class='item_right_li goods_attr_type'>"+
+               " <input type='text' value='属性名称' name='' class='text label' autocomplete='off' onchange='listTable.editInput(this, 'edit_img_desc', 10021)'>"+
+               "<i style='font-weight: bold;'>：</i>"+
+               "<div class='value'>"+
+               "<input type='text' name='attr_value_list[]' class='text' value='OPPOK1' autocomplete='off' onblur='insert_attr_input_val(this)'>"+
+               " <input type='hidden' name='attr_price_list[]' value=''>"+
+               "<input type='hidden' name='attr_id_list[]' value='1'>"+
+               "<input type='hidden' name='goods_attr_id_list[]' value='5076'>"+
+               "</div>"+
+               "<i class='iconfont icon-cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5097' data-attrvalue='摩卡红' ectype='attrClose'></i>"+
+               " </div>";
+               // 点击添加属性按钮，添加属性
+              $('#attr_addInfo').on('click', function(event) {
+                $(this).before(arrt_name);
+              });
+              
+                // 点击删除按钮，移除属性
+               $('#attr_name').on('click','.icon-cha',function() {
+                   $(this).parent('.goods_attr_type').remove();
+                });
+             
+              /**********************************{商品属性信息} end*****************************/
+              
+            </script>
             <!-- 商品规格 -->
             <div class="step_item_row step_item_spec_row mt30">
               <div class="step_item_left">
                 <h5>商品规格：</h5>
               </div>
               <div class="step_item_right">
-                <div class="item_right_li">
-                  <div class="label">颜色：</div>
-                  <div class="value">
-                    <div class="checkbox_items attr_input_type_66">
-                      <div class="checkbox_item">
-                        <input type="checkbox" data-type="attr_id" name="attr_id_list1[]" class="ui-checkbox" checked="" value="66">
-                        <input type="checkbox" data-type="attr_value" name="attr_value_list1[]" class="ui-checkbox" checked="" value="梵星蓝" id="goods_attr_checkbox5096">
-                        <label for="goods_attr_checkbox5096" class="ui-label">梵星蓝</label>
-                        <i class="iconfont icon-cha" data-goodsid="2862" data-attrid="66" data-goodsattrid="5096" data-attrvalue="梵星蓝" ectype="attrClose"></i>
-                      </div>
-                      <div class="checkbox_item">
-                        <input type="checkbox" data-type="attr_id" name="attr_id_list1[]" class="ui-checkbox" checked="" value="66">
-                        <input type="checkbox" data-type="attr_value" name="attr_value_list1[]" class="ui-checkbox" checked="" value="摩卡红" id="goods_attr_checkbox5097">
-                        <label for="goods_attr_checkbox5097" class="ui-label">摩卡红</label>
-                        <i class="iconfont icon-cha" data-goodsid="2862" data-attrid="66" data-goodsattrid="5097" data-attrvalue="摩卡红" ectype="attrClose"></i>
-                      </div>
-                      <div class="checkbox_item">
-                        <input type="checkbox" data-type="attr_id" name="attr_id_list1[]" class="ui-checkbox" checked="" value="66">
-                        <input type="checkbox" data-type="attr_value" name="attr_value_list1[]" class="ui-checkbox" checked="" value="银光绿" id="goods_attr_checkbox5098">
-                        <label for="goods_attr_checkbox5098" class="ui-label">银光绿</label>
-                        <i class="iconfont icon-cha" data-goodsid="2862" data-attrid="66" data-goodsattrid="5098" data-attrvalue="银光绿" ectype="attrClose"></i>
-                      </div>
-                      <div class="checkbox_item">
-                        <a href="javascript:void(0);" class="btn btn25 blue_btn" data-attrid="66" ectype="attr_input">自定义</a>
+                <div class='item_right_li' id='sp_item'>
+                  <div>
+                    <input type='text' value='规格名称' name='' class='text label' autocomplete='off'>
+                    <i style='font-weight: bold;'>：</i>
+                  </div>
+                  <div class='value' >
+                    <div class='checkbox_items attr_input_type_66'>
+                      <div class='checkbox_item'>
+                        <input type='checkbox' data-type='attr_id' name='attr_id_list1[]' class='ui-checkbox' checked='' value='66'>
+                        <input type='checkbox' data-type='attr_value' name='attr_value_list1[]' class='ui-checkbox' checked='' value='梵星蓝' id='goods_attr_checkbox5096'>
+                        <label for='goods_attr_checkbox5096' class='ui-label' >梵星蓝</label>
+                        <i class='iconfont icon-cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5096' data-attrvalue='梵星蓝' ectype='attrClose'></i>
+                        <i class='icon icon-picture'></i>
                       </div>
                     </div>
                   </div>
+                  <input type='text' autocomplete='off' value='' class='text w60 check_input' style='display: none'>
+                  <div class='addBtn fl' id='attr_name'>
+                <span class=' stop stop_jia' ectype='addInfo' title='添加商品属性' id='SP_addval'></span>
                 </div>
-                <div class="item_right_li">
-                  <div class="label">版本：</div>
-                  <div class="value">
-                    <div class="checkbox_items attr_input_type_111">
-                      <div class="checkbox_item">
-                        <input type="checkbox" data-type="attr_id" name="attr_id_list1[]" class="ui-checkbox" checked="" value="111">
-                        <input type="checkbox" data-type="attr_value" name="attr_value_list1[]" class="ui-checkbox" checked="" value="4G+64G" id="goods_attr_checkbox5094">
-                        <label for="goods_attr_checkbox5094" class="ui-label">4G+64G</label>
-                        <i class="iconfont icon-cha" data-goodsid="2862" data-attrid="111" data-goodsattrid="5094" data-attrvalue="4G+64G" ectype="attrClose"></i>
-                      </div>
-                      <div class="checkbox_item">
-                        <input type="checkbox" data-type="attr_id" name="attr_id_list1[]" class="ui-checkbox" checked="" value="111">
-                        <input type="checkbox" data-type="attr_value" name="attr_value_list1[]" class="ui-checkbox" checked="" value="6G+64G" id="goods_attr_checkbox5095">
-                        <label for="goods_attr_checkbox5095" class="ui-label">6G+64G</label>
-                        <i class="iconfont icon-cha" data-goodsid="2862" data-attrid="111" data-goodsattrid="5095" data-attrvalue="6G+64G" ectype="attrClose"></i>
-                      </div>
-                      <div class="checkbox_item">
-                        <a href="javascript:void(0);" class="btn btn25 blue_btn" data-attrid="111" ectype="attr_input">自定义</a>
-                      </div>
-                    </div>
-                  </div>
                 </div>
+                <div class='addBtn fl' id='attr_name'>
+                <span class=' stop stop_jia' ectype='addInfo' title='添加商品属性' id='SP_addInfo'></span>
+                </div>
+                <script type="text/javascript">
+                  
+              /**********************************{商品规格} start*****************************/
+                var sp_name =" <div>"+
+                "<input type='text' value='规格名称' name='' class='text label' autocomplete='off'>"+
+                "<i style='font-weight: bold;'>：</i>"+
+                "</div>"+
+                "<div class='value' >"+
+                "<div class='checkbox_items attr_input_type_66'>"+
+                "<div class='checkbox_item'>"+
+                "<input type='checkbox' data-type='attr_id' name='attr_id_list1[]' class='ui-checkbox' checked='' value='66'>"+
+                " <input type='checkbox' data-type='attr_value' name='attr_value_list1[]' class='ui-checkbox' checked='' value='梵星蓝' id='goods_attr_checkbox5090'>"+
+                "<label for='goods_attr_checkbox5090' class='ui-label' >梵星蓝</label>"+
+                "<i class='iconfont icon-cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5096' data-attrvalue='梵星蓝' ectype='attrClose'></i>"+
+                "<i class='icon icon-picture'></i>"+
+                "</div>"+
+                "</div>"+
+                " </div>";
+
+                var sp_item =$('#sp_item .value');
+                var check_input =$('#sp_item .check_input');
+                 $('#SP_addval').on('click', function(event) {
+                $(this).before(sp_name);
+              });
+                $('#sp_item').on('dblclick', '.ui-label', function() {
+                  $(this).parents(".value").hide();
+                  check_input.show();
+                  var index = $(this).index();
+                   console.log(index);
+                });
+                check_input.blur(function(event) {
+                    var index = $(this).index();
+                    var val= $(this).val();
+                  console.log(index);
+                  if (val =='') {
+                     $(this).show();
+                  }
+                  // $('#sp_item .value .ui-label')eq(index).text(val);
+                  // $(this).hide();
+                  //  sp_item.show();
+                });
+              /**********************************{商品规格} end*****************************/
+                </script>
                 <div class="step_item_table mt30" id="attribute_table">
                   <table class="table_head" width="100%">
                     <thead>
