@@ -1416,7 +1416,7 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 .step_item_right .goods_attr_type .xds_up,.step_item_right .goods_attr_type .xds_down{ margin-top:10px; cursor:pointer;}
 .step_item_right .goods_attr_type:first-child{ margin-bottom:10px;}
 /*商品属性重新*/
-#attr_name .stop_jia{
+.attr_name .stop_jia{
 
     width: 24px;
     height: 24px;

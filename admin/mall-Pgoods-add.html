@@ -876,13 +876,14 @@
               <div class="step_item_left">
                 <h5>商品属性：</h5>
               </div>
-              <div class="step_item_right" id="attr_name">
+              <div class="step_item_right attr_name" id="attr_name">
                 <span class=" stop stop_jia" ectype="addInfo" title="添加商品属性" id="attr_addInfo"></span>
               </div>
             </div>
             <script type="text/javascript">
               /**********************************{商品属性信息} start*****************************/
-              // 动态创建属性HTML
+              $(function () {
+                 // 动态创建属性HTML
                var arrt_name = "<div class='item_right_li goods_attr_type'>"+
                " <input type='text' value='属性名称' name='' class='text label' autocomplete='off' onchange='listTable.editInput(this, 'edit_img_desc', 10021)'>"+
                "<i style='font-weight: bold;'>：</i>"+
@@ -905,7 +906,7 @@
                 });
              
               /**********************************{商品属性信息} end*****************************/
-              
+              });
             </script>
             <!-- 商品规格 -->
             <div class="step_item_row step_item_spec_row mt30">
@@ -913,37 +914,38 @@
                 <h5>商品规格：</h5>
               </div>
               <div class="step_item_right">
-                <div class='item_right_li' id='sp_item'>
-                  <div>
+                <!-- <div class='item_right_li' id='sp_item'> -->
+                  <!-- <div class='sp_waper'>
                     <input type='text' value='规格名称' name='' class='text label' autocomplete='off'>
                     <i style='font-weight: bold;'>：</i>
-                  </div>
-                  <div class='value' >
-                    <div class='checkbox_items attr_input_type_66'>
-                      <div class='checkbox_item'>
-                        <input type='checkbox' data-type='attr_id' name='attr_id_list1[]' class='ui-checkbox' checked='' value='66'>
-                        <input type='checkbox' data-type='attr_value' name='attr_value_list1[]' class='ui-checkbox' checked='' value='梵星蓝' id='goods_attr_checkbox5096'>
-                        <label for='goods_attr_checkbox5096' class='ui-label' >梵星蓝</label>
-                        <i class='iconfont icon-cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5096' data-attrvalue='梵星蓝' ectype='attrClose'></i>
-                        <i class='icon icon-picture'></i>
+                    <div class='value' >
+                      <div class='checkbox_items attr_input_type_66'>
+                        <div class='checkbox_item'>
+                          <input type='checkbox' data-type='attr_id' name='attr_id_list1[]' class='ui-checkbox' checked='' value='66'>
+                          <input type='checkbox' data-type='attr_value' name='attr_value_list1[]' class='ui-checkbox' checked='' value='梵星蓝' id='goods_attr_checkbox5096'>
+                          <label for='goods_attr_checkbox5096' class='ui-label' >梵星蓝</label>
+                          <i class='iconfont icon-cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5096' data-attrvalue='梵星蓝' ectype='attrClose'></i>
+                          <i class='icon icon-picture'></i>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <input type='text' autocomplete='off' value='' class='text w60 check_input' style='display: none'>
-                  <div class='addBtn fl' id='attr_name'>
-                <span class=' stop stop_jia' ectype='addInfo' title='添加商品属性' id='SP_addval'></span>
-                </div>
-                </div>
-                <div class='addBtn fl' id='attr_name'>
-                <span class=' stop stop_jia' ectype='addInfo' title='添加商品属性' id='SP_addInfo'></span>
+                    <input type='text' autocomplete='off' value='' class='text w60 check_input' style='display: none'>
+                  </div> -->
+                  <!-- <div class='addBtn fl attr_name' id='SP_addval'>
+                    <span class=' stop stop_jia' ectype='addInfo' title='添加商品属性'></span>
+                  </div> -->
+                
+                <!-- </div> -->
+                <div class='addBtn fl attr_name' id='SP_addInfo'>
+                <span class=' stop stop_jia' ectype='addInfo' title='添加商品属性' ></span>
                 </div>
                 <script type="text/javascript">
-                  
-              /**********************************{商品规格} start*****************************/
-                var sp_name =" <div>"+
+                  $(function () {
+                     /**********************************{商品规格} start*****************************/
+                var sp_name ="<div class='item_right_li' id='sp_item'>"+
+                "<div class='sp_waper'>"+
                 "<input type='text' value='规格名称' name='' class='text label' autocomplete='off'>"+
                 "<i style='font-weight: bold;'>：</i>"+
-                "</div>"+
                 "<div class='value' >"+
                 "<div class='checkbox_items attr_input_type_66'>"+
                 "<div class='checkbox_item'>"+
@@ -954,31 +956,46 @@
                 "<i class='icon icon-picture'></i>"+
                 "</div>"+
                 "</div>"+
-                " </div>";
-
-                var sp_item =$('#sp_item .value');
-                var check_input =$('#sp_item .check_input');
-                 $('#SP_addval').on('click', function(event) {
-                $(this).before(sp_name);
-              });
+                " </div>"+
+                "<input type='text' autocomplete='off' value='' class='text w60 check_input' style='display: none'>"+
+                "</div>"+
+                "</div>";
+                var btn_html = "<div class='addBtn fl attr_name' id='SP_addval'>"+
+                "<span class=' stop stop_jia' ectype='addInfo' title='添加商品属性'></span>"+
+                "</div>";
+                var sp_item =$('#sp_item .sp_waper');
+                var check_input =$('#sp_item .sp_waper .check_input');
+                // 动态创建规格模板
+                $('#SP_addInfo').on('click', function(event) {
+                 $(this).before(sp_name);
+                });
+                // 动态创建规格HTML
+                $('#SP_addval').on('click', function(event) {
+                  $(this).before(sp_name);
+                });
+                 // 删除规格
+                 $('#sp_item').on('click','.icon-cha',function() {
+                   $(this).parents('.sp_waper').remove();
+                });
+                 // 双击更改规格内容
                 $('#sp_item').on('dblclick', '.ui-label', function() {
-                  $(this).parents(".value").hide();
-                  check_input.show();
-                  var index = $(this).index();
-                   console.log(index);
+                  var parents = $(this).parents(".value");
+                  parents .hide();
+                  parents .next().show();
+                  // 失去焦点处理
+                  parents .next().on('blur',function () {
+                   var _this = $(this);
+                   var index = _this.index();
+                   var val= _this.val();
+                   _this.parent('.sp_waper').find('.ui-label').text(val);
+                   _this.hide();
+                   _this.prev().show();
+                 });
                 });
-                check_input.blur(function(event) {
-                    var index = $(this).index();
-                    var val= $(this).val();
-                  console.log(index);
-                  if (val =='') {
-                     $(this).show();
-                  }
-                  // $('#sp_item .value .ui-label')eq(index).text(val);
-                  // $(this).hide();
-                  //  sp_item.show();
-                });
+               
               /**********************************{商品规格} end*****************************/
+              });
+             
                 </script>
                 <div class="step_item_table mt30" id="attribute_table">
                   <table class="table_head" width="100%">
