@@ -942,57 +942,71 @@
                 <script type="text/javascript">
                   $(function () {
                      /**********************************{商品规格} start*****************************/
-                var sp_name ="<div class='item_right_li' id='sp_item'>"+
+                var sp_name ="<div class='item_right_li sp_item'>"+
+                "<i class='iconfont icon-cha cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5096'></i>"+
                 "<div class='sp_waper'>"+
                 "<input type='text' value='规格名称' name='' class='text label' autocomplete='off'>"+
                 "<i style='font-weight: bold;'>：</i>"+
-                "<div class='value' >"+
+                "</div>"+
+                "</div>";
+                var value =
+                "<div class='value'>"+
                 "<div class='checkbox_items attr_input_type_66'>"+
                 "<div class='checkbox_item'>"+
                 "<input type='checkbox' data-type='attr_id' name='attr_id_list1[]' class='ui-checkbox' checked='' value='66'>"+
-                " <input type='checkbox' data-type='attr_value' name='attr_value_list1[]' class='ui-checkbox' checked='' value='梵星蓝' id='goods_attr_checkbox5090'>"+
-                "<label for='goods_attr_checkbox5090' class='ui-label' >梵星蓝</label>"+
+                " <input type='checkbox' data-type='attr_value' name='attr_value_list1[]' class='ui-checkbox test' checked='' value='梵星蓝' id='goods_attr_checkbox'>"+
+                "<label for='goods_attr_checkbox' class='ui-label' >梵星蓝</label>"+
                 "<i class='iconfont icon-cha' data-goodsid='2862' data-attrid='66' data-goodsattrid='5096' data-attrvalue='梵星蓝' ectype='attrClose'></i>"+
                 "<i class='icon icon-picture'></i>"+
                 "</div>"+
                 "</div>"+
-                " </div>"+
-                "<input type='text' autocomplete='off' value='' class='text w60 check_input' style='display: none'>"+
-                "</div>"+
+                " </div>";
+                
+                var btn_html = "<div class='addBtn fl attr_name SP_addval'>"+
+                "<span class='stop stop_jia' ectype='addInfo' title='添加商品属性'></span>"+
                 "</div>";
-                var btn_html = "<div class='addBtn fl attr_name' id='SP_addval'>"+
-                "<span class=' stop stop_jia' ectype='addInfo' title='添加商品属性'></span>"+
-                "</div>";
-                var sp_item =$('#sp_item .sp_waper');
-                var check_input =$('#sp_item .sp_waper .check_input');
+                var btn_input = "<input type='text' autocomplete='off' value='' class='text w60 check_input'>";
                 // 动态创建规格模板
                 $('#SP_addInfo').on('click', function(event) {
                  $(this).before(sp_name);
+                 var len = $(".sp_item").length;
+                 $('.sp_item').eq(len-1).append(btn_html);
+                 // 创建规格
+                 $('.sp_item').eq(len-1).on('click','.SP_addval',function(event) {
+                  var id =100;
+                  $(this).before(value);
+                  var len = $(this).parents('.sp_item').children('.value');
+                  var arr =[];
+                  for (var i = 0; i < len-1; i++) {
+                    arr[i]=i;
+                  }
+                  $(this).prev().find('.test').attr('id', id+i);
+                  $(this).prev().find('.ui-label').attr('for', id+i);
+                   
                 });
-                // 动态创建规格HTML
-                $('#SP_addval').on('click', function(event) {
-                  $(this).before(sp_name);
-                });
-                 // 删除规格
-                 $('#sp_item').on('click','.icon-cha',function() {
-                   $(this).parents('.sp_waper').remove();
-                });
-                 // 双击更改规格内容
-                $('#sp_item').on('dblclick', '.ui-label', function() {
+                  // 删除规格
+                  $('.sp_item').eq(len-1).on('click','.cha',function() {
+                   $(this).parents('.sp_item').remove();
+                 });
+                  $('.sp_item').eq(len-1).on('click','.icon-cha',function() {
+                   $(this).parents('.value').remove();
+                 });
+                    // 双击更改规格内容
+                $('.sp_item').eq(len-1).on('dblclick', '.ui-label', function() {
                   var parents = $(this).parents(".value");
-                  parents .hide();
-                  parents .next().show();
+                      parents.before(btn_input);
+                      parents.hide();
                   // 失去焦点处理
-                  parents .next().on('blur',function () {
+                  $('.sp_item').eq(len-1).find('.check_input').on('blur',function () {
                    var _this = $(this);
-                   var index = _this.index();
-                   var val= _this.val();
-                   _this.parent('.sp_waper').find('.ui-label').text(val);
-                   _this.hide();
-                   _this.prev().show();
+                   var val= _this.val();//获取输入的值
+                    _this.next().show();//属性值显示
+                   _this.next().find('.ui-label').text(val);//赋值
+                   _this.remove();//销毁自身
                  });
                 });
-               
+                });
+
               /**********************************{商品规格} end*****************************/
               });
              

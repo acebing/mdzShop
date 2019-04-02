@@ -1444,7 +1444,27 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 	color:#F42424;
 }
 #attr_name .item_right_li:hover .icon-cha{ display:block;}
-#sp_item .value{ border: 1px solid #dbdbdb;
+.sp_item{position: relative;}
+.sp_item .cha{
+	font-size: 14px;
+    vertical-align: middle;
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    color: #62b3ff;
+    cursor: pointer;
+    display: none;
+}
+.sp_item .cha:hover{
+	color:#F42424;
+}
+.sp_item:hover .cha{
+	display:block;
+}
+.sp_item .sp_waper{
+	float: left;
+}
+.sp_item .value{ border: 1px solid #dbdbdb;
     border-radius: 2px;
     height: 28px;
     line-height: 28px;
@@ -1459,7 +1479,7 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
     -ms-transition: all .2s;
     margin-right: 10px;
 }
-#sp_item .value .icon-picture{
+.sp_item .value .icon-picture{
 	font-size: 14px;
     vertical-align: middle;
     position: absolute;
@@ -1469,18 +1489,18 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
     /*display: none;*/
     cursor: pointer;
 }
-#sp_item .value .icon-picture:hover{
+.sp_item .value .icon-picture:hover{
 	color: #29c25f;
 }
-#sp_item  .value .icon-cha{ 
+.sp_item  .value .icon-cha{ 
 	font-size: 12px;
 	vertical-align: middle;
 	position:absolute; top:9px;
 	right:-22px; color:#62b3ff; 
 	cursor:pointer;
 }
-#sp_item  .value .icon-cha:hover{ color:#F42424;}
-
+.sp_item  .value .icon-cha:hover{ color:#F42424;}
+#SP_addInfo .stop_jia{position: static;}
 .step_item .common-head { padding-top:10px; border-top:1px solid #dcdcdc; margin-top:10px;}
 .step_item .common-head .search{ margin-top:0;}
 
