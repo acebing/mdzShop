@@ -1643,7 +1643,7 @@ i.sc_icon_dsz{ position:absolute; width:48px; height:56px; background-position:-
 .order_info .step_title{ padding-bottom:6px; border-bottom:2px solid #dbdbdb;;}
 .order_info .step_title a{ margin-left:10px;}
 .step .section{ width:100%; position:relative; z-index:9; overflow:hidden;}
-.step .section dl{ float:left; width:16.667%;}
+.step .section dl{ float:left; width:15.667%;}
 .step .section1 dl{ width:100%;}
 .step .section2 dl{ width:50%;}
 .step .section3 dl{ width:33.3%;}
@@ -2209,7 +2209,8 @@ i.sc_icon_jian{ width:19px; height:19px; display:inline-block; background-positi
 .tbodyText .text{ margin-right:0;}
 
 .common-reply{ width:100%; float:left;}
-.common-reply .reply_item{ padding:0 20px 20px; border-bottom:1px dashed #eaeaea; overflow:hidden; margin-bottom:20px;}
+.common-reply .wrap{ width:50%;  margin: 0 auto;}
+.common-reply .reply_item{ padding:0 20px 20px; border-bottom:1px dashed #eaeaea; overflow:hidden;margin-bottom: 30px;}
 .reply_item .reply_item_div{ float:left; width:100%; margin-bottom:5px;}
 .reply_item .reply_item_div .reply_label{ float:left; width:70px; font-weight:bold;}
 .reply_item .reply_item_div .reply_value{ float:left; width:calc(100% - 70px);}

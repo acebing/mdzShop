@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>买得商城</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/listtable.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/admin.js"></script>
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="">平台设置</a></li>
+        <li class="layui-nav-item layui-this"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台商品管理</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">超市商品管理</a>
+          <dl class="layui-nav-child">
+            <dd ><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">省鲜生商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">订单列表</a></dd>
+            <dd><a href="javascript:;">添加订单</a></dd>
+            <dd><a href="javascript:;">发货单列表</a></dd>
+            <dd><a href="javascript:;">退货单列表</a></dd>
+            <dd><a href="javascript:;">退货原因列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+            <dd><a href="javascript:;">自动发布</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">会员管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">会员列表</a></dd>
+            <dd><a href="javascript:;">资金管理</a></dd>
+            <dd><a href="javascript:;">充值/提现</a></dd>
+            <dd><a href="javascript:;">收货地址</a></dd>
+            <dd><a href="javascript:;">发票</a></dd>
+            <dd><a href="javascript:;">投诉管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">活动促销</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">限时秒杀</a></dd>
+          
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">订单管理</a>
+     <a><cite>退货原因列表</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>秒杀时段列表可对时间段进行新增/编辑/删除操作。</li>
+        <li>建议设置四至五个时间段（前台显示）。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="seckill.php?act=time_add"><div class="fbutton"><div class="add" title="添加秒杀时间段"><span><i class="icon icon-plus"></i>添加秒杀时间段</span></div></div></a>
+        </div>
+      </div>
+      <div class="common-content">
+        <form method="post" action="" name="listForm">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="1" cellspacing="1">
+              <thead>
+                <tr>
+                  <th width="5%"><div class="tDiv">编号</div></th>
+                  <th width="30%"><div class="tDiv">秒杀时段名称</div></th>
+                  <th width="20%"><div class="tDiv">每日开始时间</div></th>
+                  <th width="20%"><div class="tDiv">每日结束时间</div></th>
+                  <th width="12%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="tDiv">1</div></td>
+                  <td><div class="tDiv">8:00</div></td>
+                  <td><div class="tDiv ">08:00:00</div></td>
+                  <td><div class="tDiv ">10:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=time_edit&amp;tb_id=1" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(1, '您确认要删除这条记录吗?（同时删除该记录下的商品，无法恢复）', 'tb_remove')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                  
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="tDiv">2</div></td>
+                  <td><div class="tDiv">10:00</div></td>
+                  <td><div class="tDiv ">10:00:01</div></td>
+                  <td><div class="tDiv ">12:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=time_edit&amp;tb_id=2" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(2, '您确认要删除这条记录吗?（同时删除该记录下的商品，无法恢复）', 'tb_remove')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                  
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="tDiv">3</div></td>
+                  <td><div class="tDiv">12:00</div></td>
+                  <td><div class="tDiv ">12:00:01</div></td>
+                  <td><div class="tDiv ">14:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=time_edit&amp;tb_id=3" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(3, '您确认要删除这条记录吗?（同时删除该记录下的商品，无法恢复）', 'tb_remove')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                  
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td><div class="tDiv">4</div></td>
+                  <td><div class="tDiv">14:00</div></td>
+                  <td><div class="tDiv ">14:00:01</div></td>
+                  <td><div class="tDiv ">16:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=time_edit&amp;tb_id=4" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(4, '您确认要删除这条记录吗?（同时删除该记录下的商品，无法恢复）', 'tb_remove')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                  
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td><div class="tDiv">5</div></td>
+                  <td><div class="tDiv">16:00</div></td>
+                  <td><div class="tDiv ">16:00:01</div></td>
+                  <td><div class="tDiv ">22:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=time_edit&amp;tb_id=5" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(5, '您确认要删除这条记录吗?（同时删除该记录下的商品，无法恢复）', 'tb_remove')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                  
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>  
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
+      <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+    </div>
+  </div>
+</body>
+<script src="./js/jquery.purebox.js"></script>
+<script type="text/javascript">
+ 
+  $(function(){
+    //表单验证
+    $("#submitBtn").click(function(){
+      if($("#myForm").valid()){
+        $("#myForm").submit();
+      }
+    });
+  
+    $('#myForm').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules:{
+        acti_title :{
+          required : true
+        },
+        begin_time :{
+          required : true
+        },
+        acti_time :{
+          required : true,
+          compareDate:"#start_time"
+        }
+      },
+      messages:{
+        acti_title:{
+           required : '<i class="icon icon-exclamation-sign"></i>'+acti_title_not_null
+        },
+        begin_time :{
+          required : '<i class="icon icon-exclamation-sign"></i>'+start_data_notnull
+        },
+        acti_time :{
+          required : '<i class="icon icon-exclamation-sign"></i>'+end_data_notnull,
+          compareDate:'<i class="icon icon-exclamation-sign"></i>'+data_invalid_gt
+        }
+      },
+      onfocusout:function(element,event){
+        //实时去除结束时间是否大于开始时间验证
+        var name = $(element).attr("name");
+        if(name == "acti_time"){
+          var endDate = $(element).val();
+          var startDate = $(element).siblings("input[name='begin_time']").val();
+          
+          var date1 = new Date(Date.parse(startDate.replace(/-/g, "/")));
+          var date2 = new Date(Date.parse(endDate.replace(/-/g, "/")));
+          if(date1 > date2){
+            $(element).removeClass("error");
+            $(element).siblings(".form_prompt").html("");
+          }
+        }
+      }
+    });
+  });
+
+  //时间选择
+  var opts1 = {
+    'targetId':'start_time',
+    'triggerId':['start_time'],
+    'alignId':'start_time',
+    'hms':'off',
+    'format':'-'
+  }
+  var opts2 = {
+    'targetId':'end_time',
+    'triggerId':['end_time'],
+    'alignId':'end_time',
+    'hms':'off',
+    'format':'-'
+  }
+  xvDate(opts1);
+  xvDate(opts2);
+    
+</script>
+</html>

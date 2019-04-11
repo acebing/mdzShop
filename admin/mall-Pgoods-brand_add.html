@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>layui</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./js/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="./css/purebox.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/order-new.css">
+  <link rel="stylesheet" href="./css/mdz.css">
+  <!-- js部分 -->
+  <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+  <script src="./js/jquery-ui/jquery-ui.min.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/mdz-layui.js"></script>
+  <script src="./js/jquery.validation.min.js"></script>
+  <script src="./js/perfect-scrollbar.min.js"></script>
+  <script src="./js/lib_ecmobanFunc.js"></script>
+  <script src="./js/listtable.js"></script>
+  <script src="./js/region.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/admin.js"></script>
+</head>
+<body>
+  <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+      <div class="layui-logo"><img src="./images/admin_logo.png" alt="" style="width: 210px;height: 25px"></div>
+      <!-- 头部区域（可配合layui已有的水平导航） -->
+      <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="">平台设置</a></li>
+        <li class="layui-nav-item layui-this"><a href="">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">财务管理</a></li>
+        <li class="layui-nav-item"><a href="">微商城</a></li>
+        <li class="layui-nav-item"><a href="">小程序</a></li>
+      </ul>
+      <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+          <a href="javascript:;">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+            沈总
+          </a>
+          <dl class="layui-nav-child">
+            <dd><a href="">基本资料</a></dd>
+            <dd><a href="">安全设置</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+         <a href="">
+          <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
+        </a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+      <li class="layui-nav-item">
+      	<a href="">
+      		<i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
+      	</a>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">平台商品管理</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">超市商品管理</a>
+          <dl class="layui-nav-child">
+            <dd ><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">省鲜生商品管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">商品列表</a></dd>
+            <dd><a href="javascript:;">商品分类</a></dd>
+            <dd><a href="javascript:;">品牌管理</a></dd>
+            <dd><a href="javascript:;">评论管理</a></dd>
+            <dd><a href="javascript:;">商品类型</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">订单管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">订单列表</a></dd>
+            <dd><a href="javascript:;">添加订单</a></dd>
+            <dd><a href="javascript:;">发货单列表</a></dd>
+            <dd><a href="javascript:;">退货单列表</a></dd>
+            <dd><a href="javascript:;">退货原因列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">文章管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">文章分类</a></dd>
+            <dd><a href="javascript:;">文章列表</a></dd>
+            <dd><a href="javascript:;">自动发布</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">会员管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">会员列表</a></dd>
+            <dd><a href="javascript:;">资金管理</a></dd>
+            <dd><a href="javascript:;">充值/提现</a></dd>
+            <dd><a href="javascript:;">收货地址</a></dd>
+            <dd><a href="javascript:;">发票</a></dd>
+            <dd><a href="javascript:;">投诉管理</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">活动促销</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">限时秒杀</a></dd>
+          
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台商品管理</a>
+     <a><cite>平台分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        <li>请按提示文案填写信息，以免出错。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-content">
+        <div class="mian-info">
+          <form action="brand.php" method="post" name="theForm" enctype="multipart/form-data" id="brandForm" novalidate="novalidate">
+            <div class="switch_info">
+              <div class="item">
+                <div class="label"><span class="require-field">*</span>品牌中文名称：</div>
+                <div class="label_value">
+                  <input type="text" name="brand_name" maxlength="60" value="" class="text" autocomplete="off">
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">品牌英文名称：</div>
+                <div class="label_value">
+                  <input type="text" name="brand_letter" maxlength="60" value="" class="text" autocomplete="off">
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">品牌首字母：</div>
+                <div class="label_value">
+                  <input type="text" name="brand_first_char" maxlength="60" value="" class="text" autocomplete="off">
+                  <div class="form_prompt"></div>
+                  <div class="notic">用于解决某些生僻字无法正确生成品牌首字母的情况。</div>
+                </div>
+              </div>             
+              <div class="item">
+                <div class="label"><span class="require-field">*</span>品牌LOGO：</div>
+                <div class="label_value">
+                  <div class="type-file-box">
+                    <input type="button" name="button" id="button" class="type-file-button" value="">
+                    <input type="file" class="type-file-file" id="logo" name="brand_logo" size="30" data-state="imgfile" hidefocus="true" value="">
+                    <input type="text" name="textfile" class="type-file-text" id="textfield" value="" autocomplete="off" readonly="">
+                  </div>
+                  <div class="form_prompt"></div>
+                  <div class="notic" id="warn_brandlogo">
+                  请上传图片，做为品牌的LOGO！标准尺寸200*88                                                            </div>
+                </div>
+              </div>
+              <!--  品牌专区大图 by wu start-->
+              <div class="item">
+                <div class="label">品牌专区大图：</div>
+                <div class="label_value">
+                  <div class="type-file-box">
+                    <input type="button" name="button" id="button" class="type-file-button" value="">
+                    <input type="file" class="type-file-file" id="logo" name="index_img" size="30" data-state="imgfile" hidefocus="true" value="">
+                    <input type="text" name="textfile" class="type-file-text" id="textfield" value="" autocomplete="off" readonly="">
+                  </div>
+                  <div class="form_prompt"></div>
+                  <div class="notic">标准尺寸278*285</div>
+                </div>
+              </div>    
+              <!--  end-->
+              <!-- 品牌背景图 start -->
+              <div class="item">
+                <div class="label">品牌背景图：</div>
+                <div class="label_value">
+                  <div class="type-file-box">
+                    <input type="button" name="button" id="button" class="type-file-button" value="">
+                    <input type="file" class="type-file-file" id="logo" name="brand_bg" size="30" data-state="imgfile" hidefocus="true" value="">
+                    <input type="text" name="textfile" class="type-file-text" id="textfield" value="" autocomplete="off" readonly="">
+                  </div>
+                  <div class="form_prompt"></div>
+                  <div class="notic">使用于品牌详情页头部分类背景，建议尺寸：1920*200</div>
+                </div>
+              </div>
+              <!-- 品牌背景图 end -->
+              <div class="item">
+                <div class="label">品牌描述：</div>
+                <div class="label_value">
+                  <textarea name="brand_desc" cols="60" rows="4" class="textarea"></textarea>
+                </div>
+              </div>                
+              <div class="item">
+                <div class="label">排序：</div>
+                <div class="label_value">
+                  <input type="text" name="sort_order" maxlength="40" size="15" value="50" class="text text_5" autocomplete="off">
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">是否显示：</div>
+                <div class="label_value">
+                  <div class="checkbox_items" style="width:auto;">
+                    <div class="checkbox_item">
+                      <input type="radio" class="ui-radio" name="is_show" id="is_show_1" value="1" checked="true">
+                      <label for="is_show_1" class="ui-radio-label">是</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" class="ui-radio" name="is_show" id="is_show_0" value="0">
+                      <label for="is_show_0" class="ui-radio-label">否</label>
+                    </div>
+                  </div>
+                  <div class="notic">(当品牌下还没有商品的时候，首页及分类页的品牌区将不会显示该品牌。)</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">加入推荐：</div>
+                <div class="label_value">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="radio" class="ui-radio" name="is_recommend" id="is_recommend_1" value="1">
+                      <label for="is_recommend_1" class="ui-radio-label">是</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" class="ui-radio" name="is_recommend" id="is_recommend_0" value="0" checked="true">
+                      <label for="is_recommend_0" class="ui-radio-label">否</label>
+                    </div>
+                  </div>
+                </div>
+              </div>                
+              <div class="item">
+                <div class="label">&nbsp;</div>
+                <div class="label_value info_btn">
+                  <input type="button" class="button" value=" 确定 " id="submitBtn">
+                  <input type="reset" class="button button_reset" value=" 重置 ">
+                  <input type="hidden" name="act" value="insert">
+                  <input type="hidden" name="old_brandname" value="">
+                  <input type="hidden" name="id" value="">
+                  <input type="hidden" name="old_brandlogo" value="">
+                </div>
+              </div>                
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="layui-footer">
+      <!-- 底部固定区域 -->
+      <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
+    </div>
+  </div>
+</body>
+<script src="./js/jquery.purebox.js"></script>
+<script type="text/javascript">
+  
+  $(function(){
+    //表单验证
+    $("#submitBtn").click(function(){
+      if($("#brandForm").valid()){
+        $("#brandForm").submit();
+      }
+    });
+    
+    $(function(){
+      $('.nyroModal').nyroModal();
+    });
+    
+    $('#brandForm').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules:{
+        brand_name :{
+          required : true
+        },
+        textfile:{
+          required : true
+        }
+      },
+      messages:{
+        brand_name:{
+          required : '<i class="icon icon-exclamation-sign"></i>' +'品牌名称不能为空'
+        },
+        textfile:{
+          required : '<i class="icon icon-exclamation-sign"></i>' +'品牌logo不能为空'
+        }
+      }     
+    });
+  });
+  
+</script>
+</html>
