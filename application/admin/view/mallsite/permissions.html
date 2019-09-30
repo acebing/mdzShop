@@ -1,0 +1,133 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">管理员权限</a>
+      <a><cite>管理员列表</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>该页面展示了所有入驻平台的管理员列表。</li>
+          <li>可手动添加管理员并分配权限、查看日志等操作。</li>
+          <li class="red">注意：商家权限，已移至商城-&gt;商家列表。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <!--商品分类列表-->
+        <div class="common-head">
+          <div class="fl">
+            <a href="{:url('permissionsAddAdmin')}"><div class="fbutton"><div class="add" title="添加管理员"><span><i class="icon icon-plus"></i>添加管理员</span></div></div></a>
+          </div>
+          <div class="refresh">
+            <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+            <div class="refresh_span">刷新 - 共3条记录</div>
+          </div>
+          <div class="search">
+            <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+              <div class="input">
+                <input type="text" name="keywords" class="text nofocus" placeholder="用户名" autocomplete="off">
+                <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="common-content">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                 <th width="16%"><div class="tDiv">用户名</div></th>
+                 <th width="16%"><div class="tDiv">父管理员</div></th>
+                 <th width="18%"><div class="tDiv">商家名称</div></th>
+                 <th width="18%"><div class="tDiv">Email地址</div></th>
+                 <th width="12%"><div class="tDiv">加入时间</div></th>
+                 <th width="12%"><div class="tDiv">最后登录时间</div></th>
+                 <th width="22%"><div class="handle">操作</div></th>
+               </tr>
+             </thead>
+             <tbody>
+              <tr class="">
+                <td><div class="tDiv">mdz02</div></td>
+                <td><div class="tDiv">admin</div></td>
+                <td><div class="tDiv"><font class="blue3">商城管理员</font></div></td>
+                <td><div class="tDiv">1569956554@qq.com</div></td>
+                <td><div class="tDiv">2018-10-08 08:29:20</div></td>
+                <td><div class="tDiv">2019-03-18 10:03:42</div></td>
+                <td class="handle">
+                  <div class="tDiv a4">
+                    <a href="{:url('permissionsAllotAdmin')}" title="分派权限" class="btn_region"><i class="icon icon-cog"></i>分派权限</a>
+                    <a href="{:url('permissionsSeeAdminLog')" title="查看日志" class="btn_see"><i class="sc_icon sc_icon_see"></i>查看日志</a>
+                    <a href="privilege.php?act=edit&amp;id=64" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(64, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="">
+                <td><div class="tDiv">mdz01</div></td>
+                <td><div class="tDiv">admin</div></td>
+                <td><div class="tDiv"><font class="blue3">商城管理员</font></div></td>
+                <td><div class="tDiv">664777957@qq.com</div></td>
+                <td><div class="tDiv">2018-07-09 14:21:02</div></td>
+                <td><div class="tDiv">2019-03-20 15:34:12</div></td>
+                <td class="handle">
+                  <div class="tDiv a4">
+                    <a href="privilege.php?act=allot&amp;id=61&amp;user=mdz01" title="分派权限" class="btn_region"><i class="icon icon-cog"></i>分派权限</a>
+                    <a href="admin_logs.php?act=list&amp;id=61" title="查看日志" class="btn_see"><i class="sc_icon sc_icon_see"></i>查看日志</a>
+                    <a href="privilege.php?act=edit&amp;id=61" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(61, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="">
+                <td><div class="tDiv">admin</div></td>
+                <td><div class="tDiv">无</div></td>
+                <td><div class="tDiv"><font class="blue3">商城管理员</font></div></td>
+                <td><div class="tDiv">1228984759@qq.com</div></td>
+                <td><div class="tDiv">2017-05-02 10:35:28</div></td>
+                <td><div class="tDiv">2019-03-21 11:44:26</div></td>
+                <td class="handle">
+                  <div class="tDiv a4">
+                    <a href="privilege.php?act=allot&amp;id=57&amp;user=admin" title="分派权限" class="btn_region"><i class="icon icon-cog"></i>分派权限</a>
+                    <a href="admin_logs.php?act=list&amp;id=57" title="查看日志" class="btn_see"><i class="sc_icon sc_icon_see"></i>查看日志</a>
+                    <a href="privilege.php?act=edit&amp;id=57" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(57, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="12">
+                  <div class="list-page">
+                    <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                    <div id="turn-page">
+                      <span class="page page_1">总计 <em id="totalRecords">3</em>个记录</span>
+                      <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                      <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                      <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                      <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                      <span id="page-link">
+                        <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                        <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                        <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                          <option value="1">1</option>        </select>
+                          <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                          <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+        <!--商品分类列表end-->
+      </div>
+    </div>
+  </div>
+{/block}

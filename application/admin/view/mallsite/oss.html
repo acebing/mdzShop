@@ -1,0 +1,81 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>oss</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示OSS配置的列表信息。</li>
+        <li>可以直接在列表页面进行编辑和删除。</li>
+        <li>OSS可用于图片、音视频、日志等海量文件的存储。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('ossAdd')}"><div class="fbutton"><div class="add" title="添加Bucket"><span><i class="icon icon-plus"></i>添加Bucket</span></div></div></a>
+        </div>
+      </div>
+      <div class="common-content">
+        <form method="POST" action="" name="listForm" onsubmit="return confirm('确定删除该Bucket吗?');">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                  <th width="5%"><div class="tDiv">编号</div></th>
+                  <th width="8%"><div class="tDiv">Bucket名称</div></th>
+                  <th width="10%"><div class="tDiv">Bucket地域</div></th>
+                  <th width="17%"><div class="tDiv">域名绑定</div></th>
+                  <th width="20%"><div class="tDiv">外网域名</div></th>
+                  <th width="20%"><div class="tDiv">内网域名</div></th>
+                  <th width="7%"><div class="tDiv">是否使用</div></th>
+                  <th width="10%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td class="sign"><div class="tDiv"><input type="checkbox" value="1" name="checkboxes[]" class="checkbox" id="checkbox_1"><label for="checkbox_1" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">1</div></td>
+                  <td><div class="tDiv">mdz</div></td>
+                  <td><div class="tDiv">中国（北京）</div></td>
+                  <td><div class="tDiv">是<br><font class="red">（域名：https://mdz.oss-cn-beijing.aliyuncs.com/）</font></div></td>
+                  <td><div class="tDiv">https://mdz.oss-cn-beijing.aliyuncs.com</div></td>
+                  <td><div class="tDiv">https://mdz.oss-cn-beijing-internal.aliyuncs.com</div></td>
+                  <td><div class="tDiv"><img src="__STATIC__/admin/images/yes.png"></div></td>                               
+                  <td class="handle">
+                    <div class="tDiv a2">
+                      <a href="oss_configure.php?act=edit&amp;id=1" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>   
+                      <a href="javascript:confirm_redirect('您确定要删除该bucket吗？', 'oss_configure.php?act=remove&amp;id=1')" class="btn_trash"><i class="icon icon-trash"></i>删除</a>                     
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="10">
+                    <div class="tDiv">
+                      <div class="tfoot_btninfo">
+                        <input type="hidden" name="act" value="batch_remove">
+                        <input type="submit" value="删除Bucket" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled">
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{/block}

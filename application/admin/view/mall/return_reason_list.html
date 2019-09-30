@@ -1,0 +1,165 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">订单管理</a>
+     <a><cite>退货原因列表</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>商城退货原因信息列表管理。</li>
+        <li>可进行删除或修改退换货原因。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="order.php?act=add_return_cause"><div class="fbutton"><div class="add" title="添加退换货原因"><span><i class="icon icon-plus"></i>添加退换货原因</span></div></div></a>
+        </div>
+      </div>
+      <div class="common-content">
+        <form method="post" action="order.php?act=operate" name="listForm" onsubmit="return check()">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="1" cellspacing="1">
+              <thead>
+                <tr>
+                  <th width="10%"></th>
+                  <th width="30%"><div class="tDiv">退换原因</div></th>
+                  <th width="20%"><div class="tDiv">是否显示</div></th>
+                  <th width="20%"><div class="tDiv">排序</div></th>
+                  <th width="20%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="0" style="" id="0_2">
+                  <td>
+                    <div class="tDiv first_setup">
+                      <div class="setup_span">
+                        <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                        <ul>
+                          <li><a href="order.php?act=add_return_cause&amp;parent_id=2">新增下一级</a></li>
+                          <li><a href="order.php?act=back_cause_list&amp;parent_id=2">查看下一级</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="tDiv">质量问题退货</div></td>
+                  <td><div class="tDiv"><img src="images/yes.png"></div></td>
+                  <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_bank_sort_order',2 )" type="text"></div></td>
+                  <td align="center" class="handle">
+                    <div class="tDiv a2">
+                      <a href="order.php?act=edit_cause&amp;c_id=2" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(2, '您确认要删除这条记录吗?' , 'remove_cause')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>  
+                    </div>
+                  </td>
+                </tr>
+                <tr class="2_1" style="display:none;" id="1_4">
+                  <td>
+                    <div class="tDiv first_setup">
+                      <div class="setup_span">
+                        <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                        <ul>
+                          <li><a href="order.php?act=add_return_cause&amp;parent_id=4">新增下一级</a></li>
+                          <li><a href="order.php?act=back_cause_list&amp;parent_id=4">查看下一级</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="tDiv">受到的货与描述相差太大</div></td>
+                  <td><div class="tDiv"><img src="images/yes.png"></div></td>
+                  <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_bank_sort_order',4 )" type="text"></div></td>
+                  <td align="center" class="handle">
+                    <div class="tDiv a2">
+                      <a href="order.php?act=edit_cause&amp;c_id=4" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(4, '您确认要删除这条记录吗?' , 'remove_cause')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>  
+                    </div>
+                  </td>
+                </tr>
+                <tr class="2_1" style="display:none;" id="1_3">
+                  <td>
+                    <div class="tDiv first_setup">
+                      <div class="setup_span">
+                        <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                        <ul>
+                          <li><a href="order.php?act=add_return_cause&amp;parent_id=3">新增下一级</a></li>
+                          <li><a href="order.php?act=back_cause_list&amp;parent_id=3">查看下一级</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="tDiv">受到的货破损</div></td>
+                  <td><div class="tDiv"><img src="images/yes.png"></div></td>
+                  <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_bank_sort_order',3 )" type="text"></div></td>
+                  <td align="center" class="handle">
+                    <div class="tDiv a2">
+                      <a href="order.php?act=edit_cause&amp;c_id=3" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(3, '您确认要删除这条记录吗?' , 'remove_cause')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>  
+                    </div>
+                  </td>
+                </tr>
+                <tr class="0" style="" id="0_1">
+                  <td>
+                    <div class="tDiv first_setup">
+                      <div class="setup_span">
+                        <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                        <ul>
+                          <li><a href="order.php?act=add_return_cause&amp;parent_id=1">新增下一级</a></li>
+                          <li><a href="order.php?act=back_cause_list&amp;parent_id=1">查看下一级</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="tDiv">七天无理由退货</div></td>
+                  <td><div class="tDiv"><img src="images/yes.png"></div></td>
+                  <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_bank_sort_order',1 )" type="text"></div></td>
+                  <td align="center" class="handle">
+                    <div class="tDiv a2">
+                      <a href="order.php?act=edit_cause&amp;c_id=1" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(1, '您确认要删除这条记录吗?' , 'remove_cause')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>  
+                    </div>
+                  </td>
+                </tr>
+                <tr class="1_1" style="display:none;" id="1_5">
+                  <td>
+                    <div class="tDiv first_setup">
+                      <div class="setup_span">
+                        <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                        <ul>
+                          <li><a href="order.php?act=add_return_cause&amp;parent_id=5">新增下一级</a></li>
+                          <li><a href="order.php?act=back_cause_list&amp;parent_id=5">查看下一级</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td><div class="tDiv">我就要7天无理由退货</div></td>
+                  <td><div class="tDiv"><img src="images/yes.png"></div></td>
+                  <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_bank_sort_order',5 )" type="text"></div></td>
+                  <td align="center" class="handle">
+                    <div class="tDiv a2">
+                      <a href="order.php?act=edit_cause&amp;c_id=5" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:;" onclick="listTable.remove(5, '您确认要删除这条记录吗?' , 'remove_cause')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>  
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {/block}
+  {block name="js"} 
+<script type="text/javascript">
+ 
+  //分页传值
+  listTable.recordCount = 0;
+  listTable.pageCount = 1;
+  listTable.query = 'cause_query';
+
+    
+    
+</script>
+{/block}

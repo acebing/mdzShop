@@ -1,0 +1,135 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">管理员权限</a>
+      <a><cite>添加管理权限</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>该页面展示商城所有功能权限。</li>
+          <li>打钩即是分配权限，请谨慎操作。</li>
+          <li>初始化是基本功能权限。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-content">
+          <div class="mian-info">
+            <form action="" id="privilege_frm">
+              <div class="switch_info business_info">
+                <div class="step">
+                  <div class="tit">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="checkbox" name="chkGroup" value="checkbox" class="ui-checkbox" id="chkGroup_2">
+                        <label for="chkGroup_2" class="ui-label blod">文章管理</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="qx_items">
+                    <div class="qx_item">
+                      <div class="checkbox_items">
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="article_cat" name="action_code[]" class="ui-checkbox" id="article_cat_2" date="cms_manage" checked="true" title="">
+                          <label for="article_cat_2" class="ui-label">文章分类管理</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="article_manage" name="action_code[]" class="ui-checkbox" id="article_manage_2" date="cms_manage" checked="true" title="">
+                          <label for="article_manage_2" class="ui-label">文章内容管理</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="shopinfo_manage" name="action_code[]" class="ui-checkbox" id="shopinfo_manage_2" date="cms_manage" checked="true" title="">
+                          <label for="shopinfo_manage_2" class="ui-label">网店信息管理</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="shophelp_manage" name="action_code[]" class="ui-checkbox" id="shophelp_manage_2" date="cms_manage" checked="true" title="">
+                          <label for="shophelp_manage_2" class="ui-label">网店帮助管理</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="vote_priv" name="action_code[]" class="ui-checkbox" id="vote_priv_2" date="cms_manage" checked="true" title="">
+                          <label for="vote_priv_2" class="ui-label">在线调查管理</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="article_auto" name="action_code[]" class="ui-checkbox" id="article_auto_2" date="cms_manage" checked="true" title="">
+                          <label for="article_auto_2" class="ui-label">文章自动发布</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="checkbox" value="visualnews" name="action_code[]" class="ui-checkbox" id="visualnews_2" date="cms_manage" checked="true" title="">
+                          <label for="visualnews_2" class="ui-label">CMS可视化</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="steplast">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="checkall" value="checkbox" class="ui-checkbox" id="checkall">
+                      <label for="checkall" class="ui-label">全选</label>
+                    </div>
+                  </div>
+                  <div class="info_btn">
+                    <input type="submit" value=" 保存 " class="button">
+                    <input type="hidden" name="id" value="64">
+                    <input type="hidden" name="suppliers_id" value="">
+                    <input type="hidden" name="token" value="c49edab224d09de5d24e1bcdf9a18508322868ca44f62506af25f77b45af4e5b">
+                    <input type="hidden" name="act" value="update_allot">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {/block}
+  {block name='js'}
+     <script type="text/javascript">
+    $(function () {
+     $("#checkall").click(function(){
+    var checkbox = $(this).parents(".switch_info").find('input:checkbox[type="checkbox"]');
+    if($(this).prop("checked") == true){
+      checkbox.prop("checked",true);
+    }else{
+      checkbox.prop("checked",false);
+    }
+     
+  $("input[name='chkGroup']").click(function(){
+    var checkbox = $(this).parents(".tit").next(".qx_items").find('input:checkbox[type="checkbox"]');
+    if($(this).prop("checked") == true){
+      checkbox.prop("checked",true);
+    }else{
+      checkbox.prop("checked",false);
+    }
+  });
+  
+  $("input[name='action_code[]']").click(function(){    
+    var qx_items = $(this).parents(".qx_items");
+    var length = qx_items.find("input[name='action_code[]']").length;
+    var length2 =  qx_items.find("input[name='action_code[]']:checked").length;
+    if(length == length2){
+      qx_items.prev().find("input[name='chkGroup']").prop("checked",true);
+    }else{
+      qx_items.prev().find("input[name='chkGroup']").prop("checked",false);
+    }
+  });
+  
+  $(".qx_items").each(function(index, element) {
+    var length = $(this).find("input[name='action_code[]']").length;
+    var length2 = $(this).find("input[name='action_code[]']:checked").length;
+    
+    if(length == length2){
+      $(this).prev().find("input[name='chkGroup']").prop("checked",true);
+    }else{
+      $(this).prev().find("input[name='chkGroup']").prop("checked",false);
+    }
+  });
+    
+  });
+    });
+  </script>
+{/block}

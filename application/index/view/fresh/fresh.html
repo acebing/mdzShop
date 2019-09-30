@@ -1,0 +1,1069 @@
+{include file='public/mate'/}
+	<!-- mate各个模块自定义开始 -->
+	<title>{$title}</title>
+	<meta name="description" content="{desc}">
+	<meta name="Keywords" content="{$keywords}">
+	<link rel="stylesheet" href="__STATIC__/index/css/fresh.css">
+	<script type="text/javascript" src="__STATIC__/index/js/fresh.js"></script>
+	<!-- mate各个模块自定义结束 -->
+</head>
+<body>
+	<!-- 商城header -->
+	<div class="header">
+		<!-- top -->
+		<div class="top">
+			<div class="w1200">
+				<div class=" clearfix">
+					<div class="city-choice">
+						<div class="mdz-choie">
+							<i class="iconfont icon-shouye"></i>
+							<span class="ui-areamini-text">买得着首页</span>
+						</div>
+					</div>
+					<ul class="quick-menu fr">
+						<li>
+							<div class="dt">
+								<a href="">请登录</a>
+							</div>
+						</li>
+						<li>
+							<div class="dt">
+								<a href="">免费注册</a>
+							</div>
+						</li>
+						<li>
+							<div class="dt">
+								<a href="">我的订单</a>
+							</div>
+						</li>
+						<li class="spacer"></li>
+						<li>
+							<div class="dt">
+								<a href="">的的浏览</a>
+							</div>
+						</li>
+						<li class="spacer"></li>
+						<li>
+							<div class="dt">
+								<a href="">我的收藏</a>
+							</div>
+						</li>
+						<li class="spacer"></li>
+						<li>
+							<div class="dt">
+								<a href="">客服服务</a>
+							</div>
+						</li>
+						<li class="spacer"></li>
+						<li>
+							<div class="dt">
+								网站导航
+								<i class="fa fa-angle-down"></i>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="w1200">
+			<div class="clearfix">
+				<!-- logo -->
+				<div class="mdz-logo">
+					<div class="mdz-logoImg">
+						<a href="">
+							<img src="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/logo.gif" alt="买得着商城">
+						</a>
+					</div>
+				</div>
+				<!-- search -->
+				<div class="mdz-search">
+					<div class="form">
+						<form class="search-form">
+							<input type="text" class="search-text" value="土鸡">
+							<button type="submit" class="button button-goods" onclick="checkstore_search_cmt(0)">搜商品</button>
+						</form>
+						<ul class="keyword">
+		                    <li><a href="" target="_blank">鸡蛋</a></li>
+		                    <li><a href="" target="_blank">三七</a></li>
+		                    <li><a href="" target="_blank">花茶</a></li>
+		                    <li><a href="" target="_blank">手机</a></li>
+		                </ul>
+					</div>
+				</div>
+				<!-- shopCart -->
+				<div class="shopCart">
+					<div class="shopCart-con mdz-cm">
+						<a href="flow.php">
+							<i class="iconfont icon-tuanduicankaoxian-"></i>
+							<span>我的购物车</span>
+							<em class="count cart_num">0</em>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 模块导航 -->
+	<div class="fresh">
+		<!-- 分类、轮播图、头条 开始 -->
+		<div class="fresh_fs">
+			<div class="fresh_fs_menu">
+				<div class="fresh_fs_menu_inner grid_c1">
+					<div class="fresh_fs_menu_list clearfix">
+						<a href="" class="fresh_fs_menu_item first active">生鲜首页</a>
+						<a href="" class="fresh_fs_menu_item">品砚</a>
+					</div>
+					<a href="" class="fresh_fs_menu_news icon-fresh_fs_toutiao_icon"><i class="iconfont icon-quality"></i>品质保证</a>
+				</div>
+			</div>
+			<div class="fresh_fs_main">
+				<div class="fresh_fs_main_inner grid_c1 clearfix">
+					<div class="fresh_fs_nav">
+						<div class="fresh_fs_nav_title">省鲜生商品分类</div>
+						<div class="tab fresh_fs_nav_tab">
+							<div class="tab_head" id="tab_head">
+								<div class="tab_head_item">
+									<div class="tab_head_item_inner item1">
+										<i class="item_icon"></i>
+										<a class="item_title" href="https://list.jd.com/list.html?cat=12218,12221" target="_blank" clstag="channel|keycount|3742|navItem1_1">新鲜水果</a>
+										<div class="item_children"><a class="item_children_item first" href="https://search.jd.com/Search?keyword=%E6%9F%9A%E5%AD%90&amp;enc=utf-8&amp;cid1=12218&amp;wq=%E6%9F%9A%E5%AD%90&amp;pvid=0b19e6f1fc424bee9eb6be7203900700" target="_blank" clstag="channel|keycount|3742|navItemChildren1_1_1" title="柚子">柚子</a><a class="item_children_item" href="https://list.jd.com/list.html?cat=12218,12221,15565" target="_blank" clstag="channel|keycount|3742|navItemChildren1_1_2" title="榴莲">榴莲</a><a class="item_children_item" href="https://search.jd.com/search?keyword=%E8%BD%A6%E5%8E%98%E5%AD%90&amp;enc=utf-8&amp;qrst=1&amp;stop=1&amp;vt=2&amp;stock=1&amp;cid2=12221#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_1_3" title="车厘子">车厘子</a></div>
+										<span class="bgw"></span>
+									</div>
+										<div class="tab_body none">
+											<div class="tab_body_item">
+												<div class="fresh_fs_nav_cate cate">
+													<dl class="cate_item item1">
+														<dt class="cate_tit"><a href="" class="cate_tit_lk">热销水果<i class="cate_tit_arrow">></i></a></dt>
+														<dd class="cate_con">
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+														</dd>
+													</dl>
+													<dl class="cate_item">
+														<dt class="cate_tit">热销水果<i class="cate_tit_arrow">></i></dt>
+														<dd class="cate_con">
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+															<a href="" class="cate_con_lk">苹果</a>
+															<a href="" class="cate_con_lk">葡萄</a>
+														</dd>
+													</dl>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab_head_item"><div class="tab_head_item_inner item2"><i class="item_icon"></i><a class="item_title" href="https://list.jd.com/list.html?cat=12218,12222" target="_blank" clstag="channel|keycount|3742|navItem1_2">海鲜水产</a><div class="item_children"><a class="item_children_item first" href="https://search.jd.com/Search?keyword=%E5%A4%A7%E9%97%B8%E8%9F%B9&amp;enc=utf-8&amp;cid1=12218&amp;wq=%E5%A4%A7%E9%97%B8%E8%9F%B9&amp;pvid=aa479ceabfc64d668a603d55f48e9008" target="_blank" clstag="channel|keycount|3742|navItemChildren1_2_1" title="大闸蟹">大闸蟹</a><a class="item_children_item" href="//list.jd.com/list.html?cat=12218,12222,12241" target="_blank" clstag="channel|keycount|3742|navItemChildren1_2_2" title="鱼类">鱼类</a><a class="item_children_item" href="https://list.jd.com/list.html?cat=12218,12222,12244" target="_blank" clstag="channel|keycount|3742|navItemChildren1_2_3" title="贝类">贝类</a></div>
+								<span class="bgw"></span></div>
+									<div class="tab_body none">
+										<div class="tab_body_item">
+											22
+										</div>
+									</div>
+								</div>
+									<div class="tab_head_item"><div class="tab_head_item_inner item3"><i class="item_icon"></i><a class="item_title" href="https://list.jd.com/list.html?cat=12218,13581" target="_blank" clstag="channel|keycount|3742|navItem1_3">精选肉类</a><div class="item_children"><a class="item_children_item first" href="https://search.jd.com/Search?keyword=%E9%B8%A1%E7%BF%85&amp;enc=utf-8&amp;cid1=12218&amp;wq=%E9%B8%A1%E7%BF%85&amp;pvid=418bb6a2aa624e2cac121de9a4bbd42b" target="_blank" clstag="channel|keycount|3742|navItemChildren1_3_1" title="鸡翅">鸡翅</a><a class="item_children_item" href="https://search.jd.com/search?keyword=%E8%82%8B%E6%8E%92&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E8%82%8B%E6%8E%92&amp;stock=1&amp;cid3=12247#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_3_2" title="猪肋排">猪肋排</a><a class="item_children_item" href="https://search.jd.com/search?keyword=%E7%89%9B%E6%8E%92&amp;enc=utf-8&amp;qrst=1&amp;stop=1&amp;vt=2&amp;wq=%E7%89%9B%E6%8E%92&amp;stock=1&amp;cid3=13582#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_3_3" title="牛排">牛排</a></div>
+								<span class="bgw"></span></div>
+									<div class="tab_body none">
+										<div class="tab_body_item">
+											33
+										</div>
+									</div>
+								</div>
+									<div class="tab_head_item"><div class="tab_head_item_inner item4"><i class="item_icon"></i><a class="item_title" href="https://list.jd.com/list.html?cat=12218,13591" target="_blank" clstag="channel|keycount|3742|navItem1_4">冷饮冻食</a><div class="item_children"><a class="item_children_item first" href="https://search.jd.com/search?keyword=%E9%85%B8%E5%A5%B6&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E9%85%B8%E5%A5%B6&amp;stock=1&amp;cid3=13604#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_4_1" title="酸奶">酸奶</a><a class="item_children_item" href="https://search.jd.com/search?keyword=%E5%86%B0%E6%B7%87%E6%B7%8B&amp;enc=utf-8&amp;qrst=1&amp;stop=1&amp;vt=2&amp;wq=%E5%86%B0%E6%B7%87%E6%B7%8B&amp;stock=1&amp;cid3=13603#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_4_2" title="冰淇淋">冰淇淋</a><a class="item_children_item" href="https://search.jd.com/search?keyword=%E7%89%9B%E5%A5%B6&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E7%89%9B%E5%A5%B6&amp;stock=1&amp;cid3=13604#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_4_3" title="牛奶">牛奶</a></div>
+								<span class="bgw"></span>
+							</div>
+									<div class="tab_body none">
+										<div class="tab_body_item">
+											44
+										</div>
+									</div>
+								</div>
+									<div class="tab_head_item"><div class="tab_head_item_inner item5"><i class="item_icon"></i><a class="item_title" href="https://list.jd.com/list.html?cat=12218,13553" target="_blank" clstag="channel|keycount|3742|navItem1_5">蔬菜蛋品</a><div class="item_children"><a class="item_children_item first" href="https://search.jd.com/search?keyword=%E5%B1%B1%E8%8D%AF&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E5%B1%B1%E8%8D%AF&amp;stock=1&amp;cid2=13553#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_5_1" title="山药">山药</a><a class="item_children_item" href="https://search.jd.com/search?keyword=%E7%8E%89%E7%B1%B3&amp;enc=utf-8&amp;qrst=1&amp;rt=1&amp;stop=1&amp;vt=2&amp;wq=%E7%8E%89%E7%B1%B3&amp;stock=1&amp;cid3=13574#J_searchWrap" target="_blank" clstag="channel|keycount|3742|navItemChildren1_5_2" title="玉米">玉米</a><a class="item_children_item" href="https://list.jd.com/list.html?cat=12218,13586,12250" target="_blank" clstag="channel|keycount|3742|navItemChildren1_5_3" title="蛋品">蛋品</a></div>
+									<span class="bgw"></span></div>
+									<div class="tab_body none">
+										<div class="tab_body_item">
+											55
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 轮播图开始 -->
+					<div id="container">
+			    <div id="list" style="left: -800px;">
+			        <img src="./images/home/5.jpg" alt="1" style="height: 500px; width: 800px;">
+			        <img src="./images/home/1.jpg" alt="1" style="height: 500px; width: 800px;">
+			        <img src="./images/home/2.jpg" alt="2" style="height: 500px; width: 800px;">
+			        <img src="./images/home/3.jpg" alt="3" style="height: 500px; width: 800px;">
+			        <img src="./images/home/4.jpg" alt="4" style="height: 500px; width: 800px;">
+			        <img src="./images/home/5.jpg" alt="5" style="height: 500px; width: 800px;">
+			        <img src="./images/home/1.jpg" alt="5" style="height: 500px; width: 800px;">
+			    </div>
+			    <div id="buttons">
+			        <span index="1" class="on"></span>
+			        <span index="2" class=""></span>
+			        <span index="3" class=""></span>
+			        <span index="4" class=""></span>
+			        <span index="5" class=""></span>
+			    </div>
+			    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+			    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+			</div>
+					<!-- 轮播图结束 -->
+					<!-- 生鲜头条开始 -->
+					<div class="fresh_fs_side">
+						<div class="fresh_fs_toutiao">
+							<div class="fresh_fs_toutiao_title">
+								<i class="fresh_fs_toutiao_title_l"></i>
+								<span class="fresh_fs_toutiao_title_text"><em>生鲜</em>头条</span>
+								<i class="fresh_fs_toutiao_title_r"></i>
+							</div>
+							<div class="fresh_fs_toutiao_list">
+								<a href="" class="fresh_fs_toutiao_item">精挑细选100分营养美味</a>
+								<a href="" class="fresh_fs_toutiao_item">0元试吃 全新上线 抓紧尝鲜</a>
+								<a href="" class="fresh_fs_toutiao_item">一键立享 用心做顿好饭</a>
+							</div>
+						</div>
+						<a href="" class="fresh_fs_act">
+							<img src="https://img10.360buyimg.com/babel/jfs/t27655/124/1621484107/66747/24b22a4e/5be7da94N2cb64909.png!q80.webp" alt="" class="fresh_fs_act_img">
+						</a>
+					</div>
+					<!-- 生鲜头条结束 -->
+					<div class="fresh_fs_bgl"></div>
+					<div class="fresh_fs_shadow"></div>
+				</div>
+				<div class="fresh_fs_bgad">
+					<a href="" class="fresh_fs_bgad_lk nolink"></a>
+				</div>
+			</div>
+		</div>
+		<!-- 分类、轮播图、头条 结束 -->
+
+		<!-- 服务承诺开始 -->
+		<div class="fresh_service grid_c1" id="fresh_service_2" style="">
+			<ul class="mod_service grid_c1 clearfix">
+				<li class="mod_service_item item1">
+					<div class="mod_service_item_inner">
+						<i class="iconfont icon-safe mod_service_icon icon-fresh_service_icon_1"></i>
+						<p class="mod_service_title">食品安全</p>
+						<p class="mod_service_desc">精选生鲜 严格质检</p>
+					</div>
+				</li>
+				<li class="mod_service_item item2">
+					<div class="mod_service_item_inner">
+						<i class="iconfont icon-leng mod_service_icon icon-fresh_service_icon_2"></i>
+						<p class="mod_service_title">全程冷链</p>
+						<p class="mod_service_desc">自营物流 安全可控</p>
+					</div>
+				</li>
+				<li class="mod_service_item item3">
+					<div class="mod_service_item_inner">
+						<i class="iconfont icon-huafangtubiaozhizuomobandinggao--copy mod_service_icon icon-fresh_service_icon_3"></i>
+						<p class="mod_service_title">鲜活天然</p>
+						<p class="mod_service_desc">绿色生态 买得着精选</p>
+					</div>
+				</li>
+				<li class="mod_service_item item4">
+					<div class="mod_service_item_inner">
+						<i class="iconfont icon-yuanchandipinzhibz mod_service_icon icon-fresh_service_icon_4"></i>
+						<p class="mod_service_title">产地直采</p>
+						<p class="mod_service_desc">砚山产源 质量保证</p>
+					</div>
+				</li>
+				<li class="mod_service_item item5">
+					<div class="mod_service_item_inner">
+						<i class="iconfont icon-49 mod_service_icon icon-fresh_service_icon_5"></i>
+						<p class="mod_service_title">无忧售后</p>
+						<p class="mod_service_desc">优鲜赔 售后通道</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- 服务承诺结束 -->
+
+		<!-- 生鲜秒杀开始 -->
+		<div  class="J_floor fresh_seckill grid_c1">
+			<div>
+				<i class="fresh_seckill_bgl"></i>
+				<i class="fresh_seckill_bgr"></i>
+				<div class="fresh_seckill_time ing">
+					<div class="fresh_seckill_time_tip">距离本场结束还有</div>
+					<div class="countdown">
+						<div class="countdown_item countdown_hour">
+							<span class="countdown_item_txt">02</span>
+						</div>
+						<div class="countdown_split">:</div>
+						<div class="countdown_item countdown_minute">
+							<span class="countdown_item_txt">09</span>
+						</div>
+						<div class="countdown_split">:</div>
+						<div class="countdown_item countdown_second">
+							<span class="countdown_item_txt">45</span>
+						</div>
+					</div>
+				</div>
+				<div class="tab fresh_seckill_tab">
+					<div class="tab_head" id="tab_head_item">
+						<div class="tab_head_item active">
+							<div class="tab_head_item_1">
+								<div class="iconfont icon-richurila icon icon-fresh_seckill_morning"></div>
+								<div class="name">早市抢鲜</div>
+								<div class="tip">10:00 - 17:00</div>
+							</div>
+						</div>
+						<div class="tab_head_item">
+							<div class="tab_head_item_2">
+								<div class="iconfont icon-zhongwu icon icon-fresh_seckill_afternoon"></div>
+								<div class="name">午市预告</div>
+								<div class="tip">17:00 开始</div>
+							</div>
+						</div>
+						<div class="tab_head_item">
+							<div class="tab_head_item_3">
+								<div class="iconfont icon-lkingboyewanyueliang icon icon-fresh_seckill_night_icon"></div>
+								<div class="name">晚市预告</div>
+								<div class="tip">22:00 开始</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab_body" id="tab_body">
+						<div class="tab_body_item ing">
+							<div class="fresh_seckill_goods">
+								<div class="slider">
+									<i class="slider_control slider_control_prev tabv">&lt;</i>
+									<div class="slider_list" id="slider_list">
+										<div class="slider_wrapper clearfix">
+											<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="//img10.360buyimg.com/babel/s180x180_jfs/t1/3028/26/16219/402163/5be1435cE4cf5178c/8972103b97eebda3.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="//img10.360buyimg.com/babel/s180x180_jfs/t1/3028/26/16219/402163/5be1435cE4cf5178c/8972103b97eebda3.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="//img10.360buyimg.com/babel/s180x180_jfs/t1/3028/26/16219/402163/5be1435cE4cf5178c/8972103b97eebda3.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="//img10.360buyimg.com/babel/s180x180_jfs/t1/3028/26/16219/402163/5be1435cE4cf5178c/8972103b97eebda3.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="//img10.360buyimg.com/babel/s180x180_jfs/t1/3028/26/16219/402163/5be1435cE4cf5178c/8972103b97eebda3.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										</div>
+									</div>
+									<div class="slider_list none">
+										<div class="slider_wrapper clearfix">
+											<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img10.360buyimg.com/babel/s180x180_jfs/t19021/135/633712547/190513/11a01a2d/5a9e1126N34c04d39.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img10.360buyimg.com/babel/s180x180_jfs/t19021/135/633712547/190513/11a01a2d/5a9e1126N34c04d39.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img10.360buyimg.com/babel/s180x180_jfs/t19021/135/633712547/190513/11a01a2d/5a9e1126N34c04d39.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img10.360buyimg.com/babel/s180x180_jfs/t19021/135/633712547/190513/11a01a2d/5a9e1126N34c04d39.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img10.360buyimg.com/babel/s180x180_jfs/t19021/135/633712547/190513/11a01a2d/5a9e1126N34c04d39.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										</div>
+									</div>
+									<div class="slider_list none">
+										<div class="slider_wrapper clearfix">
+											<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img11.360buyimg.com/babel/s180x180_jfs/t4135/168/3214319197/236893/8dd55bed/58dde8d1N62d3dbb6.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img11.360buyimg.com/babel/s180x180_jfs/t4135/168/3214319197/236893/8dd55bed/58dde8d1N62d3dbb6.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img11.360buyimg.com/babel/s180x180_jfs/t4135/168/3214319197/236893/8dd55bed/58dde8d1N62d3dbb6.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img11.360buyimg.com/babel/s180x180_jfs/t4135/168/3214319197/236893/8dd55bed/58dde8d1N62d3dbb6.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购</p></a>
+										</div>
+										<div class="slider_item goods_item slider_active" data-index="0" style="float: left; width: 220px;"><a class="goods_item_link" href="//item.jd.com/6839707.html" target="_blank" clstag="channel|keycount|3742|goodsItems3_1_1" title="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><div class="goods_item_price"><span class="goods_item_price_jd">¥52.80</span><span class="goods_item_price_promo">¥52.8</span><span class="goods_item_price_m">¥99</span></div><img class="goods_item_img" width="180" height="180" data-lazy-img="done" data-lazy-img2="done" src="https://img11.360buyimg.com/babel/s180x180_jfs/t4135/168/3214319197/236893/8dd55bed/58dde8d1N62d3dbb6.jpg!q80.webp" alt="[防霾]荷兰 进口青啤梨 10个装 大果 单果重约170-220g"><p class="goods_item_name">[防霾]荷兰 进口青啤梨 20个装 大果 单果重约170-220g</p><div class="goods_item_progress"><p class="goods_item_progress_text">好评率99%</p><div class="goods_item_progress_line"><i style="width: 99%"></i></div></div><p class="goods_item_btn">立即抢购1</p></a>
+										</div>
+										</div>
+									</div>
+									<i class="slider_control slider_control_next tabv">&gt;</i>
+									<div class="slider_indicators tabv">
+										<i class="slider_indicators_btn slider_indicators_btn_active"></i>
+										<i class="slider_indicators_btn"></i>
+										<i class="slider_indicators_btn slider_indicators_btn_last"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 生鲜秒杀结束 -->
+
+		<!-- 为您优选开始 -->
+		<div class="J_floor fresh_unique">
+			<div class="">
+				<div class="fresh_unique_bg"></div>
+				<div class="fresh_unique_inner grid_c1">
+					<div class="fresh_mod_head white">
+						<div class="fresh_mod_head_inner">
+							<h3 class="fresh_mod_head_title">为<i>/</i>您<i>/</i>优<i>/</i>选</h3>
+							<p class="fresh_mod_head_subtitle">FEATURED FRESH</p>
+						</div>
+					</div>
+					<div class="fresh_unique_top100 fresh_top100 grid_c1">
+						<div class="fresh_top100_head">
+							<div class="fresh_top100_head_inner clearfix">
+								<h4 class="fresh_top100_head_title">省鲜生鲜-优选</h4>
+								<p class="fresh_top100_head_subtitle">维摩乡田坝心基地直供</p>
+							</div>
+					    </div>
+						<div class="fresh_top100_goods goods clearfix" data-price-area="done">
+							<a class="goods_item" href="http://item.jd.com/5480175.html" target="_blank" clstag="channel|keycount|3742|goodsItems4_1">
+								<div class="goods_item_pic">
+									<img class="goods_item_img" width="220" height="220" data-lazy-img="done" src="//img10.360buyimg.com/babel/jfs/t1/2109/35/16143/277383/5be0f1fdE21436708/c58fec6d262ff4d3.png!q80.webp">
+								</div>
+								<div class="goods_item_priceg">
+										<p class="goods_item_price" data-price-id="5480175">¥1142.00</p>
+										<p class="goods_item_g">1只</p>
+								</div>
+								<div class="goods_item_info">
+									<p class="goods_item_promote">体型健壮 味道鲜美 </p>
+									<i class="goods_item_line"></i>
+									<p class="goods_item_name">澳洲大龙虾</p>
+									<p class="goods_item_desc">鲜活大龙虾 劲爆你的味蕾</p>
+								</div>
+							</a>
+							<a class="goods_item" href="http://item.jd.com/12779431493.html" target="_blank" clstag="channel|keycount|3742|goodsItems4_2">
+								<div class="goods_item_pic">
+									<img class="goods_item_img" width="220" height="220" data-lazy-img="done" src="//img11.360buyimg.com/babel/jfs/t1/681/28/14627/65110/5bdbaaeaEf5dd85ce/6dacfc0557ece8ce.png!q80.webp">
+								</div>
+								<div class="goods_item_priceg">
+									<p class="goods_item_price" data-price-id="12779431493">¥1588.00</p>
+									<p class="goods_item_g"> 600-700g</p>
+								</div>
+								<div class="goods_item_info">
+									<p class="goods_item_promote">入口即化有油脂香</p>
+									<i class="goods_item_line"></i>
+									<p class="goods_item_name"> 地中海低温金枪鱼  大腩部位</p>
+									<p class="goods_item_desc">捕捞量不到金枪鱼总捕捞量的1%的蓝鳍金枪鱼 挑战你的味蕾</p>
+								</div>
+							</a>
+							<a class="goods_item" href="http://item.jd.com/5285937.html" target="_blank" clstag="channel|keycount|3742|goodsItems4_3">
+								<div class="goods_item_pic">
+									<img class="goods_item_img" width="220" height="220" data-lazy-img="done" src="//img12.360buyimg.com/babel/jfs/t1/9661/38/4641/83111/5bdbabb9E23e3f8f3/8664e5d67294fd3e.png!q80.webp">
+								</div>
+								<div class="goods_item_priceg">
+									<p class="goods_item_price" data-price-id="5285937">¥99.00</p>
+									<p class="goods_item_g">850g</p>
+								</div>
+								<div class="goods_item_info">
+									<p class="goods_item_promote">肉质鲜美 口感Q弹</p>
+									<i class="goods_item_line"></i>
+									<p class="goods_item_name">泰国活冻黑虎虾</p>
+									<p class="goods_item_desc">威武霸气 被誉为“虾中之虎”</p>
+								</div>
+							</a>
+							<a class="goods_item" href="http://item.jd.com/100000195669.html" target="_blank" clstag="channel|keycount|3742|goodsItems4_4">
+								<div class="goods_item_pic">
+									<img class="goods_item_img" width="220" height="220" data-lazy-img="done" src="//img13.360buyimg.com/babel/jfs/t1/8214/13/4684/72970/5bdbabfbE6780831f/8af562dde15f7f71.png!q80.webp">
+								</div>
+								<div class="goods_item_priceg">
+									<p class="goods_item_price" data-price-id="100000195669">暂无报价</p>
+									<p class="goods_item_g">6个</p>
+								</div>
+								<div class="goods_item_info">
+									<p class="goods_item_promote">酸甜可口 汁多爽口</p>
+									<i class="goods_item_line"></i>
+									<p class="goods_item_name">澳大利亚进口脐橙</p>
+									<p class="goods_item_desc">源自阳光明媚 百年种橙历史的精品产区</p>
+								</div>
+							</a>
+						</div>
+						<a href="" class="fresh_unique_btn">更多优选	<i>&gt;</i></a>
+					</div>
+					<div class="fresh_unique_bgl"></div>
+					<div class="fresh_unique_bgr"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 为您优选结束 -->
+
+		<!-- 身临其境开始 -->
+		<div class="J_floor fresh_slim">
+			<div class="fresh_slim_inner grid_c1">
+				<div class="fresh_mod_head">
+					<div class="fresh_mod_head_inner">
+						<h3 class="fresh_mod_head_title">身<i>/</i>临<i>/</i>食<i>/</i>感</h3>
+						<p class="fresh_mod_head_subtitle">INSPIRATION FRESH</p>
+					</div>
+				</div>
+				<div class="fresh_slim_body">
+					<div class="tab fresh_slim_tab" id="fresh_slim_tab">
+						<div class="tab_head">
+							<div class="tab_head_item active">
+								<div>精选礼盒</div>
+							</div>
+							<div class="tab_head_item">
+								<div>火锅诱惑</div>
+							</div>
+							<div class="tab_head_item">
+								<div>深夜食堂</div>
+							</div>
+							<div class="tab_head_item">
+								<div>进口美食</div>
+							</div>
+						</div>
+						<div class="tab_body">
+							<div class="tab_body_item">
+								<a class="fresh_slim_theme nolink" href="javascript:;">
+									<p class="fresh_slim_theme_title">精选礼盒</p>
+									<p class="fresh_slim_theme_desc">送礼送健康，精选生鲜礼盒</p>
+									<img class="fresh_slim_theme_img" src="//img14.360buyimg.com/cms/jfs/t7465/58/1681827025/166530/5a524b9e/599e7853N7bbe1ce0.png" alt="" title="">
+								</a>
+								<div class="slider fresh_slim_goods">
+									<i class="slider_control slider_control_prev">&lt;</i>
+									<div class="slider_list">
+										<div class="slider_wrapper">
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<i class="slider_control slider_control_next">&gt;</i>
+								</div>
+							</div>
+							<div class="tab_body_item none">
+								<a class="fresh_slim_theme nolink" href="javascript:;">
+									<p class="fresh_slim_theme_title">火锅诱惑</p>
+									<p class="fresh_slim_theme_desc">送礼送健康，精选生鲜礼盒</p>
+									<img class="fresh_slim_theme_img" src="//img14.360buyimg.com/cms/jfs/t7465/58/1681827025/166530/5a524b9e/599e7853N7bbe1ce0.png" alt="" title="">
+								</a>
+								<div class="slider fresh_slim_goods">
+									<i class="slider_control slider_control_prev">&lt;</i>
+									<div class="slider_list">
+										<div class="slider_wrapper">
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<i class="slider_control slider_control_next">&gt;</i>
+								</div>
+							</div>
+							<div class="tab_body_item none">
+								<a class="fresh_slim_theme nolink" href="javascript:;">
+									<p class="fresh_slim_theme_title">深夜食堂</p>
+									<p class="fresh_slim_theme_desc">送礼送健康，精选生鲜礼盒</p>
+									<img class="fresh_slim_theme_img" src="//img14.360buyimg.com/cms/jfs/t7465/58/1681827025/166530/5a524b9e/599e7853N7bbe1ce0.png" alt="" title="">
+								</a>
+								<div class="slider fresh_slim_goods">
+									<i class="slider_control slider_control_prev">&lt;</i>
+									<div class="slider_list">
+										<div class="slider_wrapper">
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<i class="slider_control slider_control_next">&gt;</i>
+								</div>
+							</div>
+							<div class="tab_body_item none">
+								<a class="fresh_slim_theme nolink" href="javascript:;">
+									<p class="fresh_slim_theme_title">进口美食</p>
+									<p class="fresh_slim_theme_desc">送礼送健康，精选生鲜礼盒</p>
+									<img class="fresh_slim_theme_img" src="//img14.360buyimg.com/cms/jfs/t7465/58/1681827025/166530/5a524b9e/599e7853N7bbe1ce0.png" alt="" title="">
+								</a>
+								<div class="slider fresh_slim_goods">
+									<i class="slider_control slider_control_prev">&lt;</i>
+									<div class="slider_list">
+										<div class="slider_wrapper">
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+											<div class="slider_item goods_item slider_active"  style="float: left; width: 197.5px;">
+												<div class="goods_item_inner">
+													<a class="goods_item_link" href="#" >
+														<img class="goods_item_img" width="150" height="150" src="//img10.360buyimg.com/babel/s150x150_jfs/t20983/132/2009981841/298735/73783b26/5b422afdNd0db9541.jpg" >
+														<p class="goods_item_name">【现货全母蟹 买就送2只】螯菊 阳澄湖大闸蟹生鲜套餐2.5两8只鲜活螃蟹实物礼盒</p>
+													</a>
+													<div class="goods_item_row">
+														<p class="goods_item_price">¥168.00</p>
+														<p class="goods_item_good">好评率99%</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<i class="slider_control slider_control_next">&gt;</i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="fresh_slim_body_bg"></div>
+				</div>
+			</div>
+		</div>
+		<!-- 身临其境结束 -->
+		<!-- 推荐分类开始 -->
+		<div class="J_floor fresh_category grid_c1 clearfix fresh_category_6">
+			<div class="fresh_mod_head">
+				<div class="fresh_mod_head_inner">
+					<h3 class="fresh_mod_head_title">省<i>/</i>生<i>/</i>鲜</h3>
+					<p class="fresh_mod_head_subtitle">SXS FRESH</p>
+				</div>
+			</div>
+			<!-- 水果分类产品 -->
+			<div class="">
+				<div class="fresh_category_body">
+					<div class="fresh_category_acts clearfix">
+						<div class="fresh_category_act1">
+							<h4 class="fresh_category_title">新鲜水果</h4>
+							<p class="fresh_category_subtitle">应时而采，新鲜特供</p>
+							<div class="fresh_category_keys clearfix">
+								<a href="" class="fresh_category_keys_item">车厘子</a>
+								<a href="" class="fresh_category_keys_item">猕猴桃</a>
+								<a href="" class="fresh_category_keys_item">水蜜桃</a>
+								<a href="" class="fresh_category_keys_item">香蕉</a>
+								<a href="" class="fresh_category_keys_item">苹果</a>
+							</div>
+							<a href="" class="fresh_category_more">更多水果</a>
+						</div>
+						<div class="fresh_category_act2">
+							<div>
+								<a href="#" target="_blank" "><img class="fresh_category_act2_img" width="600" height="300" src="//img10.360buyimg.com/babel/jfs/t26758/358/1494584298/73141/46130807/5be3ec58N75053a1f.jpg" alt="" title=""></a>
+							</div>
+						</div>
+						<a href="" class="fresh_category_act3">
+							<img src="https://img10.360buyimg.com/babel/jfs/t1/8051/38/2194/124040/5bd16cecE2db31f8f/497495992674fa7f.png!q80.webp" alt="" class="fresh_category_act3_img">
+						</a>
+					</div>
+					<div class="fresh_category_goods goods clearfix">
+						<div class="goods_item">
+							<a class="goods_item_link" href="#" target="_blank">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img10.360buyimg.com/babel/s150x150_jfs/t24994/127/691719782/290792/e3badf7f/5b779a3fNcf836894.jpg!q80.webp">
+								<p class="goods_item_name">秘鲁进口蓝莓 超大果16mm+ 4盒装 约125g/盒 新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥78.80</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/3509912.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_2">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img11.360buyimg.com/babel/s150x150_jfs/t13057/81/825407133/1439835/58674273/5a14e701N139506ac.jpg!q80.webp" alt="百香果 精品中果12个装 单果50-80g 新鲜水果" title="百香果 精品中果12个装 单果50-80g 新鲜水果">
+								<p class="goods_item_name">百香果 精品中果12个装 单果50-80g 新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥22.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/1599924.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_3">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img12.360buyimg.com/babel/s150x150_jfs/t21793/211/610710429/182079/477ff354/5b431a5cNd434d35f.jpg!q80.webp" alt="澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果" title="澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果">
+								<p class="goods_item_name">澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥49.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/11916822540.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_4">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img13.360buyimg.com/babel/s150x150_jfs/t21817/143/1180033484/122175/172bf408/5b21e75cN7fb27636.jpg!q80.webp" alt="苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉" title="苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉">
+								<p class="goods_item_name">苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉</p>
+							</a>
+							<p class="goods_item_price">¥42.00</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/25790603479.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_5">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img14.360buyimg.com/babel/s150x150_jfs/t17953/8/2385374670/138300/6b61eec8/5af2b176Nd09c9369.jpg!q80.webp" alt="苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）" title="苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）">
+								<p class="goods_item_name">苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）</p>
+							</a>
+							<p class="goods_item_price">¥118.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/17520211433.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_6">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img10.360buyimg.com/babel/s150x150_jfs/t25141/190/181394064/15709/494d5f85/5b683c95N98ad5b03.jpg!q80.webp" alt="鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装" title="鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装">
+								<p class="goods_item_name">鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装</p>
+							</a>
+							<p class="goods_item_price">¥29.90</p>
+						</div>
+					</div>
+				</div>
+				<div class="fresh_category_bgl"></div>
+			</div>
+		</div>
+		<div class="J_floor fresh_category grid_c1 clearfix fresh_category_7">
+			<!-- 水果分类产品 -->
+			<div class="">
+				<div class="fresh_category_body">
+					<div class="fresh_category_acts clearfix">
+						<div class="fresh_category_act1">
+							<h4 class="fresh_category_title">新鲜水果</h4>
+							<p class="fresh_category_subtitle">应时而采，新鲜特供</p>
+							<div class="fresh_category_keys clearfix">
+								<a href="" class="fresh_category_keys_item">车厘子</a>
+								<a href="" class="fresh_category_keys_item">猕猴桃</a>
+								<a href="" class="fresh_category_keys_item">水蜜桃</a>
+								<a href="" class="fresh_category_keys_item">香蕉</a>
+								<a href="" class="fresh_category_keys_item">苹果</a>
+							</div>
+							<a href="" class="fresh_category_more">更多水果</a>
+						</div>
+						<div class="fresh_category_act2">
+							<div>
+								<a href="#" target="_blank" "><img class="fresh_category_act2_img" width="600" height="300" src="//img10.360buyimg.com/babel/jfs/t26758/358/1494584298/73141/46130807/5be3ec58N75053a1f.jpg" alt="" title=""></a>
+							</div>
+						</div>
+						<a href="" class="fresh_category_act3">
+							<img src="https://img10.360buyimg.com/babel/jfs/t1/8051/38/2194/124040/5bd16cecE2db31f8f/497495992674fa7f.png!q80.webp" alt="" class="fresh_category_act3_img">
+						</a>
+					</div>
+					<div class="fresh_category_goods goods clearfix">
+						<div class="goods_item">
+							<a class="goods_item_link" href="#" target="_blank">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img10.360buyimg.com/babel/s150x150_jfs/t24994/127/691719782/290792/e3badf7f/5b779a3fNcf836894.jpg!q80.webp">
+								<p class="goods_item_name">秘鲁进口蓝莓 超大果16mm+ 4盒装 约125g/盒 新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥78.80</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/3509912.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_2">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img11.360buyimg.com/babel/s150x150_jfs/t13057/81/825407133/1439835/58674273/5a14e701N139506ac.jpg!q80.webp" alt="百香果 精品中果12个装 单果50-80g 新鲜水果" title="百香果 精品中果12个装 单果50-80g 新鲜水果">
+								<p class="goods_item_name">百香果 精品中果12个装 单果50-80g 新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥22.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/1599924.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_3">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img12.360buyimg.com/babel/s150x150_jfs/t21793/211/610710429/182079/477ff354/5b431a5cNd434d35f.jpg!q80.webp" alt="澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果" title="澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果">
+								<p class="goods_item_name">澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥49.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/11916822540.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_4">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img13.360buyimg.com/babel/s150x150_jfs/t21817/143/1180033484/122175/172bf408/5b21e75cN7fb27636.jpg!q80.webp" alt="苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉" title="苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉">
+								<p class="goods_item_name">苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉</p>
+							</a>
+							<p class="goods_item_price">¥42.00</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/25790603479.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_5">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img14.360buyimg.com/babel/s150x150_jfs/t17953/8/2385374670/138300/6b61eec8/5af2b176Nd09c9369.jpg!q80.webp" alt="苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）" title="苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）">
+								<p class="goods_item_name">苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）</p>
+							</a>
+							<p class="goods_item_price">¥118.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/17520211433.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_6">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img10.360buyimg.com/babel/s150x150_jfs/t25141/190/181394064/15709/494d5f85/5b683c95N98ad5b03.jpg!q80.webp" alt="鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装" title="鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装">
+								<p class="goods_item_name">鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装</p>
+							</a>
+							<p class="goods_item_price">¥29.90</p>
+						</div>
+					</div>
+				</div>
+				<div class="fresh_category_bgl"></div>
+			</div>
+		</div>
+		<div class="J_floor fresh_category grid_c1 clearfix fresh_category_8">
+			<!-- 水果分类产品 -->
+			<div class="">
+				<div class="fresh_category_body">
+					<div class="fresh_category_acts clearfix">
+						<div class="fresh_category_act1">
+							<h4 class="fresh_category_title">新鲜水果</h4>
+							<p class="fresh_category_subtitle">应时而采，新鲜特供</p>
+							<div class="fresh_category_keys clearfix">
+								<a href="" class="fresh_category_keys_item">车厘子</a>
+								<a href="" class="fresh_category_keys_item">猕猴桃</a>
+								<a href="" class="fresh_category_keys_item">水蜜桃</a>
+								<a href="" class="fresh_category_keys_item">香蕉</a>
+								<a href="" class="fresh_category_keys_item">苹果</a>
+							</div>
+							<a href="" class="fresh_category_more">更多水果</a>
+						</div>
+						<div class="fresh_category_act2">
+							<div>
+								<a href="#" target="_blank" "><img class="fresh_category_act2_img" width="600" height="300" src="//img10.360buyimg.com/babel/jfs/t26758/358/1494584298/73141/46130807/5be3ec58N75053a1f.jpg" alt="" title=""></a>
+							</div>
+						</div>
+						<a href="" class="fresh_category_act3">
+							<img src="https://img10.360buyimg.com/babel/jfs/t1/8051/38/2194/124040/5bd16cecE2db31f8f/497495992674fa7f.png!q80.webp" alt="" class="fresh_category_act3_img">
+						</a>
+					</div>
+					<div class="fresh_category_goods goods clearfix">
+						<div class="goods_item">
+							<a class="goods_item_link" href="#" target="_blank">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img10.360buyimg.com/babel/s150x150_jfs/t24994/127/691719782/290792/e3badf7f/5b779a3fNcf836894.jpg!q80.webp">
+								<p class="goods_item_name">秘鲁进口蓝莓 超大果16mm+ 4盒装 约125g/盒 新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥78.80</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/3509912.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_2">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img11.360buyimg.com/babel/s150x150_jfs/t13057/81/825407133/1439835/58674273/5a14e701N139506ac.jpg!q80.webp" alt="百香果 精品中果12个装 单果50-80g 新鲜水果" title="百香果 精品中果12个装 单果50-80g 新鲜水果">
+								<p class="goods_item_name">百香果 精品中果12个装 单果50-80g 新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥22.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/1599924.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_3">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img12.360buyimg.com/babel/s150x150_jfs/t21793/211/610710429/182079/477ff354/5b431a5cNd434d35f.jpg!q80.webp" alt="澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果" title="澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果">
+								<p class="goods_item_name">澳大利亚进口脐橙 澳橙12个装 单果重约150g-180g  新鲜水果</p>
+							</a>
+							<p class="goods_item_price">¥49.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/11916822540.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_4">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img13.360buyimg.com/babel/s150x150_jfs/t21817/143/1180033484/122175/172bf408/5b21e75cN7fb27636.jpg!q80.webp" alt="苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉" title="苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉">
+								<p class="goods_item_name">苏洪鲜食 越南红心火龙果6个 单果约350g 新鲜水果 红肉</p>
+							</a>
+							<p class="goods_item_price">¥42.00</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/25790603479.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_5">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img14.360buyimg.com/babel/s150x150_jfs/t17953/8/2385374670/138300/6b61eec8/5af2b176Nd09c9369.jpg!q80.webp" alt="苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）" title="苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）">
+								<p class="goods_item_name">苏洪鲜食 泰国椰青 9个装 新鲜水果 椰子大果 椰青一箱（9个）</p>
+							</a>
+							<p class="goods_item_price">¥118.90</p>
+						</div>
+						<div class="goods_item">
+							<a class="goods_item_link" href="//item.jd.com/17520211433.html" target="_blank" clstag="channel|keycount|3742|goodsItems6_6">
+								<img class="goods_item_img" width="150" height="150" data-lazy-img="done" src="//img10.360buyimg.com/babel/s150x150_jfs/t25141/190/181394064/15709/494d5f85/5b683c95N98ad5b03.jpg!q80.webp" alt="鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装" title="鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装">
+								<p class="goods_item_name">鲜菓篮 红心猕猴桃奇异果 单果95-120g 精品12粒装</p>
+							</a>
+							<p class="goods_item_price">¥29.90</p>
+						</div>
+					</div>
+				</div>
+				<div class="fresh_category_bgl"></div>
+				<div class="fresh_category_bgr"></div>
+			</div>
+		</div>
+		<!-- 推荐分类结束 -->
+	</div>
+	{include file="public/footer"/}
+	
+	<!-- 右侧边栏 -->
+	{include file="public/mbar"/}
+	<!-- 左侧边栏 -->
+	<div class="mod_lift_wap none" id="mod_lift_11">
+		<div class="mod_lift">
+		<ul class="mod_lift_list mod_lift_list1">
+			<li class="J_lift mod_lift_item">
+				<a href="javascript:;" class="mod_lift_item_btn">
+					<span class="mod_lift_item_btn_txt">生鲜秒杀</span>
+					<b class="mod_ver"></b>
+				</a>
+			</li>
+			<li class="J_lift mod_lift_item active2">
+				<a href="javascript:;" class="mod_lift_item_btn">
+					<span class="mod_lift_item_btn_txt">为您优选</span>
+					<b class="mod_ver"></b>
+				</a>
+			</li>
+			<li class="J_lift mod_lift_item">
+				<a href="javascript:;" class="mod_lift_item_btn">
+					<span class="mod_lift_item_btn_txt">身临食感</span>
+					<b class="mod_ver"></b>
+				</a>
+			</li>
+			<li class="J_lift mod_lift_item">
+				<a href="javascript:;" class="mod_lift_item_btn">
+					<span class="mod_lift_item_btn_txt">生鲜分类</span>
+					<b class="mod_ver"></b>
+				</a>
+			</li>
+		    <div class="mod_lift_item_btn mod_lift_top">
+		    	<span class="mod_lift_item_btn_txt">顶部<i class="fresh_mod_iconfont mod_lift_top_icon icon-fresh_lift_top"></i></span><b class="mod_ver"></b>
+		    </div>
+			</ul>
+		</div>
+	</div>
+	

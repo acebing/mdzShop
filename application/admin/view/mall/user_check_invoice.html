@@ -1,0 +1,113 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">发票管理</a>
+      <a><cite>查看发票</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-content">
+          <div class="mian-info">
+            <form action="user_vat.php" id="myForm" method="post" name="theForm" enctype="multipart/form-data">
+              <div class="switch_info">
+               <div class="items">
+                <div class="item">
+                  <div class="label">公司名称：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="北京北方长福汽车销售有限责任公司长治分公司" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">纳税人识别码：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="91140400MA0HJELE25" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item"> 
+                  <div class="label">公司地址：</div> 
+                  <div class="label_value"> 
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="山西省长治市北三环路（华信汽贸园院内）" autocomplete="off"> 
+                  </div> 
+                </div> 
+                <div class="item">
+                  <div class="label">公司电话：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="0355-3585098" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">开户银行：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="工商银行长治开发区支行" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">银行卡号：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="0505022909022128449" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">收票人姓名：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="王来霞" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">收票人手机号：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="18634556711" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">收票人省份：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="山西长治郊区" autocomplete="off">
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">收票人地址：</div>
+                  <div class="label_value">
+                    <input type="text" name="name" id="name" class="text" readonly="readonly" value="北三环路华信汽贸园" autocomplete="off">
+                  </div>
+                </div>    
+                <div class="item">
+                  <div class="label">审核状态：</div>
+                  <div class="label_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="audit_status" value="0" id="audit_status_1" checked="checked">
+                        <label class="ui-radio-label" for="audit_status_1">未审核</label>
+                      </div>
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="audit_status" value="1" id="audit_status_2">
+                        <label class="ui-radio-label" for="audit_status_2">审核通过</label>
+                      </div>
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="audit_status" value="2" id="audit_status_3">
+                        <label class="ui-radio-label" for="audit_status_3">审核未通过</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>                
+                <div class="item">
+                  <div class="label">&nbsp;</div>
+                  <div class="label_value info_btn">
+                    <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                    <input type="hidden" name="act" value="update">
+                    <input type="hidden" name="id" value="3">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+{/block}

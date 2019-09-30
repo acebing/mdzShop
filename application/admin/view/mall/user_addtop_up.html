@@ -1,0 +1,167 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">充值和提现</a>
+      <a><cite>添加充值</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>会员充值编辑类型和到款状态是不可以修改的。</li>
+          <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-content">
+          <div class="mian-info">
+            <form action="user_account.php" method="post" name="theForm" id="user_account_form" novalidate="novalidate">
+              <div class="switch_info">
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>&nbsp;会员名称：</div>
+                  <div class="label_value">
+                    <input type="text" id="user_id" name="user_id" class="text" value="" autocomplete="off">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>&nbsp;金额：</div>
+                  <div class="label_value">
+                    <input type="text" name="amount" class="text" value="" id="amount" autocomplete="off">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                <div class="item payment">
+                  <div class="label">支付方式：</div>
+                  <div class="label_value">
+                    <div id="user_grade" class="imitate_select select_w320">
+                      <div class="cite">支付宝</div>
+                      <ul>
+                       <li><a href="javascript:;" data-value="0" class="ftx-01">请选择...</a></li>
+                       <li><a href="javascript:;" data-value="9" class="ftx-01">支付宝</a></li>
+                       <li><a href="javascript:;" data-value="11" class="ftx-01">余额支付</a></li>
+                       <li><a href="javascript:;" data-value="15" class="ftx-01">在线支付</a></li>
+                       <li><a href="javascript:;" data-value="17" class="ftx-01">微信支付</a></li>
+                     </ul>
+                     <input name="pay_id" type="hidden" value="9" id="user_grade_val">
+                   </div>
+                 </div>
+               </div>
+               <div class="item">
+                <div class="label">类型：</div>
+                <div class="label_value">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="radio" name="process_type" value="0" id="sex_0" class="ui-radio" checked="true">
+                      <label for="sex_0" class="ui-radio-label">充值</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" name="process_type" value="1" id="sex_1" class="ui-radio">
+                      <label for="sex_1" class="ui-radio-label">提现</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">管理员备注</div>
+                <div class="label_value">
+                  <textarea name="admin_note" cols="60" rows="4" class="textarea" id="change_desc"></textarea>
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">会员描述</div>
+                <div class="label_value">
+                  <textarea name="user_note" cols="60" rows="4" class="textarea" id="change_desc"></textarea>
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">到款状态：</div>
+                <div class="label_value">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="radio" name="is_paid" value="0" id="is_paid" class="ui-radio" checked="true">
+                      <label for="is_paid" class="ui-radio-label">未确认</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" name="is_paid" value="1" class="ui-radio" id="is_paid_1">
+                      <label for="is_paid_1" class="ui-radio-label">
+                      已完成，到账余额                                                                                                    </label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" name="is_paid" value="2" id="is_paid_2" class="ui-radio">
+                      <label for="is_paid_2" class="ui-radio-label">
+                      已完成，不处理到账余额                                                                                                    </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">&nbsp;</div>
+                <div class="label_value info_btn">
+                  <a href="javascript:;" class="button" id="submitBtn"> 确定 </a>
+                  <input type="hidden" name="id" value="">
+                  <input type="hidden" name="act" value="insert">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}
+  {block name="js"} 
+<script type="text/javascript">
+    $(function(){
+  
+  $(":input[name='process_type']").click(function(){
+    var val =$(this).val();
+    
+    if(val == 1){
+      $(".payment").hide();
+    }else{
+      $(".payment").show();
+    }
+  });
+  
+  $("#submitBtn").click(function(){
+    if($("#user_account_form").valid()){
+      $("#user_account_form").submit();
+    }
+  });
+
+  $('#user_account_form').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules : {
+      user_id : {
+        required : true
+      },
+      amount : {
+        required : true,
+        number : true,
+        min : 1
+      }
+    },
+    messages : {
+      user_id : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'用户名称不能为空'
+      },
+      amount : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'充值金额不能为空',
+        number : '<i class="icon icon-exclamation-sign"></i>'+'金额必须为数字',
+        min : '<i class="icon icon-exclamation-sign"></i>'+'最小金额为1元'
+      }
+    }
+  });
+});
+
+  </script>
+  {/block}

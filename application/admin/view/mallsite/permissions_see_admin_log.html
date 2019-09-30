@@ -1,0 +1,162 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">管理员权限</a>
+      <a><cite>管理员日志</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>该页面展示管理员的操作日志。</li>
+          <li>侧边栏可进行高级搜索。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <!--商品分类列表-->
+        <div class="common-head">
+          <div class="refresh ml0">
+            <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+            <div class="refresh_span">刷新 - 共742条记录</div>
+          </div>
+
+          <div class="search">
+            <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+              <div class="input">
+                <input type="text" name="keywords" class="text nofocus" placeholder="管理员名称" autocomplete="off">
+                <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="common-content">
+          <form method="POST" action="admin_logs.php?act=batch_drop" name="listForm">
+            <div class="list-div" id="listDiv">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                    <th width="5%"><div class="tDiv"><a href="javascript:listTable.sort('log_id');">编号</a></div></th>
+                    <th width="15%"><div class="tDiv"><a href="javascript:listTable.sort('user_id');">操作者</a></div></th>
+                    <th width="15%"><div class="tDiv"><a href="javascript:listTable.sort('log_time');">操作日期</a></div></th>
+                    <th width="15%"><div class="tDiv"><a href="javascript:listTable.sort('ip_address');">IP地址</a></div></th>
+                    <th width="47%"><div class="tDiv">操作记录</div></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="4082" class="checkbox" id="checkbox_4082"><label for="checkbox_4082" class="checkbox_stars"></label></div></td>
+                    <td><div class="tDiv">4082</div></td>
+                    <td><div class="tDiv">mdz01</div></td>
+                    <td><div class="tDiv">2019-03-19 17:48:06</div></td>
+                    <td><div class="tDiv">116.248.35.92</div></td>
+                    <td><div class="tDiv">编辑商品: 【江那镇】憨婆娘珍珠小米辣   全国包邮</div></td>
+                  </tr>
+                  <tr class="">
+                    <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="4081" class="checkbox" id="checkbox_4081"><label for="checkbox_4081" class="checkbox_stars"></label></div></td>
+                    <td><div class="tDiv">4081</div></td>
+                    <td><div class="tDiv">mdz01</div></td>
+                    <td><div class="tDiv">2019-03-19 17:44:10</div></td>
+                    <td><div class="tDiv">116.248.35.92</div></td>
+                    <td><div class="tDiv">管理员登陆</div></td>
+                  </tr>
+                  <tr class="">
+                    <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="4055" class="checkbox" id="checkbox_4055"><label for="checkbox_4055" class="checkbox_stars"></label></div></td>
+                    <td><div class="tDiv">4055</div></td>
+                    <td><div class="tDiv">mdz01</div></td>
+                    <td><div class="tDiv">2019-03-11 22:30:50</div></td>
+                    <td><div class="tDiv">106.57.117.18</div></td>
+                    <td><div class="tDiv">管理员登陆</div></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="12">
+                      <div class="tDiv">
+                        <div class="tfoot_btninfo">
+                          <input type="submit" ectype="btnSubmit" value="清除日志" class="btn btn_disabled" disabled="disabled">
+                        </div>
+                        <div class="list-page">
+                          <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                          <div id="turn-page">
+                            <span class="page page_1">总计 <em id="totalRecords">742</em>个记录</span>
+                            <span class="page page_2">分为<em id="totalPages">50</em>页</span>
+                            <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                            <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                            <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                            <span id="page-link">
+                              <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                              <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                              <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="50">50</option>        </select>
+                                <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                                <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </form>
+          </div>
+          <!--商品分类列表end-->
+        </div>
+        <div class="gj_search">
+          <div class="search-gao-list" id="searchBarOpen" style="right: 0px;">
+            <i class="icon icon-zoom-in"></i>高级操作                </div>
+            <div class="search-gao-bar" style="right: -240px;">
+              <div class="handle-btn" id="searchBarClose"><i class="icon icon-zoom-out"></i>收起边栏</div>
+              <div class="title"><h3>高级操作</h3></div>
+              <div class="searchContent">
+                <div class="layout-box">
+                  <form name="theForm" method="POST" action="admin_logs.php">
+                    <dl>
+                      <dt>按IP地址查看</dt>
+                      <dd>
+                        <div id="ip_list" class="select_w145 imitate_select">
+                          <div class="cite">选择IP地址...</div>
+                          <ul style="display: none;">
+                            <li><a href="javascript:;" data-value="0">选择IP地址...</a></li>
+                            <li><a href="javascript:;" data-value="0.0.0.0">0.0.0.0</a></li>
+                            <li><a href="javascript:;" data-value="115.28.134.159">115.28.134.159</a></li>
+                          </ul>
+                          <input name="ip" type="hidden" value="0" id="ip_list_val">
+                        </div>
+                      </dd>
+                      <input type="submit" class="btn btn30 red_btn mt10" name="tj_search" value="提交查询">
+                    </dl>
+                  </form>
+                  <form name="Form2" action="admin_logs.php?act=batch_drop" method="POST">
+                    <dl>
+                      <dt>清除日志</dt>
+                      <dd>
+                        <div class="select_w145 imitate_select">
+                          <div class="cite">选择清除的日期...</div>
+                          <ul style="display: none;">
+                           <li><a href="javascript:;" data-value="0">选择清除的日期...</a></li>
+                           <li><a href="javascript:;" data-value="1">一周之前</a></li>
+                           <li><a href="javascript:;" data-value="2">一个月之前</a></li>
+                           <li><a href="javascript:;" data-value="3">三个月之前</a></li>
+                           <li><a href="javascript:;" data-value="4">半年之前</a></li>
+                           <li><a href="javascript:;" data-value="5">一年之前</a></li>
+                         </ul>
+                         <input name="log_date" type="hidden" value="0">
+                       </div>
+                     </dd>
+                     <dt><input type="submit" class="btn btn30 red_btn mt10" name="drop_type_date" value="清除日志"></dt>
+                   </dl>
+                 </form>
+               </div>
+             </div>
+
+           </div>
+         </div>
+       </div>
+     </div>
+{/block}

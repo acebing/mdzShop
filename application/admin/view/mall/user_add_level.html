@@ -1,0 +1,139 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">会员管理</a>
+      <a><cite>添加会员积分</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        </ul>
+      </div>
+     <div class="mian-info">
+           <form action="user_rank.php" method="post" name="theForm" id="user_rank_form" novalidate="novalidate"> 
+            <div class="switch_info">
+                   <div class="item">
+                       <div class="label"><span class="require-field">*</span>&nbsp;会员等级名称：</div>
+                       <div class="label_value">
+                           <input type="text" name="rank_name" value="" class="text" id="rank_name" autocomplete="off">
+                           <div class="form_prompt"></div>
+                       </div>
+                   </div>
+                   <div class="item">
+                       <div class="label"><span class="require-field">*</span>&nbsp;积分下限：</div>
+                       <div class="label_value">
+                           <div class="lie">
+                               <input type="text" name="min_points" value="0" class="text text_2" id="min_points" autocomplete="off">
+                               <div class="label_label"><span class="require-field">*</span>&nbsp;积分上限：</div>
+                               <input type="text" name="max_points" value="0" class="text text_2" id="max_points" autocomplete="off">
+                               <div class="form_prompt"></div>
+                           </div>
+                           <div class="lie mt15">
+                               <input type="checkbox" class="ui-checkbox" value="1" name="show_price" checked="" id="checkbox_001">
+                               <label for="checkbox_001" class="ui-label">在商品详情页显示该会员等级的商品价格</label>
+                           </div>
+                           <div class="lie mt5">
+                               <input type="checkbox" class="ui-checkbox" value="1" name="special_rank" id="checkbox_002">
+                               <label for="checkbox_002" class="ui-label">特殊会员组<em class="require-field">特殊会员组的会员不会随着积分的变化而变化。</em></label>
+                           </div>
+                       </div>
+                   </div>
+                  <div class="item">
+                       <div class="label"><span class="require-field">*</span>&nbsp;初始折扣率(%)：</div>
+                       <div class="label_value">
+                           <input type="text" name="discount" value="0.8" class="text" id="discount" autocomplete="off">
+                           <div class="form_prompt"></div>
+                       </div>
+                   </div>
+                   <div class="item">
+                       <div class="label">&nbsp;</div>
+                       <div class="label_value info_btn">
+                           <a href="javascript:;" class="button" id="submitBtn"> 确定 </a>
+                           <input type="hidden" name="act" value="insert">
+                           <input type="hidden" name="id" value="0">
+                       </div>
+                   </div>
+               </div>
+           </form>
+       </div>
+    </div>
+  </div>
+{/block}
+  {block name="js"}
+  <script type="text/javascript">
+    $("#checkbox_002").click(function(){
+      if($("#checkbox_002").is(":checked")==true){
+        $("#min_points").attr("disabled","disabled");
+        $("#max_points").attr("disabled","disabled");
+      }else{
+        $("#min_points").removeAttr("disabled");
+        $("#max_points").removeAttr("disabled");
+      }
+    })
+
+    $(function(){
+      $("#submitBtn").click(function(){
+        var minval = Number($.trim($("#min_points").val()));
+        var maxval = Number($.trim($("#max_points").val()));
+
+        if($("#user_rank_form").valid()){
+          if(minval > maxval){
+            alert(integral_max_small);
+          }else{
+            $("#user_rank_form").submit();
+          }
+        }
+      });
+
+  $('#user_rank_form').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules : {
+      rank_name : {
+        required : true
+      },
+      discount : {
+        required : true,
+        min : 0.1,
+        max : 1
+      },
+      min_points : {
+        required : true,
+        digits : true
+      },
+      max_points : {
+        required : true,
+        digits : true
+      }
+      
+    },
+    messages : {
+      rank_name : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'积分等级不能为空'
+      },
+      discount : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'折扣率不能为空',
+        min : '<i class="icon icon-exclamation-sign"></i>'+'折扣率最小0.1',
+        max : '<i class="icon icon-exclamation-sign"></i>'+'最大1'
+      },
+      min_points : {
+        digits : '<i class="icon icon-exclamation-sign"></i>'+'最小积分为0，并且要是整数'
+      },
+      max_points : {
+        digits : '<i class="icon icon-exclamation-sign"></i>'+'最大积分上限为10000000，并且要是整数'
+      }
+    }
+  });
+});
+  </script>
+{/block}

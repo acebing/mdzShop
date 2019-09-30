@@ -1,0 +1,119 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a href="">友情链接</a>
+     <a><cite>添加友情链接</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示所有友情链接信息列表。</li>
+        <li>可点击链接进入相应网页，也可进行编辑或删除友情链接。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="mian-info">
+        <form action="friend_link.php" method="post" name="theForm" enctype="multipart/form-data" id="link_form" novalidate="novalidate">
+          <div class="switch_info user_basic">
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>链接名称：</div>
+              <div class="label_value">
+                <input type="text" name="link_name" value="" class="text" autocomplete="off">
+                <div class="notic m20">当你添加文字链接时, 链接LOGO为你的链接名称.</div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>链接地址：</div>
+              <div class="label_value">
+                <input type="text" name="link_url" value="" class="text" autocomplete="off">
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">显示顺序：</div>
+              <div class="label_value">
+                <input type="text" name="show_order" value="50" class="text" autocomplete="off">
+              </div>
+            </div>
+            
+            <div class="item shop_logo">
+              <div class="label">链接LOGO：</div>
+              <div class="label_value">
+                <div class="type-file-box">
+                  <input type="button" name="button" id="button" class="type-file-button" value="">
+                  <input type="file" class="type-file-file" id="legal_person_fileImg" name="link_img" data-state="imgfile" size="30" hidefocus="true" value="">
+                  <input type="text" name="textfile" class="type-file-text" id="textfield" readonly="">
+                </div>
+                <div class="notic m20">友情链接的图片尺寸110*30</div>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="label">或LOGO地址：</div>
+              <div class="label_value">
+                <input type="text" name="url_logo" class="text" autocomplete="off" value="">
+                <div class="notic m20">在指定远程LOGO图片时, LOGO图片的URL网址必须为http:// 或 https://开头的正确URL格式!</div>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn">
+                <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                <input type="hidden" name="act" value="insert">
+                <input type="hidden" name="id" value="">
+                <input type="hidden" name="type" value="">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+     $(function () {
+       // 表单验证
+       $("#submitBtn").click(function(){
+        if($("#articlecat_form").valid()){
+          $("#articlecat_form").submit();
+        }
+      });
+       $('#link_form').validate({
+        errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+        rules : {
+          link_name : {
+            required : true
+          },
+          link_url : {
+            required : true
+          }
+
+        },
+        messages : {
+          link_name : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+"链接名称不能为空"
+          },
+          link_url : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+"链接地址不能为空"
+          }
+        }
+      });
+     });
+   </script>
+{/block}

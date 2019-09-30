@@ -1,0 +1,123 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>文章自动发布</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="refresh ml0">
+          <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+          <div class="refresh_span">刷新 - 共21条记录</div>
+        </div>
+        <div class="search">
+          <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+            <div class="input">
+              <input type="text" name="goods_name" class="text nofocus" placeholder="文章名称" autocomplete="off">
+              <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="common-content">
+        <form method="post" action="" id="listForm" enctype="multipart/form-data">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                  <th width="47%"><div class="tDiv">文章名称</div></th>
+
+                  <th width="10%"><div class="tDiv">文章分类</div></th>
+                  <th width="10%"><div class="tDiv">发布时间</div></th>
+                  <th width="10%"><div class="tDiv">取消时间</div></th>
+                  <th width="15%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="81" class="checkbox" id="checkbox_81"><label for="checkbox_81" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">如何申请售后</div></td>
+
+                  <td><div class="tDiv">售后服务</div></td>
+                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
+                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
+                  <td class="handle">
+                    <div class="tDiv">
+                      <span id="del81" class="font12">
+                        -
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="80" class="checkbox" id="checkbox_80"><label for="checkbox_80" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">售后政策</div></td>
+
+                  <td><div class="tDiv">售后服务</div></td>
+                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
+                  <td><div class="tDiv"><!--  -->0000-00-00<!--  --></div></td>
+                  <td class="handle">
+                    <div class="tDiv">
+                      <span id="del80" class="font12">
+                        -
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table cellpadding="0" cellspacing="0" border="0" id="page-table">
+              <tfoot>
+                <tr>
+                  <td colspan="12">
+                    <div class="tDiv">
+                      <input type="hidden" name="act" value="">
+                      <div class="text_time" id="text_time_start">
+                        <input type="text" name="date" value="0000-00-00" id="start_time_id" class="text" readonly="" autocomplete="off">
+                      </div>
+                      <div class="tfoot_btninfo">
+                        <input type="button" value="批量发布" ectype="btnSubmit" class="btn btn_disabled" onclick="return validate('batch_start')" disabled="disabled">
+                        <input type="button" value="批量取消发布" ectype="btnSubmit" class="btn btn_disabled" onclick="return validate('batch_end')" disabled="disabled">
+                      </div>
+                      <div class="list-page">
+                        <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                        <div id="turn-page">
+                          <span class="page page_1">总计 <em id="totalRecords">21</em>个记录</span>
+                          <span class="page page_2">分为<em id="totalPages">2</em>页</span>
+                          <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                          <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                          <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                          <span id="page-link">
+                            <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                            <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                            <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                              <option value="1">1</option><option value="2">2</option>        </select>
+                              <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                              <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  {/block}

@@ -1,0 +1,478 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">平台设置</a>
+      <a href="">会员管理</a>
+      <a><cite>会员列表</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="layui-tab">
+        <ul class="layui-tab-title">
+          <li class="layui-this">会员列表</li>
+          <li>会员等级</li>
+          <li>实名认证</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item  layui-show">
+            <div class="explanation" id="explanation">
+                <div class="ex_tit">
+                    <i class="sc_icon"></i>
+                    <h4>操作提示</h4>
+                    <span id="explanationZoom" title="收起提示"></span>
+                </div>
+                <ul>
+                    <li>会员列表展示商城所有的会员信息。</li>
+                    <li>可通过会员名称关键字进行搜索，如需详细搜索请在侧边栏进行高级搜索。</li>
+                    <li>会员等级必须在有效积分范围内，否则无法显示会员等级；<em>比如会员积分0，却没有0积分的等级就会显示无等级</em></li>
+                </ul>
+            </div>
+            <form class="" action="{url:(add)}">
+             <div class="flexilist">
+              <div class="common-head" id="add_friend_link">
+              <div class="fl">
+                <a href="#">
+                  <div class="fbutton">
+                    <div class="add" title="导出会员列表">
+                      <span><i class="layui-icon layui-icon-add-1"></i>导出会员列表</span>
+                    </div>
+                  </div>
+                </a>
+                <a href="{:url('user/add')}">
+                  <div class="fbutton">
+                    <div class="add" title="添加会员">
+                      <span><i class="icon icon-plus"></i>添加会员</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="refresh">
+                <div class="refresh_tit" title="刷新数据"><i class="layui-icon layui-icon-refresh"></i></div>
+                <div class="refresh_span">刷新 - 共619条记录</div>
+              </div>
+              <div class="search">
+                <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+                  <div class="input">
+                      <input type="text" name="keywords" class="text nofocus" placeholder="会员名称" autocomplete="off">
+                      <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+                  </div>
+                </form>
+              </div>  
+              </div>
+              <div class="common-content">
+                <div class="list-div" id="listDiv">
+                  <form class="" action="">
+                  <table class="">
+                   <thead>
+                    <tr>
+                      <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                      <th width="5%"><div class="tDiv"><a href="javascript:listTable.sort('user_id'); ">编号</a><img src="images/sort_desc.gif"></div></th>
+                      <th width="10%"><div class="tDiv"><a href="javascript:listTable.sort('user_name'); ">会员名称</a></div></th>
+                      <th width="10%"><div class="tDiv">昵称</div></th>
+                      <th width="8%"><div class="tDiv">商家名称</div></th>
+                      <th width="8%"><div class="tDiv">手机/邮箱</div></th>
+                      <th width="8%"><div class="tDiv">注册日期</div></th>
+                      <th width="8%"><div class="tDiv">账户</div></th>
+                      <th width="6%"><div class="tDiv">等级积分</div></th>
+                      <th width="6%"><div class="tDiv">验证</div></th>
+                      <th width="12%" class="handle">操作</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr class="">
+                      <td class="sign">
+                        <div class="tDiv">
+                          <input type="checkbox" name="checkboxes[]" value="709" class="checkbox" id="checkbox_709" lay-ignore>
+                          <label for="all_list" class="checkbox_stars"></label>
+                        </div>
+                      </td>
+                      <td><div class="tDiv">709</div></td>
+                      <td><div class="tDiv">wxb076e15524754</div></td>
+                        <td><div class="tDiv">墙果</div></td>
+                        <td><div class="tDiv"><font class="blue3">商城会员</font></div></td>
+                        <td><div class="tDiv">13887692676<br>wxb076e15524754@qq.com</div></td>
+                        <td><div class="tDiv">2019-03-11</div></td>
+                        <td>
+                            <div class="tDiv">
+                                <p>可用资金：0.00</p>
+                                <p>消费积分：25</p>
+                            </div>
+                        </td>
+                        <td><div class="tDiv">25<br>铜牌会员</div></td>
+                        <td>
+                          <div class="tDiv">
+                           <div class="switch " title="否" onclick="listTable.switchBt(this, 'toggle_is_validated', 697)">
+                              <div class="circle"></div>
+                              <input type="hidden" value="0" name="">
+                            </div>
+                        </td>
+                        <td class="handle">
+                          <div class="tDiv a2">
+                            <a href="users.php?act=edit&amp;id=710" class="btn_see"><i class="sc_icon sc_icon_see"></i>查看</a>
+                            <a href="users.php?act=users_log&amp;id=710" class="btn_see"><i class="sc_icon sc_icon_see"></i>日志</a>
+                            <a href="javascript:confirm_redirect('您确定要删除该会员账号吗？', 'users.php?act=remove&amp;id=710')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td colspan="12">
+                          <div class="tDiv">
+                            <div class="tfoot_btninfo">
+                              <input type="hidden" name="act" value="batch_remove">
+                              <input type="button" value="删除" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="">
+                            </div>
+                          <div class="list-page">
+                            <div id="turn-page">
+                              <span class="page page_1">总计 <em id="totalRecords">619</em>个记录</span>
+                              <span class="page page_2">分为<em id="totalPages">42</em>页</span>
+                              <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                              <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                              <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                              <span id="page-link">
+                                  <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                                  <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                                  <select id="gotoPage" onchange="listTable.gotoPage(this.value)" lay-ignore>
+                                      <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="42">42</option>        </select>
+                                  <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                                  <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                          </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  </form>
+                </div>
+              </div>
+              </div> 
+              <div class="gj_search">
+                <div class="search-gao-list" id="searchBarOpen">
+                    <i class="icon icon-zoom-in"></i>高级搜索                </div>
+                <div class="search-gao-bar">
+                    <div class="handle-btn" id="searchBarClose"><i class="icon icon-zoom-out"></i>收起边栏</div>
+                    <div class="title"><h3>高级搜索</h3></div>
+                    <form method="get" name="formSearch_senior" action="javascript:searchUser()">
+                        <div class="searchContent">
+                            <div class="layout-box">
+                                <dl>
+                                    <dt>会员/昵称</dt>
+                                    <dd><input type="text" value="" name="keyword" class="s-input-txt" autocomplete="off"></dd>
+                                </dl>
+                                <dl>
+                                    <dt>会员积分</dt>
+                                    <dd><input type="text" value="" name="pay_points_lt" class="s-input-txt-2" autocomplete="off"><div class="bool">&nbsp;&nbsp;~&nbsp;&nbsp;</div><input type="text" value="" name="pay_points_gt" class="s-input-txt-2"></dd>
+                                </dl>
+                                <dl>
+                                    <dt>手机</dt>
+                                    <dd><input type="text" value="" name="mobile_phone" class="s-input-txt" autocomplete="off"></dd>
+                                </dl>
+                                <dl>
+                                    <dt>邮件地址</dt>
+                                    <dd><input type="text" value="" name="email" class="s-input-txt" autocomplete="off"></dd>
+                                </dl>
+                                <dl>
+                                    <dt>会员等级</dt>
+                                    <dd>
+                                        <div class="select_w145 imitate_select">
+                                            <div class="cite">所有等级</div>
+                                            <ul>
+                                               <li><a href="javascript:;" data-value="0">所有等级</a></li>
+                                                                                              <li><a href="javascript:;" data-value="6">铜牌</a></li>
+                                                                                              <li><a href="javascript:;" data-value="11">微信</a></li>
+                                                                                              <li><a href="javascript:;" data-value="12">QQ</a></li>
+                                                                                              <li><a href="javascript:;" data-value="7">银牌</a></li>
+                                                                                              <li><a href="javascript:;" data-value="8">金牌</a></li>
+                                                                                              <li><a href="javascript:;" data-value="3">代销用户</a></li>
+                                                                                           </ul>
+                                            <input name="user_rank" type="hidden" value="0">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>店铺名称</dt>
+                                    <dd>
+                                        <div id="shop_name_select" class="select_w145 imitate_select">
+                                            <div class="cite">请选择...</div>
+                                            <ul>
+                                               <li><a href="javascript:;" data-value="0">请选择...</a></li>
+                                               <li><a href="javascript:;" data-value="1">按店铺名称</a></li>
+                                               <li><a href="javascript:;" data-value="2">按期望店铺名称</a></li>
+                                               <li><a href="javascript:;" data-value="3">按入驻品牌+类型</a></li>
+                                            </ul>
+                                            <input name="store_search" type="hidden" value="0" id="shop_name_val">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl style="display:none" id="merchant_box">
+                                    <dd>
+                                        <div class="select_w145 imitate_select">
+                                            <div class="cite">请选择</div>
+                                            <ul>
+                                               <li><a href="javascript:;" data-value="0">请选择</a></li>
+                                                                                              <li><a href="javascript:;" data-value="122">买得着</a></li>
+                                                                                           </ul>
+                                            <input name="merchant_id" type="hidden" value="0">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl id="store_keyword" style="display:none">
+                                    <dd><input type="text" value="" name="store_keyword" class="s-input-txt" autocomplete="off"></dd>
+                                </dl>
+                                <dl style="display:none" id="store_type">
+                                    <dd>
+                                        <div class="select_w145 imitate_select">
+                                            <div class="cite">店铺类型</div>
+                                            <ul>
+                                               <li><a href="javascript:;" data-value="0">店铺类型</a></li>
+                                               <li><a href="javascript:;" data-value="旗舰店">旗舰店</a></li>
+                                               <li><a href="javascript:;" data-value="专卖店">专卖店</a></li>
+                                               <li><a href="javascript:;" data-value="专营店">专营店</a></li>
+                                               <li><a href="javascript:;" data-value="馆">馆</a></li>
+                                            </ul>
+                                            <input name="store_type" type="hidden" value="0">
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl class="bot_btn">
+                                    <dd>
+                                       <input type="submit" class="btn red_btn" name="tj_search" value="提交查询"><input type="reset" class="btn btn_reset" name="reset" value="重置">
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </form>
+          </div>
+          <div class="layui-tab-item">
+            <div class="explanation" id="explanation">
+                <div class="ex_tit">
+                    <i class="sc_icon"></i>
+                    <h4>操作提示</h4>
+                    <span id="explanationZoom" title="收起提示"></span>
+                </div>
+                <ul>
+                    <li>该页面展示所有会员等级的信息。</li>
+                    <li>可以添加会员等级、编辑会员等级、删除会员等级。</li>
+                </ul>
+            </div>
+            <form class="" action="">
+             <div class="flexilist">
+              <div class="common-head" id="add_friend_link">
+              <div class="fl">
+                <a href="#">
+                  <div class="fbutton">
+                    <div class="add" title="添加会员等级">
+                      <span><i class="layui-icon layui-icon-add-1"></i>添加会员等级</span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="common-content">
+                <div class="list-div">
+                  <form class="" action="">
+                  <table class="table_layout">
+                    <thead>
+                      <tr>
+                          <th width="15%"><div class="tDiv">会员等级名称</div></th>
+                          <th width="13%"><div class="tDiv">积分下限</div></th>
+                          <th width="13%"><div class="tDiv">积分上限</div></th>
+                          <th width="13%"><div class="tDiv">初始折扣率(%)</div></th>
+                          <th width="12%"><div class="tDiv">特殊会员组</div></th>
+                          <th width="12%"><div class="tDiv">显示价格</div></th>
+                          <th width="13%" class="handle">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="">
+                      <td><div class="tDiv">代销用户</div></td>
+                      <td><div class="tDiv">1000000</div></td>
+                      <td><div class="tDiv">1000000000</div></td>
+                      <td><div class="tDiv">60</div></td>
+                      <td><div class="tDiv"><img src="images/yes.png" class="pl3"></div></td>
+                      <td>
+                        <div class="tDiv">
+                              <div class="switch active" title="是" onclick="listTable.switchBt(this, 'toggle_showprice', 3)">
+                                <div class="circle"></div>
+                              </div>
+                              <input type="hidden" value="0" name="">
+                          </div>
+                      </td>
+                      <td class="handle">
+                          <div class="tDiv a2">
+                              <a href="user_rank.php?act=edit&amp;id=3" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                              <a href="javascript:;" onclick="listTable.remove(3, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                          </div>
+                      </td>
+                      </tr>
+                      <tr class="">
+                      <td><div class="tDiv">铜牌</div></td>
+                      <td><div class="tDiv">1000000</div></td>
+                      <td><div class="tDiv">1000000000</div></td>
+                      <td><div class="tDiv">60</div></td>
+                      <td><div class="tDiv"><img src="images/no.png" class="pl3"></div></td>
+                      <td>
+                          <div class="tDiv">
+                            <div class="switch" title="是" onclick="listTable.switchBt(this, 'toggle_showprice', 8)">
+                              <div class="circle"></div>
+                            </div>
+                            <input type="hidden" value="0" name="">
+                          </div>
+                      </td>
+                      <td class="handle">
+                          <div class="tDiv a2">
+                              <a href="user_rank.php?act=edit&amp;id=3" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                              <a href="javascript:;" onclick="listTable.remove(3, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                          </div>
+                      </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </form>
+                </div>
+              </div>
+              </div> 
+                </form>
+          </div>
+           <div class="layui-tab-item">
+            <div class="explanation" id="explanation">
+                <div class="ex_tit">
+                    <i class="sc_icon"></i>
+                    <h4>操作提示</h4>
+                    <span id="explanationZoom" title="收起提示"></span>
+                </div>
+                <ul>
+                  <li>该页面展示所有实名认证的会员信息。</li>
+                  <li>可进行审核实名信息，请谨慎编辑会员的实名信息。</li>
+                  <li>可以输入会员名称关键字进行搜索，侧边栏可进行高级搜索。</li>
+                </ul>
+            </div>
+            <form class="" action="">
+             <div class="flexilist">
+              <div class="common-head" id="add_friend_link">
+                <div class="refresh ml0">
+                  <div class="refresh_tit" title="刷新数据"><i class="layui-icon layui-icon-refresh"></i></div>
+                  <div class="refresh_span">刷新 - 共1条记录</div>
+                </div>
+                <div class="search">
+                  <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+                    <div class="select_w120 imitate_select">
+                        <div class="cite">全部</div>
+                        <ul  style="display: none;">
+                            <li><a href="javascript:;" data-value="-1">全部</a></li>
+                            <li><a href="javascript:;" data-value="0">未审核</a></li>
+                            <li><a href="javascript:;" data-value="1">审核通过</a></li>
+                            <li><a href="javascript:;" data-value="2">审核未通过</a></li>
+                        </ul>
+                        <input name="review_status" type="hidden" value="-1">
+                    </div>
+                    <div class="input">
+                        <input type="text" name="keyword" class="text nofocus" placeholder="会员名称" autocomplete="off">
+                        <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+                    </div>
+                    </form>
+                </div>
+              </div>
+              <div class="common-content">
+                <div class="list-div">
+                  <form class="" action="">
+                  <table class="table_layout">
+                    <thead>
+                      <tr>
+                        <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list" lay-ignore><label for="all_list" class="checkbox_stars"></label></div></th>
+                        <th width="5%"><div class="tDiv">编号</div></th>
+                        <th width="20%"><div class="tDiv">会员名称</div></th>
+                        <th width="15%"><div class="tDiv">真实姓名</div></th>
+                        <th width="15%"><div class="tDiv">手机号码</div></th>
+                        <th width="20%"><div class="tDiv">身份证号</div></th>
+                        <th width="10%"><div class="tDiv">审核状态</div></th>
+                        <th width="15%" class="handle">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="">
+                        <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="2" class="checkbox" id="checkbox_2" lay-ignore><label for="checkbox_2" class="checkbox_stars"></label></div></td>
+                        <td><div class="tDiv">2</div></td>
+                        <td><div class="tDiv">wx9be4d15348019</div></td>
+                        <td><div class="tDiv">周德怀</div></td>
+                        <td><div class="tDiv">13769610228</div></td>
+                        <td><div class="tDiv">532622198201141137</div></td>
+                        <td><div class="tDiv">审核通过</div></td>
+                        <td class="handle">
+                            <div class="tDiv a2">
+                                <a href="user_real.php?act=edit&amp;real_id=2&amp;user_type=0" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                                <a href="javascript:confirm_redirect('你确定要删除该会员的实名认证吗？', 'user_real.php?act=remove&amp;real_id=2')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                     <tfoot>
+                      <tr>
+                        <td colspan="12">
+                          <div class="tDiv">
+                           <div class="tfoot_btninfo">
+                              <input type="hidden" value="batch" name="act">
+                              <div class="item">
+                                  <div id="drop_select" class="imitate_select select_w120">
+                                    <div class="cite">请选择...</div>
+                                    <ul class="ps-container" style="display: none;">
+                                       <li><a href="javascript:;" data-value="" class="ftx-01">请选择...</a></li>
+                                       <li><a href="javascript:;" data-value="batch_remove" class="ftx-01">删除</a></li>
+                                       <li><a href="javascript:;" data-value="review_to" class="ftx-01">审核</a></li>
+                                    <div class="ps-scrollbar-x-rail" style="width: 120px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 84px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></ul>
+                                    <input name="type" type="hidden" value="" id="drop_val">
+                                  </div>
+                              </div>
+                              <div class="item" style="display: none;" id="review_status">
+                                  <div id="review_status_select" class="imitate_select select_w120">
+                                    <div class="cite">全部</div>
+                                    <ul style="display: none;">
+                                       <li><a href="javascript:;" data-value="0" class="ftx-01">全部</a></li>
+                                       <li><a href="javascript:;" data-value="1" class="ftx-01">审核通过</a></li>
+                                       <li><a href="javascript:;" data-value="2" class="ftx-01">审核未通过</a></li>
+                                    </ul>
+                                    <input name="review_status" type="hidden" value="0" id="review_status_val">
+                                  </div>
+                              </div>
+                              <input name="review_content" type="text" value="" class="text text_2 mr10 lh26" style="display:none">
+                              <input type="submit" value="确定" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled">
+                          </div>
+                          <div class="list-page">
+                            <div id="turn-page">
+                              <span class="page page_1">总计 <em id="totalRecords">619</em>个记录</span>
+                              <span class="page page_2">分为<em id="totalPages">42</em>页</span>
+                              <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                              <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                              <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                              <span id="page-link">
+                                  <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                                  <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                                  <select id="gotoPage" onchange="listTable.gotoPage(this.value)" lay-ignore>
+                                      <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="42">42</option>        </select>
+                                  <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                                  <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                          </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  </form>
+                </div>
+              </div>
+              </div> 
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{/block}

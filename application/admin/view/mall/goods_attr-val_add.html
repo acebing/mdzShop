@@ -1,0 +1,110 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台商品管理</a>
+     <a><cite>属性列表</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>请合理创建商品类型名称。</li>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-content">
+        <div class="mian-info">
+          <form action="goods_type.php" method="post" name="theForm" enctype="multipart/form-data" id="goods_type_form" novalidate="novalidate">
+            <div class="switch_info">
+              <div class="item">
+                <div class="label"><span class="require-field">*</span>&nbsp;属性值名称：</div>
+                <div class="label_value">
+                  <input type="text" name="cat_name" value="" size="40" class="text" autocomplete="off">
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">所属分类：</div>
+                <div ectype="type_cat">
+                  <div id="parent_id1" class="imitate_select select_w145" ectype="typeCatSelect">
+                    <div class="cite">分类名称</div>
+                    <ul class="ps-container" style="display: none;">
+                      <li><a href="javascript:;" data-value="0" data-level="1" class="ftx-01">顶级分类</a></li>
+                      <li><a href="javascript:;" data-value="5" data-level="1" class="ftx-01">三七</a></li>
+                      <div class="ps-scrollbar-x-rail" style="width: 145px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 56px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></ul>
+                      <input type="hidden" value="0" id="parent_id_val1" ectype="typeCatVal">
+                    </div>
+                    <input name="attr_parent_id" type="hidden" value="0">
+                  </div>
+                </div>
+                <div class="item" style="display:none">
+                  <div class="label">状态:</div>
+                  <div class="label_value">
+                    <label><input type="radio" class="checkbox" name="enabled" value="0"><span>禁用</span></label><label><input type="radio" class="checkbox" name="enabled" value="1" checked=""><span>启用</span></label></div>
+                  </div> 
+                  <div class="item">
+                    <div class="label">&nbsp;</div>
+                    <div class="label_value info_btn">
+                      <input type="hidden" name="cat_id" value="">
+                      <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                      <input type="reset" value=" 重置 " class="button button_reset">
+                      <input type="hidden" name="act" value="insert">
+                    </div>
+                  </div>                
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+   {/block}
+ {block name='js'}
+<script type="text/javascript">
+ 
+  $(function(){
+    //表单验证
+    $("#submitBtn").click(function(){
+      if($("#goods_type_form").valid()){
+        $("#goods_type_form").submit();
+      }
+    });
+  
+    $('#goods_type_form').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules:{
+        cat_name:{
+          required : true
+        }
+      },
+      messages:{
+        cat_name:{
+          required : '<i class="icon icon-exclamation-sign"></i>'+'属性模板不能为空'
+        }
+      }     
+    });
+  });
+  
+  //属性类型分类
+  $.divselect("*[ectype='typeCatSelect']","*[ectype='typeCatVal']",function(obj){
+    var level = obj.data('level'),
+      val = obj.data("value");
+      
+    if(level != 3){
+      get_childcat(obj,1);
+    }else{
+      if(val == 0){
+        val = obj.parents(".imitate_select").prev(".imitate_select").find("[ectype='typeCatVal']").val();
+      }
+      $("input[name='attr_parent_id']").val(val);
+    }
+  });
+  
+    
+</script>
+{/block}

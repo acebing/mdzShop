@@ -1,0 +1,96 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+    <div class="layui-body" style="padding: 20px;">
+    	<span class="layui-breadcrumb">
+       <a href="">平台设置</a>
+       <a><cite>第三方登录</cite></a>
+     </span>
+     <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>一、配置前先 <a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html" target="_blank">注册小程序</a>，进行微信认证, 已有微信小程序 <a href="https://mp.weixin.qq.com/" target="_blank">立即登录</a></li>
+          <li>二、登录 <a href="https://mp.weixin.qq.com/" target="_blank">微信公众号平台 </a>后，在 设置 - 开发者设置 中，查看到微信小程序的 AppID、Appsecret，并配置填写好域名。（注意不可直接使用微信服务号或订阅号的 AppID、AppSecret）</li>
+          <li>三、微信认证后，开通小程序微信支付。开通后，配置小程序微信支付的商户号和密钥。 </li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="main-info">
+          <!--<div class="panel-heading">公众号设置</div>-->
+          <form method="post" action="/mobile/index.php?m=wechat&amp;c=wxapp" class="form-horizontal" role="form">
+            <div class="switch_info">
+              <div class="item">
+                <div class="label-t">小程序名称</div>
+                <div class="label_value">
+                  <input type="text" name="data[wx_appname]" class="text" value="">
+                  <div class="notic"> 小程序名称</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label-t">小程序AppID</div>
+                <div class="label_value">
+                  <input type="text" name="data[wx_appid]" class="text" value="">
+                  <div class="notic">* 小程序AppID，非微信公众号AppID</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label-t">小程序AppSecret</div>
+                <div class="label_value">
+                  <input type="text" name="data[wx_appsecret]" class="text" value="">
+                  <div class="notic">* 小程序AppSecret，非微信公众号AppSecret</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label-t">小程序微信支付商户号</div>
+                <div class="label_value">
+                  <input type="text" name="data[wx_mch_id]" class="text" value="">
+                  <div class="notic">* 小程序微信支付商户号</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label-t">小程序微信支付密钥</div>
+                <div class="label_value">
+                  <input type="text" name="data[wx_mch_key]" class="text" value="">
+                  <div class="notic">* 小程序微信支付密钥</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label-t">Token授权密钥</div>
+                <div class="label_value">
+                  <input type="text" name="data[token_secret]" class="text" value="">
+                  <div class="notic">
+                    <span class="btn btn-success makeToken">生成Token</span>
+                    <!-- <span class="btn btn-info btn-xs copyToken">复制Token</span> -->
+                  * Token授权加密key（32位字符）,用于小程序授权登录。重要信息，请不要随意泄露给他人！                </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="label-t">状态</div>
+                <div class="label_value">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="radio" name="data[status]" class="ui-radio event_zhuangtai" id="value_118_0" value="1">
+                      <label for="value_118_0" class="ui-radio-label ">开启</label>
+                    </div>
+                    <div class="checkbox_item">
+                      <input type="radio" name="data[status]" class="ui-radio event_zhuangtai" id="value_118_1" value="0" checked="">
+                      <label for="value_118_1" class="ui-radio-label active">关闭</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label-t">&nbsp;</div>
+                <div class="label_value info_btn">
+                  <input type="hidden" name="id" value="">
+                  <input type="submit" name="submit" value="保存" class="button btn-danger bg-red">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+   {/block}

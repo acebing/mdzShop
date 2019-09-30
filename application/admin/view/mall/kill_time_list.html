@@ -1,0 +1,92 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">营销活动</a>
+     <a><cite>秒杀时间段列表</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>设置秒杀商品列表显示设置的时间段，对该时段的活动商品可进行添加/删除操作。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-content">
+        <form method="post" action="" name="listForm">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="1" cellspacing="1">
+              <thead>
+                <tr>
+                  <th width="5%"><div class="tDiv">编号</div></th>
+                  <th width="30%"><div class="tDiv">秒杀时段名称</div></th>
+                  <th width="20%"><div class="tDiv">每日开始时间</div></th>
+                  <th width="20%"><div class="tDiv">每日结束时间</div></th>
+                  <th width="12%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td><div class="tDiv">1</div></td>
+                  <td><div class="tDiv">8:00</div></td>
+                  <td><div class="tDiv">08:00:00</div></td>
+                  <td><div class="tDiv">10:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="{:url('kill/killGoodsAdd')}" title="添加商品" class="btn_edit"><i class="icon icon-plus"></i>添加商品</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td><div class="tDiv">2</div></td>
+                  <td><div class="tDiv">10:00</div></td>
+                  <td><div class="tDiv">10:00:01</div></td>
+                  <td><div class="tDiv">12:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=add_goods&amp;sec_id=4&amp;tb_id=2" title="编辑" class="btn_edit"><i class="icon icon-plus"></i>添加商品</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td><div class="tDiv">3</div></td>
+                  <td><div class="tDiv">12:00</div></td>
+                  <td><div class="tDiv">12:00:01</div></td>
+                  <td><div class="tDiv">14:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=add_goods&amp;sec_id=4&amp;tb_id=3" title="编辑" class="btn_edit"><i class="icon icon-plus"></i>添加商品</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td><div class="tDiv">4</div></td>
+                  <td><div class="tDiv">14:00</div></td>
+                  <td><div class="tDiv">14:00:01</div></td>
+                  <td><div class="tDiv">16:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=add_goods&amp;sec_id=4&amp;tb_id=4" title="编辑" class="btn_edit"><i class="icon icon-plus"></i>添加商品</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="">
+                  <td><div class="tDiv">5</div></td>
+                  <td><div class="tDiv">16:00</div></td>
+                  <td><div class="tDiv">16:00:01</div></td>
+                  <td><div class="tDiv">22:00:00</div></td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="seckill.php?act=add_goods&amp;sec_id=4&amp;tb_id=5" title="编辑" class="btn_edit"><i class="icon icon-plus"></i>添加商品</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>  
+    {/block}

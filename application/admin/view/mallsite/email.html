@@ -1,0 +1,184 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">系统设置</a>
+      <a> <cite>角色管理</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>如果您的服务器支持 Mail 函数（具体信息请咨询您的空间提供商）。我们建议您使用系统的 Mail 函数。</li>
+          <li>当您的服务器不支持 Mail 函数的时候您也可以选用 SMTP 作为邮件服务器。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-content">
+          <div class="mian-info">
+            <form method="POST" action="shop_config.php?act=post" id="email_form">
+              <div class="switch_info shopConfig_switch">
+                <div class="items">
+                  <div class="item mail_service" data-val="507">
+                    <div class="label">邮件服务：</div>
+                    <div class="label_value">
+                      <div class="checkbox_items">
+                        <div class="checkbox_item">
+                          <input type="radio" name="value[507]" class="ui-radio evnet_mail_service" id="value_507_0" value="0">
+                          <label for="value_507_0" class="ui-radio-label">采用服务器内置的 Mail 服务</label>
+                        </div>
+                        <div class="checkbox_item">
+                          <input type="radio" name="value[507]" class="ui-radio evnet_mail_service" id="value_507_1" value="1" checked="true">
+                          <label for="value_507_1" class="ui-radio-label">采用其他的 SMTP 服务</label>
+                        </div>
+                      </div>
+                      <div class="form_prompt"></div>
+                      <div class="notic">如果您选择了采用服务器内置的 Mail 服务，您不需要填写下面的内容。</div>    </div>
+                    </div>
+                    <div class="item smtp_ssl" data-val="508">
+                      <div class="label">邮件服务器是否要求加密连接(SSL)：</div>
+                      <div class="label_value">
+                        <div class="checkbox_items">
+                          <div class="checkbox_item">
+                            <input type="radio" name="value[508]" class="ui-radio evnet_smtp_ssl" id="value_508_0" value="0">
+                            <label for="value_508_0" class="ui-radio-label">否</label>
+                          </div>
+                          <div class="checkbox_item">
+                            <input type="radio" name="value[508]" class="ui-radio evnet_smtp_ssl" id="value_508_1" value="1" checked="true" onclick="return confirm('此功能要求您的php必须支持OpenSSL模块, 如果您要使用此功能，请联系您的空间商确认支持此模块');">
+                            <label for="value_508_1" class="ui-radio-label">是</label>
+                          </div>
+                        </div>
+                        <div class="form_prompt"></div>
+                      </div>
+                    </div>
+                    <div class="item smtp_host" data-val="501">
+                      <div class="label">发送邮件服务器地址(SMTP)：</div>
+                      <div class="label_value">
+                        <input type="text" name="value[501]" class="text smtp_host" value="smtp.exmail.qq.com" autocomplete="off">
+                        <div class="form_prompt"></div>
+                        <div class="notic">邮件服务器主机地址。如果本机可以发送邮件则设置为localhost</div>    </div>
+
+                      </div>
+                      <div class="item smtp_port" data-val="502">
+                        <div class="label">服务器端口：</div>
+                        <div class="label_value">
+                          <input type="text" name="value[502]" class="text smtp_port" value="465" autocomplete="off">
+                          <div class="form_prompt"></div>
+                        </div>
+
+                      </div>
+                      <div class="item smtp_user" data-val="503">
+                        <div class="label">邮件发送帐号：</div>
+                        <div class="label_value">
+                          <input type="text" name="value[503]" class="text smtp_user" value="shenlong@maidezhao.com" autocomplete="off">
+                          <div class="form_prompt"></div>
+                          <div class="notic">发送邮件所需的认证帐号，如果没有就为空着</div>    </div>
+
+                        </div>
+                        <div class="item smtp_pass" data-val="504">
+                          <div class="label">帐号密码：</div>
+                          <div class="label_value">
+                            <input type="password" style="display:none"> 
+                            <input type="password" name="value[504]" class="text" value="Sl@..4759" autocomplete="off">
+                            <div class="form_prompt"></div>
+                          </div>
+                        </div>
+                        <div class="item smtp_mail" data-val="505">
+                          <div class="label">邮件回复地址：</div>
+                          <div class="label_value">
+                            <input type="text" name="value[505]" class="text smtp_mail" value="shenlong@maidezhao.com" autocomplete="off">
+                            <div class="form_prompt"></div>
+                          </div>
+
+                        </div>
+                        <div class="item mail_charset" data-val="506">
+                          <div class="label">邮件编码：</div>
+                          <div class="label_value">
+                            <div class="checkbox_items">
+                              <div class="checkbox_item">
+                                <input type="radio" name="value[506]" class="ui-radio evnet_mail_charset" id="value_506_0" value="UTF8" checked="true">
+                                <label for="value_506_0" class="ui-radio-label">国际化编码（utf8）</label>
+                              </div>
+                              <div class="checkbox_item">
+                                <input type="radio" name="value[506]" class="ui-radio evnet_mail_charset" id="value_506_1" value="GB2312">
+                                <label for="value_506_1" class="ui-radio-label">简体中文</label>
+                              </div>
+                              <div class="checkbox_item">
+                                <input type="radio" name="value[506]" class="ui-radio evnet_mail_charset" id="value_506_2" value="BIG5">
+                                <label for="value_506_2" class="ui-radio-label">繁体中文</label>
+                              </div>
+                            </div>
+                            <div class="form_prompt"></div>
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="label">邮件地址：</div>
+                          <div class="label_value">
+                            <input name="test_mail_address" type="text" id="tag_name" value="" maxlength="60" class="text">
+                            <input type="button" value="发送测试邮件" onclick="sendTestEmail();" class="btn btn30 red_btn">
+                          </div>
+                        </div>
+                        <div class="item">
+                          <div class="label">&nbsp;</div>
+                          <div class="label_value info_btn">
+                            <input name="submit" type="submit" value=" 确定 " class="button">
+                            <input type="reset" value=" 重置 " class="button button_reset">
+                            <input name="type" type="hidden" value="mail_setting" class="button">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+{/block}
+{block name='js'}
+  <script type="text/javascript">
+     //表单验证
+     $(function(){
+      $("#submitBtn").click(function(){
+        if($("#email_form").valid()){
+          $("#email_form").submit();
+        }
+      });
+
+      $('#email_form').validate({
+        errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+        rules : {
+          bucket : {
+            required : true
+          },
+          keyid : {
+            required : true
+          },
+          keysecret : {
+            required : true,
+            minlength:6
+          }
+
+        },
+        messages : {
+          bucket : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+'Bucket名称不能为空'
+          },
+          keyid : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+'AccessKeyID不能为空'
+            
+          },
+          keysecret : {
+            required : '<i class="icon icon-exclamation-sign"></i>'+'AccessKeySecret不能为空'
+            
+          }
+          
+        }
+      });
+    });
+  </script>
+{/block}

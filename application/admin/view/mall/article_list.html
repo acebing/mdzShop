@@ -1,0 +1,154 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>文章分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示所有分类下的文章。</li>
+        <li>可通过搜索文章标题进行搜索，侧边栏可进行高级搜索。</li>
+      </ul>
+    </div>
+    <div>
+      <div class="flexilist">
+        <div class="common-head">
+          <div class="fl">
+            <a href="{:url('addArticle')}"><div class="fbutton"><div class="add" title="添加新文章"><span><i class="icon icon-plus"></i>添加新文章</span></div></div></a>
+          </div>
+          <div class="refresh">
+            <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+            <div class="refresh_span">刷新 - 共21条记录</div>
+          </div>
+          <div class="search">
+            <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+              <div class="select_w120 imitate_select">
+                <div class="cite">全部分类</div>
+                <ul>
+                 <li><a href="javascript:;" data-value="0">全部分类</a></li>
+                 <li><a href="javascript:;" cat_type="2" data-value="1" class="ftx-01">购物指南</a></li><li><a href="javascript:;" cat_type="3" data-value="2" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;交易条款1</a></li><li><a href="javascript:;" cat_type="4" data-value="3" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;购物流程说明</a></li><li><a href="javascript:;" cat_type="5" data-value="1007" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交易条款</a></li><li><a href="javascript:;" cat_type="5" data-value="1011" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;售后服务</a></li><li><a href="javascript:;" cat_type="5" data-value="1009" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付问题</a></li><li><a href="javascript:;" cat_type="5" data-value="1005" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物流程</a></li><li><a href="javascript:;" cat_type="5" data-value="1008" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配送方式</a></li><li><a href="javascript:;" cat_type="5" data-value="1010" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发票问题</a></li><li><a href="javascript:;" cat_type="1" data-value="1000" class="ftx-01">微分销</a></li><li><a href="javascript:;" cat_type="1" data-value="14" class="ftx-01">商家入驻流程说明</a></li>                                </ul>
+                 <input name="cat_id" type="hidden" value="0">
+               </div>
+               <div class="input">
+                <input type="text" name="keyword" class="text nofocus" placeholder="文章标题" autocomplete="off">
+                <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="common-content">
+          <form method="POST" action="article.php?act=batch_remove" name="listForm">
+            <div class="list-div" id="listDiv">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                    <th width="5%"><div class="tDiv">编号</div></th>
+                    <th width="21%"><div class="tDiv"><a href="javascript:listTable.sort('title'); ">文章标题</a></div></th>
+                    <th width="20%"><div class="tDiv"><a href="javascript:listTable.sort('cat_id'); ">文章分类</a></div></th>
+                    <th width="8%"><div class="tDiv"><a href="javascript:listTable.sort('article_type'); ">文章重要性</a></div></th>
+                    <th width="8%"><div class="tDiv"><a href="javascript:listTable.sort('sort_order'); ">排序</a></div></th>
+                    <th width="8%"><div class="tDiv"><a href="javascript:listTable.sort('is_open'); ">是否显示</a></div></th>
+                    <th width="15%"><div class="tDiv"><a href="javascript:listTable.sort('add_time'); ">添加日期</a></div></th>
+                    <th width="20%" class="handle">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="81" class="checkbox" id="checkbox_81"><label for="checkbox_81" class="checkbox_stars"></label></div></td>
+                    <td><div class="tDiv">81</div></td>
+                    <td><div class="tDiv">如何申请售后</div></td>
+                    <td><div class="tDiv"><!--  -->售后服务<!--  --></div></td>
+                    <td><div class="tDiv">普通</div></td>
+                    <td><div class="tDiv"><input type="text" name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_sort_order', 81)"></div></td>
+                    <td>
+                      <div class="tDiv">
+                        <div class="switch active" title="是" onclick="listTable.switchBt(this, 'toggle_show', 81)">
+                          <div class="circle"></div>
+                        </div>
+                        <input type="hidden" value="0" name="">
+                      </div>
+                    </td>
+                    <td><div class="tDiv">2018-09-06 16:58:45</div></td>
+                    <td class="handle">
+                      <div class="tDiv a3">
+                        <a href="../article.php?id=81" target="_blank" title="查看" class="btn_see"><i class="sc_icon sc_icon_see"></i>查看</a>
+                        <a href="article.php?act=edit&amp;id=81" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                        <a href="javascript:;" title="删除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="12">
+                      <div class="tDiv">
+                        <div class="tfoot_btninfo">
+                          <input type="hidden" name="act" value="batch">
+                          <div class="item">
+                            <div class="label_value">
+                              <div id="type_select" class="imitate_select select_w120">
+                                <div class="cite">请选择...</div>
+                                <ul>
+                                 <li><a href="javascript:;" data-value="" class="ftx-01">请选择...</a></li>
+                                 <li><a href="javascript:;" data-value="button_remove" class="ftx-01">批量删除</a></li>
+                                 <li><a href="javascript:;" data-value="button_hide" class="ftx-01">批量隐藏</a></li>
+                                 <li><a href="javascript:;" data-value="button_show" class="ftx-01">批量显示</a></li>
+                                 <li><a href="javascript:;" data-value="move_to" class="ftx-01">转移到分类</a></li>
+                               </ul>
+                               <input name="type" type="hidden" value="" id="type_val">
+                             </div>
+                           </div>
+                         </div>
+                         <div class="item" style="display: none;" id="review_status">
+                          <div class="label_value">
+                            <div class="imitate_select select_w120">
+                              <div class="cite">请选择...</div>
+                              <ul>
+                                <li><a href="javascript:;" data-value="0" class="ftx-01">请选择...</a></li>
+                                <li><a href="javascript:;" cat_type="2" data-value="1" class="ftx-01">购物指南</a></li><li><a href="javascript:;" cat_type="3" data-value="2" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;交易条款1</a></li><li><a href="javascript:;" cat_type="4" data-value="3" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;购物流程说明</a></li><li><a href="javascript:;" cat_type="5" data-value="1007" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交易条款</a></li><li><a href="javascript:;" cat_type="5" data-value="1011" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;售后服务</a></li><li><a href="javascript:;" cat_type="5" data-value="1009" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支付问题</a></li><li><a href="javascript:;" cat_type="5" data-value="1005" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;购物流程</a></li><li><a href="javascript:;" cat_type="5" data-value="1008" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;配送方式</a></li><li><a href="javascript:;" cat_type="5" data-value="1010" class="ftx-01">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发票问题</a></li><li><a href="javascript:;" cat_type="1" data-value="1000" class="ftx-01">微分销</a></li><li><a href="javascript:;" cat_type="1" data-value="14" class="ftx-01">商家入驻流程说明</a></li>                                                          </ul>
+                                <input name="target_cat" type="hidden" value="0">
+                              </div>
+                            </div>
+                          </div>
+                          <input type="submit" value="确定" id="btnSubmit" name="btnSubmit" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled">
+                        </div>
+                        <div class="list-page">
+                          <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                          <div id="turn-page">
+                            <span class="page page_1">总计 <em id="totalRecords">21</em>个记录</span>
+                            <span class="page page_2">分为<em id="totalPages">2</em>页</span>
+                            <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                            <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                            <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                            <span id="page-link">
+                              <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                              <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                              <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                                <option value="1">1</option><option value="2">2</option>        </select>
+                                <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                                <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/block}

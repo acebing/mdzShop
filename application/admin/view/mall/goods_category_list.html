@@ -1,0 +1,180 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台商品管理</a>
+     <a><cite>平台分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>展示了平台所有的商品分类。</li>
+          <li>可在列表直接增加下一级分类。</li>
+          <li>可在商品分类列表进行转移分类下的商品。</li>
+          <li>鼠标移动“设置”位置，可新增下一级分类、查看下一级分类、转移商品等操作。</li>
+          <li><span class="red">设置分类显示会同步操作分类及子分类下所有商品是否显示，请谨慎操作</span></li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('category/add')}">
+            <div class="fbutton">
+              <div class="add" title="添加分类">
+              <span><i class="icon icon-plus"></i>添加分类</span>
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+      <div class="common-content">
+        <div class="list-div">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+            <tr>
+              <th width="8%"><div class="tDiv">级别(一级)</div></th>
+              <th width="20%"><div class="tDiv">分类名称</div></th>
+              <th width="10%"><div class="tDiv">佣金比率(%)</div></th>
+              <th width="10%"><div class="tDiv">商品数量</div></th>
+              <th width="10%"><div class="tDiv">数量单位</div></th>
+              <th width="10%"><div class="tDiv">是否显示</div></th>
+              <th width="10%"><div class="tDiv">价格分级</div></th>
+              <th width="10%"><div class="tDiv">排序</div></th>
+              <th width="12%" class="handle">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name='$categorys' id='vo'}
+            <tr class="">
+              <td>
+                <div class="tDiv first_setup">
+                  <div class="setup_span">
+                    <em><i class="icon icon-cog"></i>设置<i class="arrow"></i></em>
+                    <ul>
+                      <li><a href="{:url('category/add',['cat_id'=>$vo.cat_id])}">新增下一级</a></li>
+                      <li><a href="{:url('category/list',['parent_id'=>$vo.cat_id])}">查看下一级</a></li>
+                     <!--  <li><a href="javascript:void(0);" ectype="transfer_goods" data-cid="867">转移商品</a></li> -->
+                    </ul>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <!-- 分类名 -->
+                <div class="tDiv">
+                  <a href="goods.php?act=list&amp;cat_id=867" class="ftx-01">{$vo.cat_name}</a>
+                </div>
+              </td>
+              <td>
+                <!-- 佣金 -->
+                <div class="tDiv">
+                <input type="text" name="commission_rate" class="text w40" value={$vo.commission_rate} onkeyup="listTable.commission(this, '{:url('category/commission')}', {$vo.cat_id})">
+              </div>
+            </td>
+              <td>
+                <!-- 商品数量 -->
+                <div class="tDiv">120</div>
+              </td>
+              <td>
+                <!-- 数量单位 -->
+                <div class="tDiv">
+                <input type="text" name="measure_unit" class="text w40" value="" onkeyup="listTable.editInput(this, 'edit_measure_unit',{$vo.cat_id})">
+              </div>
+              </td>
+              <td>
+                <!-- 是否显示 -->
+                <div class="tDiv">
+                 {if condition=" $vo.is_show eq 1" }
+                 <div class="switch active" title="是" is_show="{$vo.is_show}" onclick="listTable.switchBt(this, '{:url('category/show')}', {$vo.cat_id})">
+                  <div class="circle"></div>
+                  </div>
+                  {else/}
+                  <div class="switch" title="否" is_show="{$vo.is_show}" onclick="listTable.switchBt(this, '{:url('category/show')}', {$vo.cat_id})">
+                  <div class="circle"></div>
+                  </div>
+                  {/if}
+                </div>
+              </td>
+              <td>
+                <!-- 价格分级 -->
+                <div class="tDiv">
+                  <input type="text" name="grade" class="text w40" value="0" onkeyup="listTable.editInput(this, 'edit_grade',  {$vo.cat_id})">
+                </div>
+              </td>
+              <td>
+                <!-- 分类排序 -->
+                <div class="tDiv">
+                  <input type="text" name="sort_order" class="text w40" value={$vo.sort_order} onkeyup="listTable.sort(this, '{:url('category/listorder')}',  {$vo.cat_id})">
+                </div>
+              </td>
+              <td class="handle">
+                <div class="tDiv a2">
+                  <a href="{:url('category/edit',['cat_id'=>$vo.cat_id])}" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                  <a href="javascript:remove_cat({$vo.cat_id},'{:url('category/remove')}');" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                </div>
+              </td>
+            </tr>
+            {/volist}
+          </tbody>
+          <tfoot>
+                  <tr>
+                    <td colspan="12">
+                      <div class="tDiv">
+                        <div class="list-page">
+                          <div id="turn-page">
+                            <span class="page page_1">总计 <em id="totalRecords">{$count}</em>个记录</span>
+                            <span class="page page_2">分为<em id="totalPages">2</em>页</span>
+                            <span>页当前第<em id="pageCurrent">1</em></span>
+                            <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                            <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                            <span id="page-link">
+                              <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                              <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                              <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                                <option value="1">1</option><option value="2">2</option>
+                              </select>
+                              <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                              <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                            </span>
+                           
+                          </div>
+                          </div>
+
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+    {/block}
+    {block name="js"}
+<script type="text/javascript">
+  function remove_cat(id,url){
+      if (confirm("你确定要删除吗？")) {
+        var postData={"id":id};
+        $.get(url, postData, function(result){
+        // 逻辑
+        if(result.code == 1) {
+            location.href=result.data;
+        }else {
+            pbDialog(result.msg,"",0);
+        }
+    },"json");
+    }
+  } 
+function ajaxPost(url,postData) {
+   // 抛送http
+    $.post(url, postData, function(result){
+        // 逻辑
+        if(result.code == 1) {
+            location.href=result.data;
+        }else {
+            pbDialog(result.msg,"",0);
+        }
+    },"json");
+}
+</script>
+{/block}

@@ -1,0 +1,150 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">营销活动</a>
+     <a><cite>添加秒杀活动</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        <li>秒杀活动仅需设置结束时间，截止时间内多个活动可同时进行。建议标题以分类区分便于管理。</li>
+        <li>秒杀活动时间都是从0点到0点。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-content">
+        <div class="mian-info">
+          <form action="seckill.php?act=insert" id="myForm" method="post" name="theForm" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="switch_info">
+             <div class="items">
+              <div class="item">
+                <div class="label"><span class="require-field">*</span>活动标题：</div>
+                <div class="label_value">
+                  <input type="text" name="acti_title" id="acti_title" class="text" value="" autocomplete="off">
+                  <div class="notic"></div>
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label"><span class="require-field">*</span>活动起止时间：</div>
+                <div class="label_value text_time">
+                  <input type="text" name="begin_time" value="2019-04-12" id="start_time" class="text mr0" autocomplete="off" readonly="">
+                  <span class="bolang">&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                  <input type="text" name="acti_time" value="2019-04-19" id="end_time" class="text" autocomplete="off" readonly="">
+                  <div class="form_prompt"></div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="label">上线/下架：</div>
+                <div class="label_value">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item"> 
+                      <input name="is_putaway" type="radio" class="ui-radio" value="0" id="is_putaway_0" checked="checked">
+                      <label for="is_putaway_0" class="ui-radio-label">下架</label>
+                    </div>
+                    <div class="checkbox_item"> 
+                      <input name="is_putaway" type="radio" class="ui-radio" value="1" id="is_putaway_1" checked="checked">
+                      <label for="is_putaway_1" class="ui-radio-label">上架</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="item">
+                <div class="label">&nbsp;</div>
+                <div class="label_value info_btn">
+                  <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                  <input type="hidden" name="act" value="insert">
+                  <input type="hidden" name="sec_id" value="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    </div>  
+  {/block}
+   {block name="js"}  
+<script type="text/javascript">
+ 
+  $(function(){
+    //表单验证
+    $("#submitBtn").click(function(){
+      if($("#myForm").valid()){
+        $("#myForm").submit();
+      }
+    });
+  
+    $('#myForm').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules:{
+        acti_title :{
+          required : true
+        },
+        begin_time :{
+          required : true
+        },
+        acti_time :{
+          required : true,
+          compareDate:"#start_time"
+        }
+      },
+      messages:{
+        acti_title:{
+           required : '<i class="icon icon-exclamation-sign"></i>'+acti_title_not_null
+        },
+        begin_time :{
+          required : '<i class="icon icon-exclamation-sign"></i>'+start_data_notnull
+        },
+        acti_time :{
+          required : '<i class="icon icon-exclamation-sign"></i>'+end_data_notnull,
+          compareDate:'<i class="icon icon-exclamation-sign"></i>'+data_invalid_gt
+        }
+      },
+      onfocusout:function(element,event){
+        //实时去除结束时间是否大于开始时间验证
+        var name = $(element).attr("name");
+        if(name == "acti_time"){
+          var endDate = $(element).val();
+          var startDate = $(element).siblings("input[name='begin_time']").val();
+          
+          var date1 = new Date(Date.parse(startDate.replace(/-/g, "/")));
+          var date2 = new Date(Date.parse(endDate.replace(/-/g, "/")));
+          if(date1 > date2){
+            $(element).removeClass("error");
+            $(element).siblings(".form_prompt").html("");
+          }
+        }
+      }
+    });
+  });
+
+  //时间选择
+  var opts1 = {
+    'targetId':'start_time',
+    'triggerId':['start_time'],
+    'alignId':'start_time',
+    'hms':'off',
+    'format':'-'
+  }
+  var opts2 = {
+    'targetId':'end_time',
+    'triggerId':['end_time'],
+    'alignId':'end_time',
+    'hms':'off',
+    'format':'-'
+  }
+  xvDate(opts1);
+  xvDate(opts2);
+    
+</script>
+{/block}

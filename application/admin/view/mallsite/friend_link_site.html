@@ -1,0 +1,117 @@
+{extend name='public/base' /}
+{block name='content'}
+{include file="mallsite/menu"/}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>打印设置</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示所有友情链接信息列表。</li>
+        <li>可点击链接进入相应网页，也可进行编辑或删除友情链接。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('friendLinkAdd')}"><div class="fbutton"><div class="add" title="添加新链接"><span><i class="icon icon-plus"></i>添加新链接</span></div></div></a>
+        </div>
+      </div>
+      <div class="common-content">
+        <div class="list-div" id="listDiv">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th width="20%"><div class="tDiv"><a href="javascript:listTable.sort('link_name');">链接名称</a></div></th>
+                <th width="35%"><div class="tDiv"><a href="javascript:listTable.sort('link_url');">链接地址</a></div></th>
+                <th width="20%"><div class="tDiv"><a href="javascript:listTable.sort('link_logo');">链接LOGO</a></div></th>
+                <th width="10%"><div class="tDiv"><a href="javascript:listTable.sort('show_order');">显示顺序</a></div></th>
+                <th width="10%" class="handle">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="">
+                <td><div class="tDiv">认证联盟</div></td>
+                <td>
+                  <div class="tDiv">
+                    <a href="http://si.trustutn.org/info?sn=932181009037067732556&amp;certType=1" target="_blank">http://si.trustutn.org/info?sn=932181009037067732556&amp;certType=1</a>
+                  </div>
+                </td>
+                <td>
+                  <div class="tDiv">
+                    <span class="show">
+                      <a href="http://v.trustutn.org/images/cert/bottom_small_img.png" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="http://v.trustutn.org/images/cert/bottom_small_img.png" ectype="tooltip" title="tooltip"></i></a>
+                    </span>
+                  </div>
+                </td>
+                <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_show_order',12 )" type="text"></div></td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="friend_link.php?act=edit&amp;id=12" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(12, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+              <tr class="">
+                <td><div class="tDiv">砚山自造广告</div></td>
+                <td>
+                  <div class="tDiv">
+                    <a href="http://www.huadezhao.com" target="_blank">http://www.huadezhao.com</a>
+                  </div>
+                </td>
+                <td>
+                  <div class="tDiv">
+                    <span class="show">
+                      <a href="https://www.maidezhao.com/data/afficheimg/1533144499780195168.jpg" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="https://www.maidezhao.com/data/afficheimg/1533144499780195168.jpg" ectype="tooltip" title="tooltip"></i></a>
+                    </span>
+                  </div>
+                </td>
+                <td><div class="tDiv"><input name="sort_order" class="text w40" value="4" onkeyup="listTable.editInput(this, 'edit_show_order',11 )" type="text"></div></td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="friend_link.php?act=edit&amp;id=11" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove(11, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="12">
+                  <div class="list-page">
+                    <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                    <div id="turn-page">
+                      <span class="page page_1">总计 <em id="totalRecords">2</em>个记录</span>
+                      <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                      <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                      <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                      <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                      <span id="page-link">
+                        <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                        <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                        <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                          <option value="1">1</option>        </select>
+                          <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                          <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                        </span>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/block}

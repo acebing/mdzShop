@@ -1,0 +1,192 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">会员管理</a>
+      <a><cite>收货地址列表</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>请慎重编辑会员的收货地址。</li>
+          <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="refresh ml0">
+          <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+          <div class="refresh_span">刷新 - 共118条记录</div>
+        </div>
+        <div class="search">
+          <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+            <div class="input">
+              <input type="text" name="user_name" class="text nofocus " placeholder="会员名称" autocomplete="off">
+              <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="common-content">
+        <form action="" name="listForm" method="POST" onsubmit="return confirm_bath()">
+          <div class="list-div" id="listdiv">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                  <th width="5%"><div class="tDiv">编号</div></th>
+                  <th width="8%"><div class="tDiv">会员名称</div></th>
+                  <th width="12%"><div class="tDiv">配送区域</div></th>
+                  <th width="8%"><div class="tDiv">收货人姓名</div></th>
+                  <th width="15%"><div class="tDiv">详细地址</div></th>
+                  <th width="8%"><div class="tDiv">电话</div></th>
+                  <th width="8%"><div class="tDiv">手机</div></th>
+                  <th width="12%"><div class="tDiv">电子邮件</div></th>
+                  <th width="10%"><div class="tDiv">会员更新时间</div></th>
+                  <th width="11%"><div class="tDiv">操作</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" class="checkbox" value="146" id="checkbox_146"><label for="checkbox_146" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">146</div></td>
+                  <td><div class="tDiv">wxb076e15524754</div></td>
+                  <td><div class="tDiv">中国  云南  文山  砚山县</div></td>
+                  <td><div class="tDiv">林业小区48号</div></td>
+                  <td><div class="tDiv">云南省文山壮族苗族自治州砚山县林业小区48号</div></td>
+                  <td><div class="tDiv"></div></td>
+                  <td><div class="tDiv">13887692676</div></td>
+                  <td><div class="tDiv"></div></td>
+                  <td><div class="tDiv"></div></td>
+                  <td class="handle">
+                    <div class="tDiv a2">
+                      <a href="user_address_log.php?act=edit&amp;address_id=146&amp;user_id=709" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:confirm_redirect('您确定要删除该会员收货地址吗？', 'user_address_log.php?act=remove&amp;id=146')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                    </div>
+                  </td>
+                </tr>
+                 <tr class="">
+                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" class="checkbox" value="146" id="checkbox_146"><label for="checkbox_146" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">146</div></td>
+                  <td><div class="tDiv">wxb076e15524754</div></td>
+                  <td><div class="tDiv">中国  云南  文山  砚山县</div></td>
+                  <td><div class="tDiv">林业小区48号</div></td>
+                  <td><div class="tDiv">云南省文山壮族苗族自治州砚山县林业小区48号</div></td>
+                  <td><div class="tDiv"></div></td>
+                  <td><div class="tDiv">13887692676</div></td>
+                  <td><div class="tDiv"></div></td>
+                  <td><div class="tDiv"></div></td>
+                  <td class="handle">
+                    <div class="tDiv a2">
+                      <a href="user_address_log.php?act=edit&amp;address_id=146&amp;user_id=709" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:confirm_redirect('您确定要删除该会员收货地址吗？', 'user_address_log.php?act=remove&amp;id=146')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="12">
+                    <div class="tDiv">
+                      <div class="tfoot_btninfo">
+                        <input type="hidden" name="act" value="batch_remove">
+                        <input type="submit" value="删除" name="remove" ectype="btnSubmit" class="btn btn_disabled" disabled="disabled">
+                      </div>
+                      <div class="list-page">
+                        <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                        <div id="turn-page">
+                          <span class="page page_1">总计 <em id="totalRecords">118</em>个记录</span>
+                          <span class="page page_2">分为<em id="totalPages">8</em>页</span>
+                          <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                          <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                          <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                          <span id="page-link">
+                            <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                            <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                            <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="8">8</option>        </select>
+                              <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                              <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="gj_search">
+        <div class="search-gao-list" id="searchBarOpen">
+          <i class="icon icon-zoom-in"></i>高级搜索                </div>
+          <div class="search-gao-bar">
+            <div class="handle-btn" id="searchBarClose"><i class="icon icon-zoom-out"></i>收起边栏</div>
+            <div class="title"><h3>高级搜索</h3></div>
+            <form method="get" name="formSearch_senior" action="javascript:searchAddress()">
+              <div class="searchContent">
+                <div class="layout-box">
+                  <dl>
+                    <dt>会员名称</dt>
+                    <dd><input type="text" value="" name="user_name" class="s-input-txt" autocomplete="off"></dd>
+                  </dl>
+                  <dl>
+                    <dt>收货人姓名</dt>
+                    <dd><input type="text" value="" name="consignee" class="s-input-txt" autocomplete="off"></dd>
+                  </dl>
+                  <dl>
+                    <dt>手机</dt>
+                    <dd><input type="text" value="" name="mobile" class="s-input-txt" autocomplete="off"></dd>
+                  </dl>
+                </div>
+              </div>
+              <div class="bot_btn">
+                <input type="submit" class="btn red_btn" name="tj_search" value="提交查询"><input type="reset" class="btn btn_reset" name="reset" value="重置">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {/block}
+  {block name="js"}
+<script type="text/javascript">
+    $(function () {
+      listTable.recordCount = 120;
+    listTable.pageCount = 8;
+
+        listTable.filter.consignee = '';
+        listTable.filter.user_name = '';
+        listTable.filter.mobile = '';
+        listTable.filter.sort_by = 'a.address_id';
+        listTable.filter.sort_order = 'DESC';
+        listTable.filter.record_count = '120';
+        listTable.filter.page_size = '15';
+        listTable.filter.page = '1';
+        listTable.filter.page_count = '8';
+        listTable.filter.start = '0';
+        function confirm_bath()
+    {
+        cfm = '您确定要删除所有选中的收货地址吗？';
+        return confirm(cfm);
+    }
+
+    /**
+    * 搜索用户
+    */
+  function searchAddress()
+  {
+    var frm = $("form[name='formSearch_senior']");
+     listTable.filter['consignee'] = Utils.trim(frm.find("input[name='consignee']").val());
+     listTable.filter['user_name'] = Utils.trim(($("form[name='searchForm']").find("input[name='user_name']").val() != '') ? $("form[name='searchForm']").find("input[name='user_name']").val() :  frm.find("input[name='user_name']").val());
+     listTable.filter['mobile'] = Utils.trim(frm.find("input[name='mobile']").val());
+     listTable.filter['page'] = 1;
+     listTable.loadList();
+  }
+    });
+  </script>
+  {/block}

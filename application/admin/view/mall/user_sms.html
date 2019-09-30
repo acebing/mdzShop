@@ -1,0 +1,95 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">会员管理</a>
+      <a href="">发票管理</a>
+      <a><cite>查看发票</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>该页面展示了群发短信列表。</li>
+          <li>您可在此页查看短信发送情况。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-head">
+          <div class="fl">
+            <a href="mass_sms.php?act=add"><div class="fbutton"><div class="add" title="添加"><span><i class="icon icon-plus"></i>添加</span></div></div></a>
+          </div>
+          <div class="refresh">
+            <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+            <div class="refresh_span">刷新 - 共1条记录</div>
+          </div>
+        </div>
+        <div class="common-content">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                  <th width="5%"><div class="tDiv">编号</div></th>
+                  <th width="12%"><div class="tDiv">短信签名</div></th>
+                  <th width="10%"><div class="tDiv">短信模板</div></th>
+                  <th width="25%"><div class="tDiv">发送短信的内容</div></th>
+                  <th width="15%"><div class="tDiv">添加时间</div></th>
+                  <th width="10%"><div class="tDiv">发送结果</div></th>
+                  <th width="20%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="1" class="checkbox" id="checkbox_1"><label for="checkbox_1" class="checkbox_stars"></label></div></td>
+                  <td><div class="tDiv">1</div></td>
+                  <td><div class="tDiv">买得着</div></td>
+                  <td><div class="tDiv">123456</div></td>
+                  <td><div class="tDiv">变量格式${name}；示例：亲爱的${user_name}，${shop_name}正在${content}，快来参加吧！</div></td>
+                  <td><div class="tDiv">2019-03-19 13:49:26</div></td>
+                  <td><div class="tDiv">
+                    <div class="tlist"><span>未发：3 条</span></div>
+                    <div class="tlist"><span>成功：0 条</span></div>
+                    <div class="tlist"><span>失败：0 条</span></div>
+                  </div></td>
+                  <td class="handle">
+                    <div class="tDiv a3">
+                      <a href="mass_sms.php?act=log_list&amp;template_id=1" title="发送短信" class="btn_log"><i class="sc_icon sc_icon_see"></i>发送短信</a>
+                      <a href="mass_sms.php?act=edit&amp;id=1" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                      <a href="javascript:confirm_redirect('您确定要删除该短信模板吗？', 'mass_sms.php?act=remove&amp;id=1')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <div class="list-page">
+                      <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                      <div id="turn-page">
+                        <span class="page page_1">总计 <em id="totalRecords">1</em>个记录</span>
+                        <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                        <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                        <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                        <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                        <span id="page-link">
+                          <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                          <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                          <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                            <option value="1">1</option>        </select>
+                            <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                            <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                          </span>
+                        </div>
+
+
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+    {/block}

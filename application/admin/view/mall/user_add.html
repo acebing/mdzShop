@@ -1,0 +1,198 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">会员管理</a>
+      <a><cite>添加会员</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>该页面展示所有实名认证的会员信息。</li>
+          <li>可进行审核实名信息，请谨慎编辑会员的实名信息。</li>
+          <li>可以输入会员名称关键字进行搜索，侧边栏可进行高级搜索。</li>
+        </ul>
+      </div>
+      <div class="mian-info">
+        <form method="post" action="user/add" name="theForm" id="user_form" novalidate="novalidate">
+            <div class="switch_info">
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;会员名称：</div>
+                    <div class="label_value">
+                        <input type="text" id="username" name="username" class="text" value="" autocomplete="off" required lay-verify="required">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;邮件地址：</div>
+                    <div class="label_value">
+                        <input type="text" name="email" class="text" value="" id="email" autocomplete="off" aria-required="true" aria-invalid="true">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;登录密码：</div>
+                    <div class="label_value">
+                        <input type="password" style="display:none">
+                        <input type="password" name="password" class="text valid" value="" id="password" aria-required="true" aria-invalid="false">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label"><span class="require-field">*</span>&nbsp;确认密码：</div>
+                    <div class="label_value">
+                        <input type="password" style="display:none">
+                        <input type="password" name="confirm_password" class="text" value="" id="confirm_password">
+                        <div class="form_prompt"></div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">会员等级：</div>
+                    <div class="label_value">
+                        <div id="user_grade" class="imitate_select select_w320">
+                          <div class="cite">非特殊等级</div>
+                          <ul class="ps-container" style="display: none;">
+                             <li><a href="javascript:;" data-value="0" class="ftx-01">非特殊等级</a></li>
+                              <li><a href="javascript:;" data-value="11" class="ftx-01">微信</a></li>
+                              <li><a href="javascript:;" data-value="12" class="ftx-01">QQ</a></li>
+                              <li><a href="javascript:;" data-value="3" class="ftx-01">代销用户</a></li>
+                           <div class="ps-scrollbar-x-rail" style="width: 319px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 112px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></ul>
+                          <input name="user_rank" type="hidden" value="admin" id="user_grade_val">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">性别：</div>
+                    <div class="label_value">
+                        <div class="checkbox_items">
+                            <div class="checkbox_item">
+                                <input type="radio" class="ui-radio" name="sex" id="sex_0" value="0" checked="">
+                                <label for="sex_0" class="ui-radio-label">保密</label>
+                            </div>
+                            <div class="checkbox_item">
+                                <input type="radio" class="ui-radio" name="sex" id="sex_1" value="1" checked="">
+                                <label for="sex_1" class="ui-radio-label">男</label>
+                            </div>
+                            <div class="checkbox_item">
+                                <input type="radio" class="ui-radio" name="sex" id="sex_2" value="2" checked="">
+                                <label for="sex_2" class="ui-radio-label">女</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">出生日期：</div>
+                    <div class="label_value">
+                        <div class="date-item year">
+                            <div id="user_year" class="imitate_select select_w120">
+                              <div class="cite">1958</div>
+                              <ul class="ps-container ps-active-y" style="display: none;">
+                                  <li><a href="javascript:;" data-value="1956" class="ftx-01">1956</a></li>
+                                  <li><a href="javascript:;" data-value="1957" class="ftx-01">1957</a></li>
+                               <div class="ps-scrollbar-x-rail" style="width: 120px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 280px; display: inherit; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 43px;"></div></div></ul>
+                              <input name="birthdayYear" type="hidden" value="1958" id="year_val">
+                            </div>
+                        </div>
+                        <div class="date-item month">
+                            <div id="user_month" class="imitate_select select_w75">
+                              <div class="cite">请选择</div>
+                              <ul style="display: none;">
+                                <li><a href="javascript:;" data-value="1" class="ftx-01">1</a></li>
+                                <li><a href="javascript:;" data-value="2" class="ftx-01">2</a></li>
+                             </ul>
+                              <input name="birthdayMonth" type="hidden" value="" id="month_val">
+                            </div>
+                        </div>
+                        <div class="date-item day">
+                            <div id="user_day" class="imitate_select select_w75">
+                              <div class="cite">请选择</div>
+                              <ul style="display: none;">
+                                <li><a href="javascript:;" data-value="1" class="ftx-01">1</a></li>
+                                <li><a href="javascript:;" data-value="2" class="ftx-01">2</a></li>
+                             </ul>
+                              <input name="birthdayDay" type="hidden" value="" id="day_val">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="label">手机：</div>
+                    <div class="label_value"><input type="text" name="extend_field5" class="text" value="" autocomplete="off"></div>
+                </div>
+                <!---->
+                                                
+                <div class="item">
+                    <div class="label">&nbsp;</div>
+                    <div class="label_value info_btn">
+                        <a href="javascript:;" class="button" id="submitBtn"> 确定 </a>
+                        <input type="hidden" name="act" value="insert">
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {/block}
+  {block name="js"}
+ <script type="text/javascript">
+   //表单验证
+$(function(){
+  $("#submitBtn").click(function(){
+    if($("#user_form").valid()){
+      $("#user_form").submit();
+    }
+  });
+
+  $('#user_form').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules : {
+      username : {
+        required : true,
+        rangelength:[3,10]
+      },
+      email : {
+        required : true,
+        email : true
+      },
+      password : {
+        required : true,
+        minlength:6
+      },
+      confirm_password : {
+        required : true,
+        equalTo:"#password"
+      }
+
+    },
+    messages : {
+      username : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'会员名称不能为空',
+        rangelength:'<i class="icon icon-exclamation-sign"></i>'+'会员名称最少3个字符，最长10个字符'
+      },
+      email : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'邮箱地址不能为空',
+        email : '<i class="icon icon-exclamation-sign"></i>'+'邮箱格式不正确，格式：xxxxxx@xxx.com'
+      },
+      password : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'密码不能为空',
+        minlength : '<i class="icon icon-exclamation-sign"></i>'+'密码至少为6位'
+      },
+      confirm_password : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'确认密码不能为空',
+        equalTo:'<i class="icon icon-exclamation-sign"></i>'+'确认密码与上面输入的密码不相同'
+      }
+    }
+  });
+});
+    </script>
+{/block}

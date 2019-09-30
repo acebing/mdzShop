@@ -1,0 +1,64 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+    <span class="layui-breadcrumb">
+      <a href="">平台设置</a>
+      <a href="">会员管理</a>
+      <a><cite>回复</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation mdz-m-b20" id="explanation">
+        <div class="ex_tit">
+          <i class="sc_icon"></i>
+          <h4>操作提示</h4>
+          <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>如果此条留言已经回复过后，继续回复将会更新原来的回复内容</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-content">
+          <div class="mian-info">
+            <div class="message-item message-item-user">
+              <i class="sc_icon sc_icon_dsz"></i>
+              <div class="tit">前一单还没发货，能一并包邮吗</div>
+              <div class="desc">前一单还没发货，能一并包邮吗</div>
+              <div class="btm">
+                <div class="andfoot">
+                  <p>【用户中心】<a href="mailto:wxea01415403022@qq.com">wxea01415403022</a> </p>
+                  <p>2018-10-29 12:11:49</p>
+                </div>
+              </div>
+            </div>
+            <div class="message-item message-item-admin">
+              <form method="post" action="user_msg.php?act=action" name="theForm" id="msg_form" novalidate="novalidate">
+                <i class="sc_icon sc_icon_dsz"></i>
+                <div class="lie">
+                  <div class="label">email：</div>
+                  <div class="value"><input type="text" name="user_email" class="message_text nofocus" value="wxea01415403022@qq.com" autocomplete="off"></div>
+                </div>
+                <div class="lie hf_nr">
+                  <div class="label">回复内容：</div>
+                  <div class="nr">
+                    <textarea name="msg_content" class="textarea" id="msg_content"></textarea>
+                    <div class="form_prompt ml100"></div>
+                  </div>
+                </div>
+                <div class="lie email_notify"><input type="checkbox" name="send_email_notice" class="ui-checkbox" value="" id="email_notify"><label for="email_notify" class="ui-label">邮件通知</label></div>
+                <div class="andfoot">
+                  
+                </div>
+                <div class="info_btn">
+                  <input type="button" class="button" id="submitBtn" value=" 确定 ">
+                  <input type="hidden" name="msg_id" value="7">      
+                  <input type="hidden" name="parent_id" value="">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/block}

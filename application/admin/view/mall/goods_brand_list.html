@@ -1,0 +1,149 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">平台商品管理</a>
+     <a><cite>平台分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>展示了商城自营品牌的相关信息。</li>
+        <li>可以通过品牌关键字搜索相关品牌信息。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('brand/add')}"><div class="fbutton"><div class="add" title="添加品牌"><span><i class="icon icon-plus"></i>添加品牌</span></div></div></a>
+          <a href="brand.php?act=create_brand_letter"><div class="fbutton"><div class="add" title="生成品牌首字母"><span><i class="icon icon-plus"></i>生成品牌首字母</span></div></div></a>
+        </div>        
+        <div class="refresh">
+          <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+          <div class="refresh_span">刷新 - 共86条记录</div>
+        </div>
+        <div class="search">
+          <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+            <div class="input">
+              <input type="text" name="brand_name" class="text nofocus" placeholder="品牌名称" autocomplete="off">
+              <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="common-content">
+        <form method="POST" action="comment_manage.php?act=batch_drop" name="listForm" onsubmit="return confirm_bath()">
+          <div class="list-div" id="listDiv">
+            <div class="flexigrid ht_goods_list">
+              <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                  <tr>
+                    <th width="5%"><div class="tDiv">编号</div></th>
+                    <th width="12%"><div class="tDiv">品牌中文名称</div></th>
+                    <th width="12%"><div class="tDiv">品牌英文名称</div></th>
+                    <th width="12%"><div class="tDiv">品牌首字母</div></th>
+                    <th width="8%"><div class="tDiv">品牌图片</div></th>
+                    <th width="20%"><div class="tDiv">品牌描述</div></th>
+                    <th width="6%"><div class="tDiv">排序</div></th>
+                    <th width="6%"><div class="tDiv">加入推荐</div></th>
+                    <th width="6%"><div class="tDiv">是否显示</div></th>
+                    <th width="10%" class="handle">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td><div class="tDiv">287</div></td>
+                    <td>
+                      <div class="tDiv">
+                        <span onclick="javascript:listTable.edit(this, 'edit_brand_name', 287)">砚七</span>
+                      </div>
+                    </td>
+                    <td><div class="tDiv">yanqi</div></td>
+                    <td><div class="tDiv">Y</div></td>
+                    <td>
+                      <div class="tDiv">
+                        <span class="show">
+                          <a href="../data/brandlogo/1540146282140302865.jpg" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="../data/brandlogo/1540146282140302865.jpg" ectype="tooltip" title="tooltip"></i></a>
+                        </span>
+                      </div>
+                    </td>
+                    <td><div class="tDiv"></div></td>
+                    <td><div class="tDiv"><input name="sort_order" class="text w40" value="50" onkeyup="listTable.editInput(this, 'edit_sort_order',287 )" type="text"></div></td>
+                    <td>
+                      <div class="tDiv">
+                        <div class="switch " title="否" onclick="listTable.switchBt(this, 'toggle_recommend', 287)">
+                          <div class="circle"></div>
+                        </div>
+                        <input type="hidden" value="0" name="">
+                      </div>
+                    </td>
+                    <td>
+                      <div class="tDiv">
+                        <div class="switch active" title="是" onclick="listTable.switchBt(this, 'toggle_show', 287)">
+                          <div class="circle"></div>
+                        </div>
+                        <input type="hidden" value="0" name="">
+                      </div>
+                    </td>                               
+                    <td class="handle">
+                      <div class="tDiv a2">
+                        <a href="brand.php?act=edit&amp;id=287" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                        <a href="javascript:;" onclick="listTable.remove(287, '你确认要删除选定的商品品牌吗？')" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="12">
+                      <div class="list-page">
+                       <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                       <div id="turn-page">
+                        <span class="page page_1">总计 <em id="totalRecords">86</em>个记录</span>
+                        <span class="page page_2">分为<em id="totalPages">6</em>页</span>
+                        <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                        <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                        <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                        <span id="page-link">
+                          <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                          <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                          <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="6">6</option>        </select>
+                            <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                            <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+                </table> 
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+ {/block}
+ {block name="js"}
+<script type="text/javascript">
+  
+  listTable.recordCount = 86;
+  listTable.pageCount = 6;
+  
+    listTable.filter.sort_by = 'brand_id';
+    listTable.filter.sort_order = 'DESC';
+    listTable.filter.record_count = '86';
+    listTable.filter.page_size = '15';
+    listTable.filter.page = '1';
+    listTable.filter.page_count = '6';
+    listTable.filter.start = '0';
+    
+  $(function(){
+    $('.nyroModal').nyroModal();
+  })  
+   
+</script>
+{/block}

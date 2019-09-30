@@ -1,0 +1,313 @@
+{extend name='public/mall_base' /}
+{block name='content'}
+  <div class="layui-body" style="padding: 20px;">
+  	<span class="layui-breadcrumb">
+     <a href="">订单管理</a>
+     <a><cite>退货原因列表</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>买家提交的退换货申请信息管理。</li>
+        <li>可通过订单号进行查询，侧边栏进行高级搜索。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="order.php?act=order_query"><div class="fbutton"><div class="add" title="订单查询"><span><i class="icon icon-plus"></i>订单查询</span></div></div></a>
+        </div>
+        <div class="search">
+          <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+            <div class="input">
+              <input type="text" name="order_sn" class="text nofocus" placeholder="订单号" autocomplete="off">
+              <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="common-content">
+        <form method="post" action="order.php?act=operate" name="listForm" onsubmit="return check()">
+          <div class="list-div" id="listDiv">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="19%"><div class="tDiv">编号</div></th>
+                  <th width="8%"><div class="tDiv">商家名称</div></th>
+                  <th width="6%"><div class="tDiv">类型</div></th>
+                  <th width="10%"><div class="tDiv">申请信息</div></th>
+                  <th width="6%"><div class="tDiv">应退金额</div></th>
+                  <th width="6%"><div class="tDiv">实退金额</div></th>
+                  <th width="6%"><div class="tDiv">数量</div></th>
+                  <th width="20%"><div class="tDiv">收货人</div></th>
+                  <th width="7%"><div class="tDiv">退款方式</div></th>
+                  <th width="7%"><div class="tDiv">订单状态</div></th>
+                  <th width="5%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="">
+                  <td><div class="tDiv"><p>流水号：2018101815240109109</p><p>订单号：2018101814537124794</p></div></td>
+                  <td>
+                    <div class="tDiv">
+                      <font class="red">砚山买得着商城</font>
+                    </div>
+                  </td>
+                  <td><div class="tDiv">换货</div></td>
+                  <td>
+                    <div class="tDiv">
+                      <p>申请人：wxa5a1215397621</p>
+                      <p>申请时间：10-18 15:23</p>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tDiv">
+                      <em>¥</em>0.00                                    </div>
+                    </td>
+                    <td><div class="tDiv">0.00</div></td>
+                    <td><div class="tDiv">1</div></td>
+                    <td><div class="tDiv">严维 [TEL: 18214530723] <br>云南  临沧  临翔区  </div></td>
+                    <td><div class="tDiv">退回到余额</div></td>
+                    <td><div class="tDiv">完成-<font class="red">已换货</font></div></td>
+                    <td class="handle">
+                      <div class="tDiv a2">
+                        <a href="order.php?act=return_info&amp;ret_id=2&amp;rec_id=1551" title="查看" class="btn_see"><i class="sc_icon sc_icon_see"></i>查看</a> 
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="15">
+                      <div class="list-page">
+                        <!-- $Id: page.lbi 14216 2008-03-10 02:27:21Z testyang $ -->
+
+                        <div id="turn-page">
+                          <span class="page page_1">总计 <em id="totalRecords">1</em>个记录</span>
+                          <span class="page page_2">分为<em id="totalPages">1</em>页</span>
+                          <!--<span>页当前第<em id="pageCurrent">1</em></span>-->
+                          <span class="page page_3"><i>每页</i><input type="text" size="3" id="pageSize" value="15" onkeypress="return listTable.changePageSize(event)"></span>
+                          <span class="page mr10"><i>至</i><input type="text" size="3" value="1" onkeyup="listTable.gotoPage($(this).val())"></span>
+                          <span id="page-link">
+                            <a href="javascript:listTable.gotoPageFirst()" class="first" title="第一页"></a>
+                            <a href="javascript:listTable.gotoPagePrev()" class="prev" title="上一页"></a>
+                            <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                              <option value="1">1</option>        </select>
+                              <a href="javascript:listTable.gotoPageNext()" class="next" title="下一页"></a>
+                              <a href="javascript:listTable.gotoPageLast()" class="last" title="最末页"></a>
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+        <div class="gj_search">
+          <div class="search-gao-list" id="searchBarOpen">
+            <i class="icon icon-zoom-in"></i>高级搜索                </div>
+            <div class="search-gao-bar">
+              <div class="handle-btn" id="searchBarClose"><i class="icon icon-zoom-out"></i>收起边栏</div>
+              <div class="title"><h3>高级搜索</h3></div>
+              <form method="get" name="formSearch_senior" action="javascript:searchReturnOrder()">
+                <div class="searchContent">
+                  <div class="layout-box">
+                    <dl>
+                      <dt>订单号</dt>
+                      <dd><input type="text" value="" name="order_sn" class="s-input-txt" autocomplete="off"></dd>
+                    </dl>
+                    <dl>
+                      <dt>流水号</dt>
+                      <dd><input type="text" value="" name="return_sn" class="s-input-txt" autocomplete="off"></dd>
+                    </dl>
+                    <dl>
+                      <dt>收货人</dt>
+                      <dd><input type="text" value="" name="consignee" class="s-input-txt" autocomplete="off"></dd>
+                    </dl>
+                    <dl>
+                      <dt>订单状态</dt>
+                      <dd>
+                        <div class="select_w145 imitate_select">
+                          <div class="cite">请选择...</div>
+                          <ul>
+                           <li><a href="javascript:;" data-value="-1">请选择...</a></li>
+                           <li><a href="javascript:;" data-value="0">已维修</a></li>
+                           <li><a href="javascript:;" data-value="1">已退款</a></li>
+                           <li><a href="javascript:;" data-value="2">已换货</a></li>
+                         </ul>
+                         <input name="return_type" type="hidden" value="-1">
+                       </div>
+                     </dd>
+                   </dl>
+                   <dl style="display:none" id="merchant_box">
+                    <dd>
+                      <div class="select_w145 imitate_select">
+                        <div class="cite">请选择</div>
+                        <ul>
+                         <li><a href="javascript:;" data-value="0">请选择</a></li>
+                         <li><a href="javascript:;" data-value="122">买得着</a></li>
+                       </ul>
+                       <input name="merchant_id" type="hidden" value="0">
+                     </div>
+                   </dd>
+                 </dl>
+                 <dl id="store_keyword" style="display:none">
+                  <dd><input type="text" value="" name="store_keyword" class="s-input-txt" autocomplete="off"></dd>
+                </dl>
+                <dl style="display:none" id="store_type">
+                  <dd>
+                    <div class="select_w145 imitate_select">
+                      <div class="cite">店铺类型</div>
+                      <ul>
+                       <li><a href="javascript:;" data-value="0">店铺类型</a></li>
+                       <li><a href="javascript:;" data-value="旗舰店">旗舰店</a></li>
+                       <li><a href="javascript:;" data-value="专卖店">专卖店</a></li>
+                       <li><a href="javascript:;" data-value="专营店">专营店</a></li>
+                       <li><a href="javascript:;" data-value="馆">馆</a></li>
+                     </ul>
+                     <input name="store_type" type="hidden" value="0">
+                   </div>
+                 </dd>
+               </dl>
+               <dl>
+                <dt>订单来源</dt>
+                <dd>
+                  <div id="order_referer" class="imitate_select select_w145">
+                    <div class="cite">请选择...</div>
+                    <ul>
+                     <li><a href="javascript:;" data-value="">请选择...</a></li>
+                     <li><a href="javascript:;" data-value="pc">PC</a></li>
+                     <li><a href="javascript:;" data-value="touch">WAP</a></li>
+                     <li><a href="javascript:;" data-value="mobile">APP</a></li>
+                     <li><a href="javascript:;" data-value="ecjia-cashdesk">收银台</a></li>
+                   </ul>
+                   <input name="order_referer" type="hidden" value="" id="order_referer_val">
+                 </div>
+               </dd>
+             </dl>                                 
+           </div>
+         </div>
+         <div class="bot_btn">
+          <input type="submit" class="btn red_btn" name="tj_search" value="提交查询">
+          <input type="reset" class="btn btn_reset" name="reset" value="重置">
+        </div>
+      </form>
+    </div>
+    </div>
+  {/block}
+  {block name="js"} 
+<script type="text/javascript">
+ 
+  //列表导航栏设置下路选项
+  $(".ps-container").perfectScrollbar();
+
+  //分页传值
+  listTable.recordCount = 1;
+  listTable.pageCount = 1;
+  listTable.query = 'return_list_query';
+
+    listTable.filter.order_sn = '';
+    listTable.filter.return_sn = '';
+    listTable.filter.order_id = '0';
+    listTable.filter.consignee = '';
+    listTable.filter.email = '';
+    listTable.filter.address = '';
+    listTable.filter.zipcode = '';
+    listTable.filter.tel = '';
+    listTable.filter.mobile = '0';
+    listTable.filter.shipping_id = '0';
+    listTable.filter.pay_id = '0';
+    listTable.filter.order_status = '-1';
+    listTable.filter.shipping_status = '-1';
+    listTable.filter.pay_status = '-1';
+    listTable.filter.user_id = '0';
+    listTable.filter.user_name = '';
+    listTable.filter.composite_status = '-1';
+    listTable.filter.group_buy_id = '0';
+    listTable.filter.return_type = '-1';
+    listTable.filter.seller_list = '0';
+    listTable.filter.sort_by = 'ret_id';
+    listTable.filter.sort_order = 'DESC';
+    listTable.filter.order_referer = '';
+    listTable.filter.start_time = '';
+    listTable.filter.end_time = '';
+    listTable.filter.rs_id = '0';
+    listTable.filter.page = '1';
+    listTable.filter.page_size = '15';
+    listTable.filter.store_search = '-1';
+    listTable.filter.merchant_id = '0';
+    listTable.filter.store_keyword = '';
+    listTable.filter.record_count = '1';
+    listTable.filter.page_count = '1';
+    
+
+  $.gjSearch("-240px");  //高级搜索
+  
+  $.divselect("#shop_name_select","#shop_name_val",function(obj){
+    var val = obj.attr("data-value");
+    get_store_search(val);
+  });
+  
+  function get_store_search(val){
+        if(val == 1){
+      $("#merchant_box").css("display",'');
+      $("#store_keyword").css("display",'none');
+      $("#store_type").css("display",'none')
+        }else if(val == 2){
+      $("#merchant_box").css("display",'none');
+      $("#store_keyword").css("display",'');
+      $("#store_type").css("display",'none')
+        }else if(val == 3){
+      $("#merchant_box").css("display",'none');
+      $("#store_keyword").css("display",'');
+      $("#store_type").css("display",'')
+        }else{
+      $("#merchant_box").css("display",'none');
+      $("#store_keyword").css("display",'none');
+      $("#store_type").css("display",'none')
+        }
+  }
+
+  /* 搜索订单 */
+    function searchReturnOrder()
+    {
+        var frm = $("form[name='formSearch_senior']");
+        listTable.filter['store_search'] = Utils.trim(frm.find("input[name='store_search']").val());
+        listTable.filter['merchant_id'] = Utils.trim(frm.find("input[name='merchant_id']").val());
+        listTable.filter['store_keyword'] = Utils.trim(frm.find("input[name='store_keyword']").val());
+        listTable.filter['store_type'] = Utils.trim(frm.find("input[name='store_type']").val());
+        listTable.filter['order_referer'] = Utils.trim(frm.find("input[name='order_referer']").val());
+    
+        listTable.filter['order_sn'] = Utils.trim(($("form[name='searchForm']").find("input[name='order_sn']").val() != '') ? $("form[name='searchForm']").find("input[name='order_sn']").val() :  frm.find("input[name='order_sn']").val());
+    listTable.filter['return_sn'] = Utils.trim(frm.find("input[name='return_sn']").val());
+        listTable.filter['consignee'] = Utils.trim(frm.find("input[name='consignee']").val());
+        listTable.filter['return_type'] = frm.find("input[name='return_type']").val();  
+        listTable.filter['page'] = 1;
+        listTable.loadList();
+    }
+
+    function check(){
+    var snArray = new Array();
+    var eles = document.forms['listForm'].elements;
+    
+    for (var i=0; i<eles.length; i++){
+      if (eles[i].tagName == 'INPUT' && eles[i].type == 'checkbox' && eles[i].checked && eles[i].value != 'on'){
+        snArray.push(eles[i].value);
+      }
+    }
+    
+    if (snArray.length == 0){
+      return false;
+    }else{
+      eles['order_id'].value = snArray.toString();
+      return true;
+    }
+    }
+  
+</script>
+</html>
