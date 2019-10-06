@@ -16,11 +16,18 @@ class Category extends Base
         $count= $this->obj->count();
         // echo($count);
         // exit();
+        // \ Map::getLngLat("丘北县");
+        // echo "string";
+        // exit();
         return $this->view->fetch('mall/goods_category_list', [
             'categorys'=> $categorys,
             'count'    => $count,
         ]);
     }
+    // public function map()
+    // {
+    //     return \ Map::staticimage('丘北');
+    // }
     // 商品分类添加
     public function add()
     {   
