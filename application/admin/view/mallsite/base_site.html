@@ -1,8 +1,7 @@
-
 {extend name='public/base' /}
 {block name='content'}
 {include file="mallsite/menu"/}
-  <div class="layui-body" style="padding: 20px;">
+<div class="layui-body" style="padding: 20px;">
   	<span class="layui-breadcrumb">
      <a href="">平台设置</a>
      <a><cite>基本设置</cite></a>
@@ -23,202 +22,161 @@
       <div class="mian-info">
         <form action="" id="article_form">
           <div class="switch_info shopConfig_switch">
-            <div class="item shop_name" data-val="101">
+            <div class="item shop_name">
               <div class="label">平台名称：</div>
               <div class="label_value">
                 <input type="text" name="value[101]" class="text shop_name" value="买得着商城" autocomplete="off" id="title">
                 <div class="form_prompt"></div>
               </div>
-
             </div>
-            <div class="item shop_title" data-val="102">
+            <div class="item shop_title">
               <div class="label">平台标题：</div>
               <div class="label_value">
-                <input type="text" name="value[102]" class="text shop_title" value="砚山买得着商城" autocomplete="off">
+                <input type="text" name="" class="text shop_title" value="" autocomplete="off">
                 <div class="form_prompt"></div>
-                <div class="notic">平台的标题，将显示在浏览器的标题栏Title</div>    </div>
-
+                <div class="notic">平台的标题，将显示在浏览器的标题栏Title</div>
               </div>
-              <div class="item shop_desc" data-val="103">
-                <div class="label">平台描述：</div>
-                <div class="label_value">
-                  <input type="text" name="value[103]" class="text shop_desc" value="买得着--云南省跨境电商项目合作企业" autocomplete="off">
-                  <div class="form_prompt"></div>
-                  <div class="notic">平台描述内容，将显示在浏览器的Description</div>    </div>
-
+            </div>
+            <div class="item shop_desc">
+              <div class="label">平台描述：</div>
+              <div class="label_value">
+                <input type="text" name="value[103]" class="text shop_desc" value="买得着--云南省跨境电商项目合作企业" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台描述内容，将显示在浏览器的Description</div>
+              </div>
+            </div>
+            <div class="item shop_keywords">
+              <div class="label">平台关键字：</div>
+              <div class="label_value">
+                <input type="text" name="value[104]" class="text shop_keywords" value="砚山买得着 买得着 农村电商 文山三七 绿粑粑" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台的关键字，将显示在浏览器的Keywords</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>&nbsp;地区选择：</div>
+              <div class="label_value">
+                <div id="dlProvinces" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
+                    <input type="hidden" value="" name="province" id="selProvinces">
+                    <div class="txt">省/直辖市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;">
+                       {volist name='$region' id='vo'}
+                       <span class="liv" data-text="{$vo.region_name}" data-type="{$vo.region_type}" data-value="{$vo.region_id}">{$vo.region_name}</span>
+                       {/volist}
+                    </div>
                 </div>
-                <div class="item shop_keywords" data-val="104">
-                  <div class="label">平台关键字：</div>
-                  <div class="label_value">
-                    <input type="text" name="value[104]" class="text shop_keywords" value="砚山买得着 买得着 农村电商 文山三七 绿粑粑" autocomplete="off">
-                    <div class="form_prompt"></div>
-                    <div class="notic">平台的关键字，将显示在浏览器的Keywords</div>    </div>
-
+                <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
+                    <input type="hidden" value="" name="city" id="selCities">
+                    <div class="txt">州、市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                </div>
+                <div id="dlRegion" class="ui-dropdown smartdropdown alien" style="z-index: 97;">
+                    <input type="hidden" value="" name="district" id="selDistricts">
+                    <div class="txt">区/县</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                </div>  
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item shop_address" data-val="108">
+              <div class="label">详细地址：</div>
+              <div class="label_value">
+                <input type="text" name="value[108]" class="text shop_address" value="砚山县林业二区" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台详细地址，不显示在前台</div>
+              </div>
+            </div>
+            <div class="item service_phone" data-val="115">
+              <div class="label">客服电话：</div>
+              <div class="label_value">
+                <input type="text" name="value[115]" class="text service_phone" value="0876-3844408" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台客服电话，联系平台电话，例：入驻页面导航显示的电话</div>
+              </div>
+            </div>
+            <div class="item shop_closed" data-val="116">
+              <div class="label">暂时关闭网站：</div>
+              <div class="label_value">
+                <div class="checkbox_items">
+                  <div class="checkbox_item">
+                    <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_0" value="0" checked="true">
+                    <label for="value_116_0" class="ui-radio-label">否</label>
                   </div>
-                  <div class="item shop_country" data-val="105">
-                    <div class="label">所在国家：</div>
-                    <div class="ui-dropdown smartdropdown alien" style="z-index: 100;">
-                      <input type="hidden" value="1" name="value[105]" id="selProvinces">
-                      <div class="txt">中国</div>
-                      <i class="down u-dropdown-icon"></i>
-                      <div class="options clearfix" style="max-height:300px;">
-                        <span class="liv" data-text="中国" data-type="1" data-value="1">中国</span>
-                      </div>
-                    </div>
+                  <div class="checkbox_item">
+                    <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_1" value="1">
+                    <label for="value_116_1" class="ui-radio-label">是</label>
                   </div>
-                  <div class="item shop_province" data-val="106">
-                    <div class="label">所在省份：</div>
-                    <div class="ui-dropdown smartdropdown alien" style="z-index: 99;">
-                      <input type="hidden" value="30" name="value[106]" id="selProvinces">
-                      <div class="txt">云南</div>
-                      <i class="down u-dropdown-icon"></i>
-                      <div class="options clearfix" style="max-height:300px;">
-                        <span class="liv" data-text="云南" data-type="2" data-value="30">云南</span>
-                        <span class="liv" data-text="浙江" data-type="2" data-value="31">浙江</span>
-                        <span class="liv" data-text="重庆" data-type="2" data-value="32">重庆</span>
-                        <span class="liv" data-text="香港" data-type="2" data-value="33">香港</span>
-                        <span class="liv" data-text="澳门" data-type="2" data-value="34">澳门</span>
-                        <span class="liv" data-text="台湾" data-type="2" data-value="35">台湾</span>
-                      </div>
-                    </div>
+                </div>
+                <div class="form_prompt"></div>
+                <div class="notic">平台需升级或者其他原因临时关闭网站</div>
+              </div>
+            </div>
+            <div class="item close_comment" data-val="117">
+              <div class="label">关闭网店的原因：</div>
+              <div class="label_value">
+                <textarea class="textarea" name="value[117]" id="role_describe"></textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">平台临时关闭网站说明原因</div>
+              </div>
+            </div>
+            <div class="item shop_logo" data-val="118">
+                <div class="label">平台 Logo：</div>
+                <div class="label_value">
+                  <div class="type-file-box">
+                    <input type="button" name="button" id="button" class="type-file-button" value="">
+                    <input type="file" class="type-file-file" name="shop_logo" size="30" data-state="imgfile" hidefocus="true" value="">
+                    <span class="show">
+                      <a href="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/logo.gif" target="_blank" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/logo.gif" ectype="tooltip" title="tooltip"></i></a>
+                    </span>
+                    <input type="text" name="textfile" class="type-file-text" id="textfield" readonly="">
                   </div>
-                  <div class="item shop_city" data-val="107">
-                    <div class="label">所在城市：</div>
-                    <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
-                      <input type="hidden" value="379" name="value[107]" id="selCities">
-                      <div class="txt">文山</div>
-                      <i class="down u-dropdown-icon"></i>
-                      <div class="options clearfix" style="max-height:300px;">
-                        <span class="liv hide" data-text="市" data-value="0">市</span>
-                        <span class="liv" data-text="砚山" data-type="3" data-value="3409">砚山</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item shop_address" data-val="108">
-                    <div class="label">详细地址：</div>
-                    <div class="label_value">
-                      <input type="text" name="value[108]" class="text shop_address" value="砚山县林业二区" autocomplete="off">
-                      <div class="form_prompt"></div>
-                      <div class="notic">平台详细地址，不显示在前台</div>    </div>
-
-                    </div>
-                    <div class="item qq" data-val="109">
-                      <div class="label">客服QQ号码：</div>
-                      <div class="label_value">
-                        <textarea class="textarea" name="value[109]" id="role_describe"></textarea>
-                        <div class="form_prompt"></div>
-                        <div class="notic">QQ客服名称和号码请用“|”隔开（如：客服1|123456），如果您有多个客服的QQ号码，请换行。</div>    </div>
-                      </div>
-                      <div class="item service_email" data-val="114">
-                        <div class="label">客服邮件地址：</div>
-                        <div class="label_value">
-                          <input type="text" name="value[114]" class="text service_email" value="shenlong@maidezhao.com" autocomplete="off">
-                          <div class="form_prompt"></div>
-                          <div class="notic">平台客服邮箱地址，接收发送的信息</div>    </div>
-
-                        </div>
-                        <div class="item service_phone" data-val="115">
-                          <div class="label">客服电话：</div>
-                          <div class="label_value">
-                            <input type="text" name="value[115]" class="text service_phone" value="0876-3844408" autocomplete="off">
-                            <div class="form_prompt"></div>
-                            <div class="notic">平台客服电话，联系平台电话，例：入驻页面导航显示的电话</div>    </div>
-
-                          </div>
-                          <div class="item shop_closed" data-val="116">
-                            <div class="label">暂时关闭网站：</div>
-                            <div class="label_value">
-                              <div class="checkbox_items">
-                                <div class="checkbox_item">
-                                  <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_0" value="0" checked="true">
-                                  <label for="value_116_0" class="ui-radio-label">否</label>
-                                </div>
-                                <div class="checkbox_item">
-                                  <input type="radio" name="value[116]" class="ui-radio evnet_shop_closed" id="value_116_1" value="1">
-                                  <label for="value_116_1" class="ui-radio-label">是</label>
-                                </div>
-                              </div>
-                              <div class="form_prompt"></div>
-                              <div class="notic">平台需升级或者其他原因临时关闭网站</div>    </div>
-                            </div>
-                            <div class="item close_comment" data-val="117">
-                              <div class="label">关闭网店的原因：</div>
-                              <div class="label_value">
-                                <textarea class="textarea" name="value[117]" id="role_describe"></textarea>
-                                <div class="form_prompt"></div>
-                                <div class="notic">平台临时关闭网站说明原因</div>    </div>
-                              </div>
-                              <div class="item shop_logo" data-val="118">
-                                <div class="label">平台 Logo：</div>
-                                <div class="label_value">
-                                  <div class="type-file-box">
-                                    <input type="button" name="button" id="button" class="type-file-button" value="">
-                                    <input type="file" class="type-file-file" name="shop_logo" size="30" data-state="imgfile" hidefocus="true" value="">
-                                    <span class="show">
-                                      <a href="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/logo.gif" target="_blank" class="nyroModal"><i class="icon icon-picture" data-tooltipimg="https://www.maidezhao.com/themes/ecmoban_dsc2017/images/logo.gif" ectype="tooltip" title="tooltip"></i></a>
-                                    </span>
-                                    <input type="text" name="textfile" class="type-file-text" id="textfield" readonly="">
-                                  </div>
-                                  <a href="shop_config.php?act=del&amp;code=shop_logo" class="btn red_btn h30 mr10 fl" style="line-height:30px;">删除</a>
-                                  <div class="form_prompt"></div>
-                                  <div class="notic">上传图片格式必须是gif,jpg,jpeg,png;图片大小在200kb之内，建议尺寸：159*100</div>    </div>
-                                </div>
-                                <div class="item user_notice" data-val="120">
-                                  <div class="label">用户中心公告：</div>
-                                  <div class="label_value">
-                                    <textarea class="textarea" name="value[120]" id="role_describe">平台公告</textarea>
-                                    <div class="form_prompt"></div>
-                                    <div class="notic">该信息将在用户中心欢迎页面显示</div>    </div>
-                                  </div>
-                                  <div class="item shop_notice" data-val="121">
-                                    <div class="label">平台公告：</div>
-                                    <div class="label_value">
-                                      <textarea class="textarea" name="value[121]" id="role_describe">说的是尽可能发动机发的看风景的看法呢</textarea>
-                                      <div class="form_prompt"></div>
-                                      <div class="notic">以上内容将显示在首页平台公告中,注意控制公告内容长度不要超过公告显示区域大小。</div>    </div>
-                                    </div>
-                                    <div class="item shop_reg_closed" data-val="122">
-                                      <div class="label">是否关闭注册：</div>
-                                      <div class="label_value">
-                                        <div class="checkbox_items">
-                                          <div class="checkbox_item">
-                                            <input type="radio" name="value[122]" class="ui-radio evnet_shop_reg_closed" id="value_122_0" value="1">
-                                            <label for="value_122_0" class="ui-radio-label">是</label>
-                                          </div>
-                                          <div class="checkbox_item">
-                                            <input type="radio" name="value[122]" class="ui-radio evnet_shop_reg_closed" id="value_122_1" value="0" checked="true">
-                                            <label for="value_122_1" class="ui-radio-label">否</label>
-                                          </div>
-                                        </div>
-                                        <div class="form_prompt"></div>
-                                        <div class="notic">平台是否关闭前台会员注册</div>    </div>
-                                      </div>
-                                      <div class="item sign" data-val="924">
-                                        <div class="label">发货日期起可退换货时间：</div>
-                                        <div class="label_value">
-                                          <input type="text" name="value[924]" class="text sign" value="7" autocomplete="off">
-                                          <div class="form_prompt"></div>
-                                          <div class="notic">以天数为单位</div>    </div>
-
-                                        </div>
-                                        <div class="item">
-                                          <div class="label">&nbsp;</div>
-                                          <div class="label_value info_btn">
-                                            <input type="submit" value=" 确定 " ectype="btnSubmit" class="button">  
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                  </div>
-                                </div>
-                              </div>
+                  <a href="shop_config.php?act=del&amp;code=shop_logo" class="btn red_btn h30 mr10 fl" style="line-height:30px;">删除</a>
+                  <div class="form_prompt"></div>
+                  <div class="notic">上传图片格式必须是gif,jpg,jpeg,png;图片大小在200kb之内，建议尺寸：159*100</div>    </div>
+            </div>
+            <div class="item user_notice" data-val="120">
+              <div class="label">用户中心公告：</div>
+              <div class="label_value">
+                <textarea class="textarea" name="value[120]" id="role_describe">平台公告</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">该信息将在用户中心欢迎页面显示</div>    </div>
+            </div>
+            <div class="item shop_notice" data-val="121">
+              <div class="label">平台公告：</div>
+              <div class="label_value">
+                <textarea class="textarea" name="value[121]" id="role_describe">说的是尽可能发动机发的看风景的看法呢</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">以上内容将显示在首页平台公告中,注意控制公告内容长度不要超过公告显示区域大小。</div>    </div>
+            </div>          
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn">
+                <input type="submit" value=" 确定 " ectype="btnSubmit" class="button">  
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-          {/block}
+  </div>
+</div>
+{/block}
 {block name='js'}                            
 <script type="text/javascript">
-    $(function () {
-      $.levelLink();
+  $(function () {
+    // 异步请求地址
+    var SCOPE = {
+      'city_url' : '{:url('api/region/getCitysByParentId')}',
+      'category_url' : '{:url('api/category/getCategoryByParentId')}',
+      'uploadify_swf' : '__STATIC__/admin/uploadify/uploadify.swf',
+      'image_upload' : '{:url('api/image/upload')}',
+    };
+    // 省份三级联动
+    $.levelLink(SCOPE.city_url);
+
     });
-    
 </script>
-  {/block}
+{/block}

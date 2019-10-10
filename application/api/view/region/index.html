@@ -1,0 +1,139 @@
+
+<html>
+<head>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <title>选择地址</title>
+</head>
+<body>
+<script>
+   
+        $('#Province').change(function(){
+            var provice = $('#Province').val();
+          console.log(provice);
+            $.ajax({
+                type:"post",
+                url:"{:url('region/city')}",
+                data:{"id": provice},
+                dataType:"",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success:function(data){
+                   // alert(777);
+                   // console.log(data);
+                    $('#City').html(data);
+                }
+            });
+        });
+
+        $('#City').change(function(){
+            var city = $('#City').val();
+            //   alert(provice);
+            $.ajax({
+                type:"post",
+                url:"{:url('region/County')}",
+                data:{"id": city},
+                dataType:"",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success:function(data){
+                 //   console.log(data);
+                    $('#County').html(data);
+                }
+            });
+        });
+
+        $('#County').change(function(){
+            var city = $('#County').val();
+            //   alert(provice);
+            $.ajax({
+                type:"post",
+                url:"{:url('region/Town')}",
+                data:{"id": city},
+                dataType:"",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success:function(data){
+               //     console.log(data);
+                    $('#Town').html(data);
+                }
+            });
+        });
+
+        $('#Town').change(function(){
+            var city = $('#Town').val();
+            //   alert(provice);
+            $.ajax({
+                type:"post",
+                url:"{:url('region/Village')}",
+                data:{"id": city},
+                dataType:"",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success:function(data){
+                  //  console.log(data);
+                    $('#Village').html(data);
+                }
+            });
+        });
+
+    })
+
+</script>
+<!--<script src="__PUBLIC__/js/address.js"></script>-->
+				<div class="form-group">
+                <label class="col-sm-1 control-label">省</label>
+                <div class="col-sm-2 text-left">
+                    <select class="form-control" name="Province" id="Province">
+                        <option>==请选择===</option>
+                        {volist name="province" id="pr"}
+                            <option value="{$pr['province_id']}">{$pr['province_name']}</option>
+                        {/volist}
+                    </select>
+                </div>
+				</div>
+				 <div class="form-group">
+                <div class="col-sm-1 text-left">
+                   市
+                </div>
+                <div class="col-sm-2 text-left">
+                    <select class="form-control" name="City" id="City">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+					</div>
+				 <div class="form-group">
+                <div class="col-sm-1 text-left">
+                县/区
+                </div>
+                <div class="col-sm-2 text-left">
+                    <select class="form-control" name="County" id="County">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+				
+					</div>
+				 <div class="form-group">
+				 <div class="col-sm-1 text-left">
+                镇
+                </div>
+                <div class="col-sm-2 text-left">
+                    <select class="form-control" name="Town" id="Town">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+					</div>
+				 <div class="form-group">
+				 <div class="col-sm-1 text-left">
+              村
+                </div>
+                <div class="col-sm-2 text-left">
+                    <select class="form-control" name="Village" id="Village">
+                        <option>==请选择===</option>
+                    </select>
+                </div>
+</div>
+
+</body>
+
+
+</html>

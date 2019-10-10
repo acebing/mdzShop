@@ -1,13 +1,20 @@
 <?php
 namespace app\admin\Controller;
 use app\admin\Controller\Base;
+use app\api\model\Region as regionModel;
 class MallSite extends Base
 {   
      // 基本设置
     public function baseSite()
     {
         
-        return $this->view->fetch();
+        $regionModel=new regionModel();
+        // 三级联动
+        $region=$regionModel->getNormalCitysByParentId();
+        
+        return $this->view->fetch('',[
+            'region'=> $region,
+        ]);
     }
     // 支付设置
     public function basePaySite()
@@ -18,8 +25,13 @@ class MallSite extends Base
     // 地区设置
     public function areaSite()
     {
+        $regionModel=new regionModel();
+        // 三级联动
+        $region=$regionModel->getNormalCitysByParentId();
         
-        return $this->view->fetch();
+        return $this->view->fetch('',[
+            'region'=> $region,
+        ]);
     }
      // 添加运费模板
     public function areaAddExpress()
