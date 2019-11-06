@@ -1,7 +1,8 @@
-{extend name='public/mall_base' /}
-{block name='content'}
-{include file="mall/menu"/}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">秒杀活动</a>
      <a><cite>秒杀设置</cite></a>
@@ -19,8 +20,8 @@
     <div class="flexilist">
       <div class="common-head">
         <div class="fl">
-          <a href="{:url('kill/killAdd')}"><div class="fbutton"><div class="add" title="添加秒杀活动"><span><i class="icon icon-plus"></i>添加秒杀活动</span></div></div></a>
-          <a href="{:url('kill/killTimeAdd')}"><div class="fbutton"><div class="add" title="秒杀时间段列表"><span>秒杀时间段列表</span></div></div></a>
+          <a href="{:url('Add')}"><div class="fbutton"><div class="add" title="添加秒杀活动"><span><i class="icon icon-plus"></i>添加秒杀活动</span></div></div></a>
+          <a href="{:url('killTimeAdd')}"><div class="fbutton"><div class="add" title="秒杀时间段列表"><span>秒杀时间段列表</span></div></div></a>
         </div>
         <div class="refresh">
           <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
@@ -159,7 +160,6 @@
         </form>
       </div>
     </div>
-    </div>  
    {/block}
    {block name="js"}
 <script type="text/javascript">

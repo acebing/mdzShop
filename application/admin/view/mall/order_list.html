@@ -1,6 +1,8 @@
-{extend name='public/mall_base' /}
-{block name='content'}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">订单管理</a>
      <a><cite>订单列表</cite></a>
@@ -143,7 +145,7 @@
                   <td>
                     <div class="tDiv" style="height: 100px;">
                       <div class="btn-wrap">
-                        <p><a href="order.php?act=info&amp;order_id=1690" class="btn-tb btn-tb-blue">查看</a></p>
+                        <p><a href="{:url('order/info')}" class="btn-tb btn-tb-blue">查看</a></p>
                       </div>
                     </div>
                   </td>
@@ -410,7 +412,6 @@
     <input type="submit" class="btn red_btn" name="tj_search" value="提交查询"><input type="reset" class="btn btn_reset" name="reset" value="重置">
   </div>
 </form>
-</div>
 </div>
     {/block}
   {block name="js"} 

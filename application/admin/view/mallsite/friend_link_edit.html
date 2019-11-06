@@ -1,0 +1,152 @@
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="#">平台设置</a>
+     <a href="{:url('friendLinkList')}">友情链接</a>
+     <a><cite>添加友情链接</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>标识“*”的选项为必填项，其余为选填项。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="mian-info">
+        <form action="" method="post" name="theForm" enctype="multipart/form-data" id="link_form" >
+          <div class="switch_info user_basic">
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>链接名称：</div>
+              <div class="label_value">
+                <input type="text" name="link_name" value="{$editList.link_name}" class="text" autocomplete="off">
+                <div class="notic m20">当你添加文字链接时, 链接LOGO为你的链接名称.</div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>链接地址：</div>
+              <div class="label_value">
+                <input type="text" name="link_url" value="{$editList.link_url}" class="text" autocomplete="off">
+                <div class="notic m20">例如：http://www.mdz.com</div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">显示顺序：</div>
+              <div class="label_value">
+                <input type="text" name="show_order" value="{$editList.show_order}" class="text" autocomplete="off">
+                <div class="notic m20">必须是整数</div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>LOGO：</div>
+              <div class="label_value">
+                <div class="type-file-box">
+                  <input type="button" name="button" id="button" class="type-file-button" value="" >
+                  <input type="file" class="type-file-file" id="legal_person_fileImg" name="link_img" data-state="imgfile" size="30" hidefocus="true">
+                   <input type="hidden" name="logo_path" value="{$editList.logo_path}" id="res_val">
+                   <div class="uploadbox" id="uploadbox">
+                      <img class="layui-upload-img" id="layui-upload-img" src="{$editList.logo_path}">
+                   </div>
+                </div>
+                <div class="form_prompt" id="demoText"></div>
+                <div class="notic m20">尺寸110*30支持格式：jpg|png|gif|bmp|jpeg</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn">
+                <input type="button" value=" 确定 " class="button" id="submitBtn">
+                <input type="hidden" name="link_id" value="{$editList.link_id}">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+ $(function () {
+
+  var URL={
+    'uploadimg':'{:url('imgupload')}',
+    'add':'{:url('add')}'
+  };
+
+  // 图片上传相关操作
+  $('#legal_person_fileImg').on('click', function(event) {
+   var ele=$(this);
+   uploadImg(ele,URL.uploadimg);
+  });
+  
+  // 表单验证
+  $("#submitBtn").on('click',  function(event) {
+    // 获取图片真实高度
+
+    var arg= $(this);
+    // 是否通过验证
+    if($("#link_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.add);
+      } 
+    });
+    // 自定义验证
+     jQuery.validator.addMethod("specialchar", function(value, element) {
+      return this.optional(element) || !/[@'\\"#$%&\^*]/.test(value);   
+    },("不能包含特殊字符:@'~/#$%&*"));
+    // 字段验证
+    $('#link_form').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules : {
+      link_name : {
+        required : true,
+        specialchar:''
+      },
+      link_url : {
+        required : true,
+        url:true
+      },
+      show_order:{
+        digits:true
+      },
+      logo_path:{
+        required : true
+      }
+    },
+    messages : {
+      link_name : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+"链接名称不能为空"
+      },
+      link_url : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+"链接地址不能为空",
+        url : '<i class="icon icon-exclamation-sign"></i>'+"连接地址错误"
+      },
+      logo_path : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+"logo必须上传"
+      },
+      show_order : {
+        digits : '<i class="icon icon-exclamation-sign"></i>'+"必须是整数"
+      }
+    }
+  });
+});
+
+</script>
+
+{/block}

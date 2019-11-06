@@ -6,14 +6,11 @@ use app\admin\Controller\Base;
  */
 class Email extends Base
 {
-	private  $obj;
-    public function _initialize() {
-        $this->obj = model("Email");
-    }
+	
     public function list()
     {
         // 获取邮箱设置的数据
-        $val = $this->obj->get(1);
+        $val = model("Email")::get(1);
         return $this->view->fetch('mallsite/email', [
             'val'=> $val,
         ]);
@@ -38,7 +35,7 @@ class Email extends Base
             return $this->update($data);
         }
         //否则执行添加操作
-        $res = $this->obj->add($data);
+        $res = model("Email")::add($data);
         if($res) {
             $this->success('新增成功');
         }else {
@@ -49,7 +46,7 @@ class Email extends Base
     }
     // 更新操作
      public function update($data) {
-        $res =  $this->obj->save($data, ['id' => intval($data['email_id'])]);
+        $res =  model("Email")::save($data, ['id' => intval($data['email_id'])]);
         if($res) {
             $this->success('更新成功');
         } else {

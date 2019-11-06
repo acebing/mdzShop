@@ -1,0 +1,20 @@
+{include file='public/mate' /}
+<body>
+	<div class="layui-layout layui-layout-admin">
+		{include file='public/header' /}
+		{block name='menu'}
+		菜单
+		{/block}
+		<div class="layui-body" style="padding: 20px;">
+			{block name='body'}
+			中心内容
+			{/block}
+		</div>
+		{include file='public/footer' /}
+	</div>
+	{include file='public/p_js' /}
+	{block name='js'}
+	自定义js
+	{/block}
+</body>
+</html>

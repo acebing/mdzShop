@@ -16,10 +16,5 @@ class Index extends Base
     	
         return $this->view->fetch();
     }
-    public function test()
-    {
-        Config::set('daa','sdsd');
-        dump(Config::get('daa'));
-    }
     
 }

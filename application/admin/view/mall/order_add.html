@@ -1,6 +1,8 @@
-{extend name='public/mall_base' /}
-{block name='content'}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">订单管理</a>
      <a><cite>订单列表</cite></a>
@@ -64,13 +66,6 @@
         </form>
       </div>
     </div>
-    </div>
-    <div class="layui-footer">
-      <!-- 底部固定区域 -->
-      <div  class="layui-main" style="text-align: center;">买得着商城<i class="heart">❤</i>不忘初心</div>
-    </div>
-  </div>
-</body>
   {/block}
   {block name="js"} 
 <script type="text/javascript">   

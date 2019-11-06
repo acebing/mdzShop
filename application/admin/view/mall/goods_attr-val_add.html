@@ -1,6 +1,8 @@
-{extend name='public/mall_base' /}
-{block name='content'}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">平台商品管理</a>
      <a><cite>属性列表</cite></a>
@@ -33,7 +35,7 @@
                     <ul class="ps-container" style="display: none;">
                       <li><a href="javascript:;" data-value="0" data-level="1" class="ftx-01">顶级分类</a></li>
                       <li><a href="javascript:;" data-value="5" data-level="1" class="ftx-01">三七</a></li>
-                      <div class="ps-scrollbar-x-rail" style="width: 145px; display: none; left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 56px; display: none; right: 0px;"><div class="ps-scrollbar-y" style="top: 0px; height: 0px;"></div></div></ul>
+                     </ul>
                       <input type="hidden" value="0" id="parent_id_val1" ectype="typeCatVal">
                     </div>
                     <input name="attr_parent_id" type="hidden" value="0">
@@ -58,7 +60,7 @@
             </div>
           </div>
         </div>
-    </div>
+
    {/block}
  {block name='js'}
 <script type="text/javascript">

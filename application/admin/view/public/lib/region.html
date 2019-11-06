@@ -1,0 +1,25 @@
+<div class="level_linkage">
+  <div id="dlProvinces" class="ui-dropdown smartdropdown alien">
+    <input type="hidden" value="{$baseData.province_id}" name="province_id" id="selProvinces">
+    <div class="txt">省/直辖市</div>
+    <i class="down u-dropdown-icon"></i>
+    <div class="options clearfix" style="max-height:300px;">
+     {volist name='$region' id='vo'}
+     <span class="liv" data-text="{$vo.region_name}" data-type="{$vo.region_type}" data-value="{$vo.region_id}">{$vo.region_name}</span>
+     {/volist}
+   </div>
+ </div>
+ <div id="dlCity" class="ui-dropdown smartdropdown alien" >
+  <input type="hidden" value="{$baseData.city_id}" name="city_id" id="selCities">
+  <div class="txt">州、市</div>
+  <i class="down u-dropdown-icon"></i>
+  <div class="options clearfix" style="max-height:300px;"></div>
+</div>
+<div id="dlRegion" class="ui-dropdown smartdropdown alien">
+  <input type="hidden" value="{$baseData.district_id}" name="district_id" id="selDistricts">
+  <div class="txt">区/县</div>
+  <i class="down u-dropdown-icon"></i>
+  <div class="options clearfix" style="max-height:300px;"></div>
+</div>  
+<div class="form_prompt"></div>
+</div>

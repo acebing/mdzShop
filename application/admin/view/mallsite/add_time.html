@@ -1,0 +1,63 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+{block name='body'}
+  <div class="warpper">
+    <div class="title"><a href="{:url('delivery/deliverylist')}" class="s-back">返回</a>系统设置 - 添加自提时间段</div>
+    <div class="content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        <div class="common-content">
+          <div class="mian-info">
+            <form method="post" action="{:url('delivery/postAddTime')}" name="theForm" onsubmit="return checkShi()">
+              <div class="switch_info">
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>配送时间：</div>
+                  <div class="label_value">
+                    <input type="text" name="start_time" id="shipping_date_start" value="" class="text text_2 mr0" size="10">
+                    <span class="bolang">&nbsp;&nbsp;~&nbsp;&nbsp;</span>
+                    <input type="text" id="shipping_date_end" name="end_time" value="" class="text text_2" size="10">
+                    <label class="blue_label">例：09:00-19:00</label>
+                  </div>
+                </div> 
+                <div class="item">
+                  <div class="label">&nbsp;</div>
+                  <div class="label_value info_btn">
+                    <input type="submit" value=" 确定 " class="button" id="">
+                    <input type="reset" value=" 重置 " class="button button_reset">
+                    <input type="hidden" name="id" value="">
+                  </div>
+                </div>                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/block}
+{block name='js'}
+  <script type="text/javascript">
+   
+    function checkShi()
+    {
+      if(document.getElementById('shipping_date_start').value == "")
+      {
+        pbDialog('请填写开始时间',0,10);
+        return false;
+      }
+      if(document.getElementById('shipping_date_end').value == "")
+      {
+       pbDialog('请填写结束时间',0,,10);
+        return false;
+      }
+    }
+    
+  </script>
+{/block}

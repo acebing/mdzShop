@@ -1,0 +1,75 @@
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>打印设置</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>该页面展示所有友情链接信息列表。</li>
+        <li>可点击链接进入相应网页，也可进行编辑或删除友情链接。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('addList')}"><div class="fbutton"><div class="add" title="添加新链接"><span><i class="icon icon-plus"></i>添加新链接</span></div></div></a>
+        </div>
+      </div>
+      <div class="common-content">
+        <div class="list-div" id="listDiv">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th width="20%"><div class="tDiv"><a href="javascript:listTable.sort('link_name');">链接名称</a></div></th>
+                <th width="35%"><div class="tDiv"><a href="javascript:listTable.sort('link_url');">链接地址</a></div></th>
+                <th width="20%"><div class="tDiv"><a href="javascript:listTable.sort('link_logo');">链接LOGO</a></div></th>
+                <th width="10%"><div class="tDiv"><a href="javascript:listTable.sort('show_order');">显示顺序</a></div></th>
+                <th width="10%" class="handle">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              {if condition="($list)"}
+              {volist name='$list' id='vo'}
+              <tr class="">
+                <td><div class="tDiv">{$vo.link_name}</div></td>
+                <td>
+                  <div class="tDiv">
+                    <a href="{$vo.link_url}" target="_blank">{$vo.link_url}</a>
+                  </div>
+                </td>
+                <td>
+                  <div class="tDiv">
+                    <span class="show">
+                        <img src="{$vo.logo_path}" alt="{$vo.link_name}" style="width: 110px ;height: 30px;">
+                    </span>
+                  </div>
+                </td>
+                <td><div class="tDiv"><input name="sort_order" class="text w40" value="{$vo.show_order}" onkeyup="listTable.editInput(this, '{:url('upldataOrder')}',{$vo.link_id} )" type="text"></div></td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="{:url('edirFriendLink',['link_id'=>$vo.link_id])}" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove('{:url('deleteLink')}',{$vo.link_id}, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                  </div>
+                </td>
+              </tr>
+              {/volist}
+              {else /}
+              <tr><td colspan="5" align="center">~暂无数据哦~</td></tr>
+             {/if}
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{/block}

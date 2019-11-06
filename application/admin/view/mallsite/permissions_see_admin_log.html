@@ -1,6 +1,8 @@
-{extend name='public/base' /}
-{block name='content'}
-{include file="mallsite/menu"/}
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
   <div class="layui-body" style="padding: 20px;">
     <span class="layui-breadcrumb">
       <a href="">管理员权限</a>
@@ -159,4 +161,4 @@
          </div>
        </div>
      </div>
-{/block}
+     {/block}

@@ -1,0 +1,19 @@
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <!-- 一级菜单 -->
+        {volist name='mallMenu' id ='vo'}
+        <li class="layui-nav-item {$vo.active ?? ''}">
+          <a class="" href="javascript:;">{$vo.name}</a>
+          <!-- 二级级菜单 -->
+          {volist name="$vo.submenu" id ='ko' }
+          <dl class="layui-nav-child">
+            <dd><a href="{$ko.url}">{$ko.name}</a></dd>
+          </dl>
+          {/volist}
+        </li>
+        {/volist}
+      </ul>
+    </div>
+  </div>

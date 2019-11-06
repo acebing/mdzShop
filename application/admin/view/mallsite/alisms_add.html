@@ -1,0 +1,139 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'} 
+  	<span class="layui-breadcrumb">
+     <a href="#">平台设置</a>
+      <a href="{:url('loadTemplatList')}">短信列表</a>
+      {if condition="$List"}
+      <a><cite>编辑短信模板</cite></a>
+      {else /} 
+      <a><cite>添加短信模板</cite></a>
+      {/if}
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>填写短信签名名称和模板ID请与阿里短信申请的保持一致。</li>
+        <li>编辑短信内容时请根据提供的模板进行修改，模板内的每个变量是固定的，且不可改变位置。</li>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="mian-info">
+        <form  name="theForm" enctype="multipart/form-data" id="agency_form" novalidate="novalidate">
+          <div class="switch_info user_basic" style="display:block;">
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>&nbsp;短信模板</div>
+              <div class="label_value">
+                <input type="text" name="temp_id" value="{$List.temp_id|default=''}" class="text" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic m20">与阿里短信内短信模板code保持一致</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>&nbsp;发送短信的内容：</div>
+              <div class="label_value">
+                <textarea  name="temp_content"  class="textarea">{$List.temp_content|default=''}</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic m20">与阿里短信内短信签名保持一致</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>&nbsp;发送时机：</div>
+              <div class="label_value">
+                <div id="send_time_box" class="imitate_select select_w320">
+                  <div class="cite"><span>{$List.send_time|default='请选择...'}</span></div>
+                  <ul class="upward">
+                    <li><a href="javascript:;" data-value="客户下单时" class="ftx-01">客户下单时</a></li>
+                    <li><a href="javascript:;" data-value="客户付款时" class="ftx-01">客户付款时</a></li>
+                    <li><a href="javascript:;" data-value="商家发货时" class="ftx-01">商家发货时</a></li>
+                    <li><a href="javascript:;" data-value="门店提货码" class="ftx-01">门店提货码</a></li>
+                    <li><a href="javascript:;" data-value="客户注册时" class="ftx-01">客户注册时</a></li>
+                    <li><a href="javascript:;" data-value="客户密码找回时" class="ftx-01">客户密码找回时</a></li>
+                    <li><a href="javascript:;" data-value="验证码通知" class="ftx-01">验证码通知</a></li>
+                    <li><a href="javascript:;" data-value="商品降价时" class="ftx-01">商品降价时</a></li>
+                    <li><a href="javascript:;" data-value="修改商家密码时" class="ftx-01">修改商家密码时</a></li>
+                    <li><a href="javascript:;" data-value="会员充值/提现时" class="ftx-01">会员充值/提现时</a></li>
+                    <li><a href="javascript:;" data-value="商家店铺等级到期时间提醒" class="ftx-01">商家店铺等级到期时间提醒</a></li>
+                  </ul>
+                  <input name="send_time" type="hidden" value="{$List.send_time|default=''}" id="send_time">
+                </div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn mt0">
+                <input type="hidden" name="id" value="{$List.id|default='0'}" />
+                <input type="button" id="submitBtn" class="button" value=" 确定 ">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {/block}
+{block name='js'}
+<script type="text/javascript">
+$(function(){
+  var URL={
+    'add':'{:url('addTemplatContent')}'
+  };
+  //表单验证
+  $("#submitBtn").click(function(){
+     var arg= $(this);
+    // 是否通过验证
+    if($("#agency_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.add);
+      } 
+  });
+
+  $('#agency_form').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules:{
+      temp_id:{
+        required:true
+      },
+      set_sign:{
+        required:true
+      },
+      temp_content:{
+        required:true
+      },
+      send_time:{
+        required:true
+      }
+    },
+    messages:{
+      temp_id:{
+        required:'<i class="icon icon-exclamation-sign"></i>'+'短信签名不能为空'
+      },
+      set_sign:{
+        required:'<i class="icon icon-exclamation-sign"></i>'+'短信模板不能为空'
+      },
+      temp_content:{
+        required:'<i class="icon icon-exclamation-sign"></i>'+'发送短信的内容不能为空'
+      },
+      send_time:{
+        required:'<i class="icon icon-exclamation-sign"></i>'+'发生时机必选'
+      }
+    }
+  });
+});
+
+
+</script>
+{/block} 

@@ -10,10 +10,6 @@ class User extends Base
 	// 用户列表
     public function list()
     {
-    // $res=Db::table('dsc_users')->where('user_id',62)->find();
-    // echo Users::get(8);
-    
-        // exit();
         return $this->view->fetch('mall/user_list');
     }
    // 添加用户

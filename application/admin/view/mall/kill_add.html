@@ -1,6 +1,8 @@
-{extend name='public/mall_base' /}
-{block name='content'}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">营销活动</a>
      <a><cite>添加秒杀活动</cite></a>
@@ -31,9 +33,9 @@
               <div class="item">
                 <div class="label"><span class="require-field">*</span>活动起止时间：</div>
                 <div class="label_value text_time">
-                  <input type="text" name="begin_time" value="2019-04-12" id="start_time" class="text mr0" autocomplete="off" readonly="">
+                  <input type="text" name="begin_time" value="" id="start_time" class="text mr0" autocomplete="off" readonly="">
                   <span class="bolang">&nbsp;&nbsp;~&nbsp;&nbsp;</span>
-                  <input type="text" name="acti_time" value="2019-04-19" id="end_time" class="text" autocomplete="off" readonly="">
+                  <input type="text" name="acti_time" value="" id="end_time" class="text" autocomplete="off" readonly="">
                   <div class="form_prompt"></div>
                 </div>
               </div>
@@ -66,8 +68,7 @@
         </form>
       </div>
     </div>
-  </div>
-    </div>  
+  </div> 
   {/block}
    {block name="js"}  
 <script type="text/javascript">

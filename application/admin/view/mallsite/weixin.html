@@ -1,7 +1,8 @@
-{extend name='public/base' /}
-{block name='content'}
-{include file="mallsite/menu"/}
-    <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
     	<span class="layui-breadcrumb">
        <a href="">平台设置</a>
        <a><cite>微信公众号设置</cite></a>
@@ -103,7 +104,7 @@
       </div>
     </div>
     </div>
-{/block}
+  {/block}
 {block name='js'}
   <script>
   // H5 复制粘贴 - execCommand http://www.jianshu.com/p/37322bb86a48  兼容IE8+，Chrome 45+, Firefox 43+

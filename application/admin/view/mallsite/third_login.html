@@ -1,7 +1,8 @@
-{extend name='public/base' /}
-{block name='content'}
-{include file="mallsite/menu"/}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">平台设置</a>
      <a><cite>第三方登录</cite></a>

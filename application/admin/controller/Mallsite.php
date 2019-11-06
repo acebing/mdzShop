@@ -1,37 +1,45 @@
 <?php
 namespace app\admin\Controller;
 use app\admin\Controller\Base;
+use app\admin\validate\BasesiteValidate;
 use app\api\model\Region as regionModel;
+use think\Db;
 class MallSite extends Base
 {   
+    
      // 基本设置
     public function baseSite()
     {
         
         $regionModel=new regionModel();
         // 三级联动
-        $region=$regionModel->getNormalCitysByParentId();
-        
+        $region=$regionModel->getRegions();
+        $baseData = model('BaseSite')::get(1);
         return $this->view->fetch('',[
             'region'=> $region,
+            'baseData'=>$baseData
         ]);
     }
-    // 支付设置
-    public function basePaySite()
+    public function baseSiteAdd()
     {
+        // 判断是否是post请求
+        if(!request()->isPost()) {
+           $this->renderError('请求类型错误');
+        }
+        $data = input('post.');
         
+        (new BasesiteValidate())->goCheck();
+        $res = model('BaseSite')->add($data);
+        if (!empty($res) ) {
+          return $this->renderSuccess('更新成功');  
+        }else{
+          return $this->renderError('更新失败');  
+        }
+    }
+
+    public function delivery()
+    {
         return $this->view->fetch();
-    }
-    // 地区设置
-    public function areaSite()
-    {
-        $regionModel=new regionModel();
-        // 三级联动
-        $region=$regionModel->getNormalCitysByParentId();
-        
-        return $this->view->fetch('',[
-            'region'=> $region,
-        ]);
     }
      // 添加运费模板
     public function areaAddExpress()
@@ -45,21 +53,9 @@ class MallSite extends Base
         
         return $this->view->fetch();
     }
-    
-       // 添加打印机
-    public function basePrintAdd()
-    {
-        
-        return $this->view->fetch();
-    }
-        // 友情链接列表
-    public function friendLinkSite()
-    {
-        
-        return $this->view->fetch();
-    }
-       // 添加友情链接
-    public function friendLinkAdd()
+   
+    // 支付设置
+    public function basePaySite()
     {
         
         return $this->view->fetch();
@@ -104,18 +100,6 @@ class MallSite extends Base
     public function permissionsSeeAdminLog()
     {
         
-        return $this->view->fetch();
-    }
-        // 添加列表
-    public function smsList()
-    {
-    
-        return $this->view->fetch();
-    }
-         // 添加短信
-    public function smsAdd()
-    {
-    
         return $this->view->fetch();
     }
          // 第三方登录

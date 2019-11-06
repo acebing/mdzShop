@@ -1,0 +1,103 @@
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="#">平台设置</a>
+     <a><cite>短信列表</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mdz-m-b20" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>列表页展示所有短信配置模板的信息列表。</li>
+        <li>每条信息可以进行编辑和删除操作。</li>
+        <li>非技术人员请勿乱增加、编辑及删除。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('addTemplat')}"><div class="fbutton"><div class="add" title="添加模板"><span><i class="icon icon-plus"></i>添加模板</span></div></div></a>
+        </div>
+      </div>
+      <div class="common-content">
+        <div class="list-div" id="listDiv">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+                <th width="5%"><div class="tDiv">编号</div></th>
+                <th width="15%"><div class="tDiv">短信模板</div></th>
+                <th width="37%"><div class="tDiv">发送短信的内容</div></th>
+                <th width="15%"><div class="tDiv">添加时间</div></th>
+                <th width="15%"><div class="tDiv">发送时机</div></th>
+                <th width="15%" class="handle">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              {volist name='$list' id='vo'}
+              <tr >
+                <td class="sign"><div class="tDiv"><input type="checkbox" name="checkboxes[]" value="24" class="checkbox" id="checkbox_24"><label for="checkbox_24" class="checkbox_stars"></label></div></td>
+                <td><div class="tDiv">{$vo.id}</div></td>
+                <td><div class="tDiv">{$vo.temp_id}</div></td>
+                <td><div class="tDiv">{$vo.temp_content}</div></td>
+                <td><div class="tDiv">{$vo.create_time}</div></td>
+                <td><div class="tDiv">{$vo.send_time}</div></td>
+                <td class="handle">
+                  <div class="tDiv a2">
+                    <a href="{:url('addTemplat',['id'=>$vo.id])}" title="编辑" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                    <a href="javascript:;" onclick="listTable.remove('{:url('deleteTemplat')}',{$vo.id}, '您确认要删除这条记录吗?')" title="移除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                     <a href="javascript:;" onclick="test_template('{:url('testTemplat')}',{$vo.id})" title="发送测试" class="btn_see">发送测试</a>
+                  </div>
+                </td>
+              </tr>
+              {/volist}
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+
+  function test_template(url,id){
+    //prompt层
+  layer.prompt({
+  formType: 0,
+  title: '请输测试手机号',
+}, function(value, index, elem){
+// 手机号码验证
+  if (checkPhone(value)) {
+    var data ={
+    'id':id,
+    'phoneNum':value
+  };
+ $.jqueryAjax(url, data, smsTemplateResponse,"GET", "JSON");
+  }
+  
+  layer.close(index);
+});
+    
+  }
+
+function smsTemplateResponse(result){
+   result.code === 1 ?  show_success(result.msg): show_error(result.msg);
+}
+function checkPhone(val){ 
+    if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(val))){ 
+        alert("手机号码有误，请重填");  
+        return false; 
+    } else{
+      return true;
+    }
+}
+</script>
+{/block}

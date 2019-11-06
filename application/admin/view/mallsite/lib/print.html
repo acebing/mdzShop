@@ -1,0 +1,73 @@
+<div class="explanation mdz-m-b20" id="explanation">
+  <div class="ex_tit">
+    <i class="sc_icon"></i>
+    <h4>操作提示</h4>
+    <span id="explanationZoom" title="收起提示"></span>
+  </div>
+  <ul>
+    <li>从列表中选择规格进行设置。</li>
+    <li>可以将常用规格设置为默认。</li>
+  </ul>
+</div>
+<div class="flexilist">
+  <div class="common-content">
+    <div class="mian-info">
+      <form method="post" action="{:url('Delivery/basePrintAdd')}" id="printerForm">
+        <div class="switch_info">
+          <div class="item">
+            <div class="label"><span class="require-field">*</span>打印机名称：</div>
+            <div class="label_value">
+              <input type="text" name="printer_name" class="text" autocomplete="off" value="{$printer.name}">
+              <div class="notic">打印机名称如：ELP-168ES</div>
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label"><span class="require-field">*</span>打印厂家：</div>
+            <div class="label_value">
+              <div class="imitate_select select_w120" id="specification">
+                <div class="cite">请选择</div>
+                <ul style="display: none;">
+                  <li><a href="javascript:;" data-value="365" data-width="100" class="ftx-01">365</a></li>
+                  <li><a href="javascript:;" data-value="飞鹅" data-width="100" class="ftx-01">飞鹅</a></li>
+                </ul>
+                  <input name="printer_manufacturers" type="hidden" value="{$printer.manufacturers}" id="specification_val">
+                </div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">打印机编号：</div>
+              <div class="label_value">
+                <input type="text" name="printer_number" class="text" autocomplete="off" value="{$printer.number}">
+                <div class="notic"></div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>打印机秘钥：</div>
+              <div class="label_value">
+                <input type="text" name="printer_key" class="text" autocomplete="off" value="{$printer.key}">
+                <div class="notic"></div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">打印机连数：</div>
+              <div class="label_value">
+                <input type="text" name="printer_link_num" class="text" autocomplete="off" value="{$printer.link_num}">
+                <div class="notic">同一订单，打印的次数</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn">
+                <input type="submit" value=" 确定 " ectype="btnSubmit" class="button" id="submitBtn"> 
+                <input type="hidden" name="printer_id" value="{$printer.id}">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

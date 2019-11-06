@@ -1,8 +1,9 @@
-{extend name='public/base' /}
-{block name='content'}
-{include file="mallsite/menu"/}
-  <div class="layui-body" style="padding: 20px;">
-    <span class="layui-breadcrumb">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+   <span class="layui-breadcrumb">
       <a href="">地区&配送</a>
       <a><cite>运费模板</cite></a>
     </span>
@@ -21,20 +22,25 @@
       </div>
       <div class="mian-info">
           <div class="transport_shipping_tpl" >
-      <form action="" method="post" name="shipping_tplForm" enctype="multipart/form-data">
-        <input type="hidden" name="tid" id="tab_tid" value="10">
+      <form action="{:url('delivery/goodsTransport')}" method="post" name="shipping_tplForm" enctype="multipart/form-data">
+       
         <input type="hidden" name="shipping_id" id="tab_shipping_id" value="24">
         <input type="hidden" name="id" value="0">
-
         <div class="item">
-          <div class="label">快递方式：</div>
-          <div class="label_value">
-            <div class="checkbox_items">
-              <div class="checkbox_item">
-                邮政快递包裹            </div>
+            <div class="label"><span class="require-field">*</span>快递公司：</div>
+            <div class="label_value">
+              <div class="imitate_select select_w120" id="specification">
+                <div class="cite">请选择</div>
+                <ul style="display: none;">
+                  {volist name='$express' id='vo'}
+                  <li><a href="javascript:;" data-value="{$vo.express_name}" class="ftx-01">{$vo.express_name}</a></li>
+                  {/volist}
+                 </ul>
+                  <input name="specification" type="hidden" value="" id="specification_val">
+                </div>
+                <div class="form_prompt"></div>
               </div>
             </div>
-          </div>
           <div class="item">
             <div class="label">区域名称：</div>
             <div class="label_value">
@@ -60,9 +66,6 @@
               </div>
             </div>
           </div>
-          <!---->
-          <!---->
-          <!---->
           <div class="item" id="item_fee" style="display:none">
             <div class="label"><span class="require-field">*</span>&nbsp;单件商品费用：</div>
             <div class="label_value">
@@ -70,10 +73,6 @@
               <div class="form_prompt"></div>
             </div>
           </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
           <div class="item" id="base_fee">
             <div class="label"><span class="require-field">*</span>&nbsp;1000克以内费用：</div>
             <div class="label_value">
@@ -81,10 +80,6 @@
               <div class="form_prompt"></div>
             </div>
           </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
           <div class="item" id="step_fee">
             <div class="label"><span class="require-field">*</span>&nbsp;5000克以内续重每500克费用：</div>
             <div class="label_value">
@@ -92,10 +87,6 @@
               <div class="form_prompt"></div>
             </div>
           </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
           <div class="item" id="step_fee1">
             <div class="label"><span class="require-field">*</span>&nbsp;5001克以上续重500克费用：</div>
             <div class="label_value">
@@ -103,10 +94,6 @@
               <div class="form_prompt"></div>
             </div>
           </div>
-          <!---->
-          <!---->
-          <!---->
-          <!---->
           <div class="item" id="free_money">
             <div class="label"><span class="require-field">*</span>&nbsp;免费额度：</div>
             <div class="label_value">
@@ -114,9 +101,6 @@
               <div class="form_prompt"></div>
             </div>
           </div>
-          <!---->
-          <!---->
-          <!---->
           <div class="item mb0">
             <div class="label"><span class="require-field">*</span>到达目的地：</div>
             <div class="label_value">
@@ -127,9 +111,11 @@
                     <div class="txt">省/直辖市</div>
                     <i class="down u-dropdown-icon"></i>
                     <div class="options clearfix" style="max-height:300px;">
-                      <span class="liv" data-text="全国" data-type="0" data-value="-1">全国</span>
-                      <span class="liv" data-text="北京" data-type="2" data-value="2">北京</span>
-
+                      {volist name='$region' id='vo'}
+                       <span class="liv" data-text="{$vo.region_name}"
+                        data-type="{$vo.region_type}" 
+                       data-value="{$vo.region_id}">{$vo.region_name}</span>
+                       {/volist}
                     </div>
                   </div>
                   <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
@@ -144,14 +130,9 @@
                     <i class="down u-dropdown-icon"></i>
                     <div class="options clearfix" style="max-height:300px;"></div>
                   </div>
-                  <div id="dlStreet" class="ui-dropdown smartdropdown alien" style="z-index: 97;">
-                    <input type="hidden" value="0" name="street" id="selStreet">
-                    <div class="txt">街道</div>
-                    <i class="down u-dropdown-icon"></i>
-                    <div class="options clearfix" style="max-height:300px;"></div>
-                  </div>
                 </div>
-                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>            <div class="checkbox-item">
+                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>
+                <div class="checkbox-item">
                   <input type="checkbox" name="deleteArea" id="deleteArea" class="ui-checkbox" checked="">
                   <label class="ui-label" for="deleteArea">去除已选地区</label>
                 </div>
@@ -161,7 +142,7 @@
           </div>
           <div class="item">
             <div class="label">&nbsp;</div>
-            <div class="label_value">
+            <div class="label_value" style="width: 320px;">
               <!---->
               <div class="checkbox_items" id="regionCell">
               </div>
@@ -171,20 +152,29 @@
            <div class="item">
         <div class="label">&nbsp;</div>
         <div class="label_value info_btn">
-          <input type="hidden" name="tid" value="0">
           <input type="hidden" name="act" value="insert">
-          <input name="submit" type="submit" value=" 确定 " class="button fl mr10" id="submitBtn">
+          <input type="submit" value=" 确定 " class="button fl mr10" id="submitBtn">
         </div>
       </div>
         </form>
       </div>
       </div>
     </div>
-  </div>
 {/block}
 {block name='js'}
 <script type="text/javascript">
-  $.levelLink();//地区三级联动
+  $(function () {
+    // 异步请求地址
+    var SCOPE = {
+      'city_url' : '{:url('api/region/getCitysByParentId')}',
+      'city_name' : '{:url('api/region/getRegionName')}',
+    };
+    // 省份三级联动
+    $.levelLink(SCOPE.city_url,SCOPE.city_name);
+});
+</script>
+ <script type="text/javascript">
+ 
   /*添加管辖地区*/
   $("a[ectype='addPrivilege']").on("click",function(){
     var selProvince = $('#selProvinces');
@@ -210,52 +200,13 @@
           regionId = selProvince.val();
           regionName = selProvince.next(".txt").text();
         }else{
-          the_national(tid, shipping_id)
+          the_national('{:url('api/region/getCitysByParentId')}',tid=1,type=1)
           return false;
         }
       }
     }
-
-    //检查该地区是否已经存在
-    exists = false;
-    $('input:checkbox[type="checkbox"]').each(function()
-    {
-      if($(this).attr("name") == 'regions[]'){
-        if($(this).val()  == regionId){
-          exists = true;
-          return false;
-        }
-      }
-    });
-
-    //检查该地区是否已经存在运费模板 start
-    var area_erorr = 0;
-    regionId = Number(regionId);
-    if(regionId > 0){
-      $.ajax({
-        type:"get",
-        url:"goods_transport.php?act=select_area",
-        data:'tid=' + tid + "&shipping_id=" + shipping_id + "&region_id=" + regionId,
-        dataType: 'json',
-        async : false, //设置为同步操作就可以给全局变量赋值成功
-        success:function(result){
-          area_erorr = result.error;
-        }
-      });
-    }
-
-    if(area_erorr == 1){
-      exists = true;
-    }
-    //检查该地区是否已经存在运费模板 end
-
-    //创建checkbox
-    if (exists == false)
-    {
       regionCell.append('<div class="checkbox_item"><input type="checkbox" value="'+regionId+'" name="regions[]" class="ui-checkbox" id="region_'+regionId+'" checked="true" /><label for="region_'+regionId+'" class="ui-label">'+regionName+'</label></div>');
-    }else{
-      alert(jl_this_area_existed);
-    }
+    
   });
 
   $("input[name='deleteArea']").click(function(){
@@ -299,292 +250,6 @@
     }
   }
 
-    $(function(){
-      var freight_type = Number("1");
-      var shipping_id = Number("0");
-      var tid = Number($("input[name='tid']").val());
-
-      //表单验证
-      $("#submitBtn").click(function(){
-        if($("#goods_transport_form").valid()){
-          $("#goods_transport_form").submit();
-        }
-      });
-
-      $('#goods_transport_form').validate({
-        errorPlacement:function(error, element){
-          var error_div = element.parents('div.label_value').find('div.form_prompt');
-          element.parents('div.label_value').find(".notic").hide();
-          error_div.append(error);
-        },
-        rules:{
-          title :{
-            required : true
-          }
-        },
-        messages:{
-          title:{
-            required : '<i class="icon icon-exclamation-sign"></i>'
-          }
-        }
-      });
-    });
-
-    //运费模板
-    function freightTemplate(){
-      var doc = $(document),
-        tid = $("input[name='tid']").val();
-        id = 0;
-      /***************************模板类型 -> 快递模板*************************/
-      //选择配送方式
-      $.divselect("#shipping_id","#shipping_id_val",function(obj){
-        var val = obj.data("value"),
-          name  = obj.html();
-
-        dialog_shipping(val, id);
-      });
-
-      //编辑运费模板内的快递
-      doc.on("click","*[ectype='edit_shipping']",function(){
-        var val = $(this).parents('tr').data('shipping_id');
-        var id = $(this).data('id');
-        dialog_shipping(val, id);
-      });
-
-      //删除运费模板内的快递
-      doc.on("click","*[ectype='drop_shipping']",function(){
-        var t = $(this),
-          id = t.data('id');
-
-        if(confirm(confirm_delete_transport)){
-          $.jqueryAjax('goods_transport.php', 'act=drop_shipping&tid='+tid + "&id=" + id, function(data){
-            $("#transport_tpl").html(data.content);
-          });
-        }
-      });
-
-      //添加地区
-      doc.on("click","*[ectype='add_shipping_area']",function(){
-        var val = $(this).parents('tr').data('shipping_id');
-        dialog_shipping(val, id);
-      });
-
-      /***************************模板类型 -> 自定义 *************************/
-      //添加地区
-      doc.on("click","*[ectype='add_area']",function(){
-        $.jqueryAjax('goods_transport.php', 'act=add_area&tid='+tid, function(data){
-          $("*[ectype='transportArea']").html(data.content);
-        });
-      });
-
-      //编辑地区
-      doc.on("click","*[ectype='edit_area']",function(){
-        var id = $(this).parents('tr').find('input[name=id]').val();
-        $.jqueryAjax('goods_transport.php', 'act=edit_area&id='+id, function(data){
-          var content = data.content;
-          pb({
-            id:"area_dialog",
-            title:"选择地区",
-            width:900,
-            content:content,
-            ok_title:"确定",
-            cl_title:"取消",
-            drag:false,
-            foot:true,
-            cl_cBtn:true,
-            onOk:function(){save_area();}
-          });
-        })
-      });
-
-      //删除地区
-      doc.on("click","*[ectype='drop_area']",function(){
-        var id = $(this).parents('tr').find('input[name=id]').val();
-        $.jqueryAjax('goods_transport.php', 'act=drop_area&id='+id, function(data){
-          $("*[ectype='transportArea']").html(data.content);
-        });
-      });
-
-      //展开地区二级
-      doc.on("click",".area-province i", function(){
-        var area_city = $(this).siblings(".area-city");
-        if(area_city.hasClass("hide")){
-          $(this).parents(".area-province").find(".area-city").addClass("hide");
-          area_city.removeClass("hide");
-          $(this).removeClass("icon-angle-down").addClass("icon-angle-up");
-        }else{
-          area_city.addClass("hide");
-          $(this).removeClass("icon-angle-up").addClass("icon-angle-down");
-        }
-      });
-
-      //选中省份
-      doc.on("click","input[name=province]", function(){
-        if($(this).prop('checked')){
-          $(this).parents('li:first').find('ul.area-city input:enabled').prop('checked', true);
-        }else{
-          $(this).parents('li:first').find('ul.area-city input:enabled').prop('checked', false);
-        }
-        var child_num = $(this).parents('li:first').find('ul.area-city input:enabled:checked').length;
-        var child_obj = $(this).siblings(".ui-label").find('[data-role=child_num]');
-        change_child_num(child_obj, child_num);
-      });
-
-      //选中城市
-      doc.on("click","input[name=city]", function(){
-        var child_num = $(this).parents('ul.area-city').find('input:enabled:checked').length;
-        var child_obj = $(this).parents('.area-city').siblings(".ui-label").find('[data-role=child_num]');
-        change_child_num(child_obj, child_num);
-      });
-
-      //添加快递
-      doc.on("click","*[ectype='add_express']", function(){
-        var tid = $("input[name='tid']").val();
-        $.jqueryAjax('goods_transport.php', 'act=add_express&tid='+tid, function(data){
-          $("[ectype='transportExpress']").html(data.content);
-        })
-      });
-
-      //删除快递
-      doc.on("click","*[ectype='drop_express']", function(){
-        var id = $(this).parents('tr').find('input[name=id]').val();
-        $.jqueryAjax('goods_transport.php', 'act=drop_express&id='+id, function(data){
-          $("[ectype='transportExpress']").html(data.content);
-        })
-      });
-
-      //编辑快递
-      doc.on("click","*[ectype='edit_express']", function(){
-        var id = $(this).parents('tr').find('input[name=id]').val();
-        $.jqueryAjax('goods_transport.php', 'act=edit_express&id='+id, function(data){
-          var content = data.content;
-          pb({
-            id:"express_dialog",
-            title:"选择快递",
-            width:900,
-            content:content,
-            ok_title:"确定",
-            cl_title:"取消",
-            drag:false,
-            foot:true,
-            cl_cBtn:true,
-            onOk:function(){save_express();}
-          });
-        })
-      });
-
-      //全选地区
-      doc.on("click","input[name=all]",function(){
-        if($(this).prop('checked')){
-          $(this).parents('.area-province,.transport-express').find('input[type=checkbox]').prop('checked', true);
-        }else{
-          $(this).parents('.area-province,.transport-express').find('input[type=checkbox]').prop('checked', false);
-        }
-      });
-
-      //点击空白处
-      doc.click(function(e){
-        if(e.target.className != "area-city" && !$(e.target).parents("ul").is(".area-city") && e.target.className != "icon icon-angle-up"){
-          $(".area-city").addClass("hide");
-          $(".area-province").find("i").removeClass("icon-angle-up").addClass("icon-angle-down");
-        }
-      });
-
-      /*************************************方法**********************************/
-      //快递模板类型切换
-      check_type = function(type){
-        if(type == 0){
-          $("#Template_freight").hide();
-          $("#Fixed_freight").show();
-        }else{
-          $("#Template_freight").show();
-          $("#Fixed_freight").hide();
-        }
-      }
-
-      //统计数量
-      change_child_num = function(obj, num){
-        obj.html(obj.html().replace(/\d+/, num));
-        if(num > 0){
-          obj.removeClass('hide');
-          obj.parents('.ui-label').siblings('input[name=province]').prop('checked', true);
-        }else{
-          obj.addClass('hide');
-          obj.parents('.ui-label').siblings('input[name=province]').prop('checked', false);
-        }
-      }
-
-      //自定义编辑配送区域保存
-      save_area = function(){
-        var id = $('.area-province').data('id');
-        var province = new Array();
-        var city = new Array();
-        //省份
-        $('.area-province').find("input[name=province]:enabled:checked").each(function(){
-          province.push($(this).val());
-        })
-        //城市
-        $('.area-province').find("input[name=city]:enabled:checked").each(function(){
-          city.push($(this).val());
-        })
-        province = province.join(',');
-        city = city.join(',');
-        $.jqueryAjax('goods_transport.php', 'act=save_area&id='+id+'&top_area_id='+province+'&area_id='+city, function(data){
-          $("*[ectype='transportArea']").html(data.content);
-        });
-      }
-
-      //自定义模式编辑快递方式保存
-      save_express = function(){
-        var id = $('.transport-express').data('id');
-        var express = new Array();
-        $('.transport-express').find("input[name=shipping]:enabled:checked").each(function(){
-          express.push($(this).val());
-        })
-        express = express.join(',');
-        $.jqueryAjax('goods_transport.php', 'act=save_express&id='+id+'&shipping_id='+express, function(data){
-          $("[ectype='transportExpress']").html(data.content);
-        });
-      }
-
-      //快递模板 运费模板编辑
-      dialog_shipping = function(val, id){
-        $.jqueryAjax('goods_transport.php', 'act=get_shipping_tem&shipping_id='+val + "&id=" + id + "&tid=" + tid, function(data){
-          var content = data.content;
-          console.log(content);
-          pb({
-            id:"area_dialog",
-            title:"编辑运费模板",
-            width:900,
-            content:content,
-            ok_title:"确定",
-            cl_title:"取消",
-            drag:true,
-            foot:true,
-            cl_cBtn:true,
-            onOk:function(){
-              var actionUrl = "goods_transport.php?act=add_shipping_tpl";
-              $("form[name='shipping_tplForm']").ajaxSubmit({
-                type: "POST",
-                dataType: "JSON",
-                url: actionUrl,
-                data: {"action": "TemporaryImage"},
-                success: function (data) {
-                  $("#transport_tpl").html(data.content);
-                  $(".tpl_region").perfectScrollbar("destroy");
-                  $(".tpl_region").perfectScrollbar();
-                },
-                async: true
-              });
-            }
-          });
-        });
-      }
-
-      $(".tpl_region").perfectScrollbar("destroy");
-      $(".tpl_region").perfectScrollbar();
-    }
-    freightTemplate();
 
 </script>
 <script type="text/javascript">
@@ -641,5 +306,5 @@ $(function(){
     }
   });
 });
-    </script>
+</script>
 {/block}

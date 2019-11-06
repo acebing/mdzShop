@@ -1,4 +1,7 @@
 <?php 
 return[
- // 'default_return_type' => 'json',
+//  'template'  =>  [
+//     'layout_on'     =>  true,
+//     'layout_name'   =>  'public/layout',
+// ]
 ];

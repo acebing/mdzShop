@@ -1,6 +1,8 @@
-{extend name='public/mall_base' /}
-{block name='content'}
-  <div class="layui-body" style="padding: 20px;">
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
   	<span class="layui-breadcrumb">
      <a href="">平台设置</a>
      <a><cite>文章自动发布</cite></a>
@@ -119,5 +121,4 @@
           </form>
         </div>
       </div>
-    </div>
   {/block}

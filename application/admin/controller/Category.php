@@ -3,17 +3,14 @@ namespace app\admin\Controller;
 use app\admin\Controller\Base;
 class Category extends Base
 {   
-    private  $obj;
-    public function _initialize() {
-        $this->obj = model("Category");
-    }
+    
      // 商品分类列表
     public function list()
     {
         // 获取一级分类的数据
         $parentId = input('get.parent_id',0,'intval');
-        $categorys = $this->obj->getFirstCategorys($parentId);
-        $count= $this->obj->count();
+        $categorys = model("Category")->getFirstCategorys($parentId);
+        $count= model("Category")->count();
         // echo($count);
         // exit();
         // \ Map::getLngLat("丘北县");
@@ -32,7 +29,7 @@ class Category extends Base
     public function add()
     {   
         // 获取一级分类的数据
-        $categorys = $this->obj->getNormalFirstCategory();
+        $categorys = model("Category")->getNormalFirstCategory();
         return $this->view->fetch('mall/goods_category_add', [
             'categorys'=> $categorys,
         ]);
@@ -45,9 +42,9 @@ class Category extends Base
              $this->error('参数不合法');
          }
          // 通过分类id获取分类的详细信息
-         $category = $this->obj->get($catId);
+         $category = model("Category")->get($catId);
         // 获取所有分类的数据
-        $categorys =  $this->obj->getNormalFirstCategory();
+        $categorys =  model("Category")->getNormalFirstCategory();
         // var_dump($categorys);
         // exit();
         return $this->view->fetch('mall/goods_category_edit', [
@@ -75,7 +72,7 @@ class Category extends Base
          if(!empty($data['cat_id'])) {
             return $this->update($data);
         }
-        $res = $this->obj->add($data);
+        $res = model("Category")->add($data);
         if($res) {
             $this->success('新增成功');
         }else {
@@ -85,7 +82,7 @@ class Category extends Base
 
     }
      public function update($data) {
-        $res =  $this->obj->save($data, ['cat_id' => intval($data['cat_id'])]);
+        $res =  model("Category")->save($data, ['cat_id' => intval($data['cat_id'])]);
         if($res) {
             $this->success('更新成功');
         } else {
@@ -98,7 +95,7 @@ class Category extends Base
             'sort_order'=>$listorder,
              'cat_id'=>$id
         ];
-        $res = $this->obj->update($data);
+        $res = model("Category")->update($data);
         if($res) {
             return $this->result($_SERVER['HTTP_REFERER'], 1, '更新成功');
         }else {
@@ -111,7 +108,7 @@ class Category extends Base
             'commission_rate'=>$commission,
              'cat_id'=>$id
         ];
-        $res = $this->obj->update($data);
+        $res = model("Category")->update($data);
         if($res) {
             return $this->result($_SERVER['HTTP_REFERER'], 1, '更新成功');
         }else {
@@ -120,7 +117,7 @@ class Category extends Base
     }
     // 是否逻辑
     public function show($id, $is_show) {
-        $res = $this->obj->save(['is_show'=>$is_show], ['cat_id'=>$id]);
+        $res = model("Category")->save(['is_show'=>$is_show], ['cat_id'=>$id]);
          if($res) {
             return $this->result($_SERVER['HTTP_REFERER'], 1, '更新成功');
         }else {
@@ -129,7 +126,7 @@ class Category extends Base
     }
     //删除逻辑
     public function remove($id) {
-        $res = $this->obj->destroy($id);
+        $res = model("Category")->destroy($id);
       if($res) {
             return $this->result($_SERVER['HTTP_REFERER'], 1, '更新成功');
         }else {

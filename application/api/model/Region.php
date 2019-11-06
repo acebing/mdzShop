@@ -30,11 +30,45 @@ class Region extends Model
         ->select();
     }
     /**
-     * 得到省份
+     * 返回地区下级列表
+     * @param  [type] $parent [description]
+     * @return [type]         [description]
+     */
+    public function get_regions_list($parent){
+         $data = [
+         'parent_id' =>$parent
+        ];
+        $order = [
+            'parent_id' => 'asc',
+        ];
+        return $this->where( $data)
+        ->order($order)
+        ->select();
+    }
+    /**
+     * 返回所属地区
+     * @param  [int] $region_id [地区id]
+     * @param  [int] $parent_id [地区父级ID]
+     * @return [type]            [description]
+     */
+    public function get_parent($region_id,$parent_id){
+         $data = [
+         'region_id' =>$region_id,
+         'parent_id' =>$parent_id
+        ];
+        $order = [
+            'parent_id' => 'asc',
+        ];
+        return $this->where( $data)
+        ->order($order) 
+        ->select();
+    }
+    /**
+     * 得到省份列表
      * @param  integer $parent 省份ID
      * @return arrow          返回查询姐姐
      */
-    public function getNormalCitysByParentId($parent=1) {
+    public function getRegions($parent=1) {
         $data = [
             'parent_id' =>$parent 
         ];
@@ -44,30 +78,5 @@ class Region extends Model
         return $this->where( $data)
             ->order($order)
             ->select();
-    }       
-    // 分类数据保存
-    public function add($data)
-    {
-        // $data['is_show']=1;
-        return $this ->save($data);
-    }
-    // 获取子分类数据
-    public function getFirstCategorys($parentId = 0) {
-        $data = [
-            'parent_id' => $parentId,
-            'is_show' => ['neq',-1],
-        ];
-
-        $order =[
-            'sort_order' => 'asc',
-            'cat_id' => 'asc',
-        ];
-        $result = $this->where($data)
-            ->order($order)
-            // ->select();
-            ->paginate(2);
-        //echo $this->getLastSql();
-        return $result;
-
-    }
+    } 
 }

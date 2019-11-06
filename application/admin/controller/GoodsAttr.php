@@ -1,6 +1,5 @@
 <?php
 namespace app\admin\Controller;
-use \think\Config;
 use app\admin\Controller\Base;
 class GoodsAttr extends Base
 {
