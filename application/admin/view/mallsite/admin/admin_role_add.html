@@ -1,0 +1,177 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+    <span class="layui-breadcrumb">
+      <a href="#">管理员权限</a>
+      <a href="{:url('loadAdminRoleList')}">角色列表</a>
+     {if condition="$list"}
+      <a><cite>编辑角色</cite></a>
+      {else /} 
+      <a><cite>添加角色</cite></a>
+      {/if}
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>该页面展示商城所有功能权限。</li>
+          <li>打钩即是分配权限，请谨慎操作。</li>
+          <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        
+        <div class="common-content">
+         <div class="mian-info">
+          <form method="POST" name="theFrom" id="role_form">
+            <div class="switch_info business_info" style="background:none;">
+              <div class="step">
+                <div class="items">
+                  <div class="item">
+                  <div class="label"><span class="require-field">*</span>角色名称：</div>
+                  <div class="label_value">
+                    <input type="text" id="title" name="title" class="text valid" value="{$list.title|default=''}" autocomplete="off" aria-required="true" aria-invalid="false">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                  <div class="item">
+                    <div class="label">角色描述：</div>
+                    <div class="value">
+                      <textarea class="textarea" name="describe" id="role_describe">{$list.describe|default=''}</textarea>
+                      <div class="form_prompt"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               {volist name='authList' id='vo'}
+              <div class="step">
+               
+                <div class="tit">
+                  <div class="checkbox_items">
+                    <div class="checkbox_item">
+                      <input type="checkbox" name="chkGroup" value="checkbox" class="ui-checkbox" id="chkGroup_{$vo[0]}">
+                      <label for="chkGroup_{$vo[0]}" class="ui-label blod">{$vo[1]}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="qx_items">
+                  <div class="qx_item">
+                    <div class="checkbox_items">
+                      {volist name='$vo[2]' id='ko'}
+                      <div class="checkbox_item">
+                        <input type="checkbox" value="{$ko.id}" name="rules[]" class="ui-checkbox" id="{$ko.id}_{$vo[0]}" date="{$ko.id}"  
+                        {in name="$ko.id" value="$rules"}
+                        checked="checked" 
+                        {else/}
+
+                        {/in}>
+                        <label for="{$ko.id}_{$vo[0]}" class="ui-label">{$ko.title}</label>
+                      </div>
+                      {/volist}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/volist}
+              <div class="steplast">
+                <div class="checkbox_items">
+                  <div class="checkbox_item">
+                    <input type="checkbox" name="checkall" value="checkbox" class="ui-checkbox" id="checkall">
+                    <label for="checkall" class="ui-label">全选</label>
+                  </div>
+                </div>
+                <div class="info_btn">
+                  <input type="submit" name="submit" value=" 确定 " class="button" id="submitBtn">
+                  <input type="hidden" name="id" value="{$list.id|default='0'}">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{/block}
+{block name='js'}
+ <script type="text/javascript">
+    $(function(){
+      var URL={
+    'add':'{:url('addRoleContent')}'
+  };
+    //表单验证
+  $("#submitBtn").click(function(){
+     var arg= $(this);
+    // 是否通过验证
+    if($("#role_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.add);
+      } 
+  });
+
+    $('#role_form').validate({
+      errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+      rules:{
+        title:{
+          required : true
+        }
+      },
+      messages:{
+        title:{
+          required:'<i class="icon icon-exclamation-sign"></i>'+'角色名称不能为空'
+        }
+      }
+    });
+  }); 
+  </script>
+  <script type="text/javascript">
+    
+  $(function(){
+    $("#checkall").click(function(){
+      var checkbox = $(this).parents(".switch_info").find('input:checkbox[type="checkbox"]');
+      if($(this).prop("checked") == true){
+        checkbox.prop("checked",true);
+      }else{
+        checkbox.prop("checked",false);
+      }
+    });
+    
+    $("input[name='chkGroup']").click(function(){
+      var checkbox = $(this).parents(".tit").next(".qx_items").find('input:checkbox[type="checkbox"]');
+      if($(this).prop("checked") == true){
+        checkbox.prop("checked",true);
+      }else{
+        checkbox.prop("checked",false);
+      }
+    });
+    
+    $("input[name='rules[]']").click(function(){    
+      var qx_items = $(this).parents(".qx_items");
+      var length = qx_items.find("input[name='rules[]']").length;
+      var length2 =  qx_items.find("input[name='rules[]']:checked").length;
+      if(length == length2){
+        qx_items.prev().find("input[name='chkGroup']").prop("checked",true);
+      }else{
+        qx_items.prev().find("input[name='chkGroup']").prop("checked",false);
+      }
+    });
+    
+    $(".qx_items").each(function(index, element) {
+      var length = $(this).find("input[name='rules[]']").length;
+      var length2 = $(this).find("input[name='rules[]']:checked").length;
+      
+      if(length == length2){
+        $(this).prev().find("input[name='chkGroup']").prop("checked",true);
+      }else{
+        $(this).prev().find("input[name='chkGroup']").prop("checked",false);
+      }
+    });
+  });
+    
+  </script>
+  {/block}

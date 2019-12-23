@@ -1,0 +1,120 @@
+
+<div class="explanation" id="explanation">
+  <div class="ex_tit">
+    <i class="sc_icon"></i>
+    <h4>操作提示</h4>
+    <span id="explanationZoom" title="收起提示"></span>
+  </div>
+  <ul>
+    <li>可以针对具体商品设置运费模板。</li>
+    <li>订单运费计算中，该运费总是优先于任何运费。</li>
+    <li>商品选择该运费只有首重，且运费固定，请根据实际需要进行设置。</li>
+  </ul>
+</div>
+<div class="flexilist">
+  <div class="common-head">
+    <div class="fl" id="add">
+      <a href="{:url('areaAddExpress')}"><div class="fbutton"><div class="add" title="添加配送区域"><span><i class="icon icon-plus"></i>添加配送区域</span></div></div></a>
+    </div>        
+    <div class="refresh ml0">
+      <div class="refresh_tit" title="刷新数据"><i class="icon icon-refresh"></i></div>
+      <div class="refresh_span">刷新 - 共7条记录</div>
+    </div>
+    <div class="search">
+      <form action="javascript:;" name="searchForm" onsubmit="searchGoodsname(this);">
+        <div class="input">
+          <input type="text" name="keyword" class="text nofocus" placeholder="模板名称" autocomplete="off">
+          <input type="submit" class="btn" name="secrch_btn" ectype="secrch_btn" value="">
+        </div>
+      </form>
+    </div>                    
+  </div>
+  <div class="common-content">
+    <form method="POST" action="goods_transport.php?act=batch_drop" name="listForm">
+      <div class="list-div" id="listDiv">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th width="3%" class="sign"><div class="tDiv"><input type="checkbox" name="all_list" class="checkbox" id="all_list"><label for="all_list" class="checkbox_stars"></label></div></th>
+              <th width="5%"><div class="tDiv">编号</div></th>
+              <th width="10%"><div class="tDiv">快递名称</div></th>
+              <th width="10%"><div class="tDiv">区配送域名称</div></th>
+              <th width="40%"><div class="tDiv">区配送域详情</div></th>
+              <th width="10%"><div class="tDiv">运费计算方式</div></th>
+              <th class="handle">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            {volist name='deliveryList' id='vo'}
+            <tr class="">
+              <td class="sign"><div class="tDiv">
+                <input type="checkbox" name="checkboxes[]" value="10" class="checkbox" id="checkbox_10">
+                <label for="checkbox_10" class="checkbox_stars"></label>
+              </div></td>
+              <td><div class="tDiv">{$vo.id}</div></td>
+              <td><div class="tDiv">{$vo.express_name}</div></td>
+              <td><div class="tDiv">{$vo.tpl_name}</div></td>
+              <td>
+                <div class="tDiv">{$vo.region_id}</div>
+              </td>
+              <td>
+                <div class="tDiv">
+                  {if condition="$vo.fee_compute_mode eq 'by_weight'"}按重量计算
+                  {else /} 按商品件数计算
+                  {/if}                                           
+                </div>
+              </td>
+              <td class="handle">
+                <div class="tDiv ht_tdiv">
+                  <a href="{:url('areaAddExpress',['id'=>$vo.id])}" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                  <a href="{:url('AddKuaidiniao')}" class="btn_region" ectype="account_setting" data-id="25" data-code="ems" id="kdn"><i class="icon icon-cog"></i>快递鸟帐号设置</a>
+                  <a href="javascript:;" onclick="listTable.remove('{:url('deleteDelivery')}',{$vo.id}, '您确认要删除这条记录吗?')" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                </div>  
+              </td>
+            </tr>
+            {/volist}
+            {volist name='list' id='vo'}
+            <tr class="">
+              <td class="sign"><div class="tDiv">
+                <input type="checkbox" name="checkboxes[]" value="10" class="checkbox" id="checkbox_10">
+                <label for="checkbox_10" class="checkbox_stars"></label>
+              </div></td>
+              <td><div class="tDiv">{$vo.region_id}</div></td>
+              <td><div class="tDiv">{$vo.region_name}</div></td>
+              <td><div class="tDiv"></div></td>
+              <td>
+                <div class="tDiv"></div>
+              </td>
+              <td>
+                <div class="tDiv">                               
+                </div>
+              </td>
+              <td class="handle">
+                <div class="tDiv ht_tdiv">
+                  <a href="{:url('areaAddExpress')}" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
+                  <a href="{:url('AddKuaidiniao')}" class="btn_region" ectype="account_setting" data-id="25" data-code="ems" id="kdn"><i class="icon icon-cog"></i>快递鸟帐号设置</a>
+                  <a href="javascript:;" onclick="listTable.remove('{:url('deleteDelivery')}',, '您确认要删除这条记录吗?')" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                </div>  
+              </td>
+            </tr>
+            {/volist}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="10">
+                <div class="tDiv">
+                  <div class="tfoot_btninfo">
+                    <div class="shenhe">
+                      <input name="drop_type_id" type="submit" id="btnSubmit" value="删除" disabled="disabled" class="btn btn_disabled" ectype="btnSubmit">
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,225 @@
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="">平台设置</a>
+     <a><cite>基本设置</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation" id="explanation">
+      <div class="ex_tit">
+        <i class="sc_icon"></i>
+        <h4>操作提示</h4>
+        <span id="explanationZoom" title="收起提示"></span>
+      </div>
+      <ul>
+        <li>平台相关信息设置，请谨慎填写信息。</li>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+      <div class="mian-info">
+        <form action="{:url('mallsite/baseSiteAdd')}" method="post" id="base_site_form">
+          <div class="switch_info shopConfig_switch">
+            <div class="item shop_name">
+              <div class="label"><span class="require-field">*</span>平台名称：</div>
+              <div class="label_value">
+                <input type="text" name="shop_name" class="text shop_name" value="{$baseData.shop_name}" autocomplete="off" id="title">
+                <div class="form_prompt"></div>
+                <div class="notic">搜索引擎显示的名字</div>
+              </div>
+            </div>
+            <div class="item shop_title">
+              <div class="label"><span class="require-field">*</span>平台标题：</div>
+              <div class="label_value">
+                <input type="text" name="shop_title" class="text shop_title" value="{$baseData.shop_title}" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台的标题，将显示在浏览器的标题栏Title</div>
+              </div>
+            </div>
+            <div class="item shop_desc">
+              <div class="label"><span class="require-field">*</span>平台描述：</div>
+              <div class="label_value">
+               <textarea class="textarea" name="shop_desc">{$baseData.shop_desc}</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">平台描述内容，将显示在浏览器的Description</div>
+              </div>
+            </div>
+            <div class="item shop_keywords">
+              <div class="label"><span class="require-field">*</span>平台关键字：</div>
+              <div class="label_value">
+                <input type="text" name="shop_keywords" class="text shop_keywords" value="{$baseData.shop_keywords}" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台的关键字，将显示在浏览器的Keywords</div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="label"><span class="require-field">*</span>&nbsp;地区选择：</div>
+              <div class="label_value">
+                {include file='public/lib/region' /}
+            </div>
+            </div>
+            <div class="item shop_address">
+              <div class="label"><span class="require-field">*</span>详细地址：</div>
+              <div class="label_value">
+                <input type="text" name="shop_address" class="text" value="{$baseData.shop_address}" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台详细地址，不显示在前台</div>
+              </div>
+            </div>
+            <div class="item service_phone">
+              <div class="label"><span class="require-field">*</span>客服电话：</div>
+              <div class="label_value">
+                <input type="text" name="service_phone" class="text" value="{$baseData.service_phone}" autocomplete="off">
+                <div class="form_prompt"></div>
+                <div class="notic">平台客服电话，联系平台电话，例：入驻页面导航显示的电话</div>
+              </div>
+            </div>
+            <div class="item shop_closed">
+              <div class="label">暂时关闭网站：</div>
+              <div class="label_value">
+                <div class="checkbox_items">
+                  <div class="checkbox_item">
+                    <input type="hidden" value="{$baseData.evnet_shop_closed}" id="shop_closed">
+                    <input type="radio" name="evnet_shop_closed" class="ui-radio" id="value_116_0" value="0" checked="true">
+                    <label for="value_116_0" class="ui-radio-label">否</label>
+                  </div>
+                  <div class="checkbox_item">
+                    <input type="radio" name="evnet_shop_closed" class="ui-radio" id="value_116_1" value="1">
+                    <label for="value_116_1" class="ui-radio-label">是</label>
+                  </div>
+                </div>
+                <div class="form_prompt"></div>
+                <div class="notic">平台需升级或者其他原因临时关闭网站</div>
+              </div>
+            </div>
+            <div class="item close_comment" >
+              <div class="label">关闭网店的原因：</div>
+              <div class="label_value">
+                <textarea class="textarea" name="role_describe">{$baseData.role_describe}</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">平台临时关闭网站说明原因</div>
+              </div>
+            </div>
+            <div class="item user_notice">
+              <div class="label">用户中心公告：</div>
+              <div class="label_value">
+                <textarea class="textarea" name="user_describe">{$baseData.user_describe}</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">该信息将在用户中心欢迎页面显示</div>
+              </div>
+            </div>
+            <div class="item shop_notice">
+              <div class="label">平台公告：</div>
+              <div class="label_value">
+                <textarea class="textarea" name="shop_describe" >{$baseData.shop_describe}</textarea>
+                <div class="form_prompt"></div>
+                <div class="notic">以上内容将显示在首页平台公告中,注意控制公告内容长度不要超过公告显示区域大小。</div>
+              </div>
+            </div>          
+            <div class="item">
+              <div class="label">&nbsp;</div>
+              <div class="label_value info_btn">
+                <input type="hidden" name="base_id" value="{$baseData.base_id}">
+                <input type="submit" value=" 确定 " ectype="btnSubmit" class="button" id="submitBtn">  
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+ {/block}
+{block name='js'}                        
+<script type="text/javascript">
+  $(function () {
+    // 异步请求地址
+    var URL = {
+      'city_url' : '{:url('api/region/getCitysByParentId')}',
+      'city_name' : '{:url('api/region/getRegionName')}',
+      'add' : '{:url('baseSiteAdd')}'
+
+    };
+    // 省份三级联动
+    $.levelLink(URL.city_url,URL.city_name);
+
+    // 网站是否关闭单选显示
+    var shop_closed =  $('#shop_closed').val();
+    if (shop_closed==1) {
+     $('#value_116_1').attr('checked', 'checked');
+   }else {
+     $('#value_116_0').attr('checked', 'checked');
+   }
+
+    // 表单数据验证
+  $("#submitBtn").click(function(){
+      var arg= $(this);
+    // 是否通过验证
+    if($("#base_site_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.add);
+      } 
+    });
+    $('#base_site_form').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules : {
+        shop_name : {
+          required : true,
+          rangelength:[5,10]
+        },
+        shop_title : {
+          required : true
+        },
+        shop_desc : {
+          required : true,
+        },
+        shop_keywords : {
+          required : true
+        },
+      // province_id : {
+      //   required : true
+      // },
+      shop_address : {
+        required : true
+      },
+      service_phone : {
+        required : true
+      }
+
+    },
+    messages : {
+      shop_name : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'网站名称不能为空',
+        rangelength:'<i class="icon icon-exclamation-sign"></i>'+'网站名称最少5个字符，最长10个字符'
+      },
+      shop_title : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'网站标题不能为空'
+      },
+      shop_desc : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'网站描述不能为空'
+        
+      },
+      shop_keywords : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'网站关键字不能为空'
+      },
+      // province_id : {
+      //   required : '<i class="icon icon-exclamation-sign"></i>'+'地区必须选择'
+      // },
+      shop_address : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'详细地址不能为空'
+      },
+      service_phone : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'服务电话不能为空'
+      }
+    }
+  });
+});
+</script>
+{/block}
+

@@ -4,7 +4,7 @@
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <!-- 一级菜单 -->
         {volist name='siteMenu' id ='vo'}
-        <li class="layui-nav-item {$vo.active ?? ''}">
+        <li class="layui-nav-item">
           <a class="" href="javascript:;">{$vo.name}</a>
           <!-- 二级级菜单 -->
           {volist name="$vo.submenu" id ='ko' }
@@ -15,5 +15,7 @@
         </li>
         {/volist}
       </ul>
+      <a href="/{:request()->module()}/{:request()->controller()}/{:request()->action()}" style="display: none" id="local"></a>
     </div>
-  </div>
+</div>
+

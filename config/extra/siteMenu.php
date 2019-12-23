@@ -13,62 +13,39 @@ return[
         'submenu' => [
             [
                 'name' => '基本设置',
-                'url' => '/admin/mallsite/basesite',
+                'url' => '/admin/mallsite.Base_site/index',
             ],
             [
                 'name' => '地区管理',
-                'url' => '/admin/area/areaSite',
+                'url' => '/admin/mallsite.Area/areaSite',
             ],
             [
                 'name' => '配送管理',
-                'url' => '/admin/delivery/deliveryList',
-            ],
-            [
-                'name' => '支付方式',
-                'url' => '/admin/mallsite/basePaySite',
+                'url' => '/admin/mallsite.Delivery/deliveryList',
             ],
             
             [
                 'name' => '友情链接',
-                'url' => '/admin/friend_link/friendLinkList',
+                'url' => '/admin/mallsite.Friend_link/friendLinkList',
             ],
-             [
-                'name' => '第三方登录',
-                'url' => '/admin/mallsite/thirdLogin',
-            ],
-             [
-                'name' => '微信公众号',
-                'url' => '/admin/mallsite/weixin',
-            ],
-             [
-                'name' => '微信小程序',
-                'url' => '/admin/mallsite/weixinxcx',
-            ],
-             [
-                'name' => '阿里短信',
-                'url' => '/admin/sms_site/loadTemplatList',
-            ],
-             [
-                'name' => '阿里OSS',
-                'url' => '/admin/mallsite/oss',
-            ]
+            
 
         ]
     ],
-    'permissions' => [
+    'admin' => [
         'name' => '权限管理',
         'submenu' => [
             [
                 'name' => '管理员列表',
-                'url' => '/admin/mallsite/permissions',
+                'url' => '/admin/mallsite.admin/loadAdminList',
             ],
             [
-                'name' => '下级管理员列表',
-                'url' => '/admin/mallsite/permissionsSeeAdminLog',
+                'name' => '权限列表',
+                'url' => '/admin/mallsite.Auth_rule/loadAdminAuthList',
             ],
              [
                 'name' => '角色管理',
-                'url' => '/admin/mallsite/permissionsRole',
+                'url' => '/admin/mallsite.Auth_group/loadAdminRoleList',
             ],
         ]
     ],
@@ -77,7 +54,7 @@ return[
         'submenu' => [
             [
                 'name' => '账号设置',
-                'url' => '/admin/email/list',
+                'url' => '/admin/mallsite.email/list',
             ]
         ]
     ],

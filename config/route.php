@@ -1,3 +1,4 @@
 <?php 
-think\Route::rule('test','admin/index/test');
+think\Route::rule('admin/login','admin/login.index/index');
+think\Route::rule('admin/index','admin/index.index/index');
  ?>

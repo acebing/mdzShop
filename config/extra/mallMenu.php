@@ -13,19 +13,19 @@ return[
         'submenu' => [
             [
                 'name' => '商品列表',
-                'url' => '/admin/goods/list',
+                'url' => '/admin/mall.goods/list',
             ],
             [
                 'name' => '商品分类',
-                'url' => '/admin/category/list',
+                'url' => '/admin/mall.category/list',
             ],
             [
                 'name' => '品牌管理',
-                'url' => '/admin/brand/list',
+                'url' => '/admin/mall.brand/list',
             ],
             [
                 'name' => '商品类型',
-                'url' => '/admin/Goods_attr/list',
+                'url' => '/admin/mall._goods_attr/list',
             ]
             
         ]    
@@ -36,19 +36,19 @@ return[
         'submenu' => [
             [
                 'name' => '订单列表',
-                'url' => '/admin/order/list',
+                'url' => '/admin/mall.order/list',
             ],
             [
                 'name' => '退货订单',
-                'url' => '/admin/order/reason',
+                'url' => '/admin/mall.order/reason',
             ],
             [
                 'name' => '退货原因',
-                'url' => '/admin/order/reasonList',
+                'url' => '/admin/mall.order/reasonList',
             ],
             [
                 'name' => '商品评论',
-                'url' => '/admin/Comments/list',
+                'url' => '/admin/mall.comments/list',
             ]
             
         ]    
@@ -58,15 +58,15 @@ return[
         'submenu' => [
             [
                 'name' => '文章分类',
-                'url' => '/admin/mallArticle/categoryList',
+                'url' => '/admin/mall.Mallarticle/categoryList',
             ],
             [
                 'name' => '文章列表',
-                'url' => '/admin/mallArticle/articleList',
+                'url' => '/admin/mall.Mallarticle/articleList',
             ],
              [
                 'name' => '文章自动发布',
-                'url' => '/admin/mallArticle/autoRelease',
+                'url' => '/admin/mall.Mallarticle/autoRelease',
             ],
         ]
     ],
@@ -75,27 +75,27 @@ return[
         'submenu' => [
             [
                 'name' => '会员列表',
-                'url' => '/admin/user/list',
+                'url' => '/admin/mall.user/list',
             ],
             [
                 'name' => '会员收货地址',
-                'url' => '/admin/user/addr',
+                'url' => '/admin/mall.user/addr',
             ],
             [
                 'name' => '充值&提现',
-                'url' => '/admin/user/toup',
+                'url' => '/admin/mall.user/toup',
             ],
             [
                 'name' => '发票列表',
-                'url' => '/admin/user/invoiceList',
+                'url' => '/admin/mall.user/invoiceList',
             ],
             [
                 'name' => '意见反馈',
-                'url' => '/admin/user/feedback',
+                'url' => '/admin/mall.user/feedback',
             ],
             [
                 'name' => '留言回复',
-                'url' => '/admin/user/reply',
+                'url' => '/admin/mall.user/reply',
             ]
         ]
     ],
@@ -104,7 +104,7 @@ return[
         'submenu' => [
             [
                 'name' => '限时秒杀',
-                'url' => '/admin/kill/list',
+                'url' => '/admin/mall.kill/list',
             ]
         ]
     ]

@@ -1,0 +1,74 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="">平台商品管理</a>
+     <a><cite>权限分类</cite></a>
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>展示了平台所有的商品分类。</li>
+          <li>可在列表直接增加下一级分类。</li>
+          <li>可在商品分类列表进行转移分类下的商品。</li>
+          <li>鼠标移动“设置”位置，可新增下一级分类、查看下一级分类、转移商品等操作。</li>
+          <li><span class="red">设置分类显示会同步操作分类及子分类下所有商品是否显示，请谨慎操作</span></li>
+      </ul>
+      <!-- <img style="margin:20px" width="600" height="600" src="{:url('category/map')}"/> -->
+    </div>
+    <div class="flexilist">
+      <div class="common-head">
+        <div class="fl">
+          <a href="{:url('addAuth',['id'=>0,'pid'=>0])}">
+            <div class="fbutton">
+              <div class="add" title="添加分类">
+              <span><i class="icon icon-plus"></i>添加权限分类</span>
+            </div>
+          </div>
+        </a>
+        </div>
+      </div>
+      <div class="common-content">
+        <div class="list-div">
+          <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th width="8%"><div class="tDiv">编号</div></th>
+                  <th width="27%"><div class="tDiv">权限名称</div></th>
+                  <th width="25%"><div class="tDiv">所在层级</div></th>
+                  <th width="20%"><div class="tDiv">所属分类</div></th>
+                  <th width="20%" class="handle">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {volist name="$firstList" id='vo'}
+                <tr>
+                  <td><div class="tDiv">{$vo.id}</div></td>
+                  <td>
+                    <div class="tDiv">
+                      <input type="text" name="measure_unit" class="text w80" value="{$vo.title}" onkeyup="listTable.editInput(this, '{:url('editAuthName')}', {$vo.id})">
+                    </div>
+                  </td>
+                  <td>
+                     <div class="tDiv">一级</div> 
+                  </td>
+                  <td>
+                    <div class="tDiv">顶级分类</div>
+                  </td>
+                  <td class="handle">
+                    <div class="tDiv a1">
+                      <a href="{:url('loadSecondList',['id'=>$vo.id])}" title="管理" class="btn_see"><i class="sc_icon sc_icon_see"></i>管理</a>
+                      <a href="javascript:listTable.remove('{:url('deleteAuth')}',{$vo.id}, '您确认要删除这条记录吗?')" title="删除" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
+                    </div>
+                  </td>
+                </tr>
+                {/volist}
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    {/block}

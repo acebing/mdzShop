@@ -1,0 +1,120 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+{block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="">权限管理</a>
+    <a href="{:url('loadAdminAuthList')}">权限列表</a>
+     {if condition="$List"}
+      <a><cite>编辑权限</cite></a>
+      {else /} 
+      <a><cite>添加权限</cite></a>
+      {/if}
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        <li>请按提示信息填写每一个字段。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+     <div class="flexilist">
+      <div class="common-content">
+        <div class="mian-info">
+          <form  method="post" name="theForm" enctype="multipart/form-data" id="category_info_form" novalidate="novalidate">
+            <div class="switch_info">
+              <div class="item">
+                  <div class="label"><span class="require-field">*</span>&nbsp;分类名称：</div>
+                  <div class="label_value">
+                    <input type="text" class="text text_4 valid" name="title" value="{$List.title|default=''}" size="12" autocomplete="off">
+                    <div class="notic">分类名称必填，并且不能超过5个字符</div>
+                    <div class="form_prompt"></div>
+                  </div>
+              </div>
+              <div class="item">
+                <div class="label">上级分类：</div>
+                <div class="label_value">
+                  <div class="imitate_select select_w320">
+                      <div class="cite">{$parentname.title|default='顶级分类'}</div>
+                      <ul class="ps-container" style="display: none;">
+                       <li><a href="javascript:;" data-value="0" class="ftx-01">顶级分类</a></li>
+                       {volist name='$firstList' id='vo'}
+                       <li><a href="javascript:;" data-value="{$vo.id}" class="ftx-01">{$vo.title}</a></li>
+                       {/volist}
+                      </ul>
+                     <input name="pid" type="hidden" value="{$parentname.id|default='0'}">
+                  </div>
+                  <div class="notic">不选择分类默认为顶级分类</div>
+                  </div>
+                </div> 
+                  <div class="item">
+                  <div class="label">权限URL：</div>
+                  <div class="label_value">
+                    <input type="text" class="text text_4 valid" name="name" value="{$List.name|default=''}" size="12" autocomplete="off">
+                    <div class="notic">格式：'admin/模块名/方法名'</div>
+                    <div class="form_prompt"></div>
+                  </div>
+              </div>
+                  <div class="item">
+                    <div class="label">&nbsp;</div>
+                    <div class="label_value info_btn">
+                      <input type="submit" value=" 确定 " class="button" id="submitBtn">
+                      <input type="reset" value=" 重置 " class="button button_reset">
+                      <input type="hidden" name="id"  value="{$List.id|default='0'}">
+                    </div>
+                  </div>                
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/block}
+    {block name="js"}
+<script type="text/javascript">
+  $(function(){
+      var URL={
+    'add':'{:url('addAuthContent')}'
+  };
+    //表单验证
+  $("#submitBtn").click(function(){
+     var arg= $(this);
+     var data = $('form').serializeArray();
+    // 是否通过验证
+    if($("#category_info_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.add);
+      } 
+  });
+    
+    jQuery.validator.addMethod("specialchar", function(value, element) {
+
+      return this.optional(element) || !/[@'\\"#$%&\^*]/.test(value);   
+    },("不能包含特殊字符"));
+    
+    $('#category_info_form').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules:{
+        auth_name :{
+          required : true,
+          specialchar:""
+        }
+       
+      },
+      messages:{
+        auth_name:{
+           required : '<i class="icon icon-exclamation-sign"></i>'+"分类名称不能为空"
+        },
+       
+      }     
+    });
+  });
+</script>
+{/block}

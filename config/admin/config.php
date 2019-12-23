@@ -1,7 +1,8 @@
 <?php 
-return[
-//  'template'  =>  [
-//     'layout_on'     =>  true,
-//     'layout_name'   =>  'public/layout',
-// ]
-];
+return [
+'paginate'               => [
+        'type'      => 'Bootstrap',
+        'var_page'  => 'page',
+        'list_rows' => 15,
+    ],
+]; 

@@ -1,0 +1,308 @@
+{extend name="public/layout" /}
+  {block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+   <span class="layui-breadcrumb">
+      <a href="#">配送管理</a>
+      <a href="{:url('deliveryList')}"><cite>配送列表</cite></a>
+      <a href="#"><cite>添加配送</cite></a>
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit">
+            <i class="sc_icon"></i>
+            <h4>操作提示</h4>
+            <span id="explanationZoom" title="收起提示"></span>
+        </div>
+        <ul>
+          <li>可以针对具体商品设置运费模板。</li>
+          <li>订单运费计算中，该运费总是优先于任何运费。</li>
+          <li>商品选择该运费只有首重，且运费固定，请根据实际需要进行设置。</li>
+        </ul>
+      </div>
+      <div class="mian-info">
+          <div class="transport_shipping_tpl" >
+      <form method="post" name="shipping_tplForm" enctype="multipart/form-data" id="shipping_tplForm">
+        
+        <div class="item">
+            <div class="label"><span class="require-field">*</span>快递公司：</div>
+            <div class="label_value">
+              <div class="imitate_select select_w120" id="specification">
+                <div class="cite">{$list.express_name|default='请选择...'}</div>
+                <ul style="display: none;">
+                  {volist name='$express' id='vo'}
+                  <li><a href="javascript:;" data-value="{$vo.express_name}" class="ftx-01">{$vo.express_name}</a></li>
+                  {/volist}
+                 </ul>
+                  <input name="express_name" type="hidden" value="" id="specification_val">
+                </div>
+                <div class="form_prompt"></div>
+              </div>
+            </div>
+          <div class="item">
+            <div class="label">区域名称：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="text" name="tpl_name" value="{$list.tpl_name|default=''}" class="text" autocomplete="off">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">费用计算方式：</div>
+            <div class="label_value">
+              <div class="checkbox_items">
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_1" checked="true"  name="fee_compute_mode" value="by_weight">
+                  <label for="fee_compute_mode_1" class="ui-radio-label">按重量计算</label>
+                </div>
+                <div class="checkbox_item">
+                  <input type="radio" class="ui-radio" id="fee_compute_mode_0"  name="fee_compute_mode" value="by_number">
+                  <label for="fee_compute_mode_0" class="ui-radio-label">按商品件数计算</label>
+                </div>
+                <input type="hidden" value="{$list.fee_compute_mode|default=''}" id="shop_closed">
+              </div>
+            </div>
+          </div>
+          <div class="item" id="item_fee" style="display:none">
+            <div class="label"><span class="require-field">*</span>&nbsp;单件商品费用：</div>
+            <div class="label_value">
+              <input type="text" name="item_fee" value="{$mode.item_fee|default=''}" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <div id="by_weight">
+            <div class="item" id="base_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;1000克以内费用：</div>
+            <div class="label_value">
+              <input type="text" name="base_fee" value="{$mode.base_fee|default=''}" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <div class="item" id="step_fee">
+            <div class="label"><span class="require-field">*</span>&nbsp;5000克以内续重每500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee" value="{$mode.step_fee|default=''}" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <div class="item" id="step_fee1">
+            <div class="label"><span class="require-field">*</span>&nbsp;5001克以上续重500克费用：</div>
+            <div class="label_value">
+              <input type="text" name="step_fee1" value="{$mode.step_fee1|default=''}" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          </div>
+          <div class="item" id="free_money">
+            <div class="label"><span class="require-field">*</span>&nbsp;免费额度：</div>
+            <div class="label_value">
+              <input type="text" name="free_money" value="0" class="text" autocomplete="off">
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <div class="item mb0">
+            <div class="label"><span class="require-field">*</span>到达目的地：</div>
+            <div class="label_value">
+              <div class="level_linkage">
+                <div class="fl">
+                  <div class="ui-dropdown smartdropdown alien" style="z-index: 100;">
+                    <input type="hidden" value="0" name="province" id="selProvinces">
+                    <div class="txt">省/直辖市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;">
+                      {volist name='$region' id='vo'}
+                       <span class="liv" data-text="{$vo.region_name}"
+                        data-type="{$vo.region_type}" 
+                       data-value="{$vo.region_id}">{$vo.region_name}</span>
+                       {/volist}
+                    </div>
+                  </div>
+                  <div id="dlCity" class="ui-dropdown smartdropdown alien" style="z-index: 99;">
+                    <input type="hidden" value="0" name="city" id="selCities">
+                    <div class="txt">市</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                  <div id="dlRegion" class="ui-dropdown smartdropdown alien" style="z-index: 98;">
+                    <input type="hidden" value="0" name="district" id="selDistricts">
+                    <div class="txt">区/县</div>
+                    <i class="down u-dropdown-icon"></i>
+                    <div class="options clearfix" style="max-height:300px;"></div>
+                  </div>
+                </div>
+                <a href="javascript:void(0);" class="btn red_btn btn32 fl" ectype="addPrivilege"><i class="sc_icon sc_icon_warehouse"></i>添加地区</a>
+                <div class="checkbox-item">
+                  <input type="checkbox" name="deleteArea" id="deleteArea" class="ui-checkbox">
+                  <label class="ui-label" for="deleteArea">去除已选地区</label>
+                </div>
+                <div class="notic bf100 mt5">不选择地区（点添加地区）时会添加“全国地区”</div>
+              </div>
+              <div class="form_prompt"></div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="label">&nbsp;</div>
+            <div class="label_value" style="width: 320px;">
+              <!---->
+              <div class="checkbox_items" id="regionCell">
+                {$list.region_id ?? ''}
+              </div>
+              <!---->
+            </div>
+          </div>
+           <div class="item">
+        <div class="label">&nbsp;</div>
+        <div class="label_value info_btn">
+          <input type="hidden" name="id" value="{$list.id|default='0'}">
+          <input type="button" value=" 确定 " class="button fl mr10" id="submitBtn">
+        </div>
+      </div>
+        </form>
+      </div>
+      </div>
+    </div>
+{/block}
+{block name='js'}
+<script type="text/javascript">
+  $(function () {
+    // 异步请求地址
+    var SCOPE = {
+      'city_url' : '{:url('api/region/getCitysByParentId')}',
+      'city_name' : '{:url('api/region/getRegionName')}',
+      'addGoodsTransport' : '{:url('addGoodsTransport')}',
+    };
+    // 省份三级联动
+    $.levelLink(SCOPE.city_url,SCOPE.city_name);
+    // 网站是否关闭单选显示
+    var by_weight  = $("#by_weight");
+    var item_fee  = $("#item_fee");
+    var shop_closed =  $('#shop_closed').val();
+    if (shop_closed=='by_weight'||shop_closed=='') {
+     $('#fee_compute_mode_1').attr('checked', 'checked');
+     item_fee.css('display','none');
+     by_weight.css('display','');
+   }else {
+     $('#fee_compute_mode_0').attr('checked', 'checked');
+     item_fee.css('display','');
+     by_weight.css('display','none');
+
+   }
+   //配送费用计算方式
+   $('#fee_compute_mode_1').on('click', function(event) {
+     item_fee.css('display','none');
+     by_weight.css('display','');
+   });
+   $('#fee_compute_mode_0').on('click', function(event) {
+     item_fee.css('display','');
+     by_weight.css('display','none');
+   });
+      //表单验证
+  $("#submitBtn").click(function(){
+     var arg= $(this);
+      SubmitAajx(arg,SCOPE.addGoodsTransport);
+    // 是否通过验证
+    if($("#shipping_tplForm").valid()){
+      // 异步上传
+      alert('sdsd');
+      SubmitAajx(arg,SCOPE.addGoodsTransport);
+      } 
+  });
+
+  $('#shipping_tplForm').validate({
+    errorPlacement:function(error, element){
+      var error_div = element.parents('div.label_value').find('div.form_prompt');
+      element.parents('div.label_value').find(".notic").hide();
+      error_div.append(error);
+    },
+    rules : {
+      express_name : {
+        required : true
+      },
+      item_fee : {
+        required : true
+      },
+      base_fee : {
+        required : true
+      },
+      step_fee : {
+        required : true
+      },
+      step_fee1 : {
+        required : true
+      },
+      free_money : {
+        required : true
+      }
+    },
+    messages : {
+      express_name : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'快递名称必选'
+      },
+      item_fee : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'单件商品费用必填'
+      },
+      base_fee : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+' 1000克以内费用必填 '
+      },
+      step_fee : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+' 5000克以内续重每500克费用必填'
+      },
+      step_fee1 : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+' 5001克以上续重500克费用必填 '
+      },
+      free_money : {
+        required : '<i class="icon icon-exclamation-sign"></i>'+'免费额度必填'
+      }
+    }
+  });
+});
+</script>
+ <script type="text/javascript">
+ 
+  /*添加管辖地区*/
+  $("a[ectype='addPrivilege']").on("click",function(){
+    var selProvince = $('#selProvinces');
+    var selCity     = $('#selCities');
+    var selDistrict = $('#selDistricts');
+    var regionCell  = $('#regionCell');
+    var regionId = 0;
+    var regionName = '';
+
+    var tid = $("#tab_tid").val();
+    var shipping_id = $("#tab_shipping_id").val();
+
+    if (selDistrict.val() > 0)
+    {
+      regionId = selDistrict.val();
+      regionName = selDistrict.next(".txt").text();
+    }else{
+      if(selCity.val() > 0){
+        regionId = selCity.val();
+        regionName = selCity.next(".txt").text();
+      }else{
+        if(selProvince.val() > 0){
+          regionId = selProvince.val();
+          regionName = selProvince.next(".txt").text();
+        }else{
+          the_national('{:url('api/region/getCitysByParentId')}',tid=1,type=1)
+          return false;
+        }
+      }
+    }
+      regionCell.append('<div class="checkbox_item"><input type="checkbox" value="'+regionId+'" name="region_id[]" class="ui-checkbox" id="region_'+regionId+'" checked="true" /><label for="region_'+regionId+'" class="ui-label">'+regionName+'</label></div>');
+    
+  });
+
+  $("input[name='deleteArea']").click(function(){
+    if($(this).prop("checked") == true){
+      $("#regionCell").find("input[type='checkbox']").prop("checked",true);
+    }else{
+      $("#regionCell").find("input[type='checkbox']").prop("checked",false);
+    }
+  });
+</script>
+
+{/block}

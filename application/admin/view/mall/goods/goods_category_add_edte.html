@@ -1,0 +1,268 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mall/menu' /}
+{/block}
+{block name='body'}
+  	<span class="layui-breadcrumb">
+     <a href="{:url('list')}">商品分类列表</a>
+     {if condition="$catdata"}
+      <a><cite>编辑分类</cite></a>
+      {else /} 
+      <a><cite>添加分类</cite></a>
+      {/if}
+   </span>
+   <div class="layui-tab-content">
+    <div class="explanation mb10" id="explanation">
+      <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+      <ul>
+        <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        <li>请按提示信息填写每一个字段。</li>
+      </ul>
+    </div>
+    <div class="flexilist">
+     <div class="flexilist">
+      <div class="common-content">
+        <div class="mian-info">
+          <form  method="post" name="theForm" enctype="multipart/form-data" id="category_info_form" novalidate="novalidate">
+            <div class="switch_info">
+              <div class="item">
+                  <div class="label"><span class="require-field">*</span>&nbsp;分类名称：</div>
+                  <div class="label_value">
+                    <input type="text" class="text text_4 valid" name="cat_name" value="{$catdata.cat_name|default=''}" size="12" autocomplete="off">
+                    <div class="notic">分类名称必填，并且不能超过5个字符</div>
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+              <div class="item">
+              <div class="label"><span class="require-field">*</span>手机图标：</div>
+              <div class="label_value">
+                <div class="type-file-box">
+                  <input type="button" name="button" id="button" class="type-file-button" value="">
+                  <input type="file" class="type-file-file" id="legal_person_fileImg" name="link_img" data-state="imgfile" size="30" hidefocus="true">
+                  <input type="hidden" name="textfile" value="{$catdata.textfile|default=''}" id="res_val">
+                  <div class="uploadbox" id="uploadbox">
+                      <img class="layui-upload-img" id="layui-upload-img" src="{$catdata.textfile|default=''}">
+                   </div>
+                </div>
+                <div class="form_prompt" id="demoText"></div>
+                <div class="notic m20">尺寸110*30支持格式：jpg|png|gif|bmp|jpeg</div>
+              </div>
+            </div>
+              <div class="item">
+                <div class="label">上级分类：</div>
+                <div class="label_value">
+                  <div class="search_select">
+                    <div class="categorySelect">
+                      <div class="selection">
+                        <input type="text" id="category_name" class="text w290 valid" value="{$catdata.cat_name|default='顶级分类'}" autocomplete="off" readonly="" data-filter="cat_name">
+                        <input type="hidden" name="parent_id" id="category_id" value="0" data-filter="cat_id">
+                      </div>
+                      <div class="select-container w319" style="display:none;">
+                        <div class="select-top">
+                          <a href="javascript:;" class="categoryTop" data-cid="0" data-cname="" >重选</a>
+                          &gt; <span>请选择分类</span>
+                        </div>
+                        <div class="select-list">
+                          <ul>
+                            {volist name='categorys' id='vo'}
+                            <li data-cid={$vo.cat_id} data-cname={$vo.cat_name} data-level={$vo.level}>
+                              <em>Ⅰ</em>
+                            {$vo.cat_name}
+                          </li>
+                          {/volist}
+                          </ul>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="notic">不选择分类默认为顶级分类</div>
+                  </div>
+                </div> 
+                <div class="item">
+                    <div class="label">数量单位：</div>
+                    <div class="label_value">
+                    <input type="text" class="text text_4" name="measure_unit" value="{$catdata.measure_unit|default=''}" size="12" autocomplete="off">
+                    </div>
+                </div>
+                <div class="item">
+                  <div class="label">排序：</div>
+                  <div class="label_value">
+                    <input type="text" class="text text_4" name="sort_order" value="{$catdata.sort_order|default='50'}" size="15" autocomplete="off">
+                  </div>
+                </div>  
+                <div class="item">
+                  <div class="label">佣金比率：</div>
+                  <div class="label_value">
+                    <input type="text" class="text text_2" name="commission_rate" value="{$catdata.commission_rate|default='0'}" size="12" autocomplete="off">
+                    <div class="notic">% （请输入0-100以内的整数）</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label">是否显示：</div>
+                  <div class="label_value">
+                    <div class="checkbox_items">
+                      <div class="checkbox_item">
+                        <input type="hidden" value="{$catdata.is_show|default=''}" id="is_show">
+                        <input type="radio" class="ui-radio" name="is_show" id="is_show_1" value="1" checked="true">
+                        <label for="is_show_1" class="ui-radio-label">是</label>
+                      </div>
+                      <div class="checkbox_item">
+                        <input type="radio" class="ui-radio" name="is_show" id="is_show_0" value="0" >
+                        <label for="is_show_0" class="ui-radio-label">否</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="item">
+                    <div class="label">关键字：</div>
+                    <div class="label_value">         
+                      <input type="text" name="keywords" value="{$catdata.keywords|default=''}" size="50" class="text mr10" autocomplete="off">
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="label">分类描述：</div>
+                    <div class="label_value">         
+                      <textarea name="cat_desc" rows="6" cols="48" class="textarea">{$catdata.cat_desc|default=''}</textarea>             
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="label">&nbsp;</div>
+                    <div class="label_value info_btn">
+                      <input type="button" value=" 确定 " class="button" id="submitBtn">
+                      <input type="reset" value=" 重置 " class="button button_reset">
+                      <input type="hidden" name="cat_id" value="{$catdata.cat_id|default='0'}">
+                      <input type="hidden" name="level"  value="{$catdata.level|default='1'}" id="level">
+                    </div>
+                  </div>                
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {/block}
+    {block name="js"}
+<script type="text/javascript">
+  $(function(){
+  
+  var URL={
+    'uploadimg':'{:url('imgupload')}',
+    'handle':'{:url('categoryHandle')}'
+  };
+  
+  // 图片上传相关操作
+  $('#legal_person_fileImg').on('click', function(event) {
+   var ele=$(this);
+   uploadImg(ele,URL.uploadimg);
+  });
+  // 分类是否显示
+    var is_show =  $('#is_show').val();
+    if (is_show==1) {
+     $('#is_show_1').attr('checked', 'checked');
+   }else {
+     $('#is_show_0').attr('checked', 'checked');
+   }
+  $("#submitBtn").on('click',  function(event) {
+    var arg= $(this);
+    // 是否通过验证
+    if($("#category_info_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.handle);
+      } 
+    });
+    
+    jQuery.validator.addMethod("specialchar", function(value, element) {
+
+      return this.optional(element) || !/[@'\\"#$%&\^*]/.test(value);   
+    },("不能包含特殊字符"));
+    
+    $('#category_info_form').validate({
+      errorPlacement:function(error, element){
+        var error_div = element.parents('div.label_value').find('div.form_prompt');
+        element.parents('div.label_value').find(".notic").hide();
+        error_div.append(error);
+      },
+      rules:{
+        cat_name :{
+          required : true,
+          specialchar:""
+        }
+      },
+      messages:{
+        cat_name:{
+           required : '<i class="icon icon-exclamation-sign"></i>'+"分类名称不能为空"
+        }
+        
+      }     
+    });
+  });
+</script>
+<script type="text/javascript">
+  /*分类搜索的下拉列表*/
+jQuery.category = function(){
+  $('#category_name').on('click', function(event) {
+    $(this).parents(".selection").next('.select-container').show();
+    $(".select-list").perfectScrollbar("destroy");
+    $(".select-list").perfectScrollbar();
+  });
+  $(document).on('click', '.select-list li', function(){
+    var obj = $(this);
+    var cat_id = obj.data('cid');
+    var cat_name = obj.data('cname');
+    var level = obj.data('level');
+    $("#category_name").val(cat_name).next().val(cat_id);
+    $("#level").val(level+1);
+    var data={
+      'parent_id':cat_id
+    }
+    $.jqueryAjax('{:url('getLevellcat')}', data, function(res){
+            city_html = "";
+            $(res).each(function(i){
+             if (this.level==2) {
+              city_html += 
+              "<li data-cid=" + this.cat_id + " data-cname="+this.cat_name+" data-level="+this.level+">"+"<em>Ⅱ</em>"+ this.cat_name+"</li>"
+             }
+             if (this.level==3) {
+               city_html += 
+              "<li data-cid=" + this.cat_id + " data-cname="+this.cat_name+" data-level="+this.level+">"+"<em>Ⅲ</em>"+ this.cat_name+"</li>"
+             }
+            }); 
+        obj.parents(".select-container .select-list ul").html(city_html);
+        $(".select-list").perfectScrollbar("destroy");
+        $(".select-list").perfectScrollbar();
+     
+    });
+    obj.parents(".categorySelect").find("input[data-filter=cat_id]").val(cat_id); //修改cat_id
+    if(level >= 3){
+      $('.categorySelect .select-container').hide();
+      alert('最多只能设置3级分类'); 
+      window.location.reload();  
+    }
+  });
+  
+  //点击a标签返回所选分类 by wu
+  $(document).on('click', '.select-top a', function(){
+    var obj = $(this);
+    var cat_id = obj.data('cid');
+    var cat_name = obj.data('cname');
+     var data={
+      'parent_id':cat_id
+    }
+    $.jqueryAjax('{:url('getfistcat')}',data , function(res){
+      city_html = "";
+            $(res).each(function(i){
+              city_html += 
+              "<li data-cid=" + this.cat_id + " data-cname="+this.cat_name+ ">"+"<em>Ⅰ</em>"+ this.cat_name+"</li>"
+            }); 
+        $(".select-list ul").html(city_html);
+        $(".select-list").perfectScrollbar("destroy");
+        $(".select-list").perfectScrollbar();
+      
+    });
+    obj.parents(".categorySelect").find("input[data-filter=cat_id]").val(cat_id); //修改cat_id
+  }); 
+  /*分类搜索的下拉列表end*/
+}
+$.category();
+</script>
+{/block}

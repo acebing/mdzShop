@@ -1,23 +1,22 @@
 <div class="layui-header">
-      <div class="layui-logo">
+      <div class="layui-logo" >
         <a href="{:url('index/index')}">
-          <img src="__STATIC__/admin/images/admin_logo.png" alt="" style="width: 210px;height: 25px">
+          <img src="__STATIC__/admin/images/admin_logo.png" alt="" style="width: 210px;height: 25px" title="系统首页">
         </a>
         
       </div>
       <!-- 头部区域（可配合layui已有的水平导航） -->
       <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item layui-this"><a href="{:url('mallsite/baseSite')}">平台设置</a></li>
-        <li class="layui-nav-item"><a href="{:url('goods/list')}">商城管理</a></li>
-        <li class="layui-nav-item"><a href="">财务管理</a></li>
-        <li class="layui-nav-item"><a href="">微商城</a></li>
-        <li class="layui-nav-item"><a href="">小程序</a></li>
+        <li class="layui-nav-item"  id="test"><a href="{:url('mallsite.Base_site/index')}">系统设置</a></li>
+        <li class="layui-nav-item"><a href="{:url('mall.goods/list')}">商城管理</a></li>
+        <li class="layui-nav-item"><a href="">商城数据</a></li>
+        <li class="layui-nav-item"><a href="">第三方接口</a></li>
       </ul>
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
           <a href="javascript:;">
             <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-            沈总
+           
           </a>
           <dl class="layui-nav-child">
             <dd><a href="">基本资料</a></dd>
@@ -25,27 +24,27 @@
           </dl>
         </li>
         <li class="layui-nav-item">
-         <a href="">
+         <a href="" title="首页">
           <i class="layui-icon layui-icon-notice" style="font-size: 20px; color: #FFF;"></i><span class="layui-badge">99</span>
         </a>
       </li>
       <li class="layui-nav-item">
-        <a href="">
+        <a href="" title="消息">
           <i class="layui-icon layui-icon-website" style="font-size: 20px; color: #FFF;"></i>
         </a>
       </li>
       <li class="layui-nav-item">
-        <a href="">
+        <a href="" title="主题设置">
           <i class="layui-icon layui-icon-theme" style="font-size: 20px; color: #FFF;"></i>
         </a>
       </li>
       <li class="layui-nav-item">
-        <a href="">
+        <a href="" title="清楚缓存">
           <i class="layui-icon layui-icon-fonts-clear" style="font-size: 20px; color: #FFF;"></i>
         </a>
       </li>
       <li class="layui-nav-item">
-        <a href="">
+        <a href="{:url('login.index/logout')}" title="安全退出">
           <i class="layui-icon layui-icon-close-fill" style="font-size: 20px; color: #FFF;"></i>
         </a>
       </li>

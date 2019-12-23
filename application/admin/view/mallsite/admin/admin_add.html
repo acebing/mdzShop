@@ -1,0 +1,168 @@
+{extend name="public/layout" /}
+{block name='menu'}
+{include file='mallsite/menu' /}
+{/block}
+  {block name='body'}
+    <span class="layui-breadcrumb">
+      <a href="#">管理员权限</a>
+      <a href="{:url('loadAdminList')}">管理员列表</a>
+     {if condition="$List"}
+      <a><cite>编辑管理员</cite></a>
+      {else /} 
+      <a><cite>添加管理员</cite></a>
+      {/if}
+    </span>
+    <div class="layui-tab-content">
+      <div class="explanation" id="explanation">
+        <div class="ex_tit"><i class="sc_icon"></i><h4>操作提示</h4><span id="explanationZoom" title="收起提示"></span></div>
+        <ul>
+          <li>该页面展示商城所有功能权限。</li>
+          <li>打钩即是分配权限，请谨慎操作。</li>
+          <li>标识“<em>*</em>”的选项为必填项，其余为选填项。</li>
+        </ul>
+      </div>
+      <div class="flexilist">
+        
+        <div class="common-content">
+          <div class="mian-info">
+            <form name="theForm" method="post" enctype="multipart/form-data" id="user_form" novalidate="novalidate">
+              <div class="switch_info">
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>管理员：</div>
+                  <div class="label_value">
+                    <input type="text" id="name" name="name" class="text valid" value="{$List.name|default=''}" autocomplete="off" aria-required="true" aria-invalid="false">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>Email地址：</div>
+                  <div class="label_value">
+                    <input type="text" name="email" class="text" id="email" value="{$List.email|default=''}" autocomplete="off">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>密  码：</div>
+                  <div class="label_value">
+                    <input type="password" style="display:none">
+                    <input type="password" name="password" class="text validate-equalTo-blur" id="password" value="">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="label"><span class="require-field">*</span>确认密码：</div>
+                  <div class="label_value">
+                    <input type="password" style="display:none">
+                    <input type="password" name="pwd_confirm" class="text" id="pwd_confirm" aria-required="true" aria-invalid="true" value="">
+                    <div class="form_prompt"></div>
+                  </div>
+                </div>
+                
+                <div class="item">
+                  <div class="label">所属角色：</div>
+                  <div class="label_value">
+                    <div class="imitate_select select_w320">
+                      <div class="cite">{$groupName.title|default='请选择...'}</div>
+                      <ul>
+                       <li><a href="javascript:;" data-value="0" class="ftx-01">请选择...</a></li>
+                       {volist name='$authGroupList' id='vo'}
+                       <li><a href="javascript:;" data-value="{$vo.id}" class="ftx-01">{$vo.title}</a></li>
+                       {/volist}
+                     </ul>
+                     <input name="group_id" type="hidden" value="">
+                   </div>
+                 </div>
+               </div>
+               
+               <div class="item">
+                <div class="label">&nbsp;</div>
+                <div class="label_value info_btn mt0">
+                <input type="hidden" name="id" value="{$List.id|default='0'}" />
+                <input type="hidden" name="act" id="act" value="{$act}" />
+                <input type="button" id="submitBtn" class="button" value=" 确定 ">
+              </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{/block}
+{block name='js'}
+ <script type="text/javascript">
+    $(function(){
+      var URL={
+    'add':'{:url('addAdminContent')}',
+    'checkname':'{:url('checkAdminName')}'
+  };
+    //表单验证
+  $("#submitBtn").click(function(){
+     var arg= $(this);
+    // 是否通过验证
+    if($("#user_form").valid()){
+      // 异步上传
+      SubmitAajx(arg,URL.add);
+      } 
+  });
+
+    $('#user_form').validate({
+      errorPlacement:function(error, element){
+          var error_div = element.parents('div.label_value').find('div.form_prompt');
+          element.parents('div.label_value').find(".notic").hide();
+          error_div.append(error);
+        },
+      rules:{
+        name:{
+          required : true,
+          remote:{
+                  url: URL.checkname,     //后台处理程序
+                  type: "post",               //数据发送方式
+                  dataType: "json",           //接受数据格式
+                  data: {                     //要传递的数据
+                      name: function() {
+                          return $("#name").val();
+                      },
+                      act:function () {
+                        return $("#act").val();
+                      }
+                  }
+              }
+        },
+        password:{
+          required : true,
+          minlength: 6,
+        },
+        email:{
+          required : true,
+          email: true
+        },
+        pwd_confirm: {
+        required: true,
+        minlength: 6,
+        equalTo: "#password"
+      },
+      },
+      messages:{
+        name:{
+          required:'<i class="icon icon-exclamation-sign"></i>'+'用户名称不能为空',
+          remote:'<i class="icon icon-exclamation-sign"></i>'+'此管理员已存在，重新换个名称'
+        },
+        email:{
+          required:'<i class="icon icon-exclamation-sign"></i>'+'邮箱地址不能为空',
+          email:'<i class="icon icon-exclamation-sign"></i>'+'邮箱格式不正确',
+        },
+         password:{
+          required:'<i class="icon icon-exclamation-sign"></i>'+'密码不能为空',
+          minlength:'<i class="icon icon-exclamation-sign"></i>'+'密码长度最少为6位'
+        },
+        pwd_confirm:{
+           required:'<i class="icon icon-exclamation-sign"></i>'+'确认密码不能为空',
+           minlength:'<i class="icon icon-exclamation-sign"></i>'+'确认密码不能为空',
+           equalTo:'<i class="icon icon-exclamation-sign"></i>'+'两次密码输入不一致'
+        }
+      }
+    });
+  }); 
+  </script>
+  {/block}
