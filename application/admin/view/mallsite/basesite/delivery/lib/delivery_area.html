@@ -73,31 +73,6 @@
               </td>
             </tr>
             {/volist}
-            {volist name='list' id='vo'}
-            <tr class="">
-              <td class="sign"><div class="tDiv">
-                <input type="checkbox" name="checkboxes[]" value="10" class="checkbox" id="checkbox_10">
-                <label for="checkbox_10" class="checkbox_stars"></label>
-              </div></td>
-              <td><div class="tDiv">{$vo.region_id}</div></td>
-              <td><div class="tDiv">{$vo.region_name}</div></td>
-              <td><div class="tDiv"></div></td>
-              <td>
-                <div class="tDiv"></div>
-              </td>
-              <td>
-                <div class="tDiv">                               
-                </div>
-              </td>
-              <td class="handle">
-                <div class="tDiv ht_tdiv">
-                  <a href="{:url('areaAddExpress')}" class="btn_edit"><i class="icon icon-edit"></i>编辑</a>
-                  <a href="{:url('AddKuaidiniao')}" class="btn_region" ectype="account_setting" data-id="25" data-code="ems" id="kdn"><i class="icon icon-cog"></i>快递鸟帐号设置</a>
-                  <a href="javascript:;" onclick="listTable.remove('{:url('deleteDelivery')}',, '您确认要删除这条记录吗?')" class="btn_trash"><i class="icon icon-trash"></i>删除</a>
-                </div>  
-              </td>
-            </tr>
-            {/volist}
           </tbody>
           <tfoot>
             <tr>

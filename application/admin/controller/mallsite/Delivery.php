@@ -39,19 +39,15 @@ class Delivery extends Base
           // 遍历出省份名称
           foreach ($list as $k => $v) {
             $region_name_arr = $v->toArray();
-            // 获取省份名称
-            $arr=[];
-            $arr = $region_name_arr['region_name'];
-            dump($arr);
-             
+            $deliveryList['region_id'] = $region_name_arr['region_name'];
+            // dump($deliveryList);die;
         }
+
         }
-        die;
         return $this->view->fetch('mallsite/basesite/delivery/index',[
              'printer'=> $printer,
              'time'=> $time,
-             'deliveryList'=> $deliveryList,
-             'list'=>$list
+             'deliveryList'=> $deliveryList
         ]);
     }
      
